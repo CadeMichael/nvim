@@ -32,3 +32,122 @@ lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
         }
     }
 }))
+
+-- global configurations --
+vim.o.swapfile = false
+vim.cmd("set termguicolors")
+
+-- themeing
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+
+-- galaxy line 
+-- source provider function
+local diagnostic = require('galaxyline.provider_diagnostic')
+local vcs = require('galaxyline.provider_vcs')
+local fileinfo = require('galaxyline.provider_fileinfo')
+local extension = require('galaxyline.provider_extensions')
+local buffer = require('galaxyline.provider_buffer')
+local whitespace = require('galaxyline.provider_whitespace')
+local lspclient = require('galaxyline.provider_lsp')
+-- bar setup
+local gl = require('galaxyline')
+-- local colors = require('galaxyline.theme').default
+local colors = {
+	bg = '#ebdbb2',
+	fg = '#282828',
+	yellow = '#d79921',
+	cyan = '#689d6a',
+	darkblue = '#458588',
+	green = '#98971a',
+	orange = '#d65d0e',
+	violet = '#8f3f71',
+	magenta = '#b16286',
+	blue = '#51afef',
+	red = '#076678',
+}
+local condition = require('galaxyline.condition')
+local gls = gl.section
+
+-- bar -> left -> right
+gls.left[1] = {
+  ViMode = {
+    provider = function()
+      -- auto change color according the vim mode
+      local mode_color = {n = colors.red, i = colors.green,v=colors.blue,
+                          [''] = colors.blue,V=colors.blue,
+                          c = colors.magenta,no = colors.red,s = colors.orange,
+                          S=colors.orange,[''] = colors.orange,
+                          ic = colors.yellow,R = colors.violet,Rv = colors.violet,
+                          cv = colors.red,ce=colors.red, r = colors.cyan,
+                          rm = colors.cyan, ['r?'] = colors.cyan,
+                          ['!']  = colors.red,t = colors.red}
+      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
+      return '🐧'
+    end,
+    separator = '  ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.red,colors.bg,'bold'},
+  },
+}
+gls.left[2] = {
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = condition.buffer_not_empty,
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+  },
+}
+gls.left[3] = {
+  FileName = {
+    provider = 'FileName',
+    condition = condition.buffer_not_empty,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.magenta,colors.bg,'bold'}
+  }
+}
+gls.left[4] = {
+  ShowLspClient = {
+    provider = 'GetLspClient',
+    condition = function ()
+      local tbl = {['dashboard'] = true,['']=true}
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = ' LSP:',
+    highlight = {colors.cyan,colors.bg,'bold'}
+  }
+}
+gls.right[1] = {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = condition.check_git_workspace,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+}
+gls.right[2] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+}
+gls.right[3]= {
+  FileSize = {
+    provider = 'FileSize',
+    condition = function()
+      if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+        return true
+      end
+      return false
+      end,
+    icon = '   ',
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.green,colors.purple},
+  }
+}
