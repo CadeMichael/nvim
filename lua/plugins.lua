@@ -11,11 +11,11 @@ return require('packer').startup(function()
   use {
   'glepnir/galaxyline.nvim',
     branch = 'main',
-    -- your statusline
-    config = function() require'my_statusline' end,
     -- some optional icons
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   -- colorchemes 
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+  -- nvim tree
+  use {"kyazdani42/nvim-tree.lua"}
 end)

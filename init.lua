@@ -36,20 +36,15 @@ lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
 -- global configurations --
 vim.o.swapfile = false
 vim.cmd("set termguicolors")
+-- keymappings --
+-- nvim tree
+vim.api.nvim_set_keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 
 -- themeing
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
 
--- galaxy line 
--- source provider function
-local diagnostic = require('galaxyline.provider_diagnostic')
-local vcs = require('galaxyline.provider_vcs')
-local fileinfo = require('galaxyline.provider_fileinfo')
-local extension = require('galaxyline.provider_extensions')
-local buffer = require('galaxyline.provider_buffer')
-local whitespace = require('galaxyline.provider_whitespace')
-local lspclient = require('galaxyline.provider_lsp')
+-- galaxy line --
 -- bar setup
 local gl = require('galaxyline')
 -- local colors = require('galaxyline.theme').default
