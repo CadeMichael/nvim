@@ -18,4 +18,14 @@ return require('packer').startup(function()
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
   -- nvim tree
   use {"kyazdani42/nvim-tree.lua"}
+  -- git 
+  use {
+  'lewis6991/gitsigns.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim'
+  },
+  config = function()
+    require('gitsigns').setup()
+  end
+  }
 end)
