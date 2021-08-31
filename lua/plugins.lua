@@ -28,4 +28,5 @@ return require('packer').startup(function()
     require('gitsigns').setup()
   end
   }
+  use {'mhinz/vim-startify'}
 end)
