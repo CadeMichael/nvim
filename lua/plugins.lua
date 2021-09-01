@@ -29,4 +29,5 @@ return require('packer').startup(function()
   end
   }
   use {'mhinz/vim-startify'}
+  use {'kabouzeid/nvim-lspinstall'}
 end)

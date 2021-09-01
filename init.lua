@@ -13,9 +13,18 @@ vim.cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync(
 vim.cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
 vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
 -- Language Server Configuration --
+-- automatic lsp installer
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end
+
 local lsp = require "lspconfig"
 local coq = require "coq"
 lsp.pyright.setup(coq.lsp_ensure_capabilities({}))
+lsp.lua.setup(coq.lsp_ensure_capabilities({}))
 lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
     settings = {
         ["rust-analyzer"] = {
@@ -43,7 +52,19 @@ vim.api.nvim_set_keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, s
 -- themeing
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
-
+vim.g.startify_custom_header = {
+"  < Neovim time! >",
+"   --------------",
+"    \\",
+"     \\",
+"         .--.",
+"        |o_o |",
+"        |:_/ |",
+"       //   \\ \\",
+"      (|     | )",
+"     /'\\_   _/`\\",
+"     \\___)=(___/",
+}
 -- galaxy line --
 -- bar setup
 local gl = require('galaxyline')
