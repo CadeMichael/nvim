@@ -5,6 +5,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.cmd 'packadd packer.nvim'
 end
+-- setup vimplug
+local Plug = vim.fn["plug#"]
+vim.call('plug#begin','~/.config/nvim/plugged')
+  Plug 'jalvesaq/Nvim-R'
+  Plug 'junegunn/fzf.vim'
+vim.call('plug#end')
+
 -- packer commands 
 vim.cmd [[command! WhatHighlight :call util#syntax_stack()]]
 vim.cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
@@ -48,6 +55,8 @@ vim.cmd("set termguicolors")
 -- keymappings --
 -- nvim tree
 vim.api.nvim_set_keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
+-- fzf
+vim.api.nvim_set_keymap('n', '<C-Space>', ':FZF<CR>', {noremap= true, silent = true})
 
 -- themeing
 vim.o.background = "dark" -- or "light" for light mode
