@@ -8,8 +8,9 @@ end
 -- setup vimplug
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin','~/.config/nvim/plugged')
-  Plug 'jalvesaq/Nvim-R'
-  Plug 'junegunn/fzf.vim'
+  Plug 'jalvesaq/Nvim-R' -- R support
+  Plug 'dense-analysis/ale' -- autoconfigured for lintr
+  Plug 'junegunn/fzf.vim' -- fuzzy finding
 vim.call('plug#end')
 
 -- packer commands 
@@ -57,7 +58,15 @@ vim.cmd("set termguicolors")
 vim.api.nvim_set_keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
 vim.api.nvim_set_keymap('n', '<C-Space>', ':FZF<CR>', {noremap= true, silent = true})
-
+vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'n', 'nzzzv', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '.', '.<C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', ',', ',<C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '[', '[<C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
 -- themeing
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
