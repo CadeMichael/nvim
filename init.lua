@@ -33,6 +33,22 @@ local lsp = require "lspconfig"
 local coq = require "coq"
 lsp.pyright.setup(coq.lsp_ensure_capabilities({}))
 lsp.lua.setup(coq.lsp_ensure_capabilities({}))
+lsp.gopls.setup(coq.lsp_ensure_capabilities({
+	cmd = {'gopls'},
+		-- for postfix snippets and analyzers
+		capabilities = capabilities,
+	    	settings = {
+	      		gopls = {
+		      		experimentalPostfixCompletions = true,
+		      		analyses = {
+		        	unusedparams = true,
+		        	shadow = true,
+		     	},
+		     	staticcheck = true,
+		    	},
+	    	},
+	on_attach = on_attach,
+}))
 lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
     settings = {
         ["rust-analyzer"] = {
