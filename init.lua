@@ -1,16 +1,17 @@
--- autoisntall packer 
+-- autoisntall packer
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.cmd 'packadd packer.nvim'
 end
--- setup vimplug
+-- setup vim plug
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'jalvesaq/Nvim-R' -- R support
   Plug 'dense-analysis/ale' -- autoconfigured for lintr
   Plug 'junegunn/fzf.vim' -- fuzzy finding
+  Plug 'simrat39/rust-tools.nvim'
 vim.call('plug#end')
 
 -- packer commands 
@@ -20,7 +21,9 @@ vim.cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').upd
 vim.cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
 vim.cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
 vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
+
 -- Language Server Configuration --
+
 -- automatic lsp installer
 require'lspinstall'.setup() -- important
 
@@ -29,10 +32,15 @@ for _, server in pairs(servers) do
   require'lspconfig'[server].setup{}
 end
 
+-- Required Plugins
 local lsp = require "lspconfig"
 local coq = require "coq"
+
+-- Python
 lsp.pyright.setup(coq.lsp_ensure_capabilities({}))
+-- Lua
 lsp.lua.setup(coq.lsp_ensure_capabilities({}))
+-- Haskell
 lsp.hls.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 	root_dir = vim.loop.cwd,
@@ -40,6 +48,7 @@ lsp.hls.setup(coq.lsp_ensure_capabilities({
 		rootMarkers = {"./git/"}
 	}
 }))
+-- Golang
 lsp.gopls.setup(coq.lsp_ensure_capabilities({
 	cmd = {'gopls'},
 		-- for postfix snippets and analyzers
@@ -56,6 +65,7 @@ lsp.gopls.setup(coq.lsp_ensure_capabilities({
 	    	},
 	on_attach = on_attach,
 }))
+-- Rust 
 lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
     settings = {
         ["rust-analyzer"] = {
@@ -72,6 +82,14 @@ lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
         }
     }
 }))
+
+-- TreeSitter
+require'nvim-treesitter.configs'.setup {
+    -- Modules and its options go here
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+    textobjects = { enable = true },
+}
 
 -- global configurations --
 vim.o.swapfile = false

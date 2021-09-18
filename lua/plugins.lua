@@ -5,6 +5,8 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   -- native lsp
   use 'neovim/nvim-lspconfig'
+  -- lsp installer
+  use {'kabouzeid/nvim-lspinstall'}
   -- lsp wrapper
   use { 'ms-jpq/coq_nvim', branch = 'coq'}
   -- galaxy bar 
@@ -30,5 +32,13 @@ return require('packer').startup(function()
   end
   }
   use {'mhinz/vim-startify'}
-  use {'kabouzeid/nvim-lspinstall'}
+  use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate' 
+	-- Languages installed 
+	-- rust 
+	-- python
+	-- r 
+	-- lua
+  }
 end)
