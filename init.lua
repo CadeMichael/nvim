@@ -94,6 +94,8 @@ require'nvim-treesitter.configs'.setup {
 -- global configurations --
 vim.o.swapfile = false
 vim.cmd("set termguicolors")
+vim.cmd("set rnu")
+
 -- keymappings --
 -- nvim tree
 vim.api.nvim_set_keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
