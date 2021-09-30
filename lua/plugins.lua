@@ -35,10 +35,5 @@ return require('packer').startup(function()
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate' 
-	-- Languages installed 
-	-- rust 
-	-- python
-	-- r 
-	-- lua
   }
 end)
