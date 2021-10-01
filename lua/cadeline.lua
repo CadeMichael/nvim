@@ -91,7 +91,23 @@ gls.left[7] = {
       return true
     end,
     icon = ' LSP:',
+    separator = '  ',
+    separator_highlight = {colors.fg,colors.bg},
     highlight = {colors.fg,colors.bg,'bold'}
+  }
+}
+gls.left[8] = {
+  DiagnosticError = {
+    provider = 'DiagnosticError',
+    icon = '  ',
+    highlight = {colors.yellow,colors.bg}
+  }
+}
+gls.left[9] = {
+  DiagnosticWarn = {
+    provider = 'DiagnosticWarn',
+    icon = '  ',
+    highlight = {colors.violet,colors.bg},
   }
 }
 gls.right[1] = {
@@ -123,6 +139,22 @@ gls.right[4] = {
   }
 }
 gls.right[5] = {
+  LineInfo = {
+    provider = 'LineColumn',
+    separator = ' | ',
+    separator_highlight = {'NONE'},
+    highlight = {colors.green},
+  },
+}
+gls.right[6] = {
+  PerCent = {
+    provider = 'LinePercent',
+    separator = '  ',
+    separator_highlight = {'NONE'},
+    highlight = {colors.green},
+  }
+}
+gls.right[7] = {
   Space5 = {
     provider = function () return ' ' end,
     highlight = {'NONE'}

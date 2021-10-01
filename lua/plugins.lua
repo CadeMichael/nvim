@@ -31,7 +31,9 @@ return require('packer').startup(function()
     require('gitsigns').setup()
   end
   }
+  -- vim start screen
   use {'mhinz/vim-startify'}
+  -- highlighting for languages
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate' 
