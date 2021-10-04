@@ -19,6 +19,9 @@ vim.o.swapfile = false
 vim.cmd("set termguicolors")
 vim.cmd("set rnu")
 vim.cmd("set nohlsearch")
+vim.bo.expandtab = true
+vim.bo.shiftwidth = 2
+vim.bo.softtabstop = 2
 
 -- setup vim plug
 local Plug = vim.fn["plug#"]
@@ -41,19 +44,23 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- keymappings --
+local keymap = vim.api.nvim_set_keymap
 -- nvim tree
-vim.api.nvim_set_keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
+keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
-vim.api.nvim_set_keymap('n', '<C-Space>', ':FZF<CR>', {noremap= true, silent = true})
-vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'n', 'nzzzv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '.', '.<C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', ',', ',<C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '[', '[<C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
+keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})
+-- COQ
+keymap('n', '<C-q>', ':COQnow -s<CR>', {noremap= true, silent = true})
+-- remaps
+keymap('n', 'Y', 'y$', {noremap = true, silent = true})
+keymap('n', 'n', 'nzzzv', {noremap = true, silent = true})
+keymap('n', 'N', 'Nzzzv', {noremap = true, silent = true})
+keymap('i', '.', '.<C-g>u', {noremap = true, silent = true})
+keymap('i', ',', ',<C-g>u', {noremap = true, silent = true})
+keymap('i', '[', '[<C-g>u', {noremap = true, silent = true})
+keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
+keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
+keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
 -- themeing
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])

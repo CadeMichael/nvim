@@ -20,15 +20,19 @@ return require('packer').startup(function()
   -- colorchemes 
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
   -- nvim tree
-  use {"kyazdani42/nvim-tree.lua"}
+  use {
+    "kyazdani42/nvim-tree.lua",
+    config = function() 
+      require'nvim-tree'.setup {} end
+  }
   -- git 
   use {
-  'lewis6991/gitsigns.nvim',
-  requires = {
-    'nvim-lua/plenary.nvim'
-  },
-  config = function()
-    require('gitsigns').setup()
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup()
   end
   }
   -- vim start screen
