@@ -8,25 +8,20 @@
 ---- hs -> haskell-language-server
 
 -----------------------------------
--- automatic lsp installer
-require'lspinstall'.setup() -- important
 
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{}
-end
-
--- Required Plugins
+--> Required Plugin
 local lsp = require "lspconfig"
 local coq = require "coq"
 
----- setup the keymappings for language server, from the lsp-config README 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+--> automatic lsp installer
+require'lspinstall'.setup() -- important
 
+---- setup the keymappings for language server, from the lsp-config README 
+--> Use an on_attach function to only map the following keys
+--> after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -54,31 +49,31 @@ local on_attach = function(client, bufnr)
 
 end
 
--- Python
+--> Python
 lsp.pyright.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 }))
--- TypeScript
+--> TypeScript
 lsp.tsserver.setup(coq.lsp_ensure_capabilities({
 	on_attatch = on_attach,
 }))
--- Svelte
+--> Svelte
 lsp.svelte.setup(coq.lsp_ensure_capabilities({
 	on_attatch = on_attach,
 }))
--- Lua
+--> Lua
 lsp.lua.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 }))
--- Haskell
+--> Haskell
 lsp.hls.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 	root_dir = vim.loop.cwd,
 	settings = {
-		rootMarkers = {"./git/"}
+		rootMarkers = {"./git/", "README.md"}
 	}
 }))
--- Golang
+--> Golang
 lsp.gopls.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 	cmd = {'gopls'},
@@ -95,8 +90,9 @@ lsp.gopls.setup(coq.lsp_ensure_capabilities({
 		    	},
 	    	},
 }))
--- Rust 
+--> Rust
 lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
+    on_attach = on_attach,
     settings = {
         ["rust-analyzer"] = {
             assist = {
@@ -113,3 +109,11 @@ lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
     }
 }))
 -----------------------------------
+
+--> lsp install base configuration for servers
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+	require'lspconfig'[server].setup(coq.lsp_ensure_capabilities({
+		on_attach = on_attach
+	}))
+end

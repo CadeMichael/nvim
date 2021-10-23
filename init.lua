@@ -28,8 +28,10 @@ local Plug = vim.fn["plug#"]
 vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'jalvesaq/Nvim-R' -- R support
   Plug 'dense-analysis/ale' -- autoconfigured for lintr
+  Plug 'junegunn/fzf' -- fzf
   Plug 'junegunn/fzf.vim' -- fuzzy finding
   Plug 'simrat39/rust-tools.nvim'
+  Plug('Olical/conjure', {tag = 'v4.25.0'})
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -42,6 +44,10 @@ require'nvim-treesitter.configs'.setup {
     incremental_selection = { enable = true },
     textobjects = { enable = true },
 }
+-- folding 
+vim.o.foldmethod="expr"
+vim.o.foldexpr="nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 32
 
 -- keymappings --
 local keymap = vim.api.nvim_set_keymap
@@ -49,6 +55,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
 keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})
+keymap('n', '<Space>,', ':FZF ../<CR>', {noremap= true, silent = true})
 -- COQ
 keymap('n', '<C-q>', ':COQnow -s<CR>', {noremap= true, silent = true})
 -- remaps
@@ -61,9 +68,10 @@ keymap('i', '[', '[<C-g>u', {noremap = true, silent = true})
 keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
 keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
 keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
+
 -- themeing
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme dracula]])
 vim.g.startify_custom_header = {
 "  < Neovim time! >",
 "   --------------",
@@ -77,5 +85,6 @@ vim.g.startify_custom_header = {
 "     /'\\_   _/`\\",
 "     \\___)=(___/",
 }
--- galaxy line --
-require("cadeline")
+
+-- lua-line
+require("line")

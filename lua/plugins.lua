@@ -10,15 +10,12 @@ return require('packer').startup(function()
   -- lsp wrapper
   use { 'ms-jpq/coq_nvim', branch = 'coq'}
   -- galaxy bar 
-  use {
-  'glepnir/galaxyline.nvim',
-    branch = 'main',
-    --config = function() require'cadeline.lua' end,
-    -- some optional icons
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
+  use {'kyazdani42/nvim-web-devicons'}
+  -- lualine
+  use{'nvim-lualine/lualine.nvim'}
   -- colorchemes 
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+  use {"dracula/vim"}
   -- nvim tree
   use {
     "kyazdani42/nvim-tree.lua",
