@@ -19,9 +19,9 @@ vim.o.swapfile = false
 vim.cmd("set termguicolors")
 vim.cmd("set rnu")
 vim.cmd("set nohlsearch")
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.softtabstop = 2
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 
 -- setup vim plug
 local Plug = vim.fn["plug#"]
@@ -32,6 +32,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim' -- fuzzy finding
   Plug 'simrat39/rust-tools.nvim'
   Plug('Olical/conjure', {tag = 'v4.25.0'})
+  Plug 'windwp/nvim-autopairs'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -48,6 +49,9 @@ require'nvim-treesitter.configs'.setup {
 vim.o.foldmethod="expr"
 vim.o.foldexpr="nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 32
+
+-- auto pairs 
+require('nvim-autopairs').setup() --> optional more advanced / comp specific configs
 
 -- keymappings --
 local keymap = vim.api.nvim_set_keymap
