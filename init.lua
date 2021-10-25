@@ -33,6 +33,8 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'simrat39/rust-tools.nvim'
   Plug('Olical/conjure', {tag = 'v4.25.0'})
   Plug 'windwp/nvim-autopairs'
+  Plug 'akinsho/bufferline.nvim'
+  Plug 'hkupty/iron.nvim'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -73,9 +75,7 @@ keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
 keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
 keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
 
--- themeing
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme dracula]])
+--> themeing
 vim.g.startify_custom_header = {
 "  < Neovim time! >",
 "   --------------",
@@ -89,6 +89,51 @@ vim.g.startify_custom_header = {
 "     /'\\_   _/`\\",
 "     \\___)=(___/",
 }
-
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme dracula]])
 -- lua-line
 require("line")
+-- buffer-line
+require("bufferline").setup{
+  options = {
+    always_show_bufferline = false,
+    show_close_icon = false,
+    show_buffer_close_icons = false,
+    right_mouse_command = "buffer %d",
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "File Tree",
+        highlight = "Directory",
+        text_align = "left"
+      }
+    }
+  }
+}
+--> allowing mouse support
+vim.o.mouse = 'nv' --> normal / visual
+
+--> allowing partial running / repl experience 
+-----
+--> nvim iron
+local iron = require'iron'
+iron.core.add_repl_definitions {
+  python = {
+    mycustom = {
+      lua_repl = {"lua"}
+    }
+  },
+  javascript = {
+    node_repl = {
+      command = {"node"}
+    }
+  }
+}
+--> sniprun
+require'sniprun'.setup({
+  display = {"Classic", "VirtualTextOk"}
+})
+keymap('v', '<space>sr', '<Plug>SnipRun',{noremap = false, silent = true})
+keymap('n', '<space>sc', '<Plug>SnipClose',{noremap = false, silent = true})
+keymap('n', '<leader>sc', '<Plug>SnipReplMemoryClean',{noremap = false, silent = true})
+keymap('n', '<leader>sr', '<Plug>SnipReset',{noremap = false, silent = true})

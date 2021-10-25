@@ -30,7 +30,7 @@ return require('packer').startup(function()
     },
     config = function()
       require('gitsigns').setup()
-  end
+    end
   }
   -- vim start screen
   use {'mhinz/vim-startify'}
@@ -38,5 +38,10 @@ return require('packer').startup(function()
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate' 
+  }
+  --> sniprun
+  use {
+    'michaelb/sniprun',
+    run = 'bash ./install.sh'
   }
 end)
