@@ -26,15 +26,16 @@ vim.o.softtabstop = 2
 -- setup vim plug
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin','~/.config/nvim/plugged')
-  Plug 'jalvesaq/Nvim-R' -- R support
-  Plug 'dense-analysis/ale' -- autoconfigured for lintr
-  Plug 'junegunn/fzf' -- fzf
-  Plug 'junegunn/fzf.vim' -- fuzzy finding
+  Plug 'jalvesaq/Nvim-R' --> R support
+  Plug 'dense-analysis/ale' --> autoconfigured for lintr
+  Plug 'junegunn/fzf' --> fzf
+  Plug 'junegunn/fzf.vim' --> fuzzy finding
   Plug 'simrat39/rust-tools.nvim'
-  Plug('Olical/conjure', {tag = 'v4.25.0'})
+  Plug('Olical/conjure', {tag = 'v4.25.0'}) --> lisps
   Plug 'windwp/nvim-autopairs'
-  Plug 'akinsho/bufferline.nvim'
-  Plug 'hkupty/iron.nvim'
+  Plug 'akinsho/bufferline.nvim' --> tablines
+  Plug 'hkupty/iron.nvim' --> repls
+  Plug 'leafOfTree/vim-svelte-plugin' --> adds indent support
 vim.call('plug#end')
 
 -- Source the lsp Setup
