@@ -7,8 +7,6 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   -- lsp installer
   use {'kabouzeid/nvim-lspinstall'}
-  -- lsp wrapper
-  use { 'ms-jpq/coq_nvim', branch = 'coq'}
   -- galaxy bar 
   use {'kyazdani42/nvim-web-devicons'}
   -- lualine

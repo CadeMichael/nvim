@@ -11,7 +11,40 @@
 
 --> Required Plugin
 local lsp = require "lspconfig"
-local coq = require "coq"
+vim.o.completeopt = "menuone,noselect"
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = {
+    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    max_width = 120,
+    min_width = 60,
+    max_height = math.floor(vim.o.lines * 0.3),
+    min_height = 1,
+  };
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+    luasnip = true;
+  };
+}
 
 --> automatic lsp installer
 require'lspinstall'.setup() -- important
@@ -50,31 +83,31 @@ local on_attach = function(client, bufnr)
 end
 
 --> Python
-lsp.pyright.setup(coq.lsp_ensure_capabilities({
+lsp.pyright.setup({
 	on_attach = on_attach,
-}))
+})
 --> TypeScript
-lsp.tsserver.setup(coq.lsp_ensure_capabilities({
+lsp.tsserver.setup({
 	on_attatch = on_attach,
-}))
+})
 --> Svelte
-lsp.svelte.setup(coq.lsp_ensure_capabilities({
+lsp.svelte.setup({
 	on_attatch = on_attach,
-}))
+})
 --> Lua
-lsp.lua.setup(coq.lsp_ensure_capabilities({
+lsp.lua.setup({
 	on_attach = on_attach,
-}))
+})
 --> Haskell
-lsp.hls.setup(coq.lsp_ensure_capabilities({
+lsp.hls.setup({
 	on_attach = on_attach,
 	root_dir = vim.loop.cwd,
 	settings = {
 		rootMarkers = {"./git/", "README.md"}
 	}
-}))
+})
 --> Golang
-lsp.gopls.setup(coq.lsp_ensure_capabilities({
+lsp.gopls.setup({
 	on_attach = on_attach,
 	cmd = {'gopls'},
 		-- for postfix snippets and analyzers
@@ -89,9 +122,9 @@ lsp.gopls.setup(coq.lsp_ensure_capabilities({
 		     	staticcheck = true,
 		    	},
 	    	},
-}))
+})
 --> Rust
-lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
+lsp.rust_analyzer.setup({
     on_attach = on_attach,
     settings = {
         ["rust-analyzer"] = {
@@ -107,13 +140,13 @@ lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
             },
         }
     }
-}))
+})
 -----------------------------------
 
 --> lsp install base configuration for servers
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
-	require'lspconfig'[server].setup(coq.lsp_ensure_capabilities({
+	require'lspconfig'[server].setup({
 		on_attach = on_attach
-	}))
+	})
 end
