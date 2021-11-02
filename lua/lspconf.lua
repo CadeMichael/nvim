@@ -55,11 +55,11 @@ lsp.pyright.setup(coq.lsp_ensure_capabilities({
 }))
 --> TypeScript
 lsp.tsserver.setup(coq.lsp_ensure_capabilities({
-	on_attatch = on_attach,
+	on_attach = on_attach,
 }))
 --> Svelte
 lsp.svelte.setup(coq.lsp_ensure_capabilities({
-	on_attatch = on_attach,
+	on_attach = on_attach,
 }))
 --> Lua
 lsp.lua.setup(coq.lsp_ensure_capabilities({
