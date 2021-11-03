@@ -88,11 +88,11 @@ lsp.pyright.setup({
 })
 --> TypeScript
 lsp.tsserver.setup({
-	on_attatch = on_attach,
+	on_attach = on_attach,
 })
 --> Svelte
 lsp.svelte.setup({
-	on_attatch = on_attach,
+	on_attach = on_attach,
 })
 --> Lua
 lsp.lua.setup({
