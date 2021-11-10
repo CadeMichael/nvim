@@ -3,8 +3,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   -- packer
   use 'wbthomason/packer.nvim'
-  -- native lsp
-  use 'neovim/nvim-lspconfig'
   -- lsp installer
   use {'kabouzeid/nvim-lspinstall'}
   -- galaxy bar 

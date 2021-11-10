@@ -35,9 +35,14 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'windwp/nvim-autopairs'
   Plug 'akinsho/bufferline.nvim'
   Plug 'hkupty/iron.nvim'
-  Plug 'hrsh7th/nvim-compe'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -77,10 +82,6 @@ keymap('i', '[', '[<C-g>u', {noremap = true, silent = true})
 keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
 keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
 keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
--->lsp keymaps
-keymap("i","<C-Space>", "compe#complete()", {expr = true})
-keymap("i","<CR>", "compe#confirm('<CR>')", {expr = true})
-keymap("i","<C-e>", "compe#close('<C-e>')", {expr = true})
 
 --> themeing
 vim.g.startify_custom_header = {

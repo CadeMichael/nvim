@@ -12,39 +12,55 @@
 --> Required Plugin
 local lsp = require "lspconfig"
 vim.o.completeopt = "menuone,noselect"
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  resolve_timeout = 800;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = {
-    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-    max_width = 120,
-    min_width = 60,
-    max_height = math.floor(vim.o.lines * 0.3),
-    min_height = 1,
-  };
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
-    luasnip = true;
-  };
-}
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({ 
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping({
+      i = cmp.mapping.confirm({ select = true }),
+      c = cmp.mapping.confirm({ select = false }),
+    })
+  },
+sources = cmp.config.sources({
+  { name = 'nvim_lsp' },
+  { name = 'vsnip' }, -- For vsnip users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 --> automatic lsp installer
 require'lspinstall'.setup() -- important
@@ -85,18 +101,22 @@ end
 --> Python
 lsp.pyright.setup({
 	on_attach = on_attach,
+        capabilities = capabilities
 })
 --> TypeScript
 lsp.tsserver.setup({
 	on_attach = on_attach,
+        capabilities = capabilities
 })
 --> Svelte
 lsp.svelte.setup({
 	on_attach = on_attach,
+        capabilities = capabilities
 })
 --> Lua
 lsp.lua.setup({
 	on_attach = on_attach,
+        capabilities = capabilities
 })
 --> Haskell
 lsp.hls.setup({
@@ -104,7 +124,8 @@ lsp.hls.setup({
 	root_dir = vim.loop.cwd,
 	settings = {
 		rootMarkers = {"./git/", "README.md"}
-	}
+	},
+        capabilities = capabilities
 })
 --> Golang
 lsp.gopls.setup({
@@ -139,7 +160,8 @@ lsp.rust_analyzer.setup({
                 enable = true
             },
         }
-    }
+    },
+    capabilities = capabilities
 })
 -----------------------------------
 
