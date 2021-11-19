@@ -98,7 +98,7 @@ vim.g.startify_custom_header = {
 "     \\___)=(___/",
 }
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme dracula]])
+vim.cmd([[colorscheme gruvbox]])
 -- lua-line
 require("line")
 -- buffer-line

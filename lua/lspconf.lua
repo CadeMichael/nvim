@@ -113,11 +113,6 @@ lsp.svelte.setup({
 	on_attach = on_attach,
         capabilities = capabilities
 })
---> Lua
-lsp.lua.setup({
-	on_attach = on_attach,
-        capabilities = capabilities
-})
 --> Haskell
 lsp.hls.setup({
 	on_attach = on_attach,
@@ -164,11 +159,3 @@ lsp.rust_analyzer.setup({
     capabilities = capabilities
 })
 -----------------------------------
-
---> lsp install base configuration for servers
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-	require'lspconfig'[server].setup({
-		on_attach = on_attach
-	})
-end
