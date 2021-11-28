@@ -69,8 +69,8 @@ require'lspinstall'.setup() -- important
 --> Use an on_attach function to only map the following keys
 --> after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -98,19 +98,22 @@ local on_attach = function(client, bufnr)
 
 end
 
+-- for lsp based tagbar
+local aerial = require'aerial'
+
 --> Python
 lsp.pyright.setup({
-	on_attach = on_attach,
+	on_attach = aerial.on_attach,
         capabilities = capabilities
 })
 --> TypeScript
 lsp.tsserver.setup({
-	on_attach = on_attach,
+	on_attach = aerial.on_attach,
         capabilities = capabilities
 })
 --> Svelte
 lsp.svelte.setup({
-	on_attach = on_attach,
+	on_attach = aerial.on_attach,
         capabilities = capabilities
 })
 --> Haskell
@@ -141,7 +144,7 @@ lsp.gopls.setup({
 })
 --> Rust
 lsp.rust_analyzer.setup({
-    on_attach = on_attach,
+    on_attach = aerial.on_attach,
     settings = {
         ["rust-analyzer"] = {
             assist = {

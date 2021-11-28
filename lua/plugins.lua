@@ -1,3 +1,4 @@
+-- packer packages
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
@@ -5,20 +6,20 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   -- lsp installer
   use {'kabouzeid/nvim-lspinstall'}
-  -- galaxy bar 
+  -- galaxy bar
   use {'kyazdani42/nvim-web-devicons'}
   -- lualine
   use{'nvim-lualine/lualine.nvim'}
-  -- colorchemes 
+  -- colorchemes
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
   use {"dracula/vim"}
   -- nvim tree
   use {
     "kyazdani42/nvim-tree.lua",
-    config = function() 
+    config = function()
       require'nvim-tree'.setup {} end
   }
-  -- git 
+  -- git
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
@@ -32,12 +33,13 @@ return require('packer').startup(function()
   use {'mhinz/vim-startify'}
   -- highlighting for languages
   use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate' 
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
   }
-  --> sniprun
+  -- flutter / dart
   use {
-    'michaelb/sniprun',
-    run = 'bash ./install.sh'
+    'akinsho/flutter-tools.nvim'
   }
+  -- lsp based tag bar
+  use {'stevearc/aerial.nvim'}
 end)

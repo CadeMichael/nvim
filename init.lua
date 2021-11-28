@@ -34,6 +34,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug('Olical/conjure', {tag = 'v4.25.0'})
   Plug 'windwp/nvim-autopairs'
   Plug 'akinsho/bufferline.nvim'
+  Plug 'preservim/tagbar'
   Plug 'hkupty/iron.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -63,6 +64,9 @@ vim.o.foldlevel = 32
 -- auto pairs 
 require('nvim-autopairs').setup() --> optional more advanced / comp specific configs
 
+-- Dart / Flutter 
+require("flutter-tools").setup{} -- use defaults
+
 -- keymappings --
 local keymap = vim.api.nvim_set_keymap
 -- nvim tree
@@ -72,6 +76,11 @@ keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})
 keymap('n', '<Space>,', ':FZF ../<CR>', {noremap= true, silent = true})
 -- COQ
 keymap('n', '<C-q>', ':COQnow -s<CR>', {noremap= true, silent = true})
+-- ctags 
+keymap('n', '<Space>t', ':TagbarToggle<CR>', {noremap= true, silent = true})
+-- lsp tagbar 
+keymap('n', '<C-a>', ':AerialToggle<CR>', {noremap= true, silent = true})
+
 -- remaps
 keymap('n', 'Y', 'y$', {noremap = true, silent = true})
 keymap('n', 'n', 'nzzzv', {noremap = true, silent = true})
@@ -105,8 +114,8 @@ require("line")
 require("bufferline").setup{
   options = {
     always_show_bufferline = false,
-    show_close_icon = true,
-    show_buffer_close_icons = false,
+    show_close_icon = false,
+    show_buffer_close_icons = true,
     right_mouse_command = "buffer %d",
     offsets = {
       {
@@ -137,11 +146,3 @@ iron.core.add_repl_definitions {
     }
   }
 }
---> sniprun
-require'sniprun'.setup({
-  display = {"Classic", "VirtualTextOk"}
-})
-keymap('v', '<space>sr', '<Plug>SnipRun',{noremap = false, silent = true})
-keymap('n', '<space>sc', '<Plug>SnipClose',{noremap = false, silent = true})
-keymap('n', '<leader>sc', '<Plug>SnipReplMemoryClean',{noremap = false, silent = true})
-keymap('n', '<leader>sr', '<Plug>SnipReset',{noremap = false, silent = true})
