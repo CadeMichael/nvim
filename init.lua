@@ -74,8 +74,6 @@ keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
 keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})
 keymap('n', '<Space>,', ':FZF ../<CR>', {noremap= true, silent = true})
--- COQ
-keymap('n', '<C-q>', ':COQnow -s<CR>', {noremap= true, silent = true})
 -- ctags 
 keymap('n', '<Space>t', ':TagbarToggle<CR>', {noremap= true, silent = true})
 -- lsp tagbar 

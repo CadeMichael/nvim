@@ -98,22 +98,22 @@ local on_attach = function(client, bufnr)
 
 end
 
--- for lsp based tagbar
-local aerial = require'aerial'
+-- for lsp based tagbar using aerial, detects treesitter parsings
+-- local aerial = require'aerial' -- unused right now, breaking keymappings
 
 --> Python
 lsp.pyright.setup({
-	on_attach = aerial.on_attach,
+	on_attach = on_attach,
         capabilities = capabilities
 })
 --> TypeScript
 lsp.tsserver.setup({
-	on_attach = aerial.on_attach,
+	on_attach = on_attach,
         capabilities = capabilities
 })
 --> Svelte
 lsp.svelte.setup({
-	on_attach = aerial.on_attach,
+	on_attach = on_attach,
         capabilities = capabilities
 })
 --> Haskell
@@ -144,7 +144,7 @@ lsp.gopls.setup({
 })
 --> Rust
 lsp.rust_analyzer.setup({
-    on_attach = aerial.on_attach,
+    on_attach = on_attach,
     settings = {
         ["rust-analyzer"] = {
             assist = {
