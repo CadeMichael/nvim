@@ -133,7 +133,7 @@ vim.o.mouse = 'nv' --> normal / visual
 --> nvim iron
 local iron = require'iron'
 iron.core.add_repl_definitions {
-  python = {
+  lua = {
     mycustom = {
       lua_repl = {"lua"}
     }
