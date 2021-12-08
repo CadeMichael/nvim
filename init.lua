@@ -134,8 +134,8 @@ vim.o.mouse = 'nv' --> normal / visual
 local iron = require'iron'
 iron.core.add_repl_definitions {
   lua = {
-    mycustom = {
-      lua_repl = {"lua"}
+    lua_repl = {
+      command = {"lua"}
     }
   },
   javascript = {
