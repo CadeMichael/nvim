@@ -62,9 +62,6 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
---> automatic lsp installer
-require'lspinstall'.setup() -- important
-
 ---- setup the keymappings for language server, from the lsp-config README 
 --> Use an on_attach function to only map the following keys
 --> after the language server attaches to the current buffer

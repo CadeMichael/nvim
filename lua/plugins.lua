@@ -4,8 +4,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   -- packer
   use 'wbthomason/packer.nvim'
-  -- lsp installer
-  use {'kabouzeid/nvim-lspinstall'}
   -- galaxy bar
   use {'kyazdani42/nvim-web-devicons'}
   -- lualine
