@@ -26,16 +26,20 @@ vim.o.softtabstop = 2
 -- setup vim plug
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin','~/.config/nvim/plugged')
-  Plug 'jalvesaq/Nvim-R' -- R support
-  Plug 'dense-analysis/ale' -- autoconfigured for lintr
   Plug 'junegunn/fzf' -- fzf
   Plug 'junegunn/fzf.vim' -- fuzzy finding
-  Plug 'simrat39/rust-tools.nvim'
-  Plug('Olical/conjure', {tag = 'v4.25.0'})
   Plug 'windwp/nvim-autopairs'
   Plug 'akinsho/bufferline.nvim'
+  Plug "rebelot/kanagawa.nvim"
   Plug 'preservim/tagbar'
   Plug 'hkupty/iron.nvim'
+  --> langs
+  Plug 'ray-x/go.nvim'
+  Plug 'simrat39/rust-tools.nvim'
+  Plug 'jalvesaq/Nvim-R' -- R support
+  Plug('Olical/conjure', {tag = 'v4.25.0'})
+  --> lsp setup
+  Plug 'dense-analysis/ale' -- autoconfigured for lintr
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -74,9 +78,9 @@ keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
 keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})
 keymap('n', '<Space>,', ':FZF ../<CR>', {noremap= true, silent = true})
--- ctags 
+-- ctags
 keymap('n', '<Space>t', ':TagbarToggle<CR>', {noremap= true, silent = true})
--- lsp tagbar 
+-- lsp tagbar
 keymap('n', '<C-a>', ':AerialToggle<CR>', {noremap= true, silent = true})
 
 -- remaps
@@ -89,6 +93,10 @@ keymap('i', '[', '[<C-g>u', {noremap = true, silent = true})
 keymap('i', '(', '(<C-g>u', {noremap = true, silent = true})
 keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
 keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
+
+--> terminal integration
+-- open terminal in split below
+keymap('n', '<leader>t', [[:bel split | :terminal <CR>]], {noremap = true, silent = true})
 
 --> themeing
 vim.g.startify_custom_header = {
@@ -105,7 +113,7 @@ vim.g.startify_custom_header = {
 "     \\___)=(___/",
 }
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme kanagawa]])
 -- lua-line
 require("line")
 -- buffer-line
@@ -144,3 +152,6 @@ iron.core.add_repl_definitions {
     }
   }
 }
+
+-- Neovide 
+vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font]])

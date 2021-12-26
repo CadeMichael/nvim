@@ -98,6 +98,14 @@ end
 -- for lsp based tagbar using aerial, detects treesitter parsings
 -- local aerial = require'aerial' -- unused right now, breaking keymappings
 
+--> C
+lsp.ccls.setup({
+	on_attach = on_attach,
+        capabilities = capabilities,
+	settings = {
+		rootMarkers = {"./git/", "README.md"}
+	}
+})
 --> Python
 lsp.pyright.setup({
 	on_attach = on_attach,
@@ -139,6 +147,19 @@ lsp.gopls.setup({
 		    	},
 	    	},
 })
+-- go.nvim setup
+require 'go'.setup({
+  goimport = 'gopls', -- if set to 'gopls' will use golsp format
+  gofmt = 'gopls', -- if set to gopls will use golsp format
+  max_line_len = 120,
+  tag_transform = false,
+  test_dir = '',
+  comment_placeholder = '   ',
+  lsp_cfg = true, -- false: use your own lspconfig
+  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+  lsp_on_attach = true, -- use on_attach from go.nvim
+  dap_debug = true,
+})
 --> Rust
 lsp.rust_analyzer.setup({
     on_attach = on_attach,
@@ -158,4 +179,6 @@ lsp.rust_analyzer.setup({
     },
     capabilities = capabilities
 })
+-- rust-tools
+require('rust-tools').setup({})
 -----------------------------------
