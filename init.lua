@@ -116,7 +116,7 @@ vim.g.startify_custom_header = {
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme kanagawa]])
 -- lua-line
-require("line")
+require("lualine").setup()
 -- buffer-line
 require("bufferline").setup{
   options = {
@@ -155,4 +155,4 @@ iron.core.add_repl_definitions {
 }
 
 -- Neovide 
-vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font]])
+vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h11]])
