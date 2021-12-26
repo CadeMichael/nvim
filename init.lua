@@ -74,6 +74,7 @@ require("flutter-tools").setup{} -- use defaults
 -- keymappings --
 local keymap = vim.api.nvim_set_keymap
 -- nvim tree
+require'nvim-tree'.setup{}
 keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
 keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})

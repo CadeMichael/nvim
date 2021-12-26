@@ -14,8 +14,6 @@ return require('packer').startup(function()
   -- nvim tree
   use {
     "kyazdani42/nvim-tree.lua",
-    config = function()
-      require'nvim-tree'.setup {} end
   }
   -- git
   use {
