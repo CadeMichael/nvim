@@ -159,7 +159,7 @@ iron.core.add_repl_definitions {
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
 
 -- Os Specific 
-if vim.fn.has('macunix') then 
+if vim.loop.os_uname() == 'Darwin' then 
   -- LateX 
   vim.g.vimtex_view_method = 'skim'
 else 
