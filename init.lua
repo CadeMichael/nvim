@@ -37,6 +37,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'ray-x/go.nvim'
   Plug 'simrat39/rust-tools.nvim'
   Plug 'jalvesaq/Nvim-R' -- R support
+  Plug 'lervag/vimtex' -- latex 
   Plug('Olical/conjure', {tag = 'v4.25.0'})
   --> lsp setup
   Plug 'dense-analysis/ale' -- autoconfigured for lintr
@@ -99,6 +100,8 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
 -- open terminal in split below
 keymap('n', '<leader>t', [[:bel split | :terminal <CR>]], {noremap = true, silent = true})
 
+-- LateX 
+vim.g.vimtex_view_method = 'skim'
 --> themeing
 vim.g.startify_custom_header = {
 "  < Neovim time! >",
@@ -155,4 +158,4 @@ iron.core.add_repl_definitions {
 }
 
 -- Neovide 
-vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h11]])
+vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
