@@ -100,8 +100,6 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
 -- open terminal in split below
 keymap('n', '<leader>t', [[:bel split | :terminal <CR>]], {noremap = true, silent = true})
 
--- LateX 
-vim.g.vimtex_view_method = 'skim'
 --> themeing
 vim.g.startify_custom_header = {
 "  < Neovim time! >",
@@ -159,3 +157,11 @@ iron.core.add_repl_definitions {
 
 -- Neovide 
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
+
+-- Os Specific 
+if vim.fn.has('macunix') then 
+  -- LateX 
+  vim.g.vimtex_view_method = 'skim'
+else 
+  vim.g.vimtex_view_method = 'zathura'
+end 
