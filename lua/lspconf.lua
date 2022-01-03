@@ -114,8 +114,19 @@ lsp.pyright.setup({
 --> TypeScript
 lsp.tsserver.setup({
 	on_attach = on_attach,
+        filetypes = {"javascript"}, -- fussing with filetypes
+        root_dir = lsp.util.root_pattern("package.json"),
         capabilities = capabilities
 })
+--> Deno
+lsp.denols.setup {
+  on_attach = on_attach,
+  filetypes = {"typescript"}, -- fussing with filetypes
+  root_dir = lsp.util.root_pattern("deno.json"),
+  init_options = {
+    lint = true,
+  },
+}
 --> Svelte
 lsp.svelte.setup({
 	on_attach = on_attach,

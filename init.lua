@@ -40,7 +40,6 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'lervag/vimtex' -- latex 
   Plug('Olical/conjure', {tag = 'v4.25.0'})
   --> lsp setup
-  Plug 'dense-analysis/ale' -- autoconfigured for lintr
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -49,6 +48,9 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
+  Plug 'folke/trouble.nvim'
+  --> making plugins
+  Plug 'vim-denops/denops.vim'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -150,18 +152,21 @@ iron.core.add_repl_definitions {
   },
   javascript = {
     node_repl = {
-      command = {"node"}
+      command = {"deno"}
     }
   }
 }
 
--- Neovide 
+-- Neovide
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
 
--- Os Specific 
+-- Os Specific
 if vim.loop.os_uname().sysname == 'Darwin' then 
-  -- LateX 
+  -- LateX
   vim.g.vimtex_view_method = 'skim'
-else 
+else
   vim.g.vimtex_view_method = 'zathura'
-end 
+end
+
+-- Plugin dev 
+require("pluginDev")
