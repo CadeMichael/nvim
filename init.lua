@@ -38,6 +38,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'simrat39/rust-tools.nvim'
   Plug 'jalvesaq/Nvim-R' -- R support
   Plug 'lervag/vimtex' -- latex 
+  Plug 'wlangstroth/vim-racket'
   Plug('Olical/conjure', {tag = 'v4.25.0'})
   --> lsp setup
   Plug 'neovim/nvim-lspconfig'
@@ -145,6 +146,11 @@ vim.o.mouse = 'nv' --> normal / visual
 --> nvim iron
 local iron = require'iron'
 iron.core.add_repl_definitions {
+  python = {
+    lua_repl = {
+      command = {"python"}
+    }
+  },
   lua = {
     lua_repl = {
       command = {"lua"}
@@ -169,4 +175,4 @@ else
 end
 
 -- Plugin dev 
-require("pluginDev")
+--require("pluginDev")
