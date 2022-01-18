@@ -50,8 +50,6 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'folke/trouble.nvim'
-  --> making plugins
-  Plug 'vim-denops/denops.vim'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -175,4 +173,7 @@ else
 end
 
 -- Plugin dev 
---require("pluginDev")
+function better_iron() 
+  vim.cmd("IronRepl")
+  vim.cmd("wincmd H")
+end
