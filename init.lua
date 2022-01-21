@@ -52,8 +52,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'hrsh7th/vim-vsnip'
   Plug 'folke/trouble.nvim'
   --> making plugins
-  Plug 'vim-denops/denops.vim'
-  Plug '~/cadePlug'
+  Plug '~/Git/cadePlug'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -178,6 +177,12 @@ else
   vim.g.vimtex_view_method = 'zathura'
 end
 
+
+-- Plugin dev 
+function better_iron() 
+  vim.cmd("IronRepl")
+  vim.cmd("wincmd H")
+end
 function SaveClipper()
   vim.cmd(":%s/ $//")
   vim.cmd(":w")
