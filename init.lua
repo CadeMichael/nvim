@@ -6,7 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd 'packadd packer.nvim'
 end
 
--- packer commands 
+-- packer commands
 vim.cmd [[command! WhatHighlight :call util#syntax_stack()]]
 vim.cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
 vim.cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
@@ -31,13 +31,14 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'windwp/nvim-autopairs'
   Plug 'akinsho/bufferline.nvim'
   Plug "rebelot/kanagawa.nvim"
+  Plug 'arcticicestudio/nord-vim'
   Plug 'preservim/tagbar'
   Plug 'hkupty/iron.nvim'
   --> langs
   Plug 'ray-x/go.nvim'
   Plug 'simrat39/rust-tools.nvim'
   Plug 'jalvesaq/Nvim-R' -- R support
-  Plug 'lervag/vimtex' -- latex 
+  Plug 'lervag/vimtex' -- latex
   Plug 'wlangstroth/vim-racket'
   Plug('Olical/conjure', {tag = 'v4.25.0'})
   --> lsp setup
@@ -52,6 +53,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'folke/trouble.nvim'
   --> making plugins
   Plug 'vim-denops/denops.vim'
+  Plug '~/cadePlug'
 vim.call('plug#end')
 
 -- Source the lsp Setup
@@ -64,15 +66,15 @@ require'nvim-treesitter.configs'.setup {
     incremental_selection = { enable = true },
     textobjects = { enable = true },
 }
--- folding 
+-- folding
 vim.o.foldmethod="expr"
 vim.o.foldexpr="nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 32
 
--- auto pairs 
+-- auto pairs
 require('nvim-autopairs').setup() --> optional more advanced / comp specific configs
 
--- Dart / Flutter 
+-- Dart / Flutter
 require("flutter-tools").setup{} -- use defaults
 
 -- keymappings --
@@ -88,6 +90,8 @@ keymap('n', '<Space>t', ':TagbarToggle<CR>', {noremap= true, silent = true})
 -- lsp tagbar
 keymap('n', '<C-a>', ':AerialToggle<CR>', {noremap= true, silent = true})
 
+-- clip ending white space and save
+keymap('n', '<Space>s', ":lua SaveClipper()<CR>", {noremap = true, silent = true})
 -- remaps
 keymap('n', 'Y', 'y$', {noremap = true, silent = true})
 keymap('n', 'n', 'nzzzv', {noremap = true, silent = true})
@@ -118,7 +122,7 @@ vim.g.startify_custom_header = {
 "     \\___)=(___/",
 }
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[colorscheme nord]])
 -- lua-line
 require("lualine").setup()
 -- buffer-line
@@ -141,7 +145,7 @@ require("bufferline").setup{
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
 
---> allowing partial running / repl experience 
+--> allowing partial running / repl experience
 -----
 --> nvim iron
 local iron = require'iron'
@@ -167,12 +171,14 @@ iron.core.add_repl_definitions {
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
 
 -- Os Specific
-if vim.loop.os_uname().sysname == 'Darwin' then 
+if vim.loop.os_uname().sysname == 'Darwin' then
   -- LateX
   vim.g.vimtex_view_method = 'skim'
 else
   vim.g.vimtex_view_method = 'zathura'
 end
 
--- Plugin dev 
---require("pluginDev")
+function SaveClipper()
+  vim.cmd(":%s/ $//")
+  vim.cmd(":w")
+end
