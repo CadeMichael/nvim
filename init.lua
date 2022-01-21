@@ -178,11 +178,12 @@ else
 end
 
 
--- Plugin dev 
-function better_iron() 
+-- Plugin dev
+function BetterIron()
   vim.cmd("IronRepl")
   vim.cmd("wincmd H")
 end
+
 function SaveClipper()
   vim.cmd(":%s/ $//")
   vim.cmd(":w")
