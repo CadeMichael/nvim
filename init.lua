@@ -39,8 +39,10 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'simrat39/rust-tools.nvim'
   Plug 'jalvesaq/Nvim-R' -- R support
   Plug 'lervag/vimtex' -- latex
+  Plug 'hylang/vim-hy'
   Plug 'wlangstroth/vim-racket'
-  Plug('Olical/conjure', {tag = 'v4.25.0'})
+  Plug 'Olical/conjure'
+  Plug 'mattn/emmet-vim'
   --> lsp setup
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'

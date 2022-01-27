@@ -26,7 +26,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-e>'] = cmp.mapping({ 
+    ['<C-e>'] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
@@ -61,8 +61,10 @@ cmp.setup.cmdline(':', {
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- line below required for html / css
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
----- setup the keymappings for language server, from the lsp-config README 
+---- setup the keymappings for language server, from the lsp-config README
 --> Use an on_attach function to only map the following keys
 --> after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -96,7 +98,6 @@ local on_attach = function(client, bufnr)
 end
 
 -- for lsp based tagbar using aerial, detects treesitter parsings
--- local aerial = require'aerial' -- unused right now, breaking keymappings
 
 --> C
 lsp.ccls.setup({
@@ -132,10 +133,11 @@ lsp.svelte.setup({
 	on_attach = on_attach,
         capabilities = capabilities
 })
---> lua 
+--> lua
 lsp.sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  cmd = {'lua-language-server'},
   settings = {
     Lua = {
       runtime = {
@@ -198,6 +200,15 @@ require 'go'.setup({
   lsp_on_attach = true, -- use on_attach from go.nvim
   dap_debug = true,
 })
+--> html / css
+lsp.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+lsp.cssls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
 --> Rust
 lsp.rust_analyzer.setup({
     on_attach = on_attach,
