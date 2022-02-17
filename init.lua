@@ -56,8 +56,6 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'folke/trouble.nvim'
-  --> making plugins
-  Plug '~/Git/cadePlug'
 vim.call('plug#end')
 
 -- Source the lsp Setup
