@@ -16,7 +16,10 @@ vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').co
 
 -- global configurations --
 vim.o.swapfile = false
-vim.cmd("set termguicolors")
+
+if vim.loop.os_uname().sysname ~= 'Darwin' then
+  vim.cmd("set termguicolors")
+end
 vim.cmd("set rnu")
 vim.cmd("set nohlsearch")
 vim.o.expandtab = true
@@ -60,6 +63,9 @@ vim.call('plug#end')
 -- Source the lsp Setup
 require("lspconf")
 
+-- get snippet Directory
+vim.g.vsnip_snippet_dir = "~/.config/nvim/snips"
+
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
@@ -86,6 +92,7 @@ keymap('n', '<Space>n',':NvimTreeToggle<CR>',{noremap = true, silent = true})
 -- fzf
 keymap('n', '<Space>.', ':FZF<CR>', {noremap= true, silent = true})
 keymap('n', '<Space>,', ':FZF ../<CR>', {noremap= true, silent = true})
+keymap('n', '<Space>b', ':Buffers<CR>', {noremap= true, silent = true})
 -- ctags
 keymap('n', '<Space>t', ':TagbarToggle<CR>', {noremap= true, silent = true})
 -- lsp tagbar
