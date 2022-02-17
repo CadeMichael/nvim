@@ -1,0 +1,12 @@
+{
+  "Class": {
+    "prefix": ["class"],
+    "body": [
+      "class $1($2):",
+      "    $0",
+      "    def __str__(self):",
+      "        return $3"
+    ],
+    "description": "Class definition template."
+  }
+}
