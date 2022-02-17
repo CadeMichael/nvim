@@ -1,6 +1,6 @@
 -- LSP Configurations
 -- Languages:
----- py -> pyright
+---- py -> pylsp
 ---- js/ts -> typescript-language-server
 ------ svelte -> svelte-language-server
 ---- rs -> rust-analyzer
@@ -108,7 +108,7 @@ lsp.ccls.setup({
 	}
 })
 --> Python
-lsp.pyright.setup({
+lsp.pylsp.setup({
 	on_attach = on_attach,
         capabilities = capabilities
 })
