@@ -17,9 +17,16 @@ vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').co
 -- global configurations --
 vim.o.swapfile = false
 
+<<<<<<< HEAD
 if vim.loop.os_uname().sysname ~= 'Darwin' then
   --vim.cmd("set termguicolors")
 end
+=======
+--if vim.loop.os_uname().sysname ~= 'Darwin' then
+  --vim.cmd("set termguicolors")
+--end
+
+>>>>>>> refs/remotes/origin/luaCmp
 vim.cmd("set rnu")
 vim.cmd("set nohlsearch")
 vim.o.expandtab = true
@@ -32,7 +39,6 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'junegunn/fzf' -- fzf
   Plug 'junegunn/fzf.vim' -- fuzzy finding
   Plug 'windwp/nvim-autopairs'
-  Plug 'akinsho/bufferline.nvim'
   Plug "rebelot/kanagawa.nvim"
   Plug 'arcticicestudio/nord-vim'
   Plug 'preservim/tagbar'
@@ -127,28 +133,19 @@ vim.g.startify_custom_header = {
 "     /'\\_   _/`\\",
 "     \\___)=(___/",
 }
+
+-- colorscheme
 vim.o.background = "dark" -- or "light" for light mode
+<<<<<<< HEAD
 vim.opt.termguicolors = true
 vim.cmd([[colorscheme nord]])
+=======
+vim.cmd([[colorscheme kanagawa]])
+
+>>>>>>> refs/remotes/origin/luaCmp
 -- lua-line
 require("lualine").setup()
--- buffer-line
-require("bufferline").setup{
-  options = {
-    always_show_bufferline = false,
-    show_close_icon = false,
-    show_buffer_close_icons = true,
-    right_mouse_command = "buffer %d",
-    offsets = {
-      {
-        filetype = "NvimTree",
-        text = "File Tree",
-        highlight = "Directory",
-        text_align = "left"
-      }
-    }
-  }
-}
+
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
 
@@ -177,16 +174,15 @@ iron.core.add_repl_definitions {
 -- Neovide
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
 
--- Os Specific
+---- Os Specific
+-- LateX
 if vim.loop.os_uname().sysname == 'Darwin' then
-  -- LateX
   vim.g.vimtex_view_method = 'skim'
 else
   vim.g.vimtex_view_method = 'zathura'
 end
 
-
--- Plugin dev
+---- Plugin Functions
 function BetterIron()
   vim.cmd("IronRepl")
   vim.cmd("wincmd H")
