@@ -18,7 +18,7 @@ vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').co
 vim.o.swapfile = false
 
 if vim.loop.os_uname().sysname ~= 'Darwin' then
-  vim.cmd("set termguicolors")
+  --vim.cmd("set termguicolors")
 end
 vim.cmd("set rnu")
 vim.cmd("set nohlsearch")
@@ -128,6 +128,7 @@ vim.g.startify_custom_header = {
 "     \\___)=(___/",
 }
 vim.o.background = "dark" -- or "light" for light mode
+vim.opt.termguicolors = true
 vim.cmd([[colorscheme nord]])
 -- lua-line
 require("lualine").setup()
