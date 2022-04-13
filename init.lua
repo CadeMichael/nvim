@@ -111,7 +111,7 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
 
 --> terminal integration
 -- open terminal in split below
-keymap('n', '<leader>t', [[:bel split | :terminal <CR>]], {noremap = true, silent = true})
+keymap('n', '<leader>t', ":lua OpenTerm() <CR>", {noremap = true, silent = true})
 
 --> themeing
 vim.g.startify_custom_header = {
@@ -180,4 +180,10 @@ end
 function SaveClipper()
   vim.cmd(":%s/ $//")
   vim.cmd(":w")
+end
+
+function OpenTerm()
+  vim.cmd("bel split")
+  vim.cmd("terminal")
+  vim.cmd("setlocal nonumber norelativenumber")
 end
