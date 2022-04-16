@@ -29,7 +29,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'junegunn/fzf' -- fzf
   Plug 'junegunn/fzf.vim' -- fuzzy finding
   Plug 'windwp/nvim-autopairs'
-  Plug "rebelot/kanagawa.nvim"
+  Plug 'ellisonleao/gruvbox.nvim'
   Plug 'arcticicestudio/nord-vim'
   Plug 'preservim/tagbar'
   Plug 'hkupty/iron.nvim'
@@ -129,8 +129,8 @@ vim.o.background = "dark" -- or "light" for light mode
 vim.opt.termguicolors = true
 if vim.loop.os_uname().sysname ~= 'Darwin' then
   vim.cmd([[colorscheme nord]])
-else 
-  vim.cmd([[colorscheme kanagawa]])
+else
+  vim.cmd([[colorscheme gruvbox]])
 end
 
 -- lua-line
