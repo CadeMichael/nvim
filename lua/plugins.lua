@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
   use 'hkupty/iron.nvim'
   -- lsp setup
   use 'dcampos/nvim-snippy'
+  use 'jose-elias-alvarez/null-ls.nvim'
   use 'folke/trouble.nvim'
   -- nvim tree
   use "kyazdani42/nvim-tree.lua"

@@ -1,9 +1,12 @@
 local lsp = require("lspconfig")
 vim.o.completeopt = "menuone,noselect"
 
+-- capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -12,6 +15,7 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -36,8 +40,7 @@ end
 lsp.ccls.setup({
   on_attach = on_attach,
   settings = {
-    rootMarkers = {"./git/", "README.md"}
-  }
+    rootMarkers = { "./git/", "README.md" } }
 })
 --> Python
 lsp.pyright.setup({
@@ -56,7 +59,7 @@ lsp.svelte.setup({
 ----> build on linux
 lsp.sumneko_lua.setup({
   on_attach = on_attach,
-  cmd = {'lua-language-server'},
+  cmd = { 'lua-language-server' },
   settings = {
     Lua = {
       runtime = {
@@ -67,7 +70,7 @@ lsp.sumneko_lua.setup({
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -83,7 +86,7 @@ lsp.sumneko_lua.setup({
 --> Golang
 lsp.gopls.setup({
   on_attach = on_attach,
-  cmd = {'gopls'},
+  cmd = { 'gopls' },
   -- for postfix snippets and analyzers
   settings = {
     gopls = {
@@ -99,9 +102,10 @@ lsp.gopls.setup({
 --> html / css
 lsp.html.setup {
   on_attach = on_attach,
-}
-lsp.cssls.setup {
-  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "htmldjango", "jinja.html" },
+  settings = {
+    rootMarkers = { "./git/", "README.md" } }
 }
 --> Rust
 lsp.rust_analyzer.setup({
@@ -132,5 +136,27 @@ require('snippy').setup({
     nx = {
       ['<leader>x'] = 'cut_text',
     },
+  },
+})
+
+-- Null-ls
+local null_ls = require("null-ls")
+local formatting = null_ls.builtins.formatting
+local actions = null_ls.builtins.code_actions
+local diagnostics = null_ls.builtins.diagnostics
+
+-- using setup method
+null_ls.setup({
+  autostart = true,
+  sources = {
+    -- actions
+    actions.gitsigns,
+    -- formatting
+    formatting.stylua,
+    formatting.black,
+    formatting.gofmt,
+    formatting.djlint,
+    -- diagnostics
+    diagnostics.zsh
   },
 })
