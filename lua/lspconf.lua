@@ -1,6 +1,6 @@
 -- LSP Configurations
 -- Languages:
----- py -> pylsp
+---- py -> pyright
 ---- js/ts -> typescript-language-server
 ------ svelte -> svelte-language-server
 ---- rs -> rust-analyzer
