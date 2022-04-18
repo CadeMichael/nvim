@@ -1,20 +1,55 @@
+-- autoisntall packer
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
+end
+
 -- packer packages
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- packer
   use 'wbthomason/packer.nvim'
-  -- galaxy bar
-  use {'kyazdani42/nvim-web-devicons'}
-  -- lualine
-  use{'nvim-lualine/lualine.nvim'}
-  -- colorchemes
-  use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-  use {"dracula/vim"}
-  -- nvim tree
+  -- lsp config
+  use 'neovim/nvim-lspconfig'
+  -- treesitter
   use {
-    "kyazdani42/nvim-tree.lua",
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require'nvim-treesitter.configs'.setup({
+        -- Modules and its options go here
+        highlight = { enable = true },
+        incremental_selection = { enable = true },
+        textobjects = { enable = true },
+      })
+    end
   }
+  -- colorchemes
+  use "ellisonleao/gruvbox.nvim"
+  use 'arcticicestudio/nord-vim'
+  use {'kyazdani42/nvim-web-devicons'}
+  -- fzf
+  use 'junegunn/fzf' -- fzf
+  use 'junegunn/fzf.vim' -- fuzzy finding
+  use 'windwp/nvim-autopairs'
+  -- lang support
+  use 'lervag/vimtex' -- latex
+  use 'mattn/emmet-vim'
+  use 'hkupty/iron.nvim'
+  -- lsp setup
+  use 'dcampos/nvim-snippy'
+  use 'folke/trouble.nvim'
+  -- nvim tree
+  use "kyazdani42/nvim-tree.lua"
   -- git
   use {
     'lewis6991/gitsigns.nvim',
@@ -26,16 +61,5 @@ return require('packer').startup(function()
     end
   }
   -- vim start screen
-  use {'mhinz/vim-startify'}
-  -- highlighting for languages
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  -- flutter / dart
-  use {
-    'akinsho/flutter-tools.nvim'
-  }
-  -- lsp based tag bar
-  use {'stevearc/aerial.nvim'}
+  use 'mhinz/vim-startify'
 end)
