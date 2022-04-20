@@ -132,9 +132,18 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
--- autocmd FileType html, css, EmmetInstall
-vim.api.nvim_create_autocmd(
-  "FileType", {
+
+-- autocmd's
+if vim.fn.has "nvim-0.7" ~= 0 then
+  -- emmet
+  vim.api.nvim_create_autocmd(
+    "FileType", {
     pattern = { "html", "css" },
     callback = function() vim.cmd "EmmetInstall" end,
   })
+else
+  -- emmet
+  vim.cmd [[
+    autocmd Filetype html,css EmmetInstall
+  ]]
+end
