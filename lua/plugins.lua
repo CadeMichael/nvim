@@ -45,6 +45,7 @@ return require('packer').startup(function(use)
   use 'lervag/vimtex' -- latex
   use 'mattn/emmet-vim'
   use 'hkupty/iron.nvim'
+  use 'preservim/nerdcommenter'
   -- lsp setup
   use 'dcampos/nvim-snippy'
   use 'jose-elias-alvarez/null-ls.nvim'

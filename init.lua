@@ -27,14 +27,15 @@ require('nvim-autopairs').setup()
 require('nvim-tree').setup()
 
 -- keymappings --
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
+
 keymap('n', '<Space>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
--- fzf
+ --fzf
 keymap('n', '<Space>.', ':FZF<CR>', { noremap = true, silent = true })
 keymap('n', '<Space>,', ':FZF ../<CR>', { noremap = true, silent = true })
 keymap('n', '<Space>b', ':Buffers<CR>', { noremap = true, silent = true })
--- lsp tagbar
---keymap('n', '<Space>t', ':AerialToggle()<CR>', {noremap= true, silent = true})
+-- comments
+keymap({'v', 'n'}, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
 -- clip ending white space and save
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
 
@@ -103,7 +104,7 @@ iron.core.add_repl_definitions {
 }
 
 -- Neovide
-vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
+vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h16]])
 
 ---- Os Specific
 -- LateX
@@ -127,7 +128,6 @@ end
 function OpenTerm()
   vim.cmd("bel split")
   vim.cmd("terminal")
-  vim.cmd("setlocal nonumber norelativenumber")
 end
 
 -- emmet vim
@@ -137,13 +137,23 @@ vim.g.user_emmet_install_global = 0
 if vim.fn.has "nvim-0.7" ~= 0 then
   -- emmet
   vim.api.nvim_create_autocmd(
-    "FileType", {
-    pattern = { "html", "css" },
-    callback = function() vim.cmd "EmmetInstall" end,
-  })
+    "FileType",
+    {
+      pattern = { "html", "css" },
+      command = "EmmetInstall",
+    }
+  )
+  -- term line num
+  vim.api.nvim_create_autocmd(
+    "TermOpen",
+    {
+      pattern = "*",
+      command = "setlocal nonumber norelativenumber",
+    }
+  )
 else
   -- emmet
-  vim.cmd [[
-    autocmd Filetype html,css EmmetInstall
-  ]]
+  vim.cmd "autocmd Filetype html,css EmmetInstall"
+  -- term line num
+  vim.cmd "autocmd TermOpen * setlocal nonumber norelativenumber"
 end
