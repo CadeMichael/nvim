@@ -1,6 +1,6 @@
 -- autoisntall packer
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({
     'git',
@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
-      require'nvim-treesitter.configs'.setup({
+      require 'nvim-treesitter.configs'.setup({
         -- Modules and its options go here
         highlight = { enable = true },
         incremental_selection = { enable = true },
@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
   -- colorchemes
   use "ellisonleao/gruvbox.nvim"
   use 'arcticicestudio/nord-vim'
-  use {'kyazdani42/nvim-web-devicons'}
+  use { 'kyazdani42/nvim-web-devicons' }
   -- fzf
   use 'junegunn/fzf' -- fzf
   use 'junegunn/fzf.vim' -- fuzzy finding
@@ -51,8 +51,14 @@ return require('packer').startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'folke/trouble.nvim'
   -- nvim tree
-  use "kyazdani42/nvim-tree.lua"
+  use 'kyazdani42/nvim-tree.lua'
   -- git
+  use {
+    'TimUntersberger/neogit',
+    config = function()
+      require('neogit').setup()
+    end
+  }
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
