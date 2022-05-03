@@ -30,7 +30,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim' -- fuzzy finding
   Plug 'windwp/nvim-autopairs'
   Plug 'ellisonleao/gruvbox.nvim'
-  Plug 'arcticicestudio/nord-vim'
+  Plug 'Mofiqul/dracula.nvim'
   Plug 'preservim/tagbar'
   Plug 'hkupty/iron.nvim'
   --> langs
@@ -128,7 +128,7 @@ vim.g.startify_custom_header = {
 vim.o.background = "dark" -- or "light" for light mode
 vim.opt.termguicolors = true
 if vim.loop.os_uname().sysname ~= 'Darwin' then
-  vim.cmd([[colorscheme nord]])
+  vim.cmd([[colorscheme dracula]])
 else
   vim.cmd([[colorscheme gruvbox]])
 end
