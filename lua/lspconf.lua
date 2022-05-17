@@ -46,9 +46,18 @@ lsp.ccls.setup({
 lsp.pyright.setup({
   on_attach = on_attach,
 })
---> TypeScript
+--> JavaScript (node)
 lsp.tsserver.setup({
   on_attach = on_attach,
+  filetypes = {'javascript'}
+})
+--> JavaScript (deno)
+lsp.denols.setup({
+  on_attach = on_attach,
+  init_options = {
+    lint = true,
+  },
+  filetypes = {'typescript'}
 })
 --> Svelte
 lsp.svelte.setup({

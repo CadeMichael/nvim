@@ -81,28 +81,6 @@ end
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
 
---> allowing partial running / repl experience
------
---> nvim iron
-local iron = require 'iron'
-iron.core.add_repl_definitions {
-  python = {
-    lua_repl = {
-      command = { "python" }
-    }
-  },
-  lua = {
-    lua_repl = {
-      command = { "lua" }
-    }
-  },
-  javascript = {
-    node_repl = {
-      command = { "deno" }
-    }
-  }
-}
-
 -- Neovide
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h16]])
 
@@ -115,11 +93,6 @@ else
 end
 
 ---- Plugin Functions
-function BetterIron()
-  vim.cmd("IronRepl")
-  vim.cmd("wincmd H")
-end
-
 function SaveClipper()
   vim.cmd(":%s/ $//")
   vim.cmd(":w")
