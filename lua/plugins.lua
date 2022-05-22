@@ -44,32 +44,9 @@ return require('packer').startup(function(use)
   -- lang support
   use 'lervag/vimtex' -- latex
   use 'mattn/emmet-vim'
-  use {
-    'hkupty/iron.nvim',
-    ft = { "lua", "python", "javascript" },
-    config = function()
-      local iron = require 'iron'
-      iron.core.add_repl_definitions {
-        python = {
-          lua_repl = {
-            command = { "python" }
-          }
-        },
-        lua = {
-          lua_repl = {
-            command = { "lua" }
-          }
-        },
-        javascript = {
-          node_repl = {
-            command = { "deno" }
-          }
-        }
-      }
-    end
-  }
   use 'preservim/nerdcommenter'
   use 'olical/conjure'
+  use 'jpalardy/vim-slime'
   -- lsp setup
   use 'dcampos/nvim-snippy'
   use 'jose-elias-alvarez/null-ls.nvim'
