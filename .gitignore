@@ -1,4 +1,4 @@
 */
 !lua/
-ftplugin/
 !snippets/
+!ftplugins/
