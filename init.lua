@@ -35,7 +35,9 @@ keymap('n', '<Space>.', ':FZF<CR>', { noremap = true, silent = true })
 keymap('n', '<Space>,', ':FZF ../<CR>', { noremap = true, silent = true })
 keymap('n', '<Space>b', ':Buffers<CR>', { noremap = true, silent = true })
 -- comments
-keymap({'v', 'n'}, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
+keymap({'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
+-- rest client
+keymap('n', '<Space>r', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
 
