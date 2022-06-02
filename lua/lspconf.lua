@@ -1,8 +1,37 @@
 local lsp = require("lspconfig")
+local cmp = require 'cmp'
+
+-- setting up and configuring cmp
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require('snippy').expand_snippet(args.body) -- For `snippy` users.
+    end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'snippy' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
 vim.o.completeopt = "menuone,noselect"
 
 -- capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -36,37 +65,38 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
---> C
-lsp.ccls.setup({
-  on_attach = on_attach,
-  settings = {
-    rootMarkers = { "./git/", "README.md" } }
-})
 --> Python
-lsp.pyright.setup({
+-- ideally pylsp is installed on a per project basis
+-- pip install 'python-lsp-server[all]'
+lsp.pylsp.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
 })
 --> JavaScript (node)
 lsp.tsserver.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
-  filetypes = {'javascript'}
+  filetypes = { 'javascript' }
 })
 --> JavaScript (deno)
 lsp.denols.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
   init_options = {
     lint = true,
   },
-  filetypes = {'typescript'}
+  filetypes = { 'typescript' }
 })
 --> Svelte
 lsp.svelte.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
 })
 --> lua
 ----> via brew on mac os
 ----> build on linux
 lsp.sumneko_lua.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
   cmd = { 'lua-language-server' },
   settings = {
@@ -94,6 +124,7 @@ lsp.sumneko_lua.setup({
 })
 --> Golang
 lsp.gopls.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
   cmd = { 'gopls' },
   -- for postfix snippets and analyzers
@@ -118,6 +149,7 @@ lsp.html.setup {
 }
 --> Rust
 lsp.rust_analyzer.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     ["rust-analyzer"] = {
