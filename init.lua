@@ -30,12 +30,12 @@ require('nvim-tree').setup()
 local keymap = vim.keymap.set
 
 keymap('n', '<Space>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
- --fzf
+--fzf
 keymap('n', '<Space>.', ':FZF<CR>', { noremap = true, silent = true })
 keymap('n', '<Space>,', ':FZF ../<CR>', { noremap = true, silent = true })
 keymap('n', '<Space>b', ':Buffers<CR>', { noremap = true, silent = true })
 -- comments
-keymap({'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
+keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
 -- rest client
 keymap('n', '<Space>r', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
@@ -107,6 +107,16 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
+
+-- vimwiki
+--vim.g.vimwiki_list = {
+  --{
+    --path = '/Users/cadelueker/Desktop/Git/webdev/astroTut/my-astro-site/src/pages/posts',
+    --index = 'index',
+    --syntax = 'markdown',
+    --ext = '.md',
+  --}
+--}
 
 -- autocmd's
 if vim.fn.has "nvim-0.7" ~= 0 then
