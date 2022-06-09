@@ -50,8 +50,12 @@ return require('packer').startup(function(use)
   use 'lervag/vimtex' -- latex
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
-  use 'olical/conjure'
   use 'jpalardy/vim-slime'
+  use { 'ray-x/go.nvim',
+    config = function()
+      require("go").setup()
+    end }
+  use 'ray-x/guihua.lua'
   -- lsp setup
   use 'dcampos/nvim-snippy'
   use 'dcampos/cmp-snippy'
