@@ -19,12 +19,26 @@ vim.o.foldlevel = 32
 -- Source the lsp Setup
 require("lspconf")
 
+-- slime
+vim.g.slime_target = "neovim"
 
 -- auto pairs
 require('nvim-autopairs').setup()
 
 -- nvim tree
 require('nvim-tree').setup()
+
+-- treesitter
+require 'nvim-treesitter.configs'.setup({
+  -- Modules and its options go here
+  highlight = { enable = true },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+  },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
+})
 
 -- keymappings --
 local keymap = vim.keymap.set
@@ -37,9 +51,11 @@ keymap('n', '<Space>b', ':Buffers<CR>', { noremap = true, silent = true })
 -- comments
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
 -- rest client
-keymap('n', '<Space>r', "<Plug>RestNvim", { noremap = true, silent = true })
+keymap('n', '<Space>R', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
+-- slime
+keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
 
 -- remaps
 keymap('n', 'Y', 'y$', { noremap = true, silent = true })
@@ -109,14 +125,14 @@ end
 vim.g.user_emmet_install_global = 0
 
 -- vimwiki
---vim.g.vimwiki_list = {
-  --{
-    --path = '/Users/cadelueker/Desktop/Git/webdev/astroTut/my-astro-site/src/pages/posts',
-    --index = 'index',
-    --syntax = 'markdown',
-    --ext = '.md',
-  --}
---}
+vim.g.vimwiki_list = {
+  {
+    path = '/Users/cadelueker/Desktop/wiki/src/pages/',
+    index = 'index',
+    syntax = 'markdown',
+    ext = '.md',
+  }
+}
 
 -- autocmd's
 if vim.fn.has "nvim-0.7" ~= 0 then

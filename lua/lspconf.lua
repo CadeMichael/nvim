@@ -87,6 +87,11 @@ lsp.denols.setup({
   },
   filetypes = { 'typescript' }
 })
+--> C
+lsp.clangd.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 --> Svelte
 lsp.svelte.setup({
   capabilities = capabilities,

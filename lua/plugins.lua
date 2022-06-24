@@ -28,16 +28,8 @@ return require('packer').startup(function(use)
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function()
-      require 'nvim-treesitter.configs'.setup({
-        -- Modules and its options go here
-        highlight = { enable = true },
-        incremental_selection = { enable = true },
-        textobjects = { enable = true },
-      })
-    end
   }
+  use 'p00f/nvim-ts-rainbow'
   -- colorchemes
   use "ellisonleao/gruvbox.nvim"
   use 'arcticicestudio/nord-vim'
@@ -82,7 +74,7 @@ return require('packer').startup(function(use)
   -- vim start screen
   use 'mhinz/vim-startify'
   -- vimwiki
-  --use 'vimwiki/vimwiki'
+  use 'vimwiki/vimwiki'
   -- RestClient
   use {
     "NTBBloodbath/rest.nvim",
