@@ -35,6 +35,13 @@ require 'nvim-treesitter.configs'.setup({
   rainbow = {
     enable = true,
     extended_mode = true,
+    colors = {
+      "#bd93f9",
+      "#ff79c6",
+      "#8be9fd",
+      "#6272a4",
+      "#ff5555",
+    },
   },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
@@ -96,6 +103,8 @@ if vim.loop.os_uname().sysname == 'Darwin' then
 else
   vim.cmd[[colorscheme dracula]]
 end
+-- statusline
+require'lualine'.setup()
 
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual

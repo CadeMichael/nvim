@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
   use "ellisonleao/gruvbox.nvim"
   use 'Mofiqul/dracula.nvim'
   use { 'kyazdani42/nvim-web-devicons' }
+  use 'nvim-lualine/lualine.nvim'
   -- fzf
   use 'junegunn/fzf' -- fzf
   use 'junegunn/fzf.vim' -- fuzzy finding
