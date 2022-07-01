@@ -90,9 +90,7 @@ vim.g.startify_custom_header = {
 -- colorscheme
 vim.o.background = "dark"
 vim.opt.termguicolors = true
-if vim.loop.os_uname().sysname ~= 'Darwin' then
-  vim.cmd([[colorscheme nord]])
-else
+if vim.loop.os_uname().sysname == 'Darwin' then
   vim.cmd([[colorscheme gruvbox]])
 end
 
