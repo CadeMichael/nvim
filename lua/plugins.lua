@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
   use 'p00f/nvim-ts-rainbow'
   -- colorchemes
   use "ellisonleao/gruvbox.nvim"
-  use 'arcticicestudio/nord-vim'
+  use 'Mofiqul/dracula.nvim'
   use { 'kyazdani42/nvim-web-devicons' }
   -- fzf
   use 'junegunn/fzf' -- fzf
