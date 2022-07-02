@@ -32,7 +32,6 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'ellisonleao/gruvbox.nvim'
   Plug 'Mofiqul/dracula.nvim'
   Plug 'preservim/tagbar'
-  Plug 'hkupty/iron.nvim'
   --> langs
   Plug 'ray-x/go.nvim'
   Plug 'simrat39/rust-tools.nvim'
@@ -42,6 +41,7 @@ vim.call('plug#begin','~/.config/nvim/plugged')
   Plug 'wlangstroth/vim-racket'
   Plug 'Olical/conjure'
   Plug 'mattn/emmet-vim'
+  Plug 'jpalardy/vim-slime'
   --> lsp setup
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -141,25 +141,7 @@ vim.o.mouse = 'nv' --> normal / visual
 
 --> allowing partial running / repl experience
 -----
---> nvim iron
-local iron = require'iron'
-iron.core.add_repl_definitions {
-  python = {
-    lua_repl = {
-      command = {"python"}
-    }
-  },
-  lua = {
-    lua_repl = {
-      command = {"lua"}
-    }
-  },
-  javascript = {
-    node_repl = {
-      command = {"deno"}
-    }
-  }
-}
+vim.g.slime_target = 'kitty'
 
 -- Neovide
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h14]])
