@@ -65,6 +65,7 @@ keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = tru
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
 
 -- remaps
+keymap('n', '<leader>kk', ':bdelete!<CR>', { noremap = true, silent = true })
 keymap('n', 'Y', 'y$', { noremap = true, silent = true })
 keymap('n', 'n', 'nzzzv', { noremap = true, silent = true })
 keymap('n', 'N', 'Nzzzv', { noremap = true, silent = true })
@@ -137,7 +138,7 @@ vim.g.user_emmet_install_global = 0
 -- vimwiki
 vim.g.vimwiki_list = {
   {
-    path = '/Users/cadelueker/Desktop/wiki/src/pages/',
+    path = '~/Git/wiki/src/pages/',
     index = 'index',
     syntax = 'markdown',
     ext = '.md',
