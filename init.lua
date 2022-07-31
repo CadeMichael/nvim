@@ -99,11 +99,11 @@ vim.g.startify_custom_header = {
 -- vim.o.background = "dark"
 vim.g.dracula_transparent_bg = true
 vim.opt.termguicolors = true
-if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.cmd[[colorscheme gruvbox]]
-else
-  vim.cmd[[colorscheme dracula]]
-end
+--if vim.loop.os_uname().sysname == 'Darwin' then
+  --vim.cmd[[colorscheme gruvbox]]
+--else
+vim.cmd[[colorscheme dracula]]
+--end
 -- statusline
 require'lualine'.setup()
 
@@ -134,16 +134,6 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
-
--- vimwiki
-vim.g.vimwiki_list = {
-  {
-    path = '~/Git/wiki/src/pages/',
-    index = 'index',
-    syntax = 'markdown',
-    ext = '.md',
-  }
-}
 
 -- autocmd's
 if vim.fn.has "nvim-0.7" ~= 0 then

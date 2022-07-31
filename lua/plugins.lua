@@ -74,8 +74,6 @@ return require('packer').startup(function(use)
   }
   -- vim start screen
   use 'mhinz/vim-startify'
-  -- vimwiki
-  use 'vimwiki/vimwiki'
   -- RestClient
   use {
     "NTBBloodbath/rest.nvim",
