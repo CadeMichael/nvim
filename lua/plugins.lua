@@ -35,11 +35,12 @@ return require('packer').startup(function(use)
   use 'Mofiqul/dracula.nvim'
   use { 'kyazdani42/nvim-web-devicons' }
   use 'nvim-lualine/lualine.nvim'
-  -- fzf
-  use 'junegunn/fzf' -- fzf
-  use 'junegunn/fzf.vim' -- fuzzy finding
-  use 'windwp/nvim-autopairs'
+  -- Telescope
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  }
   -- lang support
+  use 'windwp/nvim-autopairs'
   use 'lervag/vimtex' -- latex
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
@@ -74,8 +75,6 @@ return require('packer').startup(function(use)
   }
   -- vim start screen
   use 'mhinz/vim-startify'
-  -- vimwiki
-  use 'vimwiki/vimwiki'
   -- RestClient
   use {
     "NTBBloodbath/rest.nvim",
