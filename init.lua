@@ -57,6 +57,7 @@ keymap('n', '<Space>b', '<cmd>Telescope buffers<cr>', { noremap = true, silent =
 keymap('n', '<Space>h', '<cmd>Telescope help_tags<cr>', { noremap = true, silent = true })
 -- comments
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
+vim.g.NERDSpaceDelims = 1
 -- rest client
 keymap('n', '<Space>R', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
