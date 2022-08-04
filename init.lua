@@ -52,12 +52,13 @@ require 'nvim-treesitter.configs'.setup({
 local keymap = vim.keymap.set
 
 keymap('n', '<Space>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
---fzf
-keymap('n', '<Space>.', ':FZF<CR>', { noremap = true, silent = true })
-keymap('n', '<Space>,', ':FZF ../<CR>', { noremap = true, silent = true })
-keymap('n', '<Space>b', ':Buffers<CR>', { noremap = true, silent = true })
+-- Telescope
+keymap('n', '<Space>.', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })
+keymap('n', '<Space>b', '<cmd>Telescope buffers<cr>', { noremap = true, silent = true })
+keymap('n', '<Space>h', '<cmd>Telescope help_tags<cr>', { noremap = true, silent = true })
 -- comments
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
+vim.g.NERDSpaceDelims = 1
 -- rest client
 keymap('n', '<Space>R', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
@@ -100,11 +101,11 @@ vim.g.startify_custom_header = {
 -- vim.o.background = "dark"
 vim.g.dracula_transparent_bg = true
 vim.opt.termguicolors = true
-if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.cmd[[colorscheme gruvbox]]
-else
-  vim.cmd[[colorscheme dracula]]
-end
+--if vim.loop.os_uname().sysname == 'Darwin' then
+  --vim.cmd[[colorscheme gruvbox]]
+--else
+vim.cmd[[colorscheme dracula]]
+--end
 -- statusline
 require'lualine'.setup()
 
@@ -112,7 +113,7 @@ require'lualine'.setup()
 vim.o.mouse = 'nv' --> normal / visual
 
 -- Neovide
-vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h16]])
+vim.cmd([[set guifont=Hack\ Nerd\ Font:h16]])
 
 ---- Os Specific
 -- LateX
@@ -135,16 +136,6 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
-
--- vimwiki
-vim.g.vimwiki_list = {
-  {
-    path = '~/Git/wiki/src/pages/',
-    index = 'index',
-    syntax = 'markdown',
-    ext = '.md',
-  }
-}
 
 -- autocmd's
 if vim.fn.has "nvim-0.7" ~= 0 then
@@ -170,3 +161,8 @@ else
   -- term line num
   vim.cmd "autocmd TermOpen * setlocal nonumber norelativenumber"
 end
+
+-- Neovide
+vim.g.neovide_transparency = 0.9
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
