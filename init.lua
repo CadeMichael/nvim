@@ -36,11 +36,12 @@ require 'nvim-treesitter.configs'.setup({
     enable = true,
     extended_mode = true,
     colors = {
-      "#bd93f9",
-      "#ff79c6",
-      "#8be9fd",
-      "#6272a4",
-      "#ff5555",
+      "#8be9fd", -- cyan 
+      "#ff79c6", -- pink
+      "#bd93f9", -- purple 
+      "#6272a4", -- comment (light navy)
+      "#ffb86c", -- orange
+      "#50fa7b", -- green
     },
   },
   incremental_selection = { enable = true },
