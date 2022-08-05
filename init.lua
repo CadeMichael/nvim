@@ -64,6 +64,9 @@ keymap('n', '<Space>R', "<Plug>RestNvim", { noremap = true, silent = true })
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
 -- slime
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
+-- Trouble 
+keymap('n', '<Space>!', ":TroubleToggle<CR>", { noremap = true, silent = true })
+
 
 -- remaps
 keymap('n', '<leader>kk', ':bdelete!<CR>', { noremap = true, silent = true })
@@ -100,11 +103,8 @@ vim.g.startify_custom_header = {
 -- vim.o.background = "dark"
 vim.g.dracula_transparent_bg = true
 vim.opt.termguicolors = true
---if vim.loop.os_uname().sysname == 'Darwin' then
-  --vim.cmd[[colorscheme gruvbox]]
---else
 vim.cmd[[colorscheme dracula]]
---end
+
 -- statusline
 require'lualine'.setup()
 
@@ -162,6 +162,6 @@ else
 end
 
 -- Neovide
-vim.g.neovide_transparency = 0.9
+vim.g.neovide_transparency = 0.85
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0
