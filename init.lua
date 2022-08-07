@@ -67,6 +67,8 @@ keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = tru
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
 -- Trouble 
 keymap('n', '<Space>!', ":TroubleToggle<CR>", { noremap = true, silent = true })
+-- Compile
+keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true })
 
 
 -- remaps
