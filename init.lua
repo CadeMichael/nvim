@@ -28,6 +28,10 @@ require('nvim-autopairs').setup()
 -- nvim tree
 require('nvim-tree').setup()
 
+-- Telescope
+require('telescope').setup()
+require('telescope').load_extension('fzf')
+
 -- treesitter
 require 'nvim-treesitter.configs'.setup({
   -- Modules and its options go here

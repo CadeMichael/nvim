@@ -1,4 +1,4 @@
-local testCommand = function()
+local guess_command = function()
   local ft_commands = {}
   ft_commands["go"] = "go build "
   ft_commands["javascript"] = "node "
@@ -28,7 +28,7 @@ local run_and_print = function(buff)
     cur_dir = lspdir
   end
   local dir = vim.fn.input("Directory=> ", cur_dir)
-  local cmd = testCommand()
+  local cmd = guess_command()
   local command = vim.fn.split(vim.fn.input("", cmd))
   vim.api.nvim_set_current_buf(buff)
   vim.api.nvim_buf_set_lines(buff, 0, -1, false, { "== output ==" })

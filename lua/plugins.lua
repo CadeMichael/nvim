@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- lang support
   use 'windwp/nvim-autopairs'
   use 'lervag/vimtex' -- latex
