@@ -1,9 +1,11 @@
-local testCommand = function ()
+local testCommand = function()
   local ft_commands = {}
-  ft_commands["lua"] = "lua "
   ft_commands["go"] = "go build "
-  ft_commands["python"] = "python "
   ft_commands["javascript"] = "node "
+  ft_commands["lua"] = "lua "
+  ft_commands["python"] = "python "
+  ft_commands["rust"] = "cargo run "
+  ft_commands["zig"] = "zig build-exe "
   local ft = vim.bo.filetype
   local command
   if ft_commands[ft] ~= nil then
@@ -18,23 +20,37 @@ local testCommand = function ()
   return command
 end
 
-vim.api.nvim_create_user_command("CompileCurrent",
-function()
+local run_and_print = function(buff)
   print("Compile Current Project...\n")
   local cur_dir = vim.fn.getcwd()
-  print("Directory => " .. cur_dir .."\n")
+  local lspdir = vim.lsp.buf.list_workspace_folders()[1]
+  if lspdir ~= nil then
+    cur_dir = lspdir
+  end
+  local dir = vim.fn.input("Directory=> ", cur_dir)
   local cmd = testCommand()
   local command = vim.fn.split(vim.fn.input("", cmd))
-  local b = vim.api.nvim_create_buf(true, true)
-  vim.cmd("bel split")
-  vim.api.nvim_set_current_buf(b)
-  vim.api.nvim_buf_set_lines(b, 0, -1, false, {"== output =="})
+  vim.api.nvim_set_current_buf(buff)
+  vim.api.nvim_buf_set_lines(buff, 0, -1, false, { "== output ==" })
   vim.fn.jobstart(command, {
+    cwd = dir,
     stdout_buffered = true,
-    on_stdout = function (_, data)
+    on_stderr = function(_, data)
       if data then
-        vim.api.nvim_buf_set_lines(b, -1, -1, false, data)
+        vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
+      end
+    end,
+    on_stdout = function(_, data)
+      if data then
+        vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
       end
     end
   })
-end, {})
+end
+
+vim.api.nvim_create_user_command("CompileCurrent",
+  function()
+    local b = vim.api.nvim_create_buf(true, true)
+    vim.cmd("bel split")
+    run_and_print(b)
+  end, {})
