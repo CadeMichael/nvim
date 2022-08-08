@@ -20,14 +20,19 @@ local guess_command = function()
   return command
 end
 
-local run_and_print = function(buff)
-  print("Compile Current Project...\n")
+local get_dir = function()
   local cur_dir = vim.fn.getcwd()
   local lsp_dir = vim.lsp.buf.list_workspace_folders()[1]
   if lsp_dir ~= nil then
     cur_dir = lsp_dir
   end
   local dir = vim.fn.input("Directory=> ", cur_dir, "file")
+  return dir
+end
+
+local run_and_print = function(buff)
+  print("Compile Current Project...\n")
+  local dir = get_dir()
   local cmd = guess_command()
   local command = vim.fn.split(vim.fn.input("", cmd, "shellcmd"))
   vim.api.nvim_set_current_buf(buff)
