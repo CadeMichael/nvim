@@ -1,6 +1,9 @@
 -- get the plugins
 require("plugins")
 
+-- get the autocommands
+require("autocmd")
+
 -- global configurations --
 vim.o.swapfile = false
 
@@ -142,31 +145,6 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
-
--- autocmd's
-if vim.fn.has "nvim-0.7" ~= 0 then
-  -- emmet
-  vim.api.nvim_create_autocmd(
-    "FileType",
-    {
-      pattern = { "html", "css" },
-      command = "EmmetInstall",
-    }
-  )
-  -- term line num
-  vim.api.nvim_create_autocmd(
-    "TermOpen",
-    {
-      pattern = "*",
-      command = "setlocal nonumber norelativenumber",
-    }
-  )
-else
-  -- emmet
-  vim.cmd "autocmd Filetype html,css EmmetInstall"
-  -- term line num
-  vim.cmd "autocmd TermOpen * setlocal nonumber norelativenumber"
-end
 
 -- Neovide
 vim.g.neovide_transparency = 0.85
