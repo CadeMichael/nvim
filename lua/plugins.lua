@@ -49,11 +49,6 @@ return require('packer').startup(function(use)
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
   use 'olical/conjure'
-  use { 'ray-x/go.nvim',
-    config = function()
-      require("go").setup()
-    end }
-  use 'ray-x/guihua.lua'
   -- lsp setup
   use 'dcampos/nvim-snippy'
   use 'dcampos/cmp-snippy'
