@@ -5,7 +5,7 @@ local guess_command = function()
   ft_commands["javascript"] = "node "
   ft_commands["lua"] = "lua "
   ft_commands["python"] = "python "
-  ft_commands["rust"] = "cargo run "
+  ft_commands["rust"] = "cargo build "
   ft_commands["zig"] = "zig build-exe "
 
   -- get filetype
