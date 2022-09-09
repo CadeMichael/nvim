@@ -42,14 +42,6 @@ require 'nvim-treesitter.configs'.setup({
   rainbow = {
     enable = true,
     extended_mode = true,
-    colors = {
-      "#8be9fd", -- cyan 
-      "#ff79c6", -- pink
-      "#bd93f9", -- purple 
-      "#6272a4", -- comment (light navy)
-      "#ffb86c", -- orange
-      "#50fa7b", -- green
-    },
   },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
@@ -110,13 +102,19 @@ vim.g.startify_custom_header = {
 }
 
 -- colorscheme
--- vim.o.background = "dark"
-vim.g.dracula_transparent_bg = true
+require("catppuccin").setup({
+  dim_inactive = {
+    enabled = true,
+    shade = "dark",
+    percentage = 0.15,
+  }
+})
+vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 vim.opt.termguicolors = true
-vim.cmd[[colorscheme dracula]]
+vim.cmd[[colorscheme catppuccin]]
 
 -- statusline
-require'lualine'.setup()
+require("lualine").setup({})
 
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual

@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
   }
   use 'p00f/nvim-ts-rainbow'
   -- colorchemes
-  use "ellisonleao/gruvbox.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
   use 'Mofiqul/dracula.nvim'
   use { 'kyazdani42/nvim-web-devicons' }
   use 'nvim-lualine/lualine.nvim'

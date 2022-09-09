@@ -42,7 +42,7 @@ local run_and_print = function(buff)
   local dir = get_dir()
   local cmd = guess_command()
   -- allow user to change command
-  local command = vim.fn.split(vim.fn.input("", cmd, "shellcmd"))
+  local command = vim.fn.split(vim.fn.input("", cmd, "file"))
   -- move to output buff
   vim.api.nvim_set_current_buf(buff)
   -- set output & run the user set command
