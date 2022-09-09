@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
   }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- lang support
   use 'windwp/nvim-autopairs'
   use 'lervag/vimtex' -- latex
@@ -49,6 +49,13 @@ return require('packer').startup(function(use)
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
   use 'olical/conjure'
+  use({
+    "kylechui/nvim-surround",
+    tag = "*",
+    config = function()
+      require("nvim-surround").setup({})
+    end
+  })
   -- lsp setup
   use 'dcampos/nvim-snippy'
   use 'dcampos/cmp-snippy'
