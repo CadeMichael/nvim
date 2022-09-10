@@ -132,6 +132,13 @@ end
 -- emmet vim
 vim.g.user_emmet_install_global = 0
 
+-- LateX
+if vim.loop.os_uname().sysname == 'Darwin' then
+  vim.g.vimtex_view_method = 'skim'
+else
+  vim.g.vimtex_view_method = 'zathura'
+end
+
 -- Neovide
 vim.g.neovide_transparency = 0.85
 vim.g.neovide_floating_blur_amount_x = 2.0
