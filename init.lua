@@ -87,19 +87,7 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 keymap('n', '<leader>t', ':lua OpenTerm() <CR>', { noremap = true, silent = true })
 
 --> themeing
-vim.g.startify_custom_header = {
-  "  < Neovim time! >",
-  "   --------------",
-  "    \\",
-  "     \\",
-  "         .--.",
-  "        |o_o |",
-  "        |:_/ |",
-  "       //   \\ \\",
-  "      (|     | )",
-  "     /'\\_   _/`\\",
-  "     \\___)=(___/",
-}
+vim.g.startify_custom_header = {} -- no header
 
 -- colorscheme
 require("catppuccin").setup({
