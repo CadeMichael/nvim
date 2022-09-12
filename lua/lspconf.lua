@@ -198,10 +198,10 @@ null_ls.setup({
     -- actions
     actions.gitsigns,
     -- formatting
-    formatting.stylua,
     formatting.black,
-    formatting.gofmt,
     formatting.djlint,
+    formatting.gofmt,
+    formatting.stylua,
     -- diagnostics
     diagnostics.zsh
   },
