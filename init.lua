@@ -42,6 +42,13 @@ require 'nvim-treesitter.configs'.setup({
   rainbow = {
     enable = true,
     extended_mode = true,
+    colors = {
+      "#bd93f9",
+      "#ff79c6",
+      "#8be9fd",
+      "#6272a4",
+      "#ff5555",
+    },
   },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
@@ -64,7 +71,7 @@ keymap('n', '<Space>R', "<Plug>RestNvim", { noremap = true, silent = true })
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
 -- slime
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
--- Trouble 
+-- Trouble
 keymap('n', '<Space>!', ":TroubleToggle<CR>", { noremap = true, silent = true })
 -- Compile
 keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true })
@@ -90,16 +97,9 @@ keymap('n', '<leader>t', ':lua OpenTerm() <CR>', { noremap = true, silent = true
 vim.g.startify_custom_header = {} -- no header
 
 -- colorscheme
-require("catppuccin").setup({
-  dim_inactive = {
-    enabled = true,
-    shade = "dark",
-    percentage = 0.15,
-  }
-})
-vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
+vim.g.dracula_transparent_bg = true
 vim.opt.termguicolors = true
-vim.cmd[[colorscheme catppuccin]]
+vim.cmd [[colorscheme dracula]]
 
 -- statusline
 require("lualine").setup({})
