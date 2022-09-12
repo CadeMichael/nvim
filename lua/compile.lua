@@ -36,38 +36,42 @@ local get_dir = function()
   return dir
 end
 
-local run_and_print = function(buff)
+local run_and_print = function()
   print("Compile Current Project...\n")
   -- get the working dir & command
   local dir = get_dir()
   local cmd = guess_command()
   -- allow user to change command
   local command = vim.fn.split(vim.fn.input("", cmd, "file"))
-  -- move to output buff
-  vim.api.nvim_set_current_buf(buff)
-  -- set output & run the user set command
-  vim.api.nvim_buf_set_lines(buff, 0, -1, false, { "== output ==" })
-  vim.fn.jobstart(command, {
-    cwd = dir,
-    stdout_buffered = true,
-    on_stderr = function(_, data)
-      if data then
-        vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
+  -- make sure that a buffer only opens if there are commands
+  if command ~= "" and dir ~= "" then
+    local buff = vim.api.nvim_create_buf(false, true)
+    vim.cmd("bel split")
+    -- move to output buff
+    vim.api.nvim_set_current_buf(buff)
+    -- set output & run the user set command
+    vim.api.nvim_buf_set_lines(buff, 0, -1, false, { "== output ==" })
+    vim.fn.jobstart(command, {
+      cwd = dir,
+      detatch = false,
+      stdout_buffered = true,
+      on_stderr = function(_, data)
+        if data then
+          vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
+        end
+      end,
+      on_stdout = function(_, data)
+        if data then
+          vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
+        end
       end
-    end,
-    on_stdout = function(_, data)
-      if data then
-        vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
-      end
-    end
-  })
+    })
+  end
 end
 
 -- make user function
 vim.api.nvim_create_user_command("CompileCurrent",
   function()
-    -- create buffer
-    local b = vim.api.nvim_create_buf(false, true)
-    vim.cmd("bel split")
-    run_and_print(b)
+    -- run func
+    run_and_print()
   end, {})
