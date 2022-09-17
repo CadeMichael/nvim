@@ -12,14 +12,10 @@ local guess_command = function()
   local ft = vim.bo.filetype
   local command = ""
   if ft_commands[ft] ~= nil then
+    -- use guess
     command = ft_commands[ft]
   end
 
-  -- instantiate guess
-  local name = vim.api.nvim_buf_get_name(0)
-  if command == "" then
-    command = command .. name
-  end
   return command
 end
 
