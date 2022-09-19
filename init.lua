@@ -1,8 +1,8 @@
 -- get the plugins
-require("plugins")
+require('plugins')
 
 -- get the autocommands
-require("autocmd")
+require('autocmd')
 
 -- global configurations --
 vim.o.swapfile = false
@@ -38,25 +38,6 @@ require("nvim-surround").setup()
 require('telescope').setup()
 require('telescope').load_extension('fzf')
 
--- treesitter
-require 'nvim-treesitter.configs'.setup({
-  -- Modules and its options go here
-  highlight = { enable = true },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    colors = {
-      "#bd93f9",
-      "#ff79c6",
-      "#8be9fd",
-      "#6272a4",
-      "#ff5555",
-    },
-  },
-  incremental_selection = { enable = true },
-  textobjects = { enable = true },
-})
-
 -- keymappings --
 local keymap = vim.keymap.set
 
@@ -82,8 +63,6 @@ keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true 
 -- Neogit
 keymap('n', '<C-x>g', ":Neogit<CR>", { noremap = true, silent = true })
 
-
-
 -- remaps
 keymap('n', '<leader>kk', ':bdelete!<CR>', { noremap = true, silent = true })
 keymap('n', 'Y', 'y$', { noremap = true, silent = true })
@@ -95,6 +74,7 @@ keymap('i', '[', '[<C-g>u', { noremap = true, silent = true })
 keymap('i', '(', '(<C-g>u', { noremap = true, silent = true })
 keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+keymap('n', '<C-x><C-e>', "v%<Plug>SlimeRegionSend", { noremap = true, silent = true })
 
 --> terminal integration
 -- open terminal in split below
@@ -150,3 +130,14 @@ end
 vim.g.neovide_transparency = 0.85
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0
+
+-- treesitter
+require("nvim-treesitter.configs").setup({
+  -- Modules and its options go here
+  highlight = {
+    enable = true
+  },
+  ensure_installed = { "c", "lua", "rust", "go", "javascript", "clojure" },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
+})

@@ -31,7 +31,6 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
   }
-  use 'p00f/nvim-ts-rainbow'
   -- colorchemes
   use 'Mofiqul/dracula.nvim'
   use { 'kyazdani42/nvim-web-devicons' }
