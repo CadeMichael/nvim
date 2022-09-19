@@ -31,6 +31,9 @@ require('nvim-autopairs').setup()
 -- nvim tree
 require('nvim-tree').setup()
 
+-- nvim surround
+require("nvim-surround").setup()
+
 -- Telescope
 require('telescope').setup()
 require('telescope').load_extension('fzf')
@@ -62,6 +65,7 @@ keymap('n', '<Space>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true }
 keymap('n', '<Space>.', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })
 keymap('n', '<Space>b', '<cmd>Telescope buffers<cr>', { noremap = true, silent = true })
 keymap('n', '<Space>h', '<cmd>Telescope help_tags<cr>', { noremap = true, silent = true })
+keymap('n', '<Space>m', '<cmd>Telescope keymaps<cr>', { noremap = true, silent = true })
 -- comments
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
 vim.g.NERDSpaceDelims = 1
@@ -75,6 +79,9 @@ keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true
 keymap('n', '<Space>!', ":TroubleToggle<CR>", { noremap = true, silent = true })
 -- Compile
 keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true })
+-- Neogit
+keymap('n', '<C-x>g', ":Neogit<CR>", { noremap = true, silent = true })
+
 
 
 -- remaps

@@ -1,5 +1,5 @@
 -- my plugins
-require("compile")
+require('compile')
 -- autoisntall packer
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -48,12 +48,10 @@ return require('packer').startup(function(use)
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
   use 'olical/conjure'
+  -- ({["''"]}) management
   use({
-    "kylechui/nvim-surround",
-    tag = "*",
-    config = function()
-      require("nvim-surround").setup({})
-    end
+    'kylechui/nvim-surround',
+    tag = '*',
   })
   -- lsp setup
   use 'dcampos/nvim-snippy'
@@ -82,10 +80,10 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-startify'
   -- RestClient
   use {
-    "NTBBloodbath/rest.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
+    'NTBBloodbath/rest.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require("rest-nvim").setup({
+      require('rest-nvim').setup({
         -- Open request results in a horizontal split
         result_split_horizontal = true,
         -- Keep the http file buffer above|left when split horizontal|vertical
