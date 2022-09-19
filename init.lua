@@ -74,7 +74,7 @@ keymap('i', '[', '[<C-g>u', { noremap = true, silent = true })
 keymap('i', '(', '(<C-g>u', { noremap = true, silent = true })
 keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
-keymap('n', '<C-x><C-e>', "v%<Plug>SlimeRegionSend", { noremap = true, silent = true })
+keymap('n', '<C-x><C-e>', "va(<Plug>SlimeRegionSend%", { noremap = true, silent = true })
 
 --> terminal integration
 -- open terminal in split below
