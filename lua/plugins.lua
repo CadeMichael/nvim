@@ -27,22 +27,25 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
+  -- lsp extension
+  use 'dcampos/nvim-snippy'
+  use 'dcampos/cmp-snippy'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'folke/trouble.nvim'
   -- treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-  }
+  use 'nvim-treesitter/nvim-treesitter'
   -- colorchemes
   use 'Mofiqul/dracula.nvim'
-  use { 'kyazdani42/nvim-web-devicons' }
+  use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   -- Telescope
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '*',
   }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- lang support
   use 'windwp/nvim-autopairs'
-  use 'lervag/vimtex' -- latex
+  use 'lervag/vimtex'
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
@@ -52,11 +55,6 @@ return require('packer').startup(function(use)
     'kylechui/nvim-surround',
     tag = '*',
   })
-  -- lsp setup
-  use 'dcampos/nvim-snippy'
-  use 'dcampos/cmp-snippy'
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'folke/trouble.nvim'
   -- nvim tree
   use 'kyazdani42/nvim-tree.lua'
   -- git
@@ -77,6 +75,8 @@ return require('packer').startup(function(use)
   }
   -- vim start screen
   use 'mhinz/vim-startify'
+  -- which key
+  use "folke/which-key.nvim"
   -- RestClient
   use {
     'NTBBloodbath/rest.nvim',

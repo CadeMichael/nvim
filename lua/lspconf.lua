@@ -17,7 +17,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -65,39 +65,13 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
---> Python
--- ideally pylsp is installed on a per project basis
--- pip install 'python-lsp-server[all]'
-lsp.pylsp.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
---> JavaScript (node)
-lsp.tsserver.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { 'javascript' }
-})
---> JavaScript (deno)
-lsp.denols.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  init_options = {
-    lint = true,
-  },
-  filetypes = { 'typescript' }
-})
 --> C
 lsp.clangd.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+-- Clojure
 lsp.clojure_lsp.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
---> Svelte
-lsp.svelte.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
@@ -126,6 +100,27 @@ lsp.html.setup {
   settings = {
     rootMarkers = { "./git/", "README.md" } }
 }
+--> JavaScript (node)
+lsp.tsserver.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { 'javascript' }
+})
+--> JavaScript (deno)
+lsp.denols.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  init_options = {
+    lint = true,
+  },
+  filetypes = { 'typescript' }
+})
+--> Python
+-- pip install 'python-lsp-server[all]'
+lsp.pylsp.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 --> Rust
 lsp.rust_analyzer.setup({
   capabilities = capabilities,
@@ -144,6 +139,11 @@ lsp.rust_analyzer.setup({
       },
     }
   },
+})
+--> Svelte
+lsp.svelte.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
 --> lua
 ----> via brew on mac os
