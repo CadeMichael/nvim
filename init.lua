@@ -68,7 +68,7 @@ keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = tru
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
 keymap('n', '<C-x><C-e>', "va(<Plug>SlimeRegionSend%", { noremap = true, silent = true })
 -- Trouble
-keymap('n', '<Space>!', ":TroubleToggle<CR>", { noremap = true, silent = true })
+keymap('n', '<Space>tt', ":TroubleToggle<CR>", { noremap = true, silent = true })
 -- Compile
 keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true })
 -- Neogit
@@ -123,6 +123,9 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
+
+-- conjure
+vim.cmd[[ let g:conjure#mapping#prefix = "<Space>" ]]
 
 -- LateX
 if vim.loop.os_uname().sysname == 'Darwin' then
