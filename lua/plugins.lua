@@ -34,6 +34,11 @@ return require('packer').startup(function(use)
   use 'folke/trouble.nvim'
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
+  -- neorg
+  use {
+    'nvim-neorg/neorg',
+    tag = "0.0.12"
+  }
   -- colorchemes
   use 'Mofiqul/dracula.nvim'
   use 'kyazdani42/nvim-web-devicons'
@@ -42,7 +47,10 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '*',
   }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
+  }
   -- lang support
   use 'windwp/nvim-autopairs'
   use 'lervag/vimtex'
