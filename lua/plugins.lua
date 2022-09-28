@@ -34,11 +34,6 @@ return require('packer').startup(function(use)
   use 'folke/trouble.nvim'
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
-  -- neorg
-  use {
-    'nvim-neorg/neorg',
-    tag = "0.0.12"
-  }
   -- colorchemes
   use 'Mofiqul/dracula.nvim'
   use 'kyazdani42/nvim-web-devicons'

@@ -149,10 +149,3 @@ require("nvim-treesitter.configs").setup({
   incremental_selection = { enable = true },
   textobjects = { enable = true },
 })
-
-require('neorg').setup({
-  load = {
-    ["core.defaults"] = {},
-  }
-})
-
