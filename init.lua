@@ -74,7 +74,10 @@ keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true 
 -- Neogit
 keymap('n', '<C-x>g', ":Neogit<CR>", { noremap = true, silent = true })
 -- terminal
-keymap('n', '<leader>t', ':lua OpenTerm() <CR>', { noremap = true, silent = true })
+keymap({'n', 'i'}, '<C-c><C-z>', '<Esc>:lua OpenTerm() <CR>', { noremap = true, silent = true })
+keymap('t', '<C-c><C-z>', '<C-\\><C-N><C-w>w]', { noremap = true, silent = true })
+-- prevent nvim from being suspended
+keymap({'n', 'i'}, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
 -- remaps
 keymap('n', '<Space>bk', ':bdelete!<CR>', { noremap = true, silent = true })
@@ -116,9 +119,29 @@ function SaveClipper()
   vim.cmd(":w")
 end
 
+function IsTerm()
+  local bufs = vim.api.nvim_list_bufs()
+  for _, b in ipairs(bufs) do
+    local bName = vim.api.nvim_buf_get_name(b)
+    if string.find(bName, "term://") ~= nil then
+      vim.cmd[[:wincmd w]]
+      return true
+    end
+  end
+  return false
+end
+
 function OpenTerm()
-  vim.cmd("bel split")
-  vim.cmd("terminal")
+  local buf = vim.api.nvim_get_current_buf();
+  local bufName = vim.api.nvim_buf_get_name(buf);
+  local type = vim.fn.split(bufName,":")[1]
+  if type == "term" then
+    vim.cmd[[:wincmd w]]
+    return
+  elseif IsTerm() ~= true then
+    vim.cmd("bel split")
+    vim.cmd("terminal")
+  end
 end
 
 -- emmet vim
