@@ -74,10 +74,10 @@ keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true 
 -- Neogit
 keymap('n', '<C-x>g', ":Neogit<CR>", { noremap = true, silent = true })
 -- terminal
-keymap({'n', 'i'}, '<C-c><C-z>', '<Esc>:lua OpenTerm() <CR>', { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<C-c><C-z>', '<Esc>:lua OpenTerm() <CR>', { noremap = true, silent = true })
 keymap('t', '<C-c><C-z>', '<C-\\><C-N><C-w>w]', { noremap = true, silent = true })
 -- prevent nvim from being suspended
-keymap({'n', 'i'}, '<C-z>', '<Esc>', { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
 -- remaps
 keymap('n', '<Space>bk', ':bdelete!<CR>', { noremap = true, silent = true })
@@ -124,7 +124,7 @@ function IsTerm()
   for _, b in ipairs(bufs) do
     local bName = vim.api.nvim_buf_get_name(b)
     if string.find(bName, "term://") ~= nil then
-      vim.cmd[[:wincmd w]]
+      vim.cmd [[:wincmd w]]
       return true
     end
   end
@@ -134,9 +134,9 @@ end
 function OpenTerm()
   local buf = vim.api.nvim_get_current_buf();
   local bufName = vim.api.nvim_buf_get_name(buf);
-  local type = vim.fn.split(bufName,":")[1]
+  local type = vim.fn.split(bufName, ":")[1]
   if type == "term" then
-    vim.cmd[[:wincmd w]]
+    vim.cmd [[:wincmd w]]
     return
   elseif IsTerm() ~= true then
     vim.cmd("bel split")
@@ -146,9 +146,6 @@ end
 
 -- emmet vim
 vim.g.user_emmet_install_global = 0
-
--- conjure
-vim.cmd[[ let g:conjure#mapping#prefix = "<Space>" ]]
 
 -- LateX
 if vim.loop.os_uname().sysname == 'Darwin' then
@@ -168,7 +165,14 @@ require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true
   },
-  ensure_installed = { "c", "lua", "rust", "go", "javascript", "clojure" },
+  ensure_installed = {
+    "c",
+    "lua",
+    "rust",
+    "go",
+    "javascript",
+    "clojure"
+  },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
 })
