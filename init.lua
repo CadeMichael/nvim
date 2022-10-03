@@ -47,6 +47,16 @@ require('which-key').setup({
   }
 })
 
+-- emmet vim
+vim.g.user_emmet_install_global = 0
+
+-- LateX
+if vim.loop.os_uname().sysname == 'Darwin' then
+  vim.g.vimtex_view_method = 'skim'
+else
+  vim.g.vimtex_view_method = 'zathura'
+end
+
 -- keymappings --
 local keymap = vim.keymap.set
 
@@ -61,11 +71,12 @@ keymap('n', '<Space>m', '<cmd>Telescope keymaps<cr>', { noremap = true, silent =
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
 vim.g.NERDSpaceDelims = 1
 -- rest client
-keymap('n', '<Space>R', "<Plug>RestNvim", { noremap = true, silent = true })
+keymap('n', '<Space>r', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
 -- slime
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
+keymap('n', '<Space>l', "V<Plug>SlimeRegionSend$", { noremap = true, silent = true })
 keymap('n', '<C-x><C-e>', "va(<Plug>SlimeRegionSend%", { noremap = true, silent = true })
 -- Trouble
 keymap('n', '<Space>tt', ":TroubleToggle<CR>", { noremap = true, silent = true })
@@ -95,15 +106,17 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 vim.g.startify_custom_header = {} -- no header
 
 -- colorscheme
-vim.g.dracula_transparent_bg = true
 vim.opt.termguicolors = true
-vim.cmd [[colorscheme dracula]]
+vim.cmd [[colorscheme oxocarbon]]
 
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
 
 -- Neovide
 vim.cmd([[set guifont=Hack\ Nerd\ Font:h16]])
+vim.g.neovide_transparency = 0.85
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
 
 ---- Os Specific
 -- LateX
@@ -143,36 +156,3 @@ function OpenTerm()
     vim.cmd("terminal")
   end
 end
-
--- emmet vim
-vim.g.user_emmet_install_global = 0
-
--- LateX
-if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.g.vimtex_view_method = 'skim'
-else
-  vim.g.vimtex_view_method = 'zathura'
-end
-
--- Neovide
-vim.g.neovide_transparency = 0.85
-vim.g.neovide_floating_blur_amount_x = 2.0
-vim.g.neovide_floating_blur_amount_y = 2.0
-
--- treesitter
-require("nvim-treesitter.configs").setup({
-  -- Modules and its options go here
-  highlight = {
-    enable = true
-  },
-  ensure_installed = {
-    "c",
-    "lua",
-    "rust",
-    "go",
-    "javascript",
-    "clojure"
-  },
-  incremental_selection = { enable = true },
-  textobjects = { enable = true },
-})

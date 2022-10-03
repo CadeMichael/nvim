@@ -36,6 +36,10 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   -- colorchemes
   use 'Mofiqul/dracula.nvim'
+  use {
+    'shaunsingh/oxocarbon.nvim',
+    run = './install.sh'
+  }
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   -- Telescope

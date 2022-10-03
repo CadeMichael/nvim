@@ -3,7 +3,12 @@
 vim.api.nvim_create_autocmd(
   "FileType",
   {
-    pattern = { "html", "css" },
+    pattern = {
+      "html",
+      "css",
+      "php",
+      "vue",
+    },
     command = "EmmetInstall",
   }
 )
