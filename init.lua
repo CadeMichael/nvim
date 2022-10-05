@@ -40,7 +40,7 @@ require('telescope').load_extension('fzf')
 -- statusline
 require('lualine').setup({})
 
--- which keym
+-- which key
 require('which-key').setup({
   window = {
     border = 'double'
@@ -132,27 +132,51 @@ function SaveClipper()
   vim.cmd(":w")
 end
 
+-- determine if there is a terminal buf
 function IsTerm()
+  -- get all buffers
   local bufs = vim.api.nvim_list_bufs()
+  -- iterate through bufs
   for _, b in ipairs(bufs) do
+    -- get name
     local bName = vim.api.nvim_buf_get_name(b)
+    -- check for term
     if string.find(bName, "term://") ~= nil then
+      -- switch window and return
       vim.cmd [[:wincmd w]]
       return true
     end
   end
+  -- no term buffers
   return false
 end
 
+-- open terminal in new window
 function OpenTerm()
+  -- get current buffer & name
   local buf = vim.api.nvim_get_current_buf();
   local bufName = vim.api.nvim_buf_get_name(buf);
+  -- check if you're in a term
   local type = vim.fn.split(bufName, ":")[1]
   if type == "term" then
+    -- don't open new term, switch windows
     vim.cmd [[:wincmd w]]
     return
+  -- find a term or make one and switch
   elseif IsTerm() ~= true then
     vim.cmd("bel split")
     vim.cmd("terminal")
   end
+end
+
+-- open ruby repl with current file loaded
+function LoadIRB()
+  -- get buffer name
+  local buf = vim.api.nvim_buf_get_name(0)
+  -- make and move to window
+  vim.cmd(":wincmd n")
+  vim.cmd(":wincmd J")
+  -- load file into terminal
+  local command = "irb -r" .. buf
+  vim.fn.termopen(command)
 end
