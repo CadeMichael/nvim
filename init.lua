@@ -70,8 +70,6 @@ keymap('n', '<Space>m', '<cmd>Telescope keymaps<cr>', { noremap = true, silent =
 -- comments
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
 vim.g.NERDSpaceDelims = 1
--- rest client
-keymap('n', '<Space>r', "<Plug>RestNvim", { noremap = true, silent = true })
 -- clip ending white space and save
 keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = true })
 -- slime
