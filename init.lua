@@ -168,12 +168,12 @@ function OpenTerm()
 end
 
 -- open ruby repl with current file loaded
-function LoadIRB()
+function LoadIRB(pos)
   -- get buffer name
   local buf = vim.api.nvim_buf_get_name(0)
   -- make and move to window
   vim.cmd(":wincmd n")
-  vim.cmd(":wincmd J")
+  vim.cmd(":wincmd " .. pos)
   -- load file into terminal
   local command = "irb -r" .. buf
   vim.fn.termopen(command)

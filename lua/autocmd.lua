@@ -30,7 +30,10 @@ vim.api.nvim_create_autocmd(
     pattern = {
       "ruby",
     },
-    command = [[nnoremap <silent><buffer> <Space>L :lua LoadIRB()<CR>]],
+    command = [[
+    nnoremap <silent><buffer> <Space>Lb :lua LoadIRB('J')<CR>
+    nnoremap <silent><buffer> <Space>Ls :lua LoadIRB('L')<CR>
+    ]],
   }
 )
 -- term line num
