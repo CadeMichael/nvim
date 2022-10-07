@@ -32,42 +32,21 @@ local get_dir = function()
   return dir
 end
 
-local run_and_print = function()
+vim.api.nvim_create_user_command("CompileCurrent",
+function ()
+  Compile()
+end, {})
+
+function Compile()
   print("Compile Current Project...\n")
-  -- get the working dir & command
+  -- get dir and cmd
   local dir = get_dir()
   local cmd = guess_command()
+  -- create blank buf
+  vim.cmd("wincmd n")
+  vim.cmd("wincmd J")
   -- allow user to change command
-  local command = vim.fn.split(vim.fn.input("", cmd, "file"))
-  -- make sure that a buffer only opens if there are commands
-  if command ~= "" and dir ~= "" then
-    local buff = vim.api.nvim_create_buf(false, true)
-    vim.cmd("bel split")
-    -- move to output buff
-    vim.api.nvim_set_current_buf(buff)
-    -- set output & run the user set command
-    vim.api.nvim_buf_set_lines(buff, 0, -1, false, { "== output ==" })
-    vim.fn.jobstart(command, {
-      cwd = dir,
-      detatch = false,
-      stdout_buffered = true,
-      on_stderr = function(_, data)
-        if data then
-          vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
-        end
-      end,
-      on_stdout = function(_, data)
-        if data then
-          vim.api.nvim_buf_set_lines(buff, -1, -1, false, data)
-        end
-      end
-    })
-  end
+  local command = vim.fn.input("", cmd, "file")
+  -- cd to dir and run command
+  vim.fn.termopen("cd " .. dir .. " && " .. command)
 end
-
--- make user function
-vim.api.nvim_create_user_command("CompileCurrent",
-  function()
-    -- run func
-    run_and_print()
-  end, {})

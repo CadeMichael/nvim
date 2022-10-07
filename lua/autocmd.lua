@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd(
       "html",
       "css",
       "php",
+      "svelte",
       "vue",
     },
     command = "EmmetInstall",
