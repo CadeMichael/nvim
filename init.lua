@@ -50,13 +50,6 @@ require('which-key').setup({
 -- emmet vim
 vim.g.user_emmet_install_global = 0
 
--- LateX
-if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.g.vimtex_view_method = 'skim'
-else
-  vim.g.vimtex_view_method = 'zathura'
-end
-
 -- keymappings --
 local keymap = vim.keymap.set
 

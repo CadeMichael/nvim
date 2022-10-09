@@ -57,7 +57,8 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -98,7 +99,8 @@ lsp.html.setup {
   capabilities = capabilities,
   filetypes = { "html", "htmldjango", "jinja.html" },
   settings = {
-    rootMarkers = { "./git/", "README.md" } }
+    rootMarkers = { "./git/", "README.md" }
+  }
 }
 --> JavaScript (node)
 lsp.tsserver.setup({
@@ -123,6 +125,11 @@ lsp.intelephense.setup({
 --> Python
 -- pip install 'python-lsp-server[all]'
 lsp.pylsp.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+--> Ruby
+lsp.solargraph.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
