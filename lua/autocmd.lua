@@ -1,4 +1,5 @@
 -- autocmd's
+
 -- emmet
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -13,6 +14,7 @@ vim.api.nvim_create_autocmd(
     command = "EmmetInstall",
   }
 )
+
 -- http 
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -23,6 +25,21 @@ vim.api.nvim_create_autocmd(
     command = [[nnoremap <silent><buffer> <Space>r <Plug>RestNvim]]
   }
 )
+
+-- JS load 
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = {
+      "javascript",
+    },
+    command = [[
+    nnoremap <silent><buffer> <Space>Lb :lua LoadNode('J')<CR>
+    nnoremap <silent><buffer> <Space>Ls :lua LoadNode('L')<CR>
+    ]],
+  }
+)
+
 -- ruby load 
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -36,6 +53,7 @@ vim.api.nvim_create_autocmd(
     ]],
   }
 )
+
 -- term line num
 vim.api.nvim_create_autocmd(
   "TermOpen",

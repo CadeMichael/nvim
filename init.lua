@@ -153,7 +153,7 @@ function OpenTerm()
     -- don't open new term, switch windows
     vim.cmd [[:wincmd w]]
     return
-  -- find a term or make one and switch
+    -- find a term or make one and switch
   elseif IsTerm() ~= true then
     vim.cmd("bel split")
     vim.cmd("terminal")
@@ -170,4 +170,26 @@ function LoadIRB(pos)
   -- load file into terminal
   local command = "irb -r" .. buf
   vim.fn.termopen(command)
+end
+
+function LoadNode(pos)
+  -- get buffer name
+  local buf = vim.api.nvim_buf_get_name(0)
+  -- make and move to window
+  vim.cmd(":wincmd n")
+  vim.cmd(":wincmd " .. pos)
+  -- start node
+  local command = "node"
+  vim.fn.termopen(command)
+  -- paste into Node Repl
+  vim.api.nvim_put(
+    { -- command to send to Node
+      ".load " .. buf .. "\r"
+    },
+    -- send as line
+    "l",
+    -- paste after cursor
+    true,
+    -- put ending cursor after paste
+    true)
 end
