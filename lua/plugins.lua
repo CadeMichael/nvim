@@ -1,5 +1,6 @@
 -- my plugins
-require('compile')
+require('termbro')
+
 -- autoisntall packer
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -36,10 +37,6 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   -- colorchemes
   use 'Mofiqul/dracula.nvim'
-  use {
-    'shaunsingh/oxocarbon.nvim',
-    run = './install.sh'
-  }
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   -- Telescope

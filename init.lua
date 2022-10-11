@@ -98,7 +98,11 @@ vim.g.startify_custom_header = {} -- no header
 
 -- colorscheme
 vim.opt.termguicolors = true
-vim.cmd [[colorscheme oxocarbon]]
+local dracula = require('dracula')
+dracula.setup({
+  transparent_bg = true,
+})
+vim.cmd [[colorscheme dracula]]
 
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
@@ -117,79 +121,8 @@ else
   vim.g.vimtex_view_method = 'zathura'
 end
 
----- Plugin Functions
+---- Functions
 function SaveClipper()
   vim.cmd(":%s/ $//")
   vim.cmd(":w")
-end
-
--- determine if there is a terminal buf
-function IsTerm()
-  -- get all buffers
-  local bufs = vim.api.nvim_list_bufs()
-  -- iterate through bufs
-  for _, b in ipairs(bufs) do
-    -- get name
-    local bName = vim.api.nvim_buf_get_name(b)
-    -- check for term
-    if string.find(bName, "term://") ~= nil then
-      -- switch window and return
-      vim.cmd [[:wincmd w]]
-      return true
-    end
-  end
-  -- no term buffers
-  return false
-end
-
--- open terminal in new window
-function OpenTerm()
-  -- get current buffer & name
-  local buf = vim.api.nvim_get_current_buf();
-  local bufName = vim.api.nvim_buf_get_name(buf);
-  -- check if you're in a term
-  local type = vim.fn.split(bufName, ":")[1]
-  if type == "term" then
-    -- don't open new term, switch windows
-    vim.cmd [[:wincmd w]]
-    return
-    -- find a term or make one and switch
-  elseif IsTerm() ~= true then
-    vim.cmd("bel split")
-    vim.cmd("terminal")
-  end
-end
-
--- open ruby repl with current file loaded
-function LoadIRB(pos)
-  -- get buffer name
-  local buf = vim.api.nvim_buf_get_name(0)
-  -- make and move to window
-  vim.cmd(":wincmd n")
-  vim.cmd(":wincmd " .. pos)
-  -- load file into terminal
-  local command = "irb -r" .. buf
-  vim.fn.termopen(command)
-end
-
-function LoadNode(pos)
-  -- get buffer name
-  local buf = vim.api.nvim_buf_get_name(0)
-  -- make and move to window
-  vim.cmd(":wincmd n")
-  vim.cmd(":wincmd " .. pos)
-  -- start node
-  local command = "node"
-  vim.fn.termopen(command)
-  -- paste into Node Repl
-  vim.api.nvim_put(
-    { -- command to send to Node
-      ".load " .. buf .. "\r"
-    },
-    -- send as line
-    "l",
-    -- paste after cursor
-    true,
-    -- put ending cursor after paste
-    true)
 end

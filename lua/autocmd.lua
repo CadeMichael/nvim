@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd(
     command = [[
     nnoremap <silent><buffer> <Space>Lb :lua LoadIRB('J')<CR>
     nnoremap <silent><buffer> <Space>Ls :lua LoadIRB('L')<CR>
+    nnoremap <silent><buffer> <Space>Lr :lua RailsSandbox('J', true)<CR>
     ]],
   }
 )
