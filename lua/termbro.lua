@@ -74,9 +74,20 @@ function IsTerm()
     if string.find(bName, "term://") ~= nil then
       -- find window id of terminal
       local id = vim.fn.win_findbuf(b)[1]
-      -- switch to terminal
-      vim.api.nvim_set_current_win(id)
-      -- term found
+      -- terminal window is open 
+      if id then
+        -- switch to terminal
+        vim.api.nvim_set_current_win(id)
+        -- term found
+      -- there is a terminal but not in view
+      else
+        -- prevent new blank buff
+        vim.cmd(":wincmd v")
+        -- move to bottom
+        vim.cmd(":wincmd J")
+        -- set to terminal
+        vim.api.nvim_set_current_buf(b)
+      end
       return true
     end
   end
