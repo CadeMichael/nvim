@@ -8,7 +8,8 @@ require('autocmd')
 require("lspconf")
 
 -- global configurations --
-vim.cmd("set rnu")
+vim.cmd("set number")
+vim.cmd("set relativenumber")
 vim.cmd("set nohlsearch")
 vim.o.swapfile = false
 vim.o.expandtab = true

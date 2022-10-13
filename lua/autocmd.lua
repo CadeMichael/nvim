@@ -34,8 +34,8 @@ vim.api.nvim_create_autocmd(
       "javascript",
     },
     command = [[
-    nnoremap <silent><buffer> <Space>Lb :lua LoadNode('J')<CR>
-    nnoremap <silent><buffer> <Space>Ls :lua LoadNode('L')<CR>
+    nnoremap <silent><buffer> <Space>Lb :LoadNode J<CR>
+    nnoremap <silent><buffer> <Space>Ls :LoadNode L<CR>
     ]],
   }
 )
@@ -48,9 +48,10 @@ vim.api.nvim_create_autocmd(
       "ruby",
     },
     command = [[
-    nnoremap <silent><buffer> <Space>Lb :lua LoadIRB('J')<CR>
-    nnoremap <silent><buffer> <Space>Ls :lua LoadIRB('L')<CR>
-    nnoremap <silent><buffer> <Space>Lr :lua RailsSandbox('J', true)<CR>
+    nnoremap <silent><buffer> <Space>Lb :LoadIRB J<CR>
+    nnoremap <silent><buffer> <Space>Ls :LoadIRB L<CR>
+    nnoremap <silent><buffer> <Space>rc :RailsCommand J true console --sandbox<CR>
+    nnoremap <silent><buffer> <Space>rr :RailsCommand J true server<CR>
     ]],
   }
 )

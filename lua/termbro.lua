@@ -102,6 +102,12 @@ function OpenTerm()
   end
 end
 
+-- create user command
+vim.api.nvim_create_user_command("OpenTerm",
+  function()
+    OpenTerm()
+  end, {})
+
 -- open ruby repl with current file loaded
 function LoadIRB(pos)
   -- get buffer name
@@ -114,27 +120,41 @@ function LoadIRB(pos)
   vim.fn.termopen(command)
 end
 
+-- create user command
+vim.api.nvim_create_user_command("LoadIRB",
+  function(opts)
+    LoadIRB(opts.args) -- positions
+  end, { nargs = 1 })
+
 -- open rails console in sandbox
-function RailsSandbox(pos, proj_rails)
+function RailsCommand(pos, proj_rails, cmd)
   -- get project root dir
   local lsp_dir = vim.lsp.buf.list_workspace_folders()[1]
   -- init variables
   local dir
-  local cmd
+  local command
   -- if user declares it's a rails proj
   if proj_rails then
     -- allow user to modify root dir
     dir = vim.fn.input("Directory=> ", lsp_dir, "file")
-    cmd = dir .. "/bin/rails console --sandbox"
+    command = dir .. "/bin/rails "
   else
-    cmd = "rails console --sandbox"
+    command = "rails "
   end
   -- create new window
   vim.cmd(":wincmd n")
   vim.cmd(":wincmd " .. pos)
   -- run command
-  vim.fn.termopen(cmd)
+  vim.fn.termopen(command .. cmd)
 end
+
+-- create user command
+vim.api.nvim_create_user_command("RailsCommand",
+  function(opts)
+    RailsCommand(opts.fargs[1], -- position
+      opts.fargs[2], -- proj rails
+      opts.fargs[3]) -- rails command
+  end, { nargs = '+' })
 
 -- load current file into node repl
 function LoadNode(pos)
@@ -158,3 +178,9 @@ function LoadNode(pos)
     -- put ending cursor after paste
     true)
 end
+
+-- create user command
+vim.api.nvim_create_user_command("LoadNode",
+  function(opts)
+    LoadNode(opts.args)
+  end, { nargs = 1 })
