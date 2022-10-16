@@ -56,6 +56,20 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+-- Python Django
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = {
+      "python",
+    },
+    command = [[
+    nnoremap <silent><buffer> <Space>Lb :ManagePy J<CR>
+    nnoremap <silent><buffer> <Space>Ls :ManagePy L<CR>
+    ]],
+  }
+)
+
 -- term line num
 vim.api.nvim_create_autocmd(
   "TermOpen",

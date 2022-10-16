@@ -12,8 +12,7 @@ local guess_command = function()
   ft_commands["python"] = "python "
   ft_commands["rust"] = "cargo build "
   ft_commands["zig"] = "zig build-exe "
-
-  -- get filetype
+-- get filetype
   local ft = vim.bo.filetype
   local command = ""
   if ft_commands[ft] ~= nil then
@@ -74,12 +73,12 @@ function IsTerm()
     if string.find(bName, "term://") ~= nil then
       -- find window id of terminal
       local id = vim.fn.win_findbuf(b)[1]
-      -- terminal window is open 
+      -- terminal window is open
       if id then
         -- switch to terminal
         vim.api.nvim_set_current_win(id)
         -- term found
-      -- there is a terminal but not in view
+        -- there is a terminal but not in view
       else
         -- prevent new blank buff
         vim.cmd(":wincmd v")
@@ -194,4 +193,30 @@ end
 vim.api.nvim_create_user_command("LoadNode",
   function(opts)
     LoadNode(opts.args)
+  end, { nargs = 1 })
+
+function ManagePy(pos)
+  -- get project root dir
+  local lsp_dir = vim.lsp.buf.list_workspace_folders()[1]
+  if lsp_dir == nil then
+    lsp_dir = ""
+  end
+  -- init variables
+  local dir
+  local command
+  -- allow user to modify root dir
+  dir = vim.fn.input("Directory=> ", lsp_dir, "file")
+  command = vim.fn.input("=>", "", "file")
+  command = "cd " .. dir .. " && " .. "./manage.py " .. command
+  -- create new window
+  vim.cmd(":wincmd n")
+  vim.cmd(":wincmd " .. pos)
+  -- run command
+  vim.fn.termopen(command)
+end
+
+-- create user command
+vim.api.nvim_create_user_command("ManagePy",
+  function(opts)
+    ManagePy(opts.args)
   end, { nargs = 1 })
