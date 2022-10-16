@@ -7,7 +7,7 @@ local guess_command = function()
   local ft_commands = {}
   -- create a table of ftypes
   ft_commands["go"] = "go build "
-  ft_commands["javascript"] = "node "
+  ft_commands["javascript"] = "npm "
   ft_commands["lua"] = "lua "
   ft_commands["python"] = "python "
   ft_commands["rust"] = "cargo build "
@@ -50,7 +50,7 @@ function Compile()
   vim.cmd("wincmd n")
   vim.cmd("wincmd J")
   -- allow user to change command
-  local command = vim.fn.input("", cmd, "file")
+  local command = vim.fn.input("> ", cmd, "file")
   -- cd to dir and run command
   vim.fn.termopen("cd " .. dir .. " && " .. command)
 end
@@ -196,6 +196,7 @@ vim.api.nvim_create_user_command("LoadNode",
   end, { nargs = 1 })
 
 function ManagePy(pos)
+  print("Run Manage.py Command")
   -- get project root dir
   local lsp_dir = vim.lsp.buf.list_workspace_folders()[1]
   if lsp_dir == nil then
@@ -206,7 +207,7 @@ function ManagePy(pos)
   local command
   -- allow user to modify root dir
   dir = vim.fn.input("Directory=> ", lsp_dir, "file")
-  command = vim.fn.input("=>", "", "file")
+  command = vim.fn.input("> ", "", "file")
   command = "cd " .. dir .. " && " .. "./manage.py " .. command
   -- create new window
   vim.cmd(":wincmd n")
