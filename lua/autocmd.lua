@@ -66,6 +66,7 @@ vim.api.nvim_create_autocmd(
     command = [[
     nnoremap <silent><buffer> <Space>Lb :ManagePy J<CR>
     nnoremap <silent><buffer> <Space>Ls :ManagePy L<CR>
+    set listchars=eol:↵,multispace:...\|
     ]],
   }
 )

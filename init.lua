@@ -8,14 +8,13 @@ require('autocmd')
 require("lspconf")
 
 -- global configurations --
-vim.cmd [[
-set number
-set relativenumber
-set nohlsearch
-set list
-set listchars=lead:.
-]]
-
+vim.cmd [[set nohlsearch]]
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.list = true
+vim.opt.listchars = {}
+vim.opt.listchars:append({ eol = '↵', lead = "." })
 vim.o.swapfile = false
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
@@ -82,8 +81,8 @@ keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true 
 -- Neogit
 keymap('n', '<C-x>g', ":Neogit<CR>", { noremap = true, silent = true })
 -- terminal
-keymap({ 'n', 'i' }, '<C-c><C-z>', '<Esc>:lua OpenTerm() <CR>', { noremap = true, silent = true })
-keymap('t', '<C-c><C-z>', '<C-\\><C-N><C-w>w]', { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<C-c><C-z>', '<Esc> :OpenTerm<CR>', { noremap = true, silent = true })
+keymap('t', '<C-c><C-z>', '<C-\\><C-N> :OpenTerm<CR>]', { noremap = true, silent = true })
 -- prevent nvim from being suspended
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
