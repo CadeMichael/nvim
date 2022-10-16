@@ -8,9 +8,14 @@ require('autocmd')
 require("lspconf")
 
 -- global configurations --
-vim.cmd("set number")
-vim.cmd("set relativenumber")
-vim.cmd("set nohlsearch")
+vim.cmd [[
+set number
+set relativenumber
+set nohlsearch
+set list
+set listchars=lead:.
+]]
+
 vim.o.swapfile = false
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
