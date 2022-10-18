@@ -5,7 +5,9 @@ require('plugins')
 require('autocmd')
 
 -- get the lsp Setup
-require("lspconf")
+require('lspconf')
+
+require('termbro')
 
 -- global configurations --
 vim.cmd [[set nohlsearch]]

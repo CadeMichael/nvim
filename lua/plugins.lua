@@ -1,6 +1,3 @@
--- my plugins
-require('termbro')
-
 -- autoisntall packer
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -53,6 +50,7 @@ return require('packer').startup(function(use)
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
+  use 'cademichael/termbro.nvim'
   -- ({["''"]}) management
   use({
     'kylechui/nvim-surround',
