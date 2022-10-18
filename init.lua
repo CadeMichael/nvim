@@ -75,14 +75,16 @@ keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true
 keymap('n', '<Space>l', "V<Plug>SlimeRegionSend$", { noremap = true, silent = true })
 keymap('n', '<C-x><C-e>', "va(<Plug>SlimeRegionSend%", { noremap = true, silent = true })
 -- Trouble
-keymap('n', '<Space>tt', ":TroubleToggle<CR>", { noremap = true, silent = true })
+keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", { noremap = true, silent = true })
+-- Cht.sh
+keymap('n', '<Space>cs', "<cmd> CheatSheet<CR>", { noremap = true, silent = true })
 -- Compile
-keymap('n', '<Space>cc', ":CompileCurrent<CR>", { noremap = true, silent = true })
+keymap('n', '<Space>cc', "<cmd> CompileCurrent<CR>", { noremap = true, silent = true })
 -- Neogit
-keymap('n', '<C-x>g', ":Neogit<CR>", { noremap = true, silent = true })
+keymap('n', '<C-x>g', "<cmd> Neogit<CR>", { noremap = true, silent = true })
 -- terminal
 keymap({ 'n', 'i' }, '<C-c><C-z>', '<cmd> OpenTerm<CR>', { noremap = true, silent = true })
-keymap('t', '<C-c><C-z>', '<C-\\><C-N> :OpenTerm<CR>]', { noremap = true, silent = true })
+keymap('t', '<C-c><C-z>', '<C-\\><C-N> <cmd> OpenTerm<CR>]', { noremap = true, silent = true })
 -- prevent nvim from being suspended
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
