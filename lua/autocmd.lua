@@ -5,17 +5,21 @@ vim.api.nvim_create_autocmd(
   "FileType",
   {
     pattern = {
-      "html",
       "css",
+      "eruby",
+      "html",
       "php",
       "svelte",
       "vue",
     },
-    command = "EmmetInstall",
+    command = [[
+    EmmetInstall
+    set listchars=eol:↵,multispace:\ \|
+    ]],
   }
 )
 
--- http 
+-- http
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -26,7 +30,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- JS load 
+-- JS load
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -40,7 +44,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ruby load 
+-- ruby load
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -66,7 +70,7 @@ vim.api.nvim_create_autocmd(
     command = [[
     nnoremap <silent><buffer> <Space>Lb :ManagePy J<CR>
     nnoremap <silent><buffer> <Space>Ls :ManagePy L<CR>
-    set listchars=eol:↵,multispace:...\|
+    set listchars=eol:↵,multispace:---+
     ]],
   }
 )
