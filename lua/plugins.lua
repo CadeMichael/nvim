@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
   use 'dcampos/cmp-snippy'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'folke/trouble.nvim'
+  use 'gorbit99/codewindow.nvim'
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
   -- colorchemes

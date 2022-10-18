@@ -7,8 +7,6 @@ require('autocmd')
 -- get the lsp Setup
 require('lspconf')
 
-require('termbro')
-
 -- global configurations --
 vim.cmd [[set nohlsearch]]
 vim.opt.number = true
@@ -43,6 +41,14 @@ require('nvim-surround').setup()
 -- Telescope
 require('telescope').setup()
 require('telescope').load_extension('fzf')
+
+-- TermBro
+require('termbro')
+
+-- Code Window
+local codewindow = require('codewindow')
+codewindow.setup()
+codewindow.apply_default_keybinds()
 
 -- statusline
 require('lualine').setup({})
