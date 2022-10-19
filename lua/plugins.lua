@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
-  use 'cademichael/termbro.nvim'
+  use '~/Desktop/termbro.nvim'
   -- ({["''"]}) management
   use({
     'kylechui/nvim-surround',
