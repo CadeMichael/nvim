@@ -91,8 +91,8 @@ keymap('n', '<Space>cc', "<cmd> CompileCurrent<CR>", { noremap = true, silent = 
 -- Neogit
 keymap('n', '<C-x>g', "<cmd> Neogit<CR>", { noremap = true, silent = true })
 -- terminal
-keymap({ 'n', 'i' }, '<C-c><C-z>', '<cmd> OpenTerm<CR>', { noremap = true, silent = true })
-keymap('t', '<C-c><C-z>', '<C-\\><C-N> <cmd> OpenTerm<CR>]', { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<leader>t', '<cmd> OpenTerm<CR>', { noremap = true, silent = true })
+keymap('t', '<leader>t', '<C-\\><C-N> <cmd> OpenTerm<CR>]', { noremap = true, silent = true })
 -- prevent nvim from being suspended
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
