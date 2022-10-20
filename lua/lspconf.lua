@@ -103,6 +103,7 @@ lsp.html.setup {
   }
 }
 --> JavaScript (node)
+-- npm i -g typescript-language-server
 lsp.tsserver.setup({
   capabilities = capabilities,
   on_attach = on_attach,
@@ -129,7 +130,9 @@ lsp.pylsp.setup({
   on_attach = on_attach,
 })
 --> Ruby
-lsp.solargraph.setup({
+-- need '# typed: true' for lsp
+-- generate docs with 'bundle exec tapioca init'
+lsp.sorbet.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
@@ -153,6 +156,7 @@ lsp.rust_analyzer.setup({
   },
 })
 --> Svelte
+-- npm i -g svelte-language-server
 lsp.svelte.setup({
   capabilities = capabilities,
   on_attach = on_attach,
