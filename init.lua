@@ -39,7 +39,13 @@ require('nvim-tree').setup()
 require('nvim-surround').setup()
 
 -- Telescope
-require('telescope').setup()
+require('telescope').setup({
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    }
+  }
+})
 require('telescope').load_extension('fzf')
 
 -- TermBro

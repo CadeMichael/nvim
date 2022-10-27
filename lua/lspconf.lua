@@ -107,17 +107,17 @@ lsp.html.setup {
 lsp.tsserver.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  filetypes = { 'javascript' }
+  -- filetypes = { 'javascript' }
 })
 --> JavaScript (deno)
-lsp.denols.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  init_options = {
-    lint = true,
-  },
-  filetypes = { 'typescript' }
-})
+-- lsp.denols.setup({
+  -- capabilities = capabilities,
+  -- on_attach = on_attach,
+  -- init_options = {
+    -- lint = true,
+  -- },
+  -- filetypes = { 'typescript' }
+-- })
 --> PHP
 lsp.intelephense.setup({
   capabilities = capabilities,
@@ -130,9 +130,7 @@ lsp.pylsp.setup({
   on_attach = on_attach,
 })
 --> Ruby
--- need '# typed: true' for lsp
--- generate docs with 'bundle exec tapioca init'
-lsp.sorbet.setup({
+lsp.solargraph.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })

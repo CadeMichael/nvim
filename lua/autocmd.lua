@@ -30,21 +30,25 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- JS load
+-- JS & Npm
 vim.api.nvim_create_autocmd(
   "FileType",
   {
     pattern = {
       "javascript",
+      "typescript",
+      "typescriptreact",
+      "javascriptreact",
     },
     command = [[
     nnoremap <silent><buffer> <Space>Lb :LoadNode J<CR>
     nnoremap <silent><buffer> <Space>Ls :LoadNode L<CR>
+    nnoremap <silent><buffer> <Space>rc :RunNpm <CR>
     ]],
   }
 )
 
--- ruby load
+-- ruby 
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -56,6 +60,7 @@ vim.api.nvim_create_autocmd(
     nnoremap <silent><buffer> <Space>Ls :LoadIRB L<CR>
     nnoremap <silent><buffer> <Space>rc :RailsCommand J true console --sandbox<CR>
     nnoremap <silent><buffer> <Space>rr :RailsCommand J true server<CR>
+    nnoremap <silent><buffer> <Space>rt :RailsTestFile<CR>
     ]],
   }
 )
