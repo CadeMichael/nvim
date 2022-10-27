@@ -13,7 +13,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
+-- revert from file specific setting
 vim.opt.listchars = {}
+-- set default
 vim.opt.listchars:append({ eol = '↵', lead = "." })
 vim.o.swapfile = false
 vim.o.expandtab = true
@@ -39,10 +41,21 @@ require('nvim-tree').setup()
 require('nvim-surround').setup()
 
 -- Telescope
+local telescope_theme = "ivy"
 require('telescope').setup({
+  -- set theme of used pickers
   pickers = {
     find_files = {
-      theme = "ivy",
+      theme = telescope_theme,
+    },
+    buffers = {
+      theme = telescope_theme,
+    },
+    help_tags = {
+      theme = telescope_theme,
+    },
+    keymaps = {
+      theme = telescope_theme,
     }
   }
 })
