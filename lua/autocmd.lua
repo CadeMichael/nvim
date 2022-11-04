@@ -73,8 +73,8 @@ vim.api.nvim_create_autocmd(
       "python",
     },
     command = [[
-    nnoremap <silent><buffer> <Space>Lb :ManagePy J<CR>
-    nnoremap <silent><buffer> <Space>Ls :ManagePy L<CR>
+    nnoremap <silent><buffer> <Space>rc :ManagePy J<CR>
+    nnoremap <silent><buffer> <Space>rf :LoadPy L<CR>
     set listchars=eol:↵,multispace:---+
     ]],
   }
