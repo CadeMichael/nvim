@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ruby 
+-- ruby
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -76,6 +76,20 @@ vim.api.nvim_create_autocmd(
     nnoremap <silent><buffer> <Space>rc :ManagePy J<CR>
     nnoremap <silent><buffer> <Space>rf :LoadPy L<CR>
     set listchars=eol:↵,multispace:---+
+    ]],
+  }
+)
+
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = {
+      "zig",
+    },
+    command = [[
+    set ts=4 sw=4
+    set listchars=eol:↵,multispace:---+
+    nnoremap <silent><buffer> <Space>zt :ZigTest<CR>
     ]],
   }
 )
