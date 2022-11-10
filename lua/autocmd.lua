@@ -80,20 +80,6 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = {
-      "zig",
-    },
-    command = [[
-    set ts=4 sw=4
-    set listchars=eol:↵,multispace:---+
-    nnoremap <silent><buffer> <Space>zt :ZigTest<CR>
-    ]],
-  }
-)
-
 -- term line num
 vim.api.nvim_create_autocmd(
   "TermOpen",

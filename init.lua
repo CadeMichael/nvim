@@ -1,5 +1,15 @@
 -- get the plugins
 require('plugins')
+-- My Plugins --
+-- TermBro
+require('termbro')
+-- Zig
+vim.g.zig_settings = {
+  test = '<space>tf',
+  build = '<space>bf',
+  autoFmt = true,
+}
+require('zig')
 
 -- get the autocommands
 require('autocmd')
@@ -60,9 +70,6 @@ require('telescope').setup({
   }
 })
 require('telescope').load_extension('fzf')
-
--- TermBro
-require('termbro')
 
 -- Code Window
 local codewindow = require('codewindow')
