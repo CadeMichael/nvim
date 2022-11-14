@@ -7,7 +7,7 @@ require('termbro')
 vim.g.zig_settings = {
   test = '<space>tf',
   build = '<space>bf',
-  autoFmt = true,
+  save = {format = true, build = false},
 }
 require('zig')
 
@@ -19,7 +19,6 @@ require('lspconf')
 
 -- global configurations --
 vim.cmd [[set nohlsearch]]
-vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
