@@ -1,3 +1,4 @@
+-- https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm
 -- apexcode
 vim.api.nvim_create_autocmd(
   { "BufNewFile", "BufRead", "BufEnter" },
