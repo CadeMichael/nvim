@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
   }
   -- lang support
   use 'windwp/nvim-autopairs'
-  use 'lervag/vimtex'
+  -- use 'lervag/vimtex'
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'

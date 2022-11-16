@@ -7,9 +7,12 @@ require('termbro')
 vim.g.zig_settings = {
   test = '<space>tf',
   build = '<space>bf',
-  save = {format = true, build = false},
+  save = { format = true, build = false },
 }
 require('zig')
+
+-- Salesforce
+require('force')
 
 -- get the autocommands
 require('autocmd')
@@ -147,19 +150,13 @@ vim.cmd [[colorscheme dracula]]
 --> allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
 
--- Neovide
-vim.cmd([[set guifont=Hack\ Nerd\ Font:h16]])
-vim.g.neovide_transparency = 0.85
-vim.g.neovide_floating_blur_amount_x = 2.0
-vim.g.neovide_floating_blur_amount_y = 2.0
-
 ---- Os Specific
 -- LateX
-if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.g.vimtex_view_method = 'skim'
-else
-  vim.g.vimtex_view_method = 'zathura'
-end
+-- if vim.loop.os_uname().sysname == 'Darwin' then
+-- vim.g.vimtex_view_method = 'skim'
+-- else
+-- vim.g.vimtex_view_method = 'zathura'
+-- end
 
 ---- Functions
 function SaveClipper()
