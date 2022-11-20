@@ -12,7 +12,7 @@ vim.g.zig_settings = {
 require('zig')
 
 -- Salesforce
-require('force')
+require('force.force')
 
 -- get the autocommands
 require('autocmd')
@@ -25,8 +25,6 @@ vim.cmd [[set nohlsearch]]
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
--- revert from file specific setting
-vim.opt.listchars = {}
 -- set default
 vim.opt.listchars:append({ eol = '↵', lead = "." })
 vim.o.swapfile = false
