@@ -9,7 +9,9 @@ vim.g.zig_settings = {
   build = '<space>bf',
   save = { format = true, build = false },
 }
-require('zig')
+
+-- Rails
+vim.g.roron_autos = true
 
 -- Salesforce
 require('force.force')

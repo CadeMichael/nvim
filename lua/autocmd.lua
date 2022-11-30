@@ -63,23 +63,6 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ruby
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = {
-      "ruby",
-    },
-    command = [[
-    nnoremap <silent><buffer> <Space>Lb :LoadIRB J<CR>
-    nnoremap <silent><buffer> <Space>Ls :LoadIRB L<CR>
-    nnoremap <silent><buffer> <Space>rc :RailsCommand J true console --sandbox<CR>
-    nnoremap <silent><buffer> <Space>rr :RailsCommand J true server<CR>
-    nnoremap <silent><buffer> <Space>rt :RailsTestFile<CR>
-    ]],
-  }
-)
-
 -- Python Django
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -89,7 +72,7 @@ vim.api.nvim_create_autocmd(
     },
     command = [[
     nnoremap <silent><buffer> <Space>rc :ManagePy J<CR>
-    nnoremap <silent><buffer> <Space>rf :LoadPy L<CR>
+    nnoremap <silent><buffer> <Space>rf :lua PyOpenOrLoad()<CR> i<C-l><C-l>
     set listchars=eol:↵,multispace:---+
     ]],
   }

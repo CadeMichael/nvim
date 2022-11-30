@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
   use 'jpalardy/vim-slime'
   use '~/Desktop/termbro.nvim'
   use '~/Desktop/zig.nvim'
+  use '~/Desktop/roron.nvim'
   -- ({["''"]}) management
   use({
     'kylechui/nvim-surround',

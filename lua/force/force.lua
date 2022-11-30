@@ -10,6 +10,10 @@ vim.api.nvim_create_autocmd(
       vim.bo.filetype = 'apexcode'
       local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
       ft_to_parser.apexcode = "java"
+      vim.o.expandtab = false
+      vim.o.tabstop = 4
+      vim.o.shiftwidth = 4
+      vim.o.softtabstop = 4
     end
   }
 )
