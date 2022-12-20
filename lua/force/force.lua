@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
+
 local function runForceCmd(command, dir)
   vim.fn.jobstart(command, {
     -- allows proper newlines

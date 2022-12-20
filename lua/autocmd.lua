@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd(
     ]],
   }
 )
+
 -- go
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -45,9 +46,22 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- JS & Npm
+-- Julia
 vim.api.nvim_create_autocmd(
-  "FileType",
+  "filetype",
+  {
+    pattern = {
+      "julia",
+    },
+    command = [[
+    nnoremap <silent><buffer> <space>rf :lua LoadJL()<cr>
+    ]],
+  }
+)
+
+-- js & npm
+vim.api.nvim_create_autocmd(
+  "filetype",
   {
     pattern = {
       "javascript",
@@ -56,9 +70,8 @@ vim.api.nvim_create_autocmd(
       "javascriptreact",
     },
     command = [[
-    nnoremap <silent><buffer> <Space>Lb :LoadNode J<CR>
-    nnoremap <silent><buffer> <Space>Ls :LoadNode L<CR>
-    nnoremap <silent><buffer> <Space>rc :RunNpm <CR>
+    nnoremap <silent><buffer> <space>rf :LoadNode J<cr>
+    nnoremap <silent><buffer> <space>rc :RunNpm <cr>
     ]],
   }
 )
@@ -72,7 +85,7 @@ vim.api.nvim_create_autocmd(
     },
     command = [[
     nnoremap <silent><buffer> <Space>rc :ManagePy J<CR>
-    nnoremap <silent><buffer> <Space>rf :lua PyOpenOrLoad()<CR> i<C-l><C-l>
+    nnoremap <silent><buffer> <Space>rf :lua LoadPy('J')<CR>
     set listchars=eol:↵,multispace:---+
     ]],
   }

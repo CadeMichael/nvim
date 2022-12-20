@@ -110,6 +110,7 @@ keymap('n', '<Space>s', ":lua SaveClipper()<CR>", { noremap = true, silent = tru
 keymap('v', '<Space>r', "<Plug>SlimeRegionSend", { noremap = true, silent = true })
 keymap('n', '<Space>l', "V<Plug>SlimeRegionSend$", { noremap = true, silent = true })
 keymap('n', '<C-x><C-e>', "va(<Plug>SlimeRegionSend%", { noremap = true, silent = true })
+keymap('n', '<C-c><C-b>', ":lua SendBuf()<CR>", { noremap = true, silent = true })
 -- Trouble
 keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", { noremap = true, silent = true })
 -- Cht.sh
@@ -120,7 +121,7 @@ keymap('n', '<Space>cc', "<cmd> CompileCurrent<CR>", { noremap = true, silent = 
 keymap('n', '<C-x>g', "<cmd> Neogit<CR>", { noremap = true, silent = true })
 -- terminal
 keymap({ 'n', 'i' }, '<leader>t', '<cmd> OpenTerm<CR>', { noremap = true, silent = true })
-keymap('t', '<leader>t', '<C-\\><C-N> <cmd> OpenTerm<CR>]', { noremap = true, silent = true })
+keymap('t', '<leader>t', '<cmd> OpenTerm<CR>]', { noremap = true, silent = true })
 -- prevent nvim from being suspended
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
@@ -162,4 +163,22 @@ vim.o.mouse = 'nv' --> normal / visual
 function SaveClipper()
   vim.cmd(":%s/ $//")
   vim.cmd(":w")
+end
+
+---- Send Buff
+function SendBuf()
+  local first = 1
+  local last = vim.api.nvim_buf_line_count(0)
+  vim.cmd(first .. "," .. last .. "SlimeSend")
+end
+
+function LoadJL()
+  -- get buffer name
+  local buf = vim.api.nvim_buf_get_name(0)
+  -- make and move to window
+  vim.cmd("wincmd n")
+  vim.cmd("wincmd J")
+  -- load file into terminal
+  local command = "julia -i " .. buf
+  vim.fn.termopen(command)
 end
