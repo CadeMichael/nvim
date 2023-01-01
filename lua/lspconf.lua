@@ -111,12 +111,12 @@ lsp.tsserver.setup({
 })
 --> JavaScript (deno)
 -- lsp.denols.setup({
-  -- capabilities = capabilities,
-  -- on_attach = on_attach,
-  -- init_options = {
-    -- lint = true,
-  -- },
-  -- filetypes = { 'typescript' }
+-- capabilities = capabilities,
+-- on_attach = on_attach,
+-- init_options = {
+-- lint = true,
+-- },
+-- filetypes = { 'typescript' }
 -- })
 --> PHP
 lsp.intelephense.setup({
@@ -228,7 +228,8 @@ null_ls.setup({
 require("nvim-treesitter.configs").setup({
   -- Modules and its options go here
   highlight = {
-    enable = true
+    enable = true,
+    additional_vim_regex_highlighting = { 'org' }
   },
   ensure_installed = {
     "c",

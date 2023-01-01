@@ -5,7 +5,7 @@ local fc = require('force.forceCommands')
 vim.api.nvim_create_autocmd(
   { "BufNewFile", "BufRead", "BufEnter" },
   {
-    pattern = { "*.cls", "*.trigger" },
+    pattern = { "*.apex", "*.cls", "*.trigger" },
     callback = function()
       vim.bo.filetype = 'apexcode'
       local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
@@ -67,4 +67,12 @@ function OpenOrg()
   print("Opening Org...")
   local dir = vim.fn.getcwd()
   runForceCmd(fc.orgOpen, dir)
+end
+
+function RunAnonymousFile()
+  local fName = vim.api.nvim_buf_get_name(0)
+  local command = fc.execute .. fName
+  vim.cmd[[wincmd n]]
+  vim.cmd[[wincmd J]]
+  vim.fn.termopen(command)
 end

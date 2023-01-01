@@ -34,7 +34,8 @@ return require('packer').startup(function(use)
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
   -- colorchemes
-  use 'Mofiqul/dracula.nvim'
+  -- use 'Mofiqul/dracula.nvim'
+  use { "ellisonleao/gruvbox.nvim" }
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   -- Telescope
@@ -54,6 +55,8 @@ return require('packer').startup(function(use)
   use '~/Desktop/termbro.nvim'
   use '~/Desktop/zig.nvim'
   use '~/Desktop/roron.nvim'
+  use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+  use  'nvim-orgmode/orgmode'
   -- ({["''"]}) management
   use({
     'kylechui/nvim-surround',

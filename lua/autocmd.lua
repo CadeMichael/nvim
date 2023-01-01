@@ -1,5 +1,16 @@
 -- autocmd's
 
+-- http
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = {
+      "apexcode",
+    },
+    command = [[nnoremap <silent><buffer> <Space>ar :lua RunAnonymousFile()<CR>]]
+  }
+)
+
 -- emmet
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -70,8 +81,8 @@ vim.api.nvim_create_autocmd(
       "javascriptreact",
     },
     command = [[
-    nnoremap <silent><buffer> <space>rf :LoadNode J<cr>
-    nnoremap <silent><buffer> <space>rc :RunNpm <cr>
+    nnoremap <silent><buffer> <space>rf :LoadNode J<CR>
+    nnoremap <silent><buffer> <space>rc :RunNpm<CR>
     ]],
   }
 )
