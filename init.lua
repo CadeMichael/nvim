@@ -22,32 +22,29 @@ require('autocmd')
 -- global configs --
 --------------------
 
-vim.cmd [[set nohlsearch]]
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
--- set defaults
+vim.opt.smartindent = true
 vim.opt.listchars:append({ eol = '↵', lead = "." })
+vim.opt.colorcolumn = '80'
 vim.o.swapfile = false
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.opt.cursorline = true
-
--- slime
-vim.g.slime_target = "neovim"
-
--- comments
-vim.g.NERDSpaceDelims = 1
-
--- emmet vim
-vim.g.user_emmet_install_global = 0
-
--- themeing
-vim.g.startify_custom_header = {} -- no header
-
 -- allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
+-- slime
+vim.g.slime_target = "neovim"
+-- comments
+vim.g.NERDSpaceDelims = 1
+-- emmet vim
+vim.g.user_emmet_install_global = 0
+-- themeing
+vim.g.startify_custom_header = {} -- no header
 
 -----------------
 -- Os Specific --
