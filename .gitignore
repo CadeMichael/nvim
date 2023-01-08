@@ -3,4 +3,6 @@
 !lua/force/
 !snippets/
 !ftplugins/
-!after/*
+!after/
+!after/plugin/
+!after/plugin/ide
