@@ -46,17 +46,6 @@ vim.g.user_emmet_install_global = 0
 -- themeing
 vim.g.startify_custom_header = {} -- no header
 
------------------
--- Os Specific --
------------------
-
--- LateX
--- if vim.loop.os_uname().sysname == 'Darwin' then
--- vim.g.vimtex_view_method = 'skim'
--- else
--- vim.g.vimtex_view_method = 'zathura'
--- end
-
 ---------------
 -- Functions --
 ---------------
