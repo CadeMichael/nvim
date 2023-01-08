@@ -1,3 +1,7 @@
+---------------------
+-- package management
+---------------------
+
 -- autoisntall packer
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -30,12 +34,11 @@ return require('packer').startup(function(use)
   use 'dcampos/cmp-snippy'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'folke/trouble.nvim'
-  use 'gorbit99/codewindow.nvim'
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/playground'
   -- colorchemes
-  -- use 'Mofiqul/dracula.nvim'
-  use { "ellisonleao/gruvbox.nvim" }
+  use 'ellisonleao/gruvbox.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   -- Telescope
@@ -52,18 +55,15 @@ return require('packer').startup(function(use)
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
-  use '~/Desktop/termbro.nvim'
   use '~/Desktop/zig.nvim'
-  use '~/Desktop/roron.nvim'
   use { 'michaelb/sniprun', run = 'bash ./install.sh' }
-  use  'nvim-orgmode/orgmode'
   -- ({["''"]}) management
   use({
     'kylechui/nvim-surround',
     tag = '*',
   })
   -- nvim tree
-  use 'kyazdani42/nvim-tree.lua'
+  -- use 'kyazdani42/nvim-tree.lua'
   -- git
   use {
     'TimUntersberger/neogit',

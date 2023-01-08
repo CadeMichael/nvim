@@ -1,6 +1,8 @@
+------------
 -- autocmd's
+------------
 
--- http
+-- SaleForce
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -30,22 +32,6 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- go
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = {
-      "go",
-    },
-    callback = function()
-      vim.o.expandtab = false
-      vim.o.tabstop = 4
-      vim.o.shiftwidth = 4
-      vim.o.softtabstop = 4
-    end,
-  }
-)
-
 -- http
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -54,19 +40,6 @@ vim.api.nvim_create_autocmd(
       "http",
     },
     command = [[nnoremap <silent><buffer> <Space>r <Plug>RestNvim]]
-  }
-)
-
--- Julia
-vim.api.nvim_create_autocmd(
-  "filetype",
-  {
-    pattern = {
-      "julia",
-    },
-    command = [[
-    nnoremap <silent><buffer> <space>rf :lua LoadJL()<cr>
-    ]],
   }
 )
 
@@ -81,23 +54,7 @@ vim.api.nvim_create_autocmd(
       "javascriptreact",
     },
     command = [[
-    nnoremap <silent><buffer> <space>rf :LoadNode J<CR>
     nnoremap <silent><buffer> <space>rc :RunNpm<CR>
-    ]],
-  }
-)
-
--- Python Django
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = {
-      "python",
-    },
-    command = [[
-    nnoremap <silent><buffer> <Space>rc :ManagePy J<CR>
-    nnoremap <silent><buffer> <Space>rf :lua LoadPy('J')<CR>
-    set listchars=eol:↵,multispace:---+
     ]],
   }
 )
