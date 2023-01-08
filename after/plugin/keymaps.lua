@@ -25,18 +25,18 @@ keymap('n', '<Space>l', "<Plug>SnipRun", { noremap = true, silent = true })
 keymap('n', '<Space>sr', "<Plug>SnipReset", { silent = true })
 keymap('n', '<Space>sc', "<Plug>SnipReplMemoryClean", { silent = true })
 keymap('n', '<Space>sq', "<Plug>SnipClose", { silent = true })
-keymap('n', '<C-c><C-b>', ":lua SendBuf()<CR>", { noremap = true, silent = true })
+keymap('n', '<C-c><C-b>', SendBuf, { noremap = true, silent = true })
 -- Trouble
 keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", { noremap = true, silent = true })
 -- Cht.sh
-keymap('n', '<Space>cs', "<cmd> CheatSheet<CR>", { noremap = true, silent = true })
+keymap('n', '<Space>cs', CheatSheet, { noremap = true, silent = true })
 -- Compile
-keymap('n', '<Space>cc', "<cmd> CompileCurrent<CR>", { noremap = true, silent = true })
+keymap('n', '<Space>cc', Compile, { noremap = true, silent = true })
 -- Neogit
 keymap('n', '<C-x>g', "<cmd> Neogit<CR>", { noremap = true, silent = true })
 -- terminal
-keymap({ 'n', 'i' }, '<leader>t', ':lua OpenTerm()<CR>', { noremap = true, silent = true })
-keymap('t', '<leader>t', '<cmd> OpenTerm<CR>', { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<leader>t', OpenTerm, { noremap = true, silent = true })
+keymap('t', '<leader>t', OpenTerm, { noremap = true, silent = true })
 -- prevent nvim from being suspended
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
 
