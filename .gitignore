@@ -1,6 +1,7 @@
 */
 !lua/
 !lua/force/
+!lua/cFuncs/
 !snippets/
 !ftplugins/
 !after/
