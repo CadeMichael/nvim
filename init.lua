@@ -61,6 +61,5 @@ end
 function SendBuf()
   local first = 1
   local last = vim.api.nvim_buf_line_count(0)
-  -- vim.cmd(first .. "," .. last .. "SlimeSend")
   require 'sniprun.api'.run_range(first, last)
 end

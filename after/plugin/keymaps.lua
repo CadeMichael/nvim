@@ -5,52 +5,55 @@
 local keymap = vim.keymap.set
 
 -- nvimtree
--- keymap('n', '<Space>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+-- keymap('n', '<Space>n', ':NvimTreeToggle<CR>', opts)
 -- Telescope
 local ts = require('telescope.builtin')
-keymap('n', '<Space>bs', ts.buffers, { noremap = true, silent = true })
-keymap('n', '<Space>.', ts.find_files, { noremap = true, silent = true })
-keymap('n', '<Space>g.', ts.git_files, { noremap = true, silent = true })
-keymap('n', '<Space>h', ts.help_tags, { noremap = true, silent = true })
-keymap('n', '<Space>m', ts.keymaps, { noremap = true, silent = true })
+local opts = { noremap = true, silent = true }
+keymap('n', '<Space>bs', ts.buffers, opts)
+keymap('n', '<Space>.', ts.find_files, opts)
+keymap('n', '<Space>g.', ts.git_files, opts)
+keymap('n', '<Space>h', ts.help_tags, opts)
+keymap('n', '<Space>m', ts.keymaps, opts)
 -- custom project search function
-keymap('n', '<Space>ps', function ()
-  ts.grep_string({ search = vim.fn.input("Grep > ")})
+keymap('n', '<Space>ps', function()
+  ts.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 -- comments
-keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
--- clip ending white space and save
-keymap('v', '<Space>r', "<Plug>SnipRun", { noremap = true, silent = true })
-keymap('n', '<Space>l', "<Plug>SnipRun", { noremap = true, silent = true })
+keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
+-- SnipRun / Slime
+keymap('v', '<Space>r', "<Plug>SnipRun", opts)
+keymap('v', '<Space>s', "<cmd>SlimeSend<CR>", opts)
+keymap('n', '<Space>sl', "<cmd>SlimeSendCurrentLine<CR>", opts)
+keymap('n', '<Space>l', "<Plug>SnipRun", opts)
 keymap('n', '<Space>sr', "<Plug>SnipReset", { silent = true })
 keymap('n', '<Space>sc', "<Plug>SnipReplMemoryClean", { silent = true })
 keymap('n', '<Space>sq', "<Plug>SnipClose", { silent = true })
-keymap('n', '<C-c><C-b>', SendBuf, { noremap = true, silent = true })
+keymap('n', '<C-c><C-b>', SendBuf, opts)
 -- Trouble
-keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", { noremap = true, silent = true })
+keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 -- Cht.sh
-keymap('n', '<Space>cs', CheatSheet, { noremap = true, silent = true })
+keymap('n', '<Space>cs', CheatSheet, opts)
 -- Compile
-keymap('n', '<Space>cc', Compile, { noremap = true, silent = true })
+keymap('n', '<Space>cc', Compile, opts)
 -- Neogit
-keymap('n', '<C-x>g', "<cmd> Neogit<CR>", { noremap = true, silent = true })
+keymap('n', '<C-x>g', "<cmd> Neogit<CR>", opts)
 -- terminal
-keymap({ 'n', 'i' }, '<leader>t', OpenTerm, { noremap = true, silent = true })
-keymap('t', '<leader>t', OpenTerm, { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<leader>t', OpenTerm, opts)
+keymap('t', '<leader>t', OpenTerm, opts)
 -- prevent nvim from being suspended
-keymap({ 'n', 'i' }, '<C-z>', '<Esc>', { noremap = true, silent = true })
+keymap({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
 -- remaps
 keymap('n', '<leader>d', vim.cmd.Ex)
-keymap('n', '<Space>bk', ':bdelete!<CR>', { noremap = true, silent = true })
-keymap('n', 'Y', 'y$', { noremap = true, silent = true })
-keymap('n', 'n', 'nzzzv', { noremap = true, silent = true })
-keymap('n', 'N', 'Nzzzv', { noremap = true, silent = true })
-keymap('i', '.', '.<C-g>u', { noremap = true, silent = true })
-keymap('i', ',', ',<C-g>u', { noremap = true, silent = true })
-keymap('i', '[', '[<C-g>u', { noremap = true, silent = true })
-keymap('i', '(', '(<C-g>u', { noremap = true, silent = true })
-keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+keymap('n', '<Space>bk', ':bdelete!<CR>', opts)
+keymap('n', 'Y', 'y$', opts)
+keymap('n', 'n', 'nzzzv', opts)
+keymap('n', 'N', 'Nzzzv', opts)
+keymap('i', '.', '.<C-g>u', opts)
+keymap('i', ',', ',<C-g>u', opts)
+keymap('i', '[', '[<C-g>u', opts)
+keymap('i', '(', '(<C-g>u', opts)
+keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
+keymap('v', 'K', ":m '<-2<CR>gv=gv", opts)
 keymap('n', '<c-d>', '<c-d>zz')
 keymap('n', '<c-u>', '<c-u>zz')
