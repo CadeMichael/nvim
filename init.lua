@@ -8,11 +8,13 @@ require('cFuncs')
 -- Salesforce
 require('force')
 -- Zig
-vim.g.zig_settings = {
-  test = '<space>tf',
-  build = '<space>bf',
-  save = { format = true, build = false },
-}
+if vim.loop.os_uname == 'darwin' then
+  vim.g.zig_settings = {
+    test = '<space>tf',
+    build = '<space>bf',
+    save = { format = true, build = false },
+  }
+end
 ----------------
 
 -- get the autocommands
