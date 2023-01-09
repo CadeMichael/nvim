@@ -53,8 +53,8 @@ vim.g.startify_custom_header = {} -- no header
 ---------------
 
 function SaveClipper()
-  vim.cmd(":%s/ $//")
-  vim.cmd(":w")
+  vim.cmd("%s/ $//")
+  vim.cmd("w")
 end
 
 ---- Send Buff

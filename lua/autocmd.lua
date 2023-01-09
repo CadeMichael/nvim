@@ -9,7 +9,9 @@ vim.api.nvim_create_autocmd(
     pattern = {
       "apexcode",
     },
-    command = [[nnoremap <silent><buffer> <Space>ar :lua RunAnonymousFile()<CR>]]
+    command = [[
+    nnoremap <silent><buffer> <Space>ar :lua RunAnonymousFile()<CR>
+    ]]
   }
 )
 
@@ -27,8 +29,21 @@ vim.api.nvim_create_autocmd(
     },
     command = [[
     EmmetInstall
-    set listchars=eol:↵,multispace:\ \|
+    setlocal listchars=eol:↵,multispace:\ \|
     ]],
+  }
+)
+
+-- netrw
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = {
+      "netrw",
+    },
+    callback = function ()
+      vim.opt_local.colorcolumn = ''
+    end
   }
 )
 
