@@ -29,7 +29,6 @@ vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
-vim.opt.smartindent = true
 vim.opt.listchars:append({ eol = '↵', lead = "." })
 vim.opt.colorcolumn = '80'
 vim.o.swapfile = false

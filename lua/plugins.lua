@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/playground'
   -- colorchemes
   use 'ellisonleao/gruvbox.nvim'
+  use { 'nyoom-engineering/oxocarbon.nvim' }
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   -- Telescope
