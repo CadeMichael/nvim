@@ -22,7 +22,6 @@ end)
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- SnipRun / Slime
 keymap('v', '<Space>r', "<Plug>SnipRun", opts)
-keymap('v', '<Space>s', "<cmd>SlimeSend<CR>", opts)
 keymap('n', '<Space>sl', "<cmd>SlimeSendCurrentLine<CR>", opts)
 keymap('n', '<Space>l', "<Plug>SnipRun", opts)
 keymap('n', '<Space>sr', "<Plug>SnipReset", { silent = true })

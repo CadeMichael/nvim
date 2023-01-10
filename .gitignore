@@ -3,7 +3,7 @@
 !lua/force/
 !lua/cFuncs/
 !snippets/
-!ftplugins/
+!ftplugin/
 !after/
 !after/plugin/
 !after/plugin/ide
