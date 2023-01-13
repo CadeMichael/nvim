@@ -21,7 +21,7 @@ if cmp then cmp.setup({
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -66,7 +66,7 @@ local on_attach = function(_, bufnr)
     '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 end
@@ -112,17 +112,7 @@ lsp.html.setup {
 lsp.tsserver.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  -- filetypes = { 'javascript' }
 })
---> JavaScript (deno)
--- lsp.denols.setup({
--- capabilities = capabilities,
--- on_attach = on_attach,
--- init_options = {
--- lint = true,
--- },
--- filetypes = { 'typescript' }
--- })
 --> Python
 -- pip install 'python-lsp-server[all]'
 lsp.pylsp.setup({
@@ -200,26 +190,5 @@ require('snippy').setup({
     nx = {
       ['<leader>x'] = 'cut_text',
     },
-  },
-})
-
--- Null-ls
-local null_ls = require("null-ls")
-local formatting = null_ls.builtins.formatting
-local actions = null_ls.builtins.code_actions
-local diagnostics = null_ls.builtins.diagnostics
-
--- using setup method
-null_ls.setup({
-  autostart = true,
-  sources = {
-    -- actions
-    actions.gitsigns,
-    -- formatting
-    formatting.black,
-    formatting.djlint,
-    formatting.gofmt,
-    -- diagnostics
-    diagnostics.zsh
   },
 })

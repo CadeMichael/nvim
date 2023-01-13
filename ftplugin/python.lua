@@ -1,1 +1,1 @@
-vim.opt.listchars = ({ eol = '↵', multispace = "---+" })
+vim.opt_local.listchars = ({ eol = '↵', multispace = "---+" })

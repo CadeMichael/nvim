@@ -31,6 +31,7 @@ vim.opt.number = true
 vim.opt.list = true
 vim.opt.listchars:append({ eol = '↵', lead = "." })
 vim.opt.colorcolumn = '80'
+vim.opt.smartindent = true
 vim.o.swapfile = false
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
@@ -47,9 +48,9 @@ vim.g.user_emmet_install_global = 0
 -- themeing
 vim.g.startify_custom_header = {} -- no header
 
----------------
--- Functions --
----------------
+-----------------------
+-- General Functions --
+-----------------------
 
 function SaveClipper()
   vim.cmd("%s/ $//")

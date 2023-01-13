@@ -4,8 +4,6 @@
 
 local keymap = vim.keymap.set
 
--- nvimtree
--- keymap('n', '<Space>n', ':NvimTreeToggle<CR>', opts)
 -- Telescope
 local ts = require('telescope.builtin')
 local opts = { noremap = true, silent = true }

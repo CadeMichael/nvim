@@ -18,12 +18,11 @@ return require('packer').startup(function(use)
   -- lsp extension
   use 'dcampos/nvim-snippy'
   use 'dcampos/cmp-snippy'
-  use 'jose-elias-alvarez/null-ls.nvim'
   use 'folke/trouble.nvim'
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
-  -- colorchemes
+  -- colorchemes / icons
   use 'ellisonleao/gruvbox.nvim'
   use { 'nyoom-engineering/oxocarbon.nvim' }
   use 'kyazdani42/nvim-web-devicons'
@@ -37,6 +36,7 @@ return require('packer').startup(function(use)
     run = 'make'
   }
   -- lang support
+  use 'simrat39/rust-tools.nvim' -- rust
   use 'windwp/nvim-autopairs'
   -- use 'lervag/vimtex'
   use 'mattn/emmet-vim'
@@ -51,8 +51,6 @@ return require('packer').startup(function(use)
     'kylechui/nvim-surround',
     tag = '*',
   })
-  -- nvim tree
-  -- use 'kyazdani42/nvim-tree.lua'
   -- git
   use {
     'TimUntersberger/neogit',
@@ -73,35 +71,4 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-startify'
   -- which key
   use "folke/which-key.nvim"
-  -- RestClient
-  use {
-    'NTBBloodbath/rest.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('rest-nvim').setup({
-        -- Open request results in a horizontal split
-        result_split_horizontal = true,
-        -- Keep the http file buffer above|left when split horizontal|vertical
-        result_split_in_place = true,
-        -- Skip SSL verification, useful for unknown certificates
-        skip_ssl_verification = false,
-        -- Highlight request on run
-        highlight = {
-          enabled = true,
-          timeout = 150,
-        },
-        result = {
-          -- toggle showing URL, HTTP info, headers at top the of result window
-          show_url = true,
-          show_http_info = true,
-          show_headers = true,
-        },
-        -- Jump to request line on run
-        jump_to_request = false,
-        env_file = '.env',
-        custom_dynamic_variables = {},
-        yank_dry_run = true,
-      })
-    end
-  }
 end)
