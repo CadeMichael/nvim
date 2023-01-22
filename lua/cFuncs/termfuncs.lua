@@ -119,9 +119,9 @@ function IsTerm()
       -- get buffer
       local b = offScreen[1]
       -- prevent new blank buff
-      vim.cmd(":wincmd v")
+      vim.cmd("wincmd v")
       -- move to bottom
-      vim.cmd(":wincmd J")
+      vim.cmd("wincmd J")
       -- set to terminal
       vim.api.nvim_set_current_buf(b)
     end
