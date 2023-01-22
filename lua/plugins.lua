@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
     run = 'make'
   }
   -- lang support
-  use 'simrat39/rust-tools.nvim' -- rust
+  use 'simrat39/rust-tools.nvim'
   use 'windwp/nvim-autopairs'
   -- use 'lervag/vimtex'
   use 'mattn/emmet-vim'
@@ -51,6 +51,8 @@ return require('packer').startup(function(use)
     'kylechui/nvim-surround',
     tag = '*',
   })
+  -- tables
+  use 'dhruvasagar/vim-table-mode'
   -- git
   use {
     'TimUntersberger/neogit',

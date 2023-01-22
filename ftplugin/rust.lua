@@ -1,5 +1,9 @@
 vim.keymap.set('n', '<C-;>', 'A;')
-vim.keymap.set('i', "<C-;>", '<Esc>A;')
+vim.keymap.set('i', '<C-;>', '<Esc>A;')
+vim.keymap.set('n', '<C-c>f', function()
+  local fname = vim.api.nvim_buf_get_name(0)
+  vim.cmd('!rustfmt ' .. fname)
+end)
 
 local rt = require('rust-tools')
 

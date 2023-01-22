@@ -35,8 +35,8 @@ keymap('n', '<Space>cc', Compile, opts)
 -- Neogit
 keymap('n', '<C-x>g', "<cmd> Neogit<CR>", opts)
 -- terminal
-keymap({ 'n', 'i' }, '<leader>t', OpenTerm, opts)
-keymap('t', '<leader>t', OpenTerm, opts)
+keymap({ 'n', 'i' }, '<C-c><C-z>', OpenTerm, opts)
+keymap('t', '<C-c><C-z>', OpenTerm, opts)
 -- prevent nvim from being suspended
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 

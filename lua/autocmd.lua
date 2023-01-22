@@ -2,6 +2,8 @@
 -- autocmd's
 ------------
 
+local opts = { noremap = true, silent = true }
+
 -- SaleForce
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -67,10 +69,11 @@ vim.api.nvim_create_autocmd(
       "typescript",
       "typescriptreact",
       "javascriptreact",
+      "svelte",
     },
-    command = [[
-    nnoremap <silent><buffer> <space>rc :RunNpm<CR>
-    ]],
+    callback = function()
+      vim.keymap.set("n", "<space>rn", RunNpm, opts)
+    end
   }
 )
 
