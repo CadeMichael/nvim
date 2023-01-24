@@ -1,5 +1,6 @@
 local repl = "utop"
 local replid
+local cmd
 
 local function dune_proj()
   local found = vim.fn.findfile("dune", ".;")
@@ -10,7 +11,7 @@ local function dune_proj()
   end
 end
 
-function GetUtopId()
+function GetMlId()
   if replid ~= nil then
     print(replid)
   else
@@ -18,13 +19,16 @@ function GetUtopId()
   end
 end
 
-function OpenUtop()
-  local cmd = repl
-  if dune_proj() then
-    cmd = "dune" .. " " .. repl
+function OpenMlRepl()
+  if cmd == nil then
+    if dune_proj() then
+      cmd = "dune" .. " " .. repl
+    else
+      cmd = "ocaml"
+    end
   end
+  cmd = vim.fn.input("=> ", cmd)
   vim.cmd [[wincmd n]]
   vim.cmd [[wincmd J]]
-  print(cmd)
   replid = vim.fn.termopen(cmd)
 end
