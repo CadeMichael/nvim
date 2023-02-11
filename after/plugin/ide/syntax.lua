@@ -13,7 +13,6 @@ require("nvim-treesitter.configs").setup({
     "clojure",
     "go",
     "javascript",
-    "julia",
     "lua",
     "python",
     "rust",
