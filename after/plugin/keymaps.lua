@@ -18,14 +18,8 @@ keymap('n', '<Space>ps', function()
 end)
 -- comments
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
--- SnipRun / Slime
-keymap('v', '<Space>r', "<Plug>SnipRun", opts)
-keymap('n', '<Space>sl', "<cmd>SlimeSendCurrentLine<CR>", opts)
-keymap('n', '<Space>l', "<Plug>SnipRun", opts)
-keymap('n', '<Space>sr', "<Plug>SnipReset", { silent = true })
-keymap('n', '<Space>sc', "<Plug>SnipReplMemoryClean", { silent = true })
-keymap('n', '<Space>sq', "<Plug>SnipClose", { silent = true })
-keymap('n', '<C-c><C-b>', SendBuf, opts)
+-- Slime
+keymap('n', '<Space>l', "<cmd>SlimeSendCurrentLine<CR>", opts)
 -- Trouble
 keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 -- Cht.sh

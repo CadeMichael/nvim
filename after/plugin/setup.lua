@@ -1,15 +1,6 @@
 -- auto pairs
 require('nvim-autopairs').setup()
 
--- statusline
-require('lualine').setup({})
-
--- sniprun
-require 'sniprun'.setup({
-  selected_interpreters = { 'Lua_nvim', 'Python3_fifo' },
-  repl_enable = { 'Python3_fifo', 'Lua_nvim' },
-})
-
 -- surround
 require('nvim-surround').setup()
 

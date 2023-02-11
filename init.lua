@@ -46,7 +46,13 @@ vim.g.NERDSpaceDelims = 1
 -- emmet vim
 vim.g.user_emmet_install_global = 0
 -- themeing
-vim.g.startify_custom_header = {} -- no header
+vim.g.startify_custom_header = {
+"   _   _         __     ___           ",
+"  | \\ | | ___  __\\ \\   / (_)_ __ ___  ",
+"  |  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\ ",
+"  | |\\  |  __/ (_) \\ V / | | | | | | |",
+"  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
+}
 
 -----------------------
 -- General Functions --
@@ -55,11 +61,4 @@ vim.g.startify_custom_header = {} -- no header
 function SaveClipper()
   vim.cmd("%s/ $//")
   vim.cmd("w")
-end
-
----- Send Buff
-function SendBuf()
-  local first = 1
-  local last = vim.api.nvim_buf_line_count(0)
-  require 'sniprun.api'.run_range(first, last)
 end

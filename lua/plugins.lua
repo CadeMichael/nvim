@@ -24,9 +24,6 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/playground'
   -- colorchemes / icons
   use 'ellisonleao/gruvbox.nvim'
-  use { 'nyoom-engineering/oxocarbon.nvim' }
-  use 'kyazdani42/nvim-web-devicons'
-  use 'nvim-lualine/lualine.nvim'
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '*',
@@ -42,10 +39,6 @@ return require('packer').startup(function(use)
   use 'mattn/emmet-vim'
   use 'preservim/nerdcommenter'
   use 'jpalardy/vim-slime'
-  if vim.loop.os_uname == 'darwin' then
-    use '~/Desktop/zig.nvim'
-  end
-  use { 'michaelb/sniprun', run = 'bash ./install.sh' }
   -- ({["''"]}) management
   use({
     'kylechui/nvim-surround',
