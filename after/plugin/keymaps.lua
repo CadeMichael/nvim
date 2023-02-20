@@ -9,7 +9,7 @@ local ts = require('telescope.builtin')
 local opts = { noremap = true, silent = true }
 keymap('n', '<Space>bs', ts.buffers, opts)
 keymap('n', '<Space>.', ts.find_files, opts)
-keymap('n', '<Space>g.', ts.git_files, opts)
+keymap('n', '<Space>pf', ts.git_files, opts)
 keymap('n', '<Space>h', ts.help_tags, opts)
 keymap('n', '<Space>m', ts.keymaps, opts)
 -- custom project search function

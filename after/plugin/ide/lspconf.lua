@@ -114,7 +114,6 @@ lsp.tsserver.setup({
   on_attach = on_attach,
 })
 --> Python
--- pip install 'python-lsp-server[all]'
 lsp.pylsp.setup({
   capabilities = capabilities,
   on_attach = on_attach,
