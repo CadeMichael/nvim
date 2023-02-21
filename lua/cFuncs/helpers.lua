@@ -20,4 +20,26 @@ m.printData = function (data)
   end
 end
 
+m.runCmd = function(command, dir, handler)
+  vim.fn.jobstart(command, {
+      -- allows proper newlines
+      stderr_buffered = true,
+      stdout_buffered = true,
+      cwd = dir,
+      -- handle err / out
+      on_stderr = function(_, data)
+        -- check data
+        if #data > 1 then
+          handler(data)
+        end
+      end,
+      on_stdout = function(_, data)
+        -- check data
+        if #data > 1 then
+          handler(data)
+        end
+      end,
+  })
+end
+
 return m

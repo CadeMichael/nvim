@@ -22,15 +22,15 @@ return require('packer').startup(function(use)
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
-  -- colorchemes / icons
+  -- colorchemes
   use 'ellisonleao/gruvbox.nvim'
   -- Telescope
   use {
-    'nvim-telescope/telescope.nvim', tag = '*',
+      'nvim-telescope/telescope.nvim', tag = '*',
   }
   use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make'
+      'nvim-telescope/telescope-fzf-native.nvim',
+      run = 'make'
   }
   -- lang support
   use 'simrat39/rust-tools.nvim'
@@ -41,26 +41,26 @@ return require('packer').startup(function(use)
   use 'jpalardy/vim-slime'
   -- ({["''"]}) management
   use({
-    'kylechui/nvim-surround',
-    tag = '*',
+      'kylechui/nvim-surround',
+      tag = '*',
   })
   -- tables
   use 'dhruvasagar/vim-table-mode'
   -- git
   use {
-    'TimUntersberger/neogit',
-    config = function()
-      require('neogit').setup()
-    end
+      'TimUntersberger/neogit',
+      config = function()
+        require('neogit').setup()
+      end
   }
   use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = function()
-      require('gitsigns').setup()
-    end
+      'lewis6991/gitsigns.nvim',
+      requires = {
+          'nvim-lua/plenary.nvim'
+      },
+      config = function()
+        require('gitsigns').setup()
+      end
   }
   -- vim start screen
   use 'mhinz/vim-startify'
