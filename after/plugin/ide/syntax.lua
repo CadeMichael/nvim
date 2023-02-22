@@ -16,10 +16,12 @@ require("nvim-treesitter.configs").setup({
     "lua",
     "python",
     "rust",
+    "elixir",
     "typescript"
   },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
+  indent = { enable = false },
   -- playground
   playground = {
     enable = true,
@@ -38,7 +40,8 @@ require("nvim-treesitter.configs").setup({
       goto_node = '<cr>',
       show_help = '?',
     },
-  }
+  },
+  additional_vim_regex_highlighting = true
 })
 
 -- folding

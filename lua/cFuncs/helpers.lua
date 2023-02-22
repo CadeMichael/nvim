@@ -42,4 +42,10 @@ m.runCmd = function(command, dir, handler)
   })
 end
 
+m.filecmd = function(command)
+  local file = vim.api.nvim_buf_get_name(0)
+  local cmd = command .. " " .. file
+  vim.cmd("!" .. cmd)
+end
+
 return m

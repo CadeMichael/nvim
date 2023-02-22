@@ -1,12 +1,14 @@
+local rt = require('rust-tools')
+local help = require('cFuncs.helpers')
+
+local function rustFmt ()
+  help.filecmd("rustfmt")
+end
+
 vim.keymap.set('n', '<C-;>', 'A;')
 vim.keymap.set('i', '<C-;>', '<Esc>A;')
-vim.keymap.set('n', '<Space>r', '<cmd>RustRun<CR>' )
-vim.keymap.set('n', '<C-c>f', function()
-  local fname = vim.api.nvim_buf_get_name(0)
-  vim.cmd('!rustfmt ' .. fname)
-end)
-
-local rt = require('rust-tools')
+vim.keymap.set('n', '<Space>r', '<cmd>RustRun<CR>')
+vim.keymap.set('n', '<C-c>f', rustFmt)
 
 rt.setup({
   server = {
