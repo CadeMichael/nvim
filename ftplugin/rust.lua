@@ -1,3 +1,5 @@
+vim.opt_local.listchars = ({ eol = '↵', multispace = "--->" })
+
 local rt = require('rust-tools')
 local help = require('cFuncs.helpers')
 
