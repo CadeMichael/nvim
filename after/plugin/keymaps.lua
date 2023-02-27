@@ -35,7 +35,7 @@ keymap('t', '<C-c><C-z>', OpenTerm, opts)
 keymap({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
 -- remaps
-keymap('n', '<leader>d', vim.cmd.Ex)
+keymap('n', '<Space>n', vim.cmd.Ex)
 keymap('n', '<Space>bk', ':bdelete!<CR>', opts)
 keymap('n', 'Y', 'y$', opts)
 keymap('n', 'n', 'nzzzv', opts)

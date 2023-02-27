@@ -39,8 +39,10 @@ vim.o.softtabstop = 2
 vim.opt.cursorline = true
 -- allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
--- slime
-vim.g.slime_target = "neovim"
+-- on SaveClipper()
+--   vim.cmd("%s/ $//")
+--     vim.ime
+vim.g.slime_target = "tmux"
 -- comments
 vim.g.NERDSpaceDelims = 1
 -- emmet vim
