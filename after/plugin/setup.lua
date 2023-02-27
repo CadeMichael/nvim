@@ -34,3 +34,6 @@ require('which-key').setup({
     border = 'double'
   }
 })
+
+-- git 
+require('gitsigns').setup()

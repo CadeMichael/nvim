@@ -26,8 +26,10 @@ keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 keymap('n', '<Space>cs', CheatSheet, opts)
 -- Compile
 keymap('n', '<Space>cc', Compile, opts)
--- Neogit
+-- git
 keymap('n', '<C-x>g', "<cmd> Neogit<CR>", opts)
+keymap('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
+keymap('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal
 keymap({ 'n', 'i' }, '<C-c><C-z>', OpenTerm, opts)
 keymap('t', '<C-c><C-z>', OpenTerm, opts)
