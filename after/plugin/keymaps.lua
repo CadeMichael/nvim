@@ -27,7 +27,7 @@ keymap('n', '<Space>cs', CheatSheet, opts)
 -- Compile
 keymap('n', '<Space>cc', Compile, opts)
 -- git
-keymap('n', '<C-x>g', "<cmd> Neogit<CR>", opts)
+keymap('n', '<C-c>g', "<cmd> Neogit<CR>", opts)
 keymap('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 keymap('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal

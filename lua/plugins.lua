@@ -8,8 +8,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- packer
   use 'wbthomason/packer.nvim'
-  -- tmux
-  use 'christoomey/vim-tmux-navigator'
   -- lsp config
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
