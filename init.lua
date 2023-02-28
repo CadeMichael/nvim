@@ -10,9 +10,9 @@ require('force')
 -- Zig
 if vim.loop.os_uname == 'darwin' then
   vim.g.zig_settings = {
-    test = '<space>tf',
-    build = '<space>bf',
-    save = { format = true, build = false },
+      test = '<space>tf',
+      build = '<space>bf',
+      save = { format = true, build = false },
   }
 end
 ----------------
@@ -29,7 +29,7 @@ vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
-vim.opt.listchars:append({ eol = '↵', lead = "." })
+vim.opt.listchars:append({ eol = '↵' })
 vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
 vim.o.swapfile = false
@@ -39,9 +39,6 @@ vim.o.softtabstop = 2
 vim.opt.cursorline = true
 -- allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
--- on SaveClipper()
---   vim.cmd("%s/ $//")
---     vim.ime
 vim.g.slime_target = "tmux"
 -- comments
 vim.g.NERDSpaceDelims = 1
@@ -49,11 +46,11 @@ vim.g.NERDSpaceDelims = 1
 vim.g.user_emmet_install_global = 0
 -- themeing
 vim.g.startify_custom_header = {
-"   _   _         __     ___           ",
-"  | \\ | | ___  __\\ \\   / (_)_ __ ___  ",
-"  |  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\ ",
-"  | |\\  |  __/ (_) \\ V / | | | | | | |",
-"  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
+    "   _   _         __     ___           ",
+    "  | \\ | | ___  __\\ \\   / (_)_ __ ___  ",
+    "  |  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\ ",
+    "  | |\\  |  __/ (_) \\ V / | | | | | | |",
+    "  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
 }
 
 -----------------------
