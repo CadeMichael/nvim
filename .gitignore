@@ -1,4 +1,5 @@
 */
+!tmux.conf
 !lua/
 !lua/force/
 !lua/cFuncs/
