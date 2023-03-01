@@ -20,6 +20,7 @@ end)
 keymap({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- Slime
 keymap('n', '<Space>l', "<cmd>SlimeSendCurrentLine<CR>", opts)
+keymap('n', '<C-c><C-b>', SlimeBuf, opts)
 -- Trouble
 keymap('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 -- Cht.sh
