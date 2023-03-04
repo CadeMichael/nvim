@@ -1,21 +1,24 @@
 vim.opt_local.listchars = ({ eol = '↵', multispace = "   >" })
 
 local rt = require('rust-tools')
+
 local help = require('cFuncs.helpers')
-require("nvim-treesitter.configs").setup{
-  indent = {enable = true},
-}
 
 local function rustFmt ()
   help.filecmd("rustfmt")
 end
 
-vim.keymap.set('n', '<Space>;', 'A;<Esc>')
--- vim.keymap.set('i', '<C-;>', '<Esc>A;')
+vim.keymap.set('n', '<C-c>;', 'A;<Esc>')
+vim.keymap.set('i', '<C-c>;', '<Esc>A;')
 vim.keymap.set('n', '<Space>r', '<cmd>RustRun<CR>')
 vim.keymap.set('n', '<C-c>f', rustFmt)
 
 rt.setup({
+  tools = {
+    inlay_hints = {
+      auto = false,
+    },
+  },
   server = {
     on_attach = function(_, bufnr)
       -- Hover actions
