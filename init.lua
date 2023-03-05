@@ -11,14 +11,15 @@ require('force')
 -- get plugins
 require('config.plugins')
 
--- get the autocommands
-require('config.autocmd')
-
 -- get keymaps
 require('config.keymaps')
 
 -- theme
 require('config.theme')
+
+-- get the autocommands
+require('config.autocmd')
+
 ----------------
 
 --------------------

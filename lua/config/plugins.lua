@@ -4,14 +4,14 @@
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "https://github.com/folke/lazy.nvim.git",
-      "--branch=stable", -- latest stable release
-      lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -25,28 +25,29 @@ require("lazy").setup({
     {
         'hrsh7th/nvim-cmp',
         config = function()
-          require('ide.lspconf')
+            require('ide.lspconf')
         end,
     },
     -- lsp extension
     {
         'dcampos/nvim-snippy',
         config = function()
-          require('snippy').setup({
-              mappings = {
-                  is = {
-                      ['<Tab>'] = 'expand_or_advance',
-                      ['<S-Tab>'] = 'previous',
-                  },
-                  nx = {
-                      ['<leader>x'] = 'cut_text',
-                  },
-              },
-          })
+            require('snippy').setup({
+                mappings = {
+                    is = {
+                        ['<Tab>'] = 'expand_or_advance',
+                        ['<S-Tab>'] = 'previous',
+                    },
+                    nx = {
+                        ['<leader>x'] = 'cut_text',
+                    },
+                },
+            })
         end,
     },
     'dcampos/cmp-snippy',
     'folke/trouble.nvim',
+    'folke/neodev.nvim',
     -- treesitter
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/playground',
@@ -56,35 +57,35 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim',
         config = function()
-          require('ide.syntax')
+            require('ide.syntax')
         end,
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         config = function()
-          local telescope_theme = "ivy"
-          require('telescope').setup({
-              -- set theme of used pickers
-              pickers = {
-                  git_files = {
-                      theme = telescope_theme,
-                  },
-                  find_files = {
-                      theme = telescope_theme,
-                  },
-                  buffers = {
-                      theme = telescope_theme,
-                  },
-                  help_tags = {
-                      theme = telescope_theme,
-                  },
-                  keymaps = {
-                      theme = telescope_theme,
-                  }
-              }
-          })
-          require('telescope').load_extension('fzf')
+            local telescope_theme = "ivy"
+            require('telescope').setup({
+                -- set theme of used pickers
+                pickers = {
+                    git_files = {
+                        theme = telescope_theme,
+                    },
+                    find_files = {
+                        theme = telescope_theme,
+                    },
+                    buffers = {
+                        theme = telescope_theme,
+                    },
+                    help_tags = {
+                        theme = telescope_theme,
+                    },
+                    keymaps = {
+                        theme = telescope_theme,
+                    }
+                }
+            })
+            require('telescope').load_extension('fzf')
         end,
     },
     -- lang support
@@ -92,7 +93,7 @@ require("lazy").setup({
     {
         'windwp/nvim-autopairs',
         config = function()
-          require('nvim-autopairs').setup()
+            require('nvim-autopairs').setup()
         end,
     },
     --  'lervag/vimtex',
@@ -103,7 +104,7 @@ require("lazy").setup({
     {
         'kylechui/nvim-surround',
         config = function()
-          require('nvim-surround').setup()
+            require('nvim-surround').setup()
         end,
     },
     -- tables,
@@ -115,7 +116,7 @@ require("lazy").setup({
             'nvim-lua/plenary.nvim',
         },
         config = function()
-          require('gitsigns').setup()
+            require('gitsigns').setup()
         end,
     },
     -- vim start screen,
@@ -124,11 +125,11 @@ require("lazy").setup({
     {
         "folke/which-key.nvim",
         config = function()
-          require('which-key').setup({
-              window = {
-                  border = 'double'
-              }
-          })
+            require('which-key').setup({
+                window = {
+                    border = 'double'
+                }
+            })
         end,
     }
 })
