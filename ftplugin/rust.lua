@@ -11,7 +11,7 @@ end
 vim.keymap.set('n', '<C-c>;', 'A;<Esc>')
 vim.keymap.set('i', '<C-c>;', '<Esc>A;')
 vim.keymap.set('n', '<Space>r', '<cmd>RustRun<CR>')
-vim.keymap.set('n', '<C-c>f', rustFmt)
+vim.keymap.set('n', '<C-c>f', rustFmt, {desc = "rust format file"})
 
 rt.setup({
     tools = {
