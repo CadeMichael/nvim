@@ -5,6 +5,5 @@
 !lua/cFuncs/
 !snippets/
 !ftplugin/
-!after/
-!after/plugin/
-!after/plugin/ide
+!lua/ide/
+!lua/config/

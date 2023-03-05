@@ -182,3 +182,14 @@ vim.api.nvim_create_user_command("CheatSheet",
   function()
     CheatSheet()
   end, {})
+
+function SaveClipper()
+  vim.cmd("%s/ $//")
+  vim.cmd("w")
+end
+
+function SlimeBuf()
+  local start = 1
+  local range = vim.api.nvim_buf_line_count(0)
+  vim.cmd(start .. ',' .. range .. 'SlimeSend')
+end

@@ -1,24 +1,25 @@
--- get plugins
-require('plugins')
+---------------
+-- Sourcing --
+---------------
 
-----------------
--- My Plugins --
-----------------
+-- custom funcs
 require('cFuncs')
+
 -- Salesforce
 require('force')
--- Zig
-if vim.loop.os_uname == 'darwin' then
-  vim.g.zig_settings = {
-      test = '<space>tf',
-      build = '<space>bf',
-      save = { format = true, build = false },
-  }
-end
-----------------
+
+-- get plugins
+require('config.plugins')
 
 -- get the autocommands
-require('autocmd')
+require('config.autocmd')
+
+-- get keymaps
+require('config.keymaps')
+
+-- theme
+require('config.theme')
+----------------
 
 --------------------
 -- global configs --
@@ -34,8 +35,8 @@ vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
 vim.o.swapfile = false
 vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
 vim.opt.cursorline = true
 -- allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
@@ -52,18 +53,3 @@ vim.g.startify_custom_header = {
     "  | |\\  |  __/ (_) \\ V / | | | | | | |",
     "  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
 }
-
------------------------
--- General Functions --
------------------------
-
-function SaveClipper()
-  vim.cmd("%s/ $//")
-  vim.cmd("w")
-end
-
-function SlimeBuf()
-  local start = 1
-  local range = vim.api.nvim_buf_line_count(0)
-  vim.cmd(start .. ',' .. range .. 'SlimeSend')
-end

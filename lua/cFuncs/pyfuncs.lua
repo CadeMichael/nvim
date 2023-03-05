@@ -14,10 +14,18 @@ function FileUnnittest(markerFile)
     end
   else
     path = vim.fn.finddir(markerFile, ".;")
+    if path == markerFile then
+      path = "./"
+    end
   end
-  local spath = vim.fn.split(path, "/")
-  table.remove(spath, #spath)
-  local dir = "/" .. table.concat(spath, "/")
+  local dir = ""
+  if path == ".git" or path == "main.py" then
+    dir = "./"
+  else
+    local spath = vim.fn.split(path, "/")
+    table.remove(spath, #spath)
+    dir = "/" .. table.concat(spath, "/")
+  end
   local command = "python -m unittest "
   local fname = vim.api.nvim_buf_get_name(0)
   help.runCmd(command .. fname, dir, help.printData)

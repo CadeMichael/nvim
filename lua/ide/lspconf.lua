@@ -17,8 +17,8 @@ if cmp then cmp.setup({
       documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<Tab>'] = cmp.mapping.confirm({ select = true }),
@@ -170,15 +170,3 @@ lsp.lua_ls.setup {
   },
 }
 -----------------------------------
--- Snippets
-require('snippy').setup({
-  mappings = {
-    is = {
-      ['<Tab>'] = 'expand_or_advance',
-      ['<S-Tab>'] = 'previous',
-    },
-    nx = {
-      ['<leader>x'] = 'cut_text',
-    },
-  },
-})
