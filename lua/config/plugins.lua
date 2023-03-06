@@ -100,6 +100,22 @@ require("lazy").setup({
     'mattn/emmet-vim',
     'preservim/nerdcommenter',
     'jpalardy/vim-slime',
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        opts = {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.presenter"] = {
+                    config = {
+                        zen_mode = "zen-mode",
+                    }
+                },
+            },
+        },
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+    },
     -- ({["''"]}) management,
     {
         'kylechui/nvim-surround',
@@ -107,8 +123,13 @@ require("lazy").setup({
             require('nvim-surround').setup()
         end,
     },
-    -- tables,
+    -- tables / GUI,
     'dhruvasagar/vim-table-mode',
+    { 'folke/zen-mode.nvim',
+        config = function()
+            require("zen-mode").setup()
+        end
+    },
     -- git,
     {
         'lewis6991/gitsigns.nvim',
