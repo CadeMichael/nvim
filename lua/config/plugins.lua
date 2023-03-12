@@ -124,6 +124,24 @@ require("lazy").setup({
                             rt.inlay_hints.disable,
                             { buffer = bufnr }
                         )
+                        vim.keymap.set('n',
+                            'gD',
+                            vim.lsp.buf.declaration,
+                            { buffer = bufnr })
+                        vim.keymap.set('n',
+                            'gd',
+                            vim.lsp.buf.definition,
+                            { buffer = bufnr })
+                        vim.keymap.set('n',
+                            '<space>D',
+                            vim.lsp.buf.type_definition,
+                            { buffer = bufnr })
+                        vim.keymap.set('n',
+                            '<space>rn', vim.lsp.buf.rename,
+                            { buffer = bufnr })
+                        vim.keymap.set('n',
+                            'gr', vim.lsp.buf.references,
+                            { buffer = bufnr })
                     end,
                 },
             })
