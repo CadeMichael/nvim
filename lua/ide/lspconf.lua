@@ -1,6 +1,6 @@
----------------------
--- lsp and completion
----------------------
+--------------------------
+--- lsp and completion --- 
+--------------------------
 
 local cmp = require 'cmp'
 
@@ -76,7 +76,7 @@ lsp.clangd.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
--- Clojure
+--> Clojure
 lsp.clojure_lsp.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -108,7 +108,6 @@ lsp.html.setup {
     }
 }
 --> JavaScript (node)
--- npm i -g typescript-language-server
 lsp.tsserver.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -118,32 +117,7 @@ lsp.pylsp.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
---> Ruby
-lsp.solargraph.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
---> Rust
-lsp.rust_analyzer.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGranularity = "module",
-                importPrefix = "by_self",
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    },
-})
 --> Svelte
--- npm i -g svelte-language-server
 lsp.svelte.setup({
     capabilities = capabilities,
     on_attach = on_attach,
