@@ -157,22 +157,6 @@ require("lazy").setup({
     'mattn/emmet-vim',
     'preservim/nerdcommenter',
     'jpalardy/vim-slime',
-    {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        opts = {
-            load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
-                ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.presenter"] = {
-                    config = {
-                        zen_mode = "zen-mode",
-                    }
-                },
-            },
-        },
-        dependencies = { { "nvim-lua/plenary.nvim" } },
-    },
     -- ({["''"]}) management,
     {
         'kylechui/nvim-surround',
