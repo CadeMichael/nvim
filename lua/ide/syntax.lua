@@ -17,7 +17,8 @@ require("nvim-treesitter.configs").setup({
     "python",
     "rust",
     "elixir",
-    "typescript"
+    "typescript",
+    "zig",
   },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
