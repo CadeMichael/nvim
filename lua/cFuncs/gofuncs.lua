@@ -12,5 +12,6 @@ function GoBuildProj()
     -- prevent blank dir
     dir = dir or vim.fn.getcwd()
     local command = "go build"
+    vim.api.nvim_notify("Building...", vim.log.levels.INFO, {})
     help.runCmd(vim.fn.split(command), dir, help.printData)
 end

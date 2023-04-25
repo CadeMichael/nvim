@@ -5,4 +5,4 @@ vim.opt_local.softtabstop = 4
 
 local keymap = vim.keymap.set
 keymap('n', '<Space>gr', GoRunFile, { desc = "go run file" })
-keymap('n', '<Space>bp', GoBuildProj, { desc = "go build" })
+keymap('n', '<Space>gb', GoBuildProj, { desc = "go build" })
