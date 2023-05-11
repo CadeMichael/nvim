@@ -16,3 +16,7 @@ function Rcp()
     vim.cmd("wincmd J")
     vim.fn.termopen(name)
 end
+
+local keymap = vim.keymap.set
+keymap('n', '<Space>bf', Bcp, { desc = "build file" })
+keymap('n', '<Space>rf', Rcp, { desc = "run file" })
