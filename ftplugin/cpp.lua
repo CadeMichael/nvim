@@ -11,7 +11,7 @@ end
 
 function Rcp()
     local fname = vim.api.nvim_buf_get_name(0)
-    local name = string.gsub(fname, ".cpp", "")
+    local name = string.sub(fname, 1, -5)
     vim.cmd("wincmd n")
     vim.cmd("wincmd J")
     vim.fn.termopen(name)
