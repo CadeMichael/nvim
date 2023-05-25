@@ -4,9 +4,7 @@ function Bcp()
     local name = split_name[#split_name]
     print(name)
     name = string.gsub(name, ".cpp", "")
-    vim.cmd("wincmd n")
-    vim.cmd("wincmd J")
-    vim.fn.termopen("g++ -Wall " .. fname .. " -o " .. name)
+    vim.cmd("!g++ -Wall " .. fname .. " -o " .. name)
 end
 
 function Rcp()
