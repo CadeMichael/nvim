@@ -1,6 +1,18 @@
-snippet #inc
+snippet tcases
     #include <bits/stdc++.h>
 
     using namespace std;
 
-    int main() {$0}
+    int main() {
+    	int tCases;
+    	cin >> tCases;
+
+    	while (--tCases) {
+    	    ${0}
+    	}
+
+    	return 0;
+    }
+
+snippet vec
+    vector<${1:type}> $0;
