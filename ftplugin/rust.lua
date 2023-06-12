@@ -1,4 +1,4 @@
-vim.opt_local.listchars = ({ eol = '↵', multispace = "   >" })
+-- vim.opt_local.listchars = ({ eol = '↵', multispace = "   >" })
 
 local help = require('cFuncs.helpers')
 
