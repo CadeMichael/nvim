@@ -18,3 +18,8 @@ end
 local keymap = vim.keymap.set
 keymap('n', '<Space>bf', Bcp, { desc = "build file" })
 keymap('n', '<Space>rf', Rcp, { desc = "run file" })
+
+vim.opt_local.expandtab = true
+vim.opt_local.tabstop = 2
+vim.opt_local.shiftwidth = 2
+vim.opt_local.softtabstop = 2
