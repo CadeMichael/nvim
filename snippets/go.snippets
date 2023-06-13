@@ -18,8 +18,6 @@ snippet cmp
     	scanner := bufio.NewScanner(os.Stdin)
     	writer := bufio.NewWriter(os.Stdout)
     
-	// Flush the output buffer
-	defer writer.Flush()
 
     	// Read the number of test cases
     	scanner.Scan()
@@ -39,4 +37,6 @@ snippet cmp
     		$1(arr)
     	}
     
+    	// Flush the output buffer
+    	writer.Flush()
     }

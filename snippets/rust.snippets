@@ -14,3 +14,35 @@ snippet fn
     fn $1($2) -> $3 {
     	$4
     }
+
+snippet cmp
+    use std::io::{self, BufRead};
+
+    // Function to read input faster
+    fn read_line() -> String {
+        let mut input = String::new();
+        io::stdin().lock().read_line(&mut input).unwrap();
+        input.trim().to_string()
+    }
+
+    // Main function
+    fn main() {
+        // Read the number of test cases
+        let t: u32 = read_line().parse().unwrap();
+
+        for _ in 0..t {
+            // Read input for each test case
+            $0
+            // Example:
+            // let n: u32 = read_line().parse().unwrap();
+            // let mut arr: Vec<u32> = read_line().split_whitespace().map(|x| x.parse().unwrap()).collect();
+
+            // Solve the problem
+
+            // Example:
+            // let result = solve(n, &mut arr);
+
+            // Print the result
+            // println!("{}", result);
+        }
+    }
