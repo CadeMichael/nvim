@@ -1,5 +1,5 @@
 --------------------------
---- lsp and completion --- 
+--- lsp and completion ---
 --------------------------
 
 local cmp = require 'cmp'
@@ -113,7 +113,7 @@ lsp.tsserver.setup({
     on_attach = on_attach,
 })
 --> Python
-lsp.pylsp.setup({
+lsp.pyright.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })

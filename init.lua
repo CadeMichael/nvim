@@ -4,19 +4,12 @@
 
 -- custom funcs
 require('cFuncs')
-
--- Salesforce
-require('force')
-
 -- get plugins
 require('config.plugins')
-
 -- get keymaps
 require('config.keymaps')
-
 -- theme
 require('config.theme')
-
 -- get the autocommands
 require('config.autocmd')
 
@@ -31,7 +24,6 @@ vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.list = true
--- vim.opt.listchars:append({ eol = '↵' })
 vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
 vim.o.swapfile = false
