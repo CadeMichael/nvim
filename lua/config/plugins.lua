@@ -2,20 +2,20 @@
 -- package management
 ---------------------
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
         lazypath,
     })
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require('lazy').setup({
     --lsp config
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
@@ -48,16 +48,24 @@ require("lazy").setup({
     'dcampos/cmp-snippy',
     'folke/trouble.nvim',
     'folke/neodev.nvim',
+    -- debugging
+    {
+        'mfussenegger/nvim-dap',
+        config = function()
+            require('ide.debug')
+        end
+    },
+    'rcarriga/nvim-dap-ui',
     -- treesitter
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/playground',
     -- colorchemes
     'ellisonleao/gruvbox.nvim',
     {
-	"folke/tokyonight.nvim",
-	lazy = false,
-	priority = 1000,
-	opts = {},
+        'folke/tokyonight.nvim',
+        lazy = false,
+        priority = 1000,
+        opts = {},
     },
     {
         'nvim-lualine/lualine.nvim',
@@ -68,8 +76,8 @@ require("lazy").setup({
             require('lualine').setup({
                 options = {
                     theme = 'tokyonight',
-                    component_separators = { left = '|', right = '|'},
-                    section_separators = { left = ' ', right = ' '},
+                    component_separators = { left = '|', right = '|' },
+                    section_separators = { left = ' ', right = ' ' },
                 },
             })
         end
@@ -85,7 +93,7 @@ require("lazy").setup({
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         config = function()
-            local telescope_theme = "ivy"
+            local telescope_theme = 'ivy'
             require('telescope').setup({
                 -- set theme of used pickers
                 pickers = {
@@ -123,11 +131,11 @@ require("lazy").setup({
         end,
     },
     --  'lervag/vimtex',
-    'mattn/emmet-vim', -- html
-    'alaviss/nim.nvim', -- nim
+    'mattn/emmet-vim',         -- html
+    'alaviss/nim.nvim',        -- nim
     'preservim/nerdcommenter', -- comments
-    'jpalardy/vim-slime', -- repl
-    -- ({["''"]}) management,
+    'jpalardy/vim-slime',      -- repl
+    -- ({['''']}) management,
     {
         'kylechui/nvim-surround',
         config = function()
@@ -136,9 +144,10 @@ require("lazy").setup({
     },
     -- tables / GUI,
     'dhruvasagar/vim-table-mode',
-    { 'folke/zen-mode.nvim',
+    {
+        'folke/zen-mode.nvim',
         config = function()
-            require("zen-mode").setup()
+            require('zen-mode').setup()
         end
     },
     -- git,
@@ -155,7 +164,7 @@ require("lazy").setup({
     'mhinz/vim-startify',
     -- which key,
     {
-        "folke/which-key.nvim",
+        'folke/which-key.nvim',
         config = function()
             require('which-key').setup({
                 window = {
