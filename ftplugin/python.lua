@@ -9,4 +9,4 @@ local function blackFormat()
 end
 
 keymap('n', '<Space>tf', FileUnnittest, {desc = "unittest file"})
-keymap('n', '<Space>f', blackFormat, {desc = "black format"})
+keymap('n', '<Space>bf', blackFormat, {desc = "black format"})

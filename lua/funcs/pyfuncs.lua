@@ -1,4 +1,4 @@
-local help = require("cFuncs.helpers")
+local help = require("funcs.helpers")
 
 function FileUnnittest(markerFile)
   -- look for .git or main.py

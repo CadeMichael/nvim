@@ -1,4 +1,4 @@
-local help = require("cFuncs.helpers")
+local help = require("funcs.helpers")
 
 function GoRunFile()
     local file = vim.api.nvim_buf_get_name(0)

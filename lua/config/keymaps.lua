@@ -7,18 +7,24 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- Telescope
-local ts = require('telescope.builtin')
+-- Telescope builtin
+local tsb = require('telescope.builtin')
 local opts = { noremap = true, silent = true }
-map('n', '<Space>bs', ts.buffers, { desc = "ts buf" })
-map('n', '<Space>.', ts.find_files, { desc = "ts find files" })
-map('n', '<Space>pf', ts.git_files, { desc = "ts git files" })
-map('n', '<Space>h', ts.help_tags, { desc = "ts help" })
-map('n', '<Space>m', ts.keymaps, { desc = "ts maps" })
+map('n', '<Space>bs', tsb.buffers, { desc = "ts buf" })
+map('n', '<Space>.', tsb.find_files, { desc = "ts find files" })
+map('n', '<Space>pf', tsb.git_files, { desc = "ts git files" })
+map('n', '<Space>h', tsb.help_tags, { desc = "ts help" })
+map('n', '<Space>m', tsb.keymaps, { desc = "ts maps" })
 -- custom project search function
 map('n', '<Space>ps', function()
-    ts.grep_string({ search = vim.fn.input("Grep > ") })
+    tsb.grep_string({ search = vim.fn.input("Grep > ") })
 end, { desc = "grep project" })
+-- TS Dap
+local ts = require('telescope')
+map('n', '<Space>tdc', ts.extensions.dap.commands, { desc = 'dap commands' })
+map('n', '<Space>tdb', ts.extensions.dap.list_breakpoints, { desc = 'dap list bp' })
+map('n', '<Space>tdv', ts.extensions.dap.variables, { desc = 'dap variables' })
+map('n', '<Space>tdf', ts.extensions.dap.frames, { desc = 'dap frames' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- Slime

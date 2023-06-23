@@ -57,7 +57,12 @@ require('lazy').setup({
     },
     'rcarriga/nvim-dap-ui',
     -- treesitter
-    'nvim-treesitter/nvim-treesitter',
+    {
+        'nvim-treesitter/nvim-treesitter',
+        config = function()
+            require('ide.syntax')
+        end,
+    },
     'nvim-treesitter/playground',
     -- colorchemes
     'ellisonleao/gruvbox.nvim',
@@ -83,12 +88,8 @@ require('lazy').setup({
         end
     },
     -- Telescope
-    {
-        'nvim-telescope/telescope.nvim',
-        config = function()
-            require('ide.syntax')
-        end,
-    },
+    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope-dap.nvim',
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
@@ -115,6 +116,7 @@ require('lazy').setup({
                 }
             })
             require('telescope').load_extension('fzf')
+            require('telescope').load_extension('dap')
         end,
     },
     -- lang support

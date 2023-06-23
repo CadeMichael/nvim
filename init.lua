@@ -3,7 +3,7 @@
 ---------------
 
 -- custom funcs
-require('cFuncs')
+require('funcs')
 -- get plugins
 require('config.plugins')
 -- get keymaps

@@ -48,6 +48,7 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 map('n', '<F5>', function() dap.continue() end, { desc = 'dap continue' })
+map('n', '<Leader>dt', function() dap.terminate() end, { desc = 'dap terminate' })
 map('n', '<F10>', function() dap.step_over() end, { desc = 'dap step over' })
 map('n', '<F11>', function() dap.step_into() end, { desc = 'dap step into' })
 map('n', '<F12>', function() dap.step_out() end, { desc = 'dap step out' })
