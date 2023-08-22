@@ -1,6 +1,6 @@
 -- vim.opt_local.listchars = ({ eol = '↵', multispace = "   >" })
 
-local help = require('cFuncs.helpers')
+local help = require('funcs.helpers')
 
 local function rustFmt()
     help.filecmd("rustfmt")

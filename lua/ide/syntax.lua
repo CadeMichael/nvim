@@ -4,9 +4,9 @@
 
 
 -- NixOs Compilation Flag (python only)
-require'nvim-treesitter.install'.compilers = {
-    "clang++",
-}
+-- require'nvim-treesitter.install'.compilers = {
+    -- "clang++",
+-- }
 
 
 require'nvim-treesitter.configs'.setup({

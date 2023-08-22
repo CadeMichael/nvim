@@ -121,10 +121,34 @@ require('lazy').setup({
     },
     -- lang support
     {
+        -- racket / lua
+        'Olical/conjure',
+        ft = {
+            "racket",
+            "python",
+            "lua",
+        },
+        config = function()
+            vim.g['conjure#extract#tree_sitter#enabled'] = true
+        end
+    },
+    {
+        -- rust
         'simrat39/rust-tools.nvim',
         config = function()
             require('ide.rust')
         end,
+    },
+    {
+        -- scala
+        'scalameta/nvim-metals'
+    },
+    {
+        -- http
+        'rest-nvim/rest.nvim',
+        config = function()
+            require('rest-nvim').setup()
+        end
     },
     {
         'windwp/nvim-autopairs',
@@ -144,14 +168,8 @@ require('lazy').setup({
             require('nvim-surround').setup()
         end,
     },
-    -- tables / GUI,
+    -- tables
     'dhruvasagar/vim-table-mode',
-    {
-        'folke/zen-mode.nvim',
-        config = function()
-            require('zen-mode').setup()
-        end
-    },
     -- git,
     {
         'lewis6991/gitsigns.nvim',
