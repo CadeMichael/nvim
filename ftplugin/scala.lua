@@ -10,7 +10,8 @@ local function scala_send_region()
     vim.api.nvim_command("normal! y")
     OpenTerm()
     vim.defer_fn(function()
-        vim.api.nvim_exec2("normal! p A", {})
+        vim.api.nvim_exec2("normal! p", {})
+        vim.api.nvim_exec2("normal! A", {})
     end, 10)
 end
 
