@@ -25,6 +25,8 @@ map('n', '<Space>tdc', ts.extensions.dap.commands, { desc = 'dap commands' })
 map('n', '<Space>tdb', ts.extensions.dap.list_breakpoints, { desc = 'dap list bp' })
 map('n', '<Space>tdv', ts.extensions.dap.variables, { desc = 'dap variables' })
 map('n', '<Space>tdf', ts.extensions.dap.frames, { desc = 'dap frames' })
+-- notes
+map('n', '<Space><space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- Slime

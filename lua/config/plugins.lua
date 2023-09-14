@@ -119,6 +119,15 @@ require('lazy').setup({
             require('telescope').load_extension('dap')
         end,
     },
+    -- telekasten
+    {
+        'renerocksai/telekasten.nvim',
+        config = function()
+            require('telekasten').setup({
+                home = vim.fn.expand("~/zkast"),
+            })
+        end
+    },
     -- lang support
     {
         -- racket / lua
