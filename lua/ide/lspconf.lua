@@ -129,4 +129,9 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = nvim_metals_group,
 })
+---> Zig
+lsp.zls.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
 -----------------------------------
