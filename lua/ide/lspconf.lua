@@ -17,8 +17,6 @@ if cmp then
             documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-            -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-            -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
             ['<Tab>'] = cmp.mapping.confirm({ select = true }),
@@ -76,11 +74,6 @@ lsp.clangd.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
---> Clojure
-lsp.clojure_lsp.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
 --> Golang
 lsp.gopls.setup({
     capabilities = capabilities,
@@ -117,17 +110,6 @@ lsp.nim_langserver.setup {
 lsp.pyright.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-})
---> Scala
-local metals_config = require("metals").bare_config()
-metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "scala", "sbt", "java" },
-    callback = function()
-        require("metals").initialize_or_attach(metals_config)
-    end,
-    group = nvim_metals_group,
 })
 ---> Zig
 lsp.zls.setup({

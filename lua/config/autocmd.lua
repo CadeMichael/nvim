@@ -2,24 +2,6 @@
 -- autocmd's
 ------------
 
--- emmet
-vim.api.nvim_create_autocmd(
-    "FileType",
-    {
-        pattern = {
-            "css",
-            "html",
-            "php",
-            "svelte",
-            "vue",
-        },
-        command = [[
-        EmmetInstall
-        setlocal listchars=eol:↵,multispace:\ \|
-        ]],
-    }
-)
-
 -- netrw
 vim.api.nvim_create_autocmd(
     "FileType",

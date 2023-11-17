@@ -66,12 +66,7 @@ require('lazy').setup({
     'nvim-treesitter/playground',
     -- colorchemes
     'ellisonleao/gruvbox.nvim',
-    {
-        'folke/tokyonight.nvim',
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
+    'Mofiqul/dracula.nvim',
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -80,7 +75,7 @@ require('lazy').setup({
         config = function()
             require('lualine').setup({
                 options = {
-                    theme = 'tokyonight',
+                    theme = 'dracula',
                     component_separators = { left = '|', right = '|' },
                     section_separators = { left = ' ', right = ' ' },
                 },
@@ -150,7 +145,7 @@ require('lazy').setup({
     },
     {
         -- scala
-        'scalameta/nvim-metals'
+        -- 'scalameta/nvim-metals'
     },
     {
         -- http
