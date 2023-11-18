@@ -60,8 +60,10 @@ map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 map('n', '<c-d>', '<c-d>zz')
 map('n', '<c-u>', '<c-u>zz')
+
+-- Line Wrapping
 local wrap = true
-map('n', '<Space>w', function()
+map('n', '<Space>W', function()
     wrap = not wrap
     vim.o.wrap = wrap
 end)
