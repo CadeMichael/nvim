@@ -20,7 +20,6 @@ dap.adapters.lldb = {
 }
 
 -- C++
--- need to compile with '-g' flag
 dap.configurations.cpp = {
     {
         name = 'Launch',
@@ -47,6 +46,7 @@ local function map(mode, lhs, rhs, opts)
     opts.silent = opts.silent ~= false
     vim.keymap.set(mode, lhs, rhs, opts)
 end
+
 map('n', '<F5>', function() dap.continue() end, { desc = 'dap continue' })
 map('n', '<Leader>dt', function() dap.terminate() end, { desc = 'dap terminate' })
 map('n', '<F10>', function() dap.step_over() end, { desc = 'dap step over' })

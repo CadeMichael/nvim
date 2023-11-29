@@ -33,16 +33,7 @@ vim.o.softtabstop = 4
 vim.opt.cursorline = true
 -- allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
-vim.g.slime_target = "tmux"
 -- comments
 vim.g.NERDSpaceDelims = 1
 -- emmet vim
 vim.g.user_emmet_install_global = 0
--- themeing
-vim.g.startify_custom_header = {
-    "   _   _         __     ___           ",
-    "  | \\ | | ___  __\\ \\   / (_)_ __ ___  ",
-    "  |  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\ ",
-    "  | |\\  |  __/ (_) \\ V / | | | | | | |",
-    "  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
-}

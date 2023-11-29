@@ -65,7 +65,6 @@ require('lazy').setup({
     },
     'nvim-treesitter/playground',
     -- colorchemes
-    'ellisonleao/gruvbox.nvim',
     'Mofiqul/dracula.nvim',
     {
         'nvim-lualine/lualine.nvim',
@@ -128,7 +127,6 @@ require('lazy').setup({
         -- racket / lua
         'Olical/conjure',
         ft = {
-            "racket",
             "python",
             "lua",
         },
@@ -144,27 +142,14 @@ require('lazy').setup({
         end,
     },
     {
-        -- scala
-        -- 'scalameta/nvim-metals'
-    },
-    {
-        -- http
-        'rest-nvim/rest.nvim',
-        config = function()
-            require('rest-nvim').setup()
-        end
-    },
-    {
         'windwp/nvim-autopairs',
         config = function()
             require('nvim-autopairs').setup()
         end,
     },
-    --  'lervag/vimtex',
     'mattn/emmet-vim',         -- html
     'alaviss/nim.nvim',        -- nim
     'preservim/nerdcommenter', -- comments
-    'jpalardy/vim-slime',      -- repl
     -- ({['''']}) management,
     {
         'kylechui/nvim-surround',

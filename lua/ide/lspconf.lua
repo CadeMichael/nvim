@@ -2,7 +2,9 @@
 --- lsp and completion ---
 --------------------------
 
+-- locals
 local cmp = require 'cmp'
+local lsp = require 'lspconfig'
 
 -- setting up and configuring cmp
 if cmp then
@@ -17,13 +19,15 @@ if cmp then
             documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
-            ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'snippy' },
+            { name = 'snippy' }, -- For snippy users.
         }, {
             { name = 'buffer' },
         })
@@ -35,61 +39,42 @@ vim.o.completeopt = "menuone,noselect"
 -- capabilities
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Mappings.
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
 local on_attach = function(_, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    local opts = { buffer = bufnr, noremap = true, silent = true }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 end
 
 -- neovim lsp
 require("neodev").setup({})
-local lsp = require 'lspconfig'
 
 --> C
 lsp.clangd.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-})
---> Golang
-lsp.gopls.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    cmd = { 'gopls' },
-    -- for postfix snippets and analyzers
-    settings = {
-        gopls = {
-            experimentalPostfixCompletions = true,
-            analyses = {
-                unusedparams = true,
-                shadow = true,
-            },
-            staticcheck = true,
-        },
-    },
 })
 --> JavaScript (node)
 lsp.tsserver.setup({
@@ -98,11 +83,6 @@ lsp.tsserver.setup({
 })
 --> lua
 lsp.lua_ls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
---> nim
-lsp.nim_langserver.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }

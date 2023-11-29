@@ -77,40 +77,7 @@ vim.api.nvim_create_user_command("OpenTerm",
     OpenTerm()
   end, {})
 
--- ask a programming question
-function CheatSheet()
-  print("Ask Your Question...")
-  -- get user question
-  local question = vim.fn.input("?> ", "")
-  -- exit on no question
-  if question == "" then return end
-  -- split on \s
-  local question_table = vim.fn.split(question)
-  -- turn table into url
-  local url = ""
-  for _, v in ipairs(question_table) do
-    url = url .. "/" .. v
-  end
-  -- create blank window
-  vim.cmd "wincmd n"
-  vim.cmd "wincmd J"
-  -- ask the internet
-  vim.fn.termopen("curl cht.sh/" .. url)
-end
-
--- create user command
-vim.api.nvim_create_user_command("CheatSheet",
-  function()
-    CheatSheet()
-  end, {})
-
 function SaveClipper()
   vim.cmd("%s/ $//")
   vim.cmd("w")
-end
-
-function SlimeBuf()
-  local start = 1
-  local range = vim.api.nvim_buf_line_count(0)
-  vim.cmd(start .. ',' .. range .. 'SlimeSend')
 end

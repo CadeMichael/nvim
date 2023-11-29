@@ -2,27 +2,11 @@
 -- treesitter
 -------------
 
-
--- NixOs Compilation Flag (python only)
--- require'nvim-treesitter.install'.compilers = {
-    -- "clang++",
--- }
-
-
 require'nvim-treesitter.configs'.setup({
     -- Modules and its options go here
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
-    },
-    ensure_installed = {
-        "cpp",
-        "go",
-        "javascript",
-        "lua",
-        "python",
-        "rust",
-        "typescript",
     },
     incremental_selection = { enable = true },
     textobjects = { enable = true },

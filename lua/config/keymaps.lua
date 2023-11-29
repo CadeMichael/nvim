@@ -29,13 +29,8 @@ map('n', '<Space>tdf', ts.extensions.dap.frames, { desc = 'dap frames' })
 map('n', '<Space><space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
--- Slime
-map('n', '<Space>l', "<cmd>SlimeSendCurrentLine<CR>", opts)
-map('n', '<C-c><C-b>', SlimeBuf, { desc = "slime buf" })
 -- Trouble
 map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
--- Cht.sh
-map('n', '<Space>cs', CheatSheet, { desc = "cheat sheet" })
 -- git
 map('n', '<C-c>g', "<cmd> Neogit<CR>", opts)
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
@@ -66,4 +61,6 @@ local wrap = true
 map('n', '<Space>W', function()
     wrap = not wrap
     vim.o.wrap = wrap
-end)
+    end,
+    { desc = "toggle line wrapping" }
+)

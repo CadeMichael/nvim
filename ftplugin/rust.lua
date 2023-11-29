@@ -1,5 +1,3 @@
--- vim.opt_local.listchars = ({ eol = '↵', multispace = "   >" })
-
 local help = require('funcs.helpers')
 
 local function rustFmt()

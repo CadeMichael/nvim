@@ -21,3 +21,12 @@ require("trouble").setup {
     },
     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
+
+-- start screen
+vim.g.startify_custom_header = {
+    "   _   _         __     ___           ",
+    "  | \\ | | ___  __\\ \\   / (_)_ __ ___  ",
+    "  |  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\ ",
+    "  | |\\  |  __/ (_) \\ V / | | | | | | |",
+    "  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
+}
