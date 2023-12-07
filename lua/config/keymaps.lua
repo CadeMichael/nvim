@@ -32,7 +32,6 @@ map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- Trouble
 map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 -- git
-map('n', '<C-c>g', "<cmd> Neogit<CR>", opts)
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal

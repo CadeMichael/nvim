@@ -33,6 +33,9 @@ require'nvim-treesitter.configs'.setup({
     additional_vim_regex_highlighting = true
 })
 
+-- telekasten
+vim.treesitter.language.register("markdown", "telekasten")
+
 -- folding
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
