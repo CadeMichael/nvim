@@ -137,9 +137,6 @@ require('lazy').setup({
     {
         -- rust
         'simrat39/rust-tools.nvim',
-        config = function()
-            require('ide.rust')
-        end,
     },
     {
         'windwp/nvim-autopairs',

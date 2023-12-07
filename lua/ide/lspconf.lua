@@ -23,7 +23,7 @@ if cmp then
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            ['<tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
@@ -86,10 +86,27 @@ lsp.lua_ls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
+--> Ocaml
+lsp.ocamllsp.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 --> Python
 lsp.pyright.setup({
     capabilities = capabilities,
     on_attach = on_attach,
+})
+--> Rust
+local rt = require('rust-tools')
+rt.setup({
+    tools = {
+        inlay_hints = {
+            auto = false,
+        },
+    },
+    server = {
+        on_attach = on_attach,
+    },
 })
 ---> Zig
 lsp.zls.setup({
