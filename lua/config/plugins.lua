@@ -66,6 +66,7 @@ require('lazy').setup({
     'nvim-treesitter/playground',
     -- colorchemes
     'Mofiqul/dracula.nvim',
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -74,7 +75,7 @@ require('lazy').setup({
         config = function()
             require('lualine').setup({
                 options = {
-                    theme = 'dracula',
+                    theme = 'gruvbox',
                     component_separators = { left = '|', right = '|' },
                     section_separators = { left = ' ', right = ' ' },
                 },
