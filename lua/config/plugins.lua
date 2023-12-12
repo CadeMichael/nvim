@@ -66,7 +66,7 @@ require('lazy').setup({
     'nvim-treesitter/playground',
     -- colorchemes
     'Mofiqul/dracula.nvim',
-    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -124,21 +124,7 @@ require('lazy').setup({
         end
     },
     -- lang support
-    {
-        -- racket / lua
-        'Olical/conjure',
-        ft = {
-            "python",
-            "lua",
-        },
-        config = function()
-            vim.g['conjure#extract#tree_sitter#enabled'] = true
-        end
-    },
-    {
-        -- rust
-        'simrat39/rust-tools.nvim',
-    },
+    'simrat39/rust-tools.nvim', -- rust
     {
         'windwp/nvim-autopairs',
         config = function()
