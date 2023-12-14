@@ -16,6 +16,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    -- file management
+    {
+        'stevearc/oil.nvim',
+        config = function()
+            require('oil').setup()
+        end
+    },
     --lsp config
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',

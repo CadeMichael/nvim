@@ -7,6 +7,7 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+local oil = require('oil')
 -- Telescope builtin
 local tsb = require('telescope.builtin')
 local opts = { noremap = true, silent = true }
@@ -35,13 +36,14 @@ map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal
-map({ 'n', 'i' }, '<C-c><C-z>', OpenTerm, { desc = "open term" })
-map('t', '<C-c><C-z>', OpenTerm, { desc = "open term" })
+map({ 'n', 'i' }, '<C-l>', OpenTerm, { desc = "open term" })
+map('t', '<C-l>', OpenTerm, { desc = "open term" })
 -- prevent nvim from being suspended
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
 -- remaps
-map('n', '<Space>n', vim.cmd.Ex, { desc = "open file manager" })
+map('n', '<Space>n', oil.open_float, { desc = "open oil" })
+map('n', '<Space>N', oil.open, { desc = "open oil" })
 map('n', '<Space>bk', ':bdelete!<CR>', opts)
 map('n', 'Y', 'y$', opts)
 map('n', 'n', 'nzzzv', opts)
@@ -58,8 +60,8 @@ map('n', '<c-u>', '<c-u>zz')
 -- Line Wrapping
 local wrap = true
 map('n', '<Space>W', function()
-    wrap = not wrap
-    vim.o.wrap = wrap
+        wrap = not wrap
+        vim.o.wrap = wrap
     end,
     { desc = "toggle line wrapping" }
 )
