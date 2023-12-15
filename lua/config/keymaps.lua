@@ -28,6 +28,7 @@ map('n', '<Space>tdv', ts.extensions.dap.variables, { desc = 'dap variables' })
 map('n', '<Space>tdf', ts.extensions.dap.frames, { desc = 'dap frames' })
 -- notes
 map('n', '<Space><space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
+map('n', '<Space>rf', '<cmd>Telekasten find_notes<CR>', { desc = 'telekasten find notes' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- Trouble
