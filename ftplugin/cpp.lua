@@ -1,4 +1,4 @@
-function Bcp()
+local function cpp_build()
     local fname = vim.api.nvim_buf_get_name(0)
     local split_name = vim.fn.split(fname, "/")
     local name = split_name[#split_name]
@@ -7,7 +7,7 @@ function Bcp()
     vim.cmd("!g++ -Wall " .. fname .. " -o " .. name)
 end
 
-function Rcp()
+local function cpp_run()
     local fname = vim.api.nvim_buf_get_name(0)
     local name = string.sub(fname, 1, -4)
     vim.cmd("wincmd n")
@@ -16,8 +16,8 @@ function Rcp()
 end
 
 local keymap = vim.keymap.set
-keymap('n', '<Space>bf', Bcp, { desc = "build file" })
-keymap('n', '<Space>rf', Rcp, { desc = "run file" })
+keymap('n', '<Space>bf', cpp_build, { desc = "build file" })
+keymap('n', '<Space>rf', cpp_run, { desc = "run file" })
 
 vim.opt_local.expandtab = true
 vim.opt_local.tabstop = 2

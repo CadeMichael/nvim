@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd(
     "FileType",
     {
         pattern = {
-            "netrw",
+            "oil",
         },
         callback = function()
             vim.opt_local.colorcolumn = ''
