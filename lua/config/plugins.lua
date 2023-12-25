@@ -131,6 +131,12 @@ require('lazy').setup({
         end
     },
     -- lang support
+    {
+        'jpalardy/vim-slime',
+        config = function ()
+            vim.g.slime_target = "neovim"
+        end,
+    },
     'simrat39/rust-tools.nvim', -- rust
     {
         'windwp/nvim-autopairs',
