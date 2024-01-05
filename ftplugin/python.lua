@@ -1,5 +1,3 @@
-vim.opt_local.listchars = ({ eol = '↵' })
-
 local help = require("funcs.helpers")
 
 local keymap = vim.keymap.set

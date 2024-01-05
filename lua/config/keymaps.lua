@@ -37,8 +37,8 @@ map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal
-map({ 'n', 'i' }, '<C-l>', OpenTerm, { desc = "open term" })
-map('t', '<C-l>', OpenTerm, { desc = "open term" })
+map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = "open term" })
+map('t', '<C-Space>', OpenTerm, { desc = "open term" })
 -- prevent nvim from being suspended
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
@@ -58,6 +58,9 @@ map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 map('n', '<c-d>', '<c-d>zz')
 map('n', '<c-u>', '<c-u>zz')
 
+-- indent highlighting
+map('n', '<Space>I', '<cmd>IBLToggle<CR>', { desc = "toggle indent highlighting" })
+map('n', '<Space>S', '<cmd>IBLToggleScope<CR>', { desc = "toggle indent scope highlighting" })
 -- Line Wrapping
 local wrap = true
 map('n', '<Space>W', function()

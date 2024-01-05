@@ -86,6 +86,11 @@ lsp.lua_ls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
+--> Nim
+lsp.nim_langserver.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 --> Ocaml
 lsp.ocamllsp.setup {
     capabilities = capabilities,

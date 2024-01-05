@@ -71,6 +71,27 @@ require('lazy').setup({
         end,
     },
     'nvim-treesitter/playground',
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        config = function()
+            require("ibl").setup {
+                exclude = {
+                    filetypes = {
+                        "css",
+                        "lua",
+                        "nim",
+                        "startify"
+                    }
+                },
+                scope = {
+                    enabled = false,
+                    show_start = false,
+                    show_end = false
+                },
+            }
+        end
+    },
     -- colorchemes
     'Mofiqul/dracula.nvim',
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
@@ -133,7 +154,7 @@ require('lazy').setup({
     -- lang support
     {
         'jpalardy/vim-slime',
-        config = function ()
+        config = function()
             vim.g.slime_target = "neovim"
         end,
     },
