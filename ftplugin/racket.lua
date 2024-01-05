@@ -1,4 +1,5 @@
 local send_sexp = "<Esc>va(<Plug>SlimeRegionSend%"
+
 local function racket_rep()
     vim.cmd [[wincmd n]]
     vim.cmd [[wincmd J]]
