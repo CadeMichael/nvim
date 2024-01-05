@@ -2,7 +2,14 @@
 -- autocmd's
 ------------
 
--- netrw
+-- linting
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    callback = function()
+        require("lint").try_lint()
+    end,
+})
+
+-- oil
 vim.api.nvim_create_autocmd(
     "FileType",
     {
@@ -14,6 +21,7 @@ vim.api.nvim_create_autocmd(
         end
     }
 )
+
 
 -- term line num
 vim.api.nvim_create_autocmd(

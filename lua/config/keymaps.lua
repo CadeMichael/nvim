@@ -7,9 +7,11 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+-- imports
 local oil = require('oil')
--- Telescope builtin
 local tsb = require('telescope.builtin')
+local ts = require('telescope')
+
 local opts = { noremap = true, silent = true }
 map('n', '<Space>bs', tsb.buffers, { desc = "ts buf" })
 map('n', '<Space>.', tsb.find_files, { desc = "ts find files" })
@@ -18,10 +20,11 @@ map('n', '<Space>h', tsb.help_tags, { desc = "ts help" })
 map('n', '<Space>m', tsb.keymaps, { desc = "ts maps" })
 -- custom project search function
 map('n', '<Space>ps', function()
-    tsb.grep_string({ search = vim.fn.input("Grep > ") })
-end, { desc = "grep project" })
+        tsb.grep_string({ search = vim.fn.input("Grep > ") })
+    end,
+    { desc = "grep project" }
+)
 -- TS Dap
-local ts = require('telescope')
 map('n', '<Space>tdc', ts.extensions.dap.commands, { desc = 'dap commands' })
 map('n', '<Space>tdb', ts.extensions.dap.list_breakpoints, { desc = 'dap list bp' })
 map('n', '<Space>tdv', ts.extensions.dap.variables, { desc = 'dap variables' })

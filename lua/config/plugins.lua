@@ -55,6 +55,15 @@ require('lazy').setup({
     'dcampos/cmp-snippy',
     'folke/trouble.nvim',
     'folke/neodev.nvim',
+    -- linting
+    {
+        'mfussenegger/nvim-lint',
+        config = function()
+            require('lint').linters_by_ft = {
+                go = {'golangcilint'}
+            }
+        end
+    },
     -- debugging
     {
         'mfussenegger/nvim-dap',
