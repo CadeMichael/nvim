@@ -40,12 +40,9 @@ end
 
 -- test given function name from current go buffer
 ---@param fname string
----@param bufnr integer
-local function test_function(fname, bufnr)
+local function test_function(fname)
     ---@type string
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-    ---@type string
-    local command = test_cmd .. fname .. " " .. bufname .. " -v"
+    local command = test_cmd .. fname .. " -v"
     vim.fn.jobstart(command, {
         stderr_buffered = true,
         stdout_buffered = true,
