@@ -35,6 +35,6 @@ vim.opt.cursorline = true
 vim.o.mouse = 'nv' --> normal / visual
 -- comments
 vim.g.NERDSpaceDelims = 1
-vim.g.NERDCustomDelimiters = { python = { left = "#", right = "" }}
+vim.g.NERDCustomDelimiters = { python = { left = "#", right = "" } }
 -- emmet vim
 vim.g.user_emmet_install_global = 0

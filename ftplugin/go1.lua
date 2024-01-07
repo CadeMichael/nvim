@@ -62,8 +62,7 @@ end
 -- create a picker to pick a function name from the current file
 ---@param fnames string[]
 ---@param funcbody table<string, string>
----@param bufnr integer
-local func_picker = function(fnames, funcbody, bufnr)
+local func_picker = function(fnames, funcbody)
     pickers.new({}, {
         layout_config = {
             horizontal = {
@@ -105,7 +104,7 @@ local func_picker = function(fnames, funcbody, bufnr)
             actions.select_default:replace(function()
                 actions.close(prompt_bufnr)
                 local selection = action_state.get_selected_entry()
-                test_function(selection.value, bufnr)
+                test_function(selection.value)
             end)
             return true
         end,
@@ -137,7 +136,7 @@ local function goFuncTester()
         vim.api.nvim_notify("No Functions Found", vim.log.levels.ERROR, {})
         return
     end
-    func_picker(fnames, funcbody, bufnr)
+    func_picker(fnames, funcbody)
 end
 
 -- set keymapping
