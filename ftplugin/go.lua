@@ -1,40 +1,51 @@
+-- imports
 local pickers = require "telescope.pickers"
 local previewers = require "telescope.previewers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
-local test_cmd = "go test -run "
+----------
 
+---@type string
+local test_cmd = "go test -run "
+---@type Query
 local q = vim.treesitter.query.parse("go", [[
     (function_declaration name: (identifier) @name)
     ]])
 
+-- get the root node of the AST
+---@param bufnr integer
+---@return TSNode
 local get_root = function(bufnr)
+    ---@type LanguageTree
     local parser = vim.treesitter.get_parser(bufnr, "go", {})
+    ---@type TSTree
     local tree = parser:parse()[1]
     return tree:root()
 end
 
+-- handle raw stdout / stderr data and present to user
+---@param data string[]
 local function handle_data(data)
-    local output = {}
+    ---@type string
+    local msg = ""
     for _, v in ipairs(data) do
-        table.insert(output, v)
-    end
-    local msg = ''
-    if output then
-        for _, v in ipairs(data) do
-            msg = msg .. v .. "\n"
-        end
+        msg = msg .. v .. "\n"
     end
     if #msg > 1 then
         vim.api.nvim_notify(msg, vim.log.levels.INFO, {})
     end
 end
 
+-- test given function name from current go buffer
+---@param fname string
+---@param bufnr integer
 local function test_function(fname, bufnr)
+    ---@type string
     local bufname = vim.api.nvim_buf_get_name(bufnr)
-    local command = test_cmd .. fname .. " " .. bufname
+    ---@type string
+    local command = test_cmd .. fname .. " " .. bufname .. " -v"
     vim.fn.jobstart(command, {
         stderr_buffered = true,
         stdout_buffered = true,
@@ -51,6 +62,10 @@ local function test_function(fname, bufnr)
     })
 end
 
+-- create a picker to pick a function name from the current file
+---@param fnames string[]
+---@param funcbody table<string, string>
+---@param bufnr integer
 local func_picker = function(fnames, funcbody, bufnr)
     pickers.new({}, {
         layout_config = {
@@ -59,12 +74,13 @@ local func_picker = function(fnames, funcbody, bufnr)
                 preview_width = 0.67
             }
         },
-        prompt_title = "Test Functions",
+        prompt_title = "Function",
         finder = finders.new_table {
-            results = fnames
+            results = fnames,
         },
+        results_title = "Functions",
         previewer = previewers.new_buffer_previewer {
-            title = "My preview",
+            title = "Function Body",
             define_preview = function(self, entry, _)
                 local func_str = funcbody[entry.value]
                 local func_table = { "" }
@@ -99,17 +115,26 @@ local func_picker = function(fnames, funcbody, bufnr)
     }):find()
 end
 
+-- find all function names, create a picker, and execute tests
 local function goFuncTester()
+    ---@type string[]
     local fnames = {}
+    ---@type table<string, string>
     local funcbody = {}
+    ---@type integer
     local bufnr = vim.api.nvim_get_current_buf()
+    ---@type TSNode
     local root = get_root(bufnr)
     for _, node in q:iter_captures(root, bufnr, 0, -1) do
+        ---@type string
         local func_name = vim.treesitter.get_node_text(node, bufnr, {})
+        ---@type TSNode?
         local parent = node:parent()
-        local ptext = vim.treesitter.get_node_text(parent, bufnr, {})
-        funcbody[func_name] = ptext
-        table.insert(fnames, func_name)
+        if parent then
+            local ptext = vim.treesitter.get_node_text(parent, bufnr, {})
+            funcbody[func_name] = ptext
+            table.insert(fnames, func_name)
+        end
     end
     if #fnames == 0 then
         vim.api.nvim_notify("No Functions Found", vim.log.levels.ERROR, {})
@@ -118,5 +143,5 @@ local function goFuncTester()
     func_picker(fnames, funcbody, bufnr)
 end
 
-
+-- set keymapping
 vim.keymap.set('n', '<Space>T', goFuncTester, {})
