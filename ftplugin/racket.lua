@@ -1,10 +1,10 @@
 local send_sexp = "<Esc>va(<Plug>SlimeRegionSend%"
 
 local function racket_rep()
-    vim.cmd [[wincmd n]]
-    vim.cmd [[wincmd J]]
-    vim.fn.termopen("racket", { cwd = vim.fn.getcwd() })
-    vim.cmd [[echo &channel]]
+  vim.cmd [[wincmd n]]
+  vim.cmd [[wincmd J]]
+  vim.fn.termopen("racket", { cwd = vim.fn.getcwd() })
+  vim.cmd [[echo &channel]]
 end
 
 local keymap = vim.keymap.set

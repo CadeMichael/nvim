@@ -1,6 +1,6 @@
 local m = {}
 
-m.printData = function (data)
+m.printData = function(data)
   local output = {}
   for _, v in ipairs(data) do
     table.insert(output, v)
@@ -22,23 +22,23 @@ end
 
 m.runCmd = function(command, dir, handler)
   vim.fn.jobstart(command, {
-      -- allows proper newlines
-      stderr_buffered = true,
-      stdout_buffered = true,
-      cwd = dir,
-      -- handle err / out
-      on_stderr = function(_, data)
-        -- check data
-        if #data > 1 then
-          handler(data)
-        end
-      end,
-      on_stdout = function(_, data)
-        -- check data
-        if #data > 1 then
-          handler(data)
-        end
-      end,
+    -- allows proper newlines
+    stderr_buffered = true,
+    stdout_buffered = true,
+    cwd = dir,
+    -- handle err / out
+    on_stderr = function(_, data)
+      -- check data
+      if #data > 1 then
+        handler(data)
+      end
+    end,
+    on_stdout = function(_, data)
+      -- check data
+      if #data > 1 then
+        handler(data)
+      end
+    end,
   })
 end
 

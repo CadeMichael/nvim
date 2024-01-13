@@ -2,9 +2,9 @@
 -- keymappings
 --------------
 local function map(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- imports
@@ -20,9 +20,9 @@ map('n', '<Space>h', tsb.help_tags, { desc = "ts help" })
 map('n', '<Space>m', tsb.keymaps, { desc = "ts maps" })
 -- custom project search function
 map('n', '<Space>ps', function()
-        tsb.grep_string({ search = vim.fn.input("Grep > ") })
-    end,
-    { desc = "grep project" }
+    tsb.grep_string({ search = vim.fn.input("Grep > ") })
+  end,
+  { desc = "grep project" }
 )
 -- TS Dap
 map('n', '<Space>tdc', ts.extensions.dap.commands, { desc = 'dap commands' })
@@ -67,8 +67,8 @@ map('n', '<Space>S', '<cmd>IBLToggleScope<CR>', { desc = "toggle indent scope hi
 -- Line Wrapping
 local wrap = true
 map('n', '<Space>W', function()
-        wrap = not wrap
-        vim.o.wrap = wrap
-    end,
-    { desc = "toggle line wrapping" }
+    wrap = not wrap
+    vim.o.wrap = wrap
+  end,
+  { desc = "toggle line wrapping" }
 )

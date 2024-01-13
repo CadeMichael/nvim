@@ -28,8 +28,8 @@ vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
 vim.o.swapfile = false
 vim.o.expandtab = true
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
+vim.o.shiftwidth = 2
+-- vim.o.softtabstop = 4
 vim.opt.cursorline = true
 -- allowing mouse support
 vim.o.mouse = 'nv' --> normal / visual
