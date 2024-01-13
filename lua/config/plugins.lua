@@ -90,6 +90,7 @@ require('lazy').setup({
             "css",
             "lua",
             "nim",
+            "racket",
             "startify"
           }
         },
