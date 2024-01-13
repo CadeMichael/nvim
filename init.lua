@@ -26,13 +26,13 @@ vim.opt.number = true
 vim.opt.list = true
 vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
-vim.o.swapfile = false
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
--- vim.o.softtabstop = 4
+vim.opt.swapfile = false
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.cursorline = true
 -- allowing mouse support
-vim.o.mouse = 'nv' --> normal / visual
+vim.opt.mouse = 'nv' --> normal / visual
 -- comments
 vim.g.NERDSpaceDelims = 1
 vim.g.NERDCustomDelimiters = { python = { left = "#", right = "" } }
