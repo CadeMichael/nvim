@@ -127,7 +127,7 @@ require('lazy').setup({
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
     config = function()
-      local telescope_theme = 'ivy'
+      local telescope_theme = 'dropdown'
       require('telescope').setup({
         -- set theme of used pickers
         pickers = {
