@@ -9,7 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable',     -- latest stable release
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end
@@ -168,16 +168,23 @@ require('lazy').setup({
       vim.g.slime_target = "neovim"
     end,
   },
-  'simrat39/rust-tools.nvim',   -- rust
+  'simrat39/rust-tools.nvim', -- rust
+  {                           -- scala
+    "scalameta/nvim-metals",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    ft = { "scala", "sbt", "java" },
+  },
   {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup()
     end,
   },
-  'mattn/emmet-vim',           -- html
-  'alaviss/nim.nvim',          -- nim
-  'preservim/nerdcommenter',   -- comments
+  'mattn/emmet-vim',         -- html
+  'alaviss/nim.nvim',        -- nim
+  'preservim/nerdcommenter', -- comments
   -- ({['''']}) management,
   {
     'kylechui/nvim-surround',

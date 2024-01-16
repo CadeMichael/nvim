@@ -13,7 +13,7 @@ if cmp then
   cmp.setup({
     snippet = {
       expand = function(args)
-        require('snippy').expand_snippet(args.body)         -- For `snippy` users.
+        require('snippy').expand_snippet(args.body) -- For `snippy` users.
       end,
     },
     window = {
@@ -23,13 +23,13 @@ if cmp then
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
+      -- ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<tab>'] = cmp.mapping.confirm({ select = true }),       -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'snippy' },       -- For snippy users.
+      { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
     })
@@ -120,7 +120,20 @@ rt.setup({
     on_attach = on_attach,
   },
 })
----> Zig
+--> Scala
+local scala = require('metals').bare_config()
+scala.capabilities = require("cmp_nvim_lsp").default_capabilities()
+scala.on_attach = function(client, buffer) on_attach(client, buffer) end
+
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+vim.api.nvim_create_autocmd("filetype", {
+  pattern = { "scala", "sbt", "java" },
+  callback = function()
+    require("metals").initialize_or_attach(scala)
+  end,
+  group = nvim_metals_group,
+})
+--> Zig
 lsp.zls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
