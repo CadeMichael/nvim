@@ -55,6 +55,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.codelens.run, opts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -67,7 +68,7 @@ local on_attach = function(_, bufnr)
     tsb.lsp_references(tst.get_dropdown({}))
   end, opts)
   vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '<space>E', function()
+  vim.keymap.set('n', '<sapce>E', function()
     tsb.diagnostics(tst.get_dropdown({}))
   end, opts)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -109,21 +110,17 @@ lsp.pyright.setup({
   on_attach = on_attach,
 })
 --> Rust
-local rt = require('rust-tools')
-rt.setup({
-  tools = {
-    inlay_hints = {
-      auto = false,
-    },
-  },
-  server = {
-    on_attach = on_attach,
-  },
+lsp.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
 --> Scala
 local scala = require('metals').bare_config()
 scala.capabilities = require("cmp_nvim_lsp").default_capabilities()
-scala.on_attach = function(client, buffer) on_attach(client, buffer) end
+scala.on_attach = function(client, buffer)
+  require("metals").setup_dap()
+  on_attach(client, buffer)
+end
 
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 vim.api.nvim_create_autocmd("filetype", {

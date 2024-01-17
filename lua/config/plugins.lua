@@ -168,8 +168,7 @@ require('lazy').setup({
       vim.g.slime_target = "neovim"
     end,
   },
-  'simrat39/rust-tools.nvim', -- rust
-  {                           -- scala
+  { -- scala
     "scalameta/nvim-metals",
     dependencies = {
       "nvim-lua/plenary.nvim"

@@ -36,8 +36,27 @@ dap.configurations.cpp = {
   },
 }
 
+dap.configurations.scala = {
+  {
+    type = "scala",
+    request = "launch",
+    name = "RunOrTest",
+    metals = {
+      runType = "runOrTestFile",
+      --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
+    },
+  },
+  {
+    type = "scala",
+    request = "launch",
+    name = "Test Target",
+    metals = {
+      runType = "testTarget",
+    },
+  },
+}
+
 -- Rust
--- with rust-tools simply hover on 'main' function
 dap.configurations.rust = dap.configurations.cpp
 
 -- Keymaps
