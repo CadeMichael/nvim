@@ -103,7 +103,6 @@ require('lazy').setup({
     end
   },
   -- colorchemes
-  'Mofiqul/dracula.nvim',
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
   {
     'nvim-lualine/lualine.nvim',
@@ -217,22 +216,22 @@ require('lazy').setup({
     end,
   },
   -- local dev
-  {
-    dir = "~/Git/gotest.nvim",
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-telescope/telescope.nvim',
-    },
-    config = function()
-      -- defaults
-      vim.g.gotest = {
-        test_cmd = "go test -run ",
-        preview_cutoff = 0,
-        preview_width = 0.67
-      }
-      local goTest = require("gotest")
-      vim.keymap.set("n", "<Space>tf", goTest.goFuncTester)
-      vim.keymap.set("n", "<Space>tm", goTest.goModTester)
-    end
-  }
+  -- {
+    -- dir = "~/Git/gotest.nvim",
+    -- dependencies = {
+      -- 'nvim-treesitter/nvim-treesitter',
+      -- 'nvim-telescope/telescope.nvim',
+    -- },
+    -- config = function()
+      -- -- defaults
+      -- vim.g.gotest = {
+        -- test_cmd = "go test -run ",
+        -- preview_cutoff = 0,
+        -- preview_width = 0.67
+      -- }
+      -- local goTest = require("gotest")
+      -- vim.keymap.set("n", "<Space>tf", goTest.goFuncTester)
+      -- vim.keymap.set("n", "<Space>tm", goTest.goModTester)
+    -- end
+  -- }
 })
