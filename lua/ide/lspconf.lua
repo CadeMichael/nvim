@@ -52,6 +52,9 @@ local on_attach = function(_, bufnr)
 
   -- Mappings.
   local opts = { buffer = bufnr, noremap = true, silent = true }
+  local function get_opts(desc)
+    return { desc = desc, buffer = bufnr, noremap = true, silent = true }
+  end
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -63,17 +66,18 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
   vim.keymap.set('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+  end, get_opts("lsp list workspace folders"))
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition,
+    get_opts("get type definition"))
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, get_opts("rename"))
   vim.keymap.set('n', 'gr', function()
     tsb.lsp_references(tst.get_dropdown({}))
-  end, opts)
+  end, get_opts("telescope get references"))
   vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
-    { buffer = bufnr, desc = "open diagnostic float" })
+    get_opts("diagnostic open float"))
   vim.keymap.set('n', '<space>E', function()
     tsb.diagnostics(tst.get_dropdown({}))
-  end, { buffer = bufnr, desc = "telescope diagnostics" })
+  end, get_opts("telescope diagnostics"))
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
