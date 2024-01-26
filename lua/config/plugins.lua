@@ -154,6 +154,7 @@ require('lazy').setup({
   -- telekasten
   {
     'renerocksai/telekasten.nvim',
+    dependencies = { 'renerocksai/calendar-vim' },
     config = function()
       require('telekasten').setup({
         home = vim.fn.expand("~/zkast"),
@@ -175,7 +176,12 @@ require('lazy').setup({
     config = function()
       require("sniprun").setup({
         display = { "Classic" },
-        selected_interpreters = { 'Python3_fifo' },
+        interpreter_options = {
+          GFM_original = {
+            use_on_filetypes = { "telekasten" }
+          }
+        },
+        selected_interpreters = { "Python3_fifo" },
         repl_enable = { "Python3_fifo" },
       })
     end,

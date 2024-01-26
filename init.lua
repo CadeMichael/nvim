@@ -13,8 +13,6 @@ require('config.theme')
 -- get the autocommands
 require('config.autocmd')
 
-----------------
-
 --------------------
 -- global configs --
 --------------------
