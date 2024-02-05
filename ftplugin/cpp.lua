@@ -16,8 +16,8 @@ local function cpp_run()
 end
 
 local keymap = vim.keymap.set
-keymap('n', '<Space>bf', cpp_build, { desc = "build file" })
-keymap('n', '<Space>rf', cpp_run, { desc = "run file" })
+keymap('n', '<Space>bb', cpp_build, { desc = "build file" })
+keymap('n', '<Space>rb', cpp_run, { desc = "run file" })
 
 -- prevent '#if defined' lack of highlighting
 vim.api.nvim_set_hl(0, '@lsp.type.comment.cpp', {})

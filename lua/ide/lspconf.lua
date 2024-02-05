@@ -7,6 +7,7 @@ local cmp = require 'cmp'
 local lsp = require 'lspconfig'
 local tsb = require 'telescope.builtin'
 local tst = require 'telescope.themes'
+local used = require('langs')
 
 -- setting up and configuring cmp
 if cmp then
@@ -73,13 +74,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gr', function()
     tsb.lsp_references(tst.get_dropdown({}))
   end, get_opts("telescope get references"))
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
-    get_opts("diagnostic open float"))
-  vim.keymap.set('n', '<space>E', function()
-    tsb.diagnostics(tst.get_dropdown({}))
-  end, get_opts("telescope diagnostics"))
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 end
 
@@ -87,59 +81,82 @@ end
 require("neodev").setup({})
 
 --> C
-lsp.clangd.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+if used.Cpp then
+  lsp.clangd.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
 --> JavaScript (node)
-lsp.tsserver.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+if used.Js then
+  lsp.tsserver.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
 --> lua
 lsp.lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
 --> Nim
-lsp.nim_langserver.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
---> Ocaml
-lsp.ocamllsp.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
---> Python
-lsp.pyright.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
---> Rust
-lsp.rust_analyzer.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
---> Scala
-local scala = require('metals').bare_config()
-scala.capabilities = require("cmp_nvim_lsp").default_capabilities()
-scala.on_attach = function(client, buffer)
-  require("metals").setup_dap()
-  on_attach(client, buffer)
+if used.Nim then
+  lsp.nim_langserver.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
 end
+--> Ocaml
+if used.Ocaml then
+  lsp.ocamllsp.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+end
+--> Python
+if used.Python then
+  lsp.pyright.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
+--> Rust
+if used.Rust then
+  lsp.rust_analyzer.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
+--> Scala
+if used.Scala then
+  local scala = require('metals').bare_config()
+  scala.capabilities = require("cmp_nvim_lsp").default_capabilities()
+  scala.on_attach = function(client, buffer)
+    require("metals").setup_dap()
+    on_attach(client, buffer)
+  end
 
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd("filetype", {
-  pattern = { "scala", "sbt", "java" },
-  callback = function()
-    require("metals").initialize_or_attach(scala)
-  end,
-  group = nvim_metals_group,
-})
+  local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+  vim.api.nvim_create_autocmd("filetype", {
+    pattern = { "scala", "sbt", "java" },
+    callback = function()
+      require("metals").initialize_or_attach(scala)
+    end,
+    group = nvim_metals_group,
+  })
+end
+--> Solidity
+if used.Sol then
+  lsp.solc.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
 --> Zig
-lsp.zls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+if used.Zig then
+  lsp.zls.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
 -----------------------------------

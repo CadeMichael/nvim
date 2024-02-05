@@ -2,6 +2,7 @@
 -- package management
 ---------------------
 
+local used = require('langs')
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -15,7 +16,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
+local plugins = {
   -- file management
   {
     'stevearc/oil.nvim',
@@ -60,7 +61,8 @@ require('lazy').setup({
     'mfussenegger/nvim-lint',
     config = function()
       require('lint').linters_by_ft = {
-        go = { 'golangcilint' }
+        go = { 'golangcilint' },
+        solidity = { 'solhint' }
       }
     end
   },
@@ -168,31 +170,6 @@ require('lazy').setup({
       vim.g.slime_target = "neovim"
     end,
   },
-  -- executing code
-  {
-    "michaelb/sniprun",
-    branch = "master",
-    build = "sh install.sh",
-    config = function()
-      require("sniprun").setup({
-        display = { "Classic" },
-        interpreter_options = {
-          GFM_original = {
-            use_on_filetypes = { "telekasten" }
-          }
-        },
-        selected_interpreters = { "Python3_fifo" },
-        repl_enable = { "Python3_fifo" },
-      })
-    end,
-  },
-  { -- scala
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim"
-    },
-    ft = { "scala", "sbt", "java" },
-  },
   {
     'windwp/nvim-autopairs',
     config = function()
@@ -253,4 +230,36 @@ require('lazy').setup({
   -- vim.keymap.set("n", "<Space>tm", goTest.goModTester)
   -- end
   -- }
-})
+}
+
+if used.Sn then
+  table.insert(plugins, {
+    "michaelb/sniprun",
+    branch = "master",
+    build = "sh install.sh",
+    config = function()
+      require("sniprun").setup({
+        display = { "Classic" },
+        interpreter_options = {
+          GFM_original = {
+            use_on_filetypes = { "telekasten" }
+          }
+        },
+        selected_interpreters = { "Python3_fifo" },
+        repl_enable = { "Python3_fifo" },
+      })
+    end,
+  })
+end
+
+if used.Scala then
+  table.insert(plugins, { -- scala
+    "scalameta/nvim-metals",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    ft = { "scala", "sbt", "java" },
+  })
+end
+
+require('lazy').setup(plugins)

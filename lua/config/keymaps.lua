@@ -11,8 +11,14 @@ end
 local oil = require('oil')
 local tsb = require('telescope.builtin')
 local ts = require('telescope')
+local tst = require 'telescope.themes'
 
 local opts = { noremap = true, silent = true }
+
+local function get_opts(desc)
+  return { desc = desc, noremap = true, silent = true }
+end
+
 map('n', '<Space>bs', tsb.buffers, { desc = "ts buf" })
 map('n', '<Space>.', tsb.find_files, { desc = "ts find files" })
 map('n', '<Space>pf', tsb.git_files, { desc = "ts git files" })
@@ -34,8 +40,15 @@ map('n', '<Space><space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten pan
 map('n', '<Space>rf', '<cmd>Telekasten find_notes<CR>', { desc = 'telekasten find notes' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
--- Trouble
+-- Trouble / linting
 map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
+  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
+    get_opts("diagnostic open float"))
+  vim.keymap.set('n', '<space>E', function()
+    tsb.diagnostics(tst.get_dropdown({}))
+  end, get_opts("telescope diagnostics"))
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 -- git
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
