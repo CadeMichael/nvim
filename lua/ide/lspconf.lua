@@ -7,7 +7,7 @@ local cmp = require 'cmp'
 local lsp = require 'lspconfig'
 local tsb = require 'telescope.builtin'
 local tst = require 'telescope.themes'
-local used = require('langs')
+local used = require('included')
 
 -- setting up and configuring cmp
 if cmp then

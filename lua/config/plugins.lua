@@ -2,7 +2,7 @@
 -- package management
 ---------------------
 
-local used = require('langs')
+local used = require('included')
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -114,7 +114,7 @@ local plugins = {
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'gruvbox',
+          theme = used.Dracula and 'dracula' or 'gruvbox',
           component_separators = { left = '|', right = '|' },
           section_separators = { left = ' ', right = ' ' },
         },
@@ -231,6 +231,12 @@ local plugins = {
   -- end
   -- }
 }
+
+if used.Dracula then
+  table.insert(plugins, {
+    'Mofiqul/dracula.nvim'
+  })
+end
 
 if used.Sn then
   table.insert(plugins, {
