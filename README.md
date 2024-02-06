@@ -1,6 +1,6 @@
 # Neovim Conf
 
-- the file *lua/langs.lua* will not be in the repo as it is part of .gitignore 
+- the file *lua/included.lua* will not be in the repo as it is part of .gitignore 
     - it specifies what will and will not be configured / installed
 - example
 
@@ -8,6 +8,7 @@
 local m = {}
 
 m.Cpp = true
+m.Dracula = true
 m.Js = false
 m.Nim = false
 m.Ocaml = false

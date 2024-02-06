@@ -1,5 +1,5 @@
 lazy-lock.json
-lua/langs.lua
+lua/included.lua
 !tmux.conf
 !lua/
 !lua/force/
