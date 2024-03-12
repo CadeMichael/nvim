@@ -62,7 +62,6 @@ local plugins = {
     config = function()
       require('lint').linters_by_ft = {
         go = { 'golangcilint' },
-        solidity = { 'solhint' }
       }
     end
   },
@@ -164,12 +163,6 @@ local plugins = {
     end
   },
   -- lang support
-  {
-    'jpalardy/vim-slime',
-    config = function()
-      vim.g.slime_target = "neovim"
-    end,
-  },
   {
     'windwp/nvim-autopairs',
     config = function()

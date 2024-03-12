@@ -22,7 +22,6 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-
 -- term line num
 vim.api.nvim_create_autocmd(
   "TermOpen",
