@@ -25,37 +25,13 @@ local plugins = {
     end
   },
   --lsp config
-  'neovim/nvim-lspconfig',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
   {
-    'hrsh7th/nvim-cmp',
+    'neoclide/coc.nvim',
+    branch = 'release',
     config = function()
       require('ide.lspconf')
-    end,
+    end
   },
-  -- lsp extension
-  {
-    'dcampos/nvim-snippy',
-    config = function()
-      require('snippy').setup({
-        mappings = {
-          is = {
-            ['<Tab>'] = 'expand_or_advance',
-            ['<S-Tab>'] = 'previous',
-          },
-          nx = {
-            ['<leader>x'] = 'cut_text',
-          },
-        },
-      })
-    end,
-  },
-  'dcampos/cmp-snippy',
-  'folke/trouble.nvim',
-  'folke/neodev.nvim',
   -- linting
   {
     'mfussenegger/nvim-lint',
@@ -65,20 +41,12 @@ local plugins = {
       }
     end
   },
-  -- debugging
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('ide.debug')
-    end
-  },
-  'rcarriga/nvim-dap-ui',
   -- treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('ide.syntax')
-    end,
+    end
   },
   'nvim-treesitter/playground',
   {
@@ -122,7 +90,6 @@ local plugins = {
   },
   -- Telescope
   'nvim-telescope/telescope.nvim',
-  'nvim-telescope/telescope-dap.nvim',
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
@@ -149,7 +116,6 @@ local plugins = {
         }
       })
       require('telescope').load_extension('fzf')
-      require('telescope').load_extension('dap')
     end,
   },
   -- telekasten
@@ -204,25 +170,6 @@ local plugins = {
       })
     end,
   },
-  -- local dev
-  -- {
-  -- dir = "~/Git/gotest.nvim",
-  -- dependencies = {
-  -- 'nvim-treesitter/nvim-treesitter',
-  -- 'nvim-telescope/telescope.nvim',
-  -- },
-  -- config = function()
-  -- -- defaults
-  -- vim.g.gotest = {
-  -- test_cmd = "go test -run ",
-  -- preview_cutoff = 0,
-  -- preview_width = 0.67
-  -- }
-  -- local goTest = require("gotest")
-  -- vim.keymap.set("n", "<Space>tf", goTest.goFuncTester)
-  -- vim.keymap.set("n", "<Space>tm", goTest.goModTester)
-  -- end
-  -- }
 }
 
 if used.Dracula then
