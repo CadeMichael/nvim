@@ -48,7 +48,7 @@ map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal
-map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = "open term" })
+map('n', '<C-Space>', OpenTerm, { desc = "open term" })
 map('t', '<C-Space>', OpenTerm, { desc = "open term" })
 -- sniprun
 map('v', '<space>R', '<Plug>SnipRun', { desc = "sniprun" })
