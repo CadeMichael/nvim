@@ -7,17 +7,9 @@
 ```lua
 local m = {}
 
-m.Cpp = true
 m.Dracula = true
-m.Js = false
-m.Nim = false
-m.Ocaml = false
-m.Python = true
-m.Rust = true
 m.Scala = false
-m.Sol = true
 m.Sn = true
-m.Zig = false
 
 return m
 ```
