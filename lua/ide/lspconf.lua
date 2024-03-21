@@ -31,8 +31,9 @@ if cmp then
       ['<tab>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'snippy' }, -- For snippy users.
+      { name = 'nvim_lsp' },  -- lsp
+      { name = 'snippy' },    -- snippets
+      { name = 'path' },      -- file paths
     }, {
       { name = 'buffer' },
     })
@@ -121,37 +122,17 @@ if used.Python then
   })
 end
 --> Rust
-if used.Rust then
-  lsp.rust_analyzer.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-end
---> Scala
-if used.Scala then
-  local scala = require('metals').bare_config()
-  scala.capabilities = require("cmp_nvim_lsp").default_capabilities()
-  scala.on_attach = function(client, buffer)
-    require("metals").setup_dap()
-    on_attach(client, buffer)
-  end
-
-  local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-  vim.api.nvim_create_autocmd("filetype", {
-    pattern = { "scala", "sbt", "java" },
-    callback = function()
-      require("metals").initialize_or_attach(scala)
-    end,
-    group = nvim_metals_group,
-  })
-end
+lsp.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 --> Solidity
-if used.Sol then
-  lsp.solc.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-end
+-- "npm install -g vscode-solidity-server"
+lsp.solidity_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  require("lspconfig.util").root_pattern "foundry.toml",
+})
 --> Zig
 if used.Zig then
   lsp.zls.setup({
