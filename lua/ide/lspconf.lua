@@ -1,13 +1,13 @@
 --------------------------
 --- lsp and completion ---
 --------------------------
-
+-- used configs
+local used = require 'included'
 -- locals
 local cmp = require 'cmp'
 local lsp = require 'lspconfig'
 local tsb = require 'telescope.builtin'
 local tst = require 'telescope.themes'
-local used = require('included')
 
 -- setting up and configuring cmp
 if cmp then
@@ -31,9 +31,9 @@ if cmp then
       ['<tab>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },  -- lsp
-      { name = 'snippy' },    -- snippets
-      { name = 'path' },      -- file paths
+      { name = 'nvim_lsp' }, -- lsp
+      { name = 'snippy' },   -- snippets
+      { name = 'path' },     -- file paths
     }, {
       { name = 'buffer' },
     })
@@ -78,9 +78,13 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 end
 
+--> lua
 -- neovim lsp
 require("neodev").setup({})
-
+lsp.lua_ls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 --> C
 if used.Cpp then
   lsp.clangd.setup({
@@ -95,11 +99,6 @@ if used.Js then
     on_attach = on_attach,
   })
 end
---> lua
-lsp.lua_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
 --> Nim
 if used.Nim then
   lsp.nim_langserver.setup {
@@ -122,17 +121,21 @@ if used.Python then
   })
 end
 --> Rust
-lsp.rust_analyzer.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+if used.Rust then
+  lsp.rust_analyzer.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end
 --> Solidity
 -- "npm install -g vscode-solidity-server"
-lsp.solidity_ls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  require("lspconfig.util").root_pattern "foundry.toml",
-})
+if used.Solidity then
+  lsp.solidity_ls.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    require("lspconfig.util").root_pattern "foundry.toml",
+  })
+end
 --> Zig
 if used.Zig then
   lsp.zls.setup({

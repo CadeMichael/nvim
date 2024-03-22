@@ -10,7 +10,6 @@ end
 -- imports
 local oil = require('oil')
 local tsb = require('telescope.builtin')
-local ts = require('telescope')
 local tst = require 'telescope.themes'
 
 local opts = { noremap = true, silent = true }
