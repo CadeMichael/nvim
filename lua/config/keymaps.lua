@@ -33,13 +33,13 @@ map('n', '<Space>ps', function()
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
 -- Trouble / linting
 map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
-    get_opts("diagnostic open float"))
-  vim.keymap.set('n', '<space>E', function()
-    tsb.diagnostics(tst.get_dropdown({}))
-  end, get_opts("telescope diagnostics"))
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
+  get_opts("diagnostic open float"))
+vim.keymap.set('n', '<space>E', function()
+  tsb.diagnostics(tst.get_dropdown({}))
+end, get_opts("telescope diagnostics"))
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 -- git
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
