@@ -12,6 +12,13 @@ end
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+-- lsp
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "single",
+  }
+)
+
 -- Diagnostics
 require("trouble").setup {
   icons = false,

@@ -118,29 +118,18 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
     config = function()
-      local telescope_theme = 'dropdown'
+      local dropdown_theme = require('telescope.themes').get_dropdown({})
+
       require('telescope').setup({
-        -- set theme of used pickers
-        pickers = {
-          git_files = {
-            theme = telescope_theme,
-          },
-          find_files = {
-            theme = telescope_theme,
-          },
-          buffers = {
-            theme = telescope_theme,
-          },
-          help_tags = {
-            theme = telescope_theme,
-          },
-          keymaps = {
-            theme = telescope_theme,
-          }
-        }
+        defaults = {
+          layout_strategy = dropdown_theme.layout_strategy,
+          layout_config = dropdown_theme.layout_config,
+        },
       })
       require('telescope').load_extension('fzf')
     end,
+    dependencies = { 'nvim-lua/plenary.nvim' },
+
   },
   -- telekasten
   {

@@ -7,7 +7,6 @@ local used = require 'included'
 local cmp = require 'cmp'
 local lsp = require 'lspconfig'
 local tsb = require 'telescope.builtin'
-local tst = require 'telescope.themes'
 
 -- setting up and configuring cmp
 if cmp then
@@ -17,6 +16,9 @@ if cmp then
         require('snippy').expand_snippet(args.body) -- For `snippy` users.
       end,
     },
+    completion = {
+      completeopt = 'menu,menuone,noinsert'
+    },
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
@@ -24,10 +26,7 @@ if cmp then
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      -- ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      -- Accept currently selected item. Set `select` to `false` to only
-      -- confirm explicitly selected items.
       ['<tab>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
@@ -39,8 +38,6 @@ if cmp then
     })
   })
 end
-
-vim.o.completeopt = "menuone,noselect"
 
 -- capabilities
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -60,7 +57,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<space>ca', vim.lsp.codelens.run, opts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
@@ -73,7 +69,7 @@ local on_attach = function(_, bufnr)
     get_opts("get type definition"))
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, get_opts("rename"))
   vim.keymap.set('n', 'gr', function()
-    tsb.lsp_references(tst.get_dropdown({}))
+    tsb.lsp_references()
   end, get_opts("telescope get references"))
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 end
@@ -133,7 +129,7 @@ if used.Solidity then
   lsp.solidity_ls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-    require("lspconfig.util").root_pattern "foundry.toml",
+    root_dir = require("lspconfig.util").root_pattern "foundry.toml",
   })
 end
 --> Zig
