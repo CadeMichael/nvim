@@ -21,19 +21,18 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 
 -- Diagnostics
 require("trouble").setup {
+  position = "right",
   icons = false,
-  fold_open = "v",        -- icon used for open folds
   fold_closed = ">",      -- icon used for closed folds
+  fold_open = "v",        -- icon used for open folds
   indent_lines = false,   -- add an indent guide below the fold icons
-  signs = {
-    -- icons / text used for a diagnostic
-    error = "error",
-    warning = "warn",
-    hint = "hint",
-    information = "info"
-  },
-  use_diagnostic_signs = false   -- enabling this will use the signs defined in your lsp client
 }
+
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+})
 
 -- start screen
 vim.g.startify_custom_header = {

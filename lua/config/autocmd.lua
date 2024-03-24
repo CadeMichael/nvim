@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd(
   {
     pattern = {
       "oil",
+      "Trouble",
     },
     callback = function()
       vim.opt_local.colorcolumn = ''

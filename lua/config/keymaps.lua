@@ -62,8 +62,8 @@ map('i', '[', '[<C-g>u', opts)
 map('i', '(', '(<C-g>u', opts)
 map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
-map('n', '<c-d>', '<c-d>zz')
-map('n', '<c-u>', '<c-u>zz')
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
 
 -- indent highlighting
 map('n', '<Space>I', '<cmd>IBLToggle<CR>', { desc = "toggle indent highlighting" })
