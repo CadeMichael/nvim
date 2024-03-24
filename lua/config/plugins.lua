@@ -118,12 +118,12 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
     config = function()
-      local dropdown_theme = require('telescope.themes').get_dropdown({})
+      local default_theme = require('telescope.themes').get_ivy({})
 
       require('telescope').setup({
         defaults = {
-          layout_strategy = dropdown_theme.layout_strategy,
-          layout_config = dropdown_theme.layout_config,
+          layout_strategy = default_theme.layout_strategy,
+          layout_config = default_theme.layout_config,
         },
       })
       require('telescope').load_extension('fzf')
@@ -149,7 +149,6 @@ local plugins = {
     end,
   },
   'mattn/emmet-vim',         -- html
-  'alaviss/nim.nvim',        -- nim
   'preservim/nerdcommenter', -- comments
   -- ({['''']}) management,
   {
@@ -161,6 +160,17 @@ local plugins = {
   -- tables
   'dhruvasagar/vim-table-mode',
   -- git,
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function ()
+      require('neogit').setup{}
+    end
+  },
   {
     'lewis6991/gitsigns.nvim',
     dependencies = {
