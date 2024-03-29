@@ -3,7 +3,7 @@ local used = require('included')
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 if used.Dracula then
- vim.cmd.colorscheme 'dracula'
+  vim.cmd.colorscheme 'dracula'
 else
   vim.cmd.colorscheme 'gruvbox'
 end
@@ -23,9 +23,9 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 require("trouble").setup {
   position = "right",
   icons = false,
-  fold_closed = ">",      -- icon used for closed folds
-  fold_open = "v",        -- icon used for open folds
-  indent_lines = false,   -- add an indent guide below the fold icons
+  fold_closed = ">",    -- icon used for closed folds
+  fold_open = "v",      -- icon used for open folds
+  indent_lines = false, -- add an indent guide below the fold icons
 }
 
 vim.diagnostic.config({
@@ -36,9 +36,12 @@ vim.diagnostic.config({
 
 -- start screen
 vim.g.startify_custom_header = {
-  "   _   _         __     ___           ",
-  "  | \\ | | ___  __\\ \\   / (_)_ __ ___  ",
-  "  |  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\ ",
-  "  | |\\  |  __/ (_) \\ V / | | | | | | |",
-  "  |_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
+  [[                                                    ]],
+  [[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
+  [[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
+  [[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
+  [[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
+  [[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
+  [[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
+  [[                                                    ]],
 }
