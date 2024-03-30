@@ -7,17 +7,22 @@ local used = require 'included'
 local cmp = require 'cmp'
 local lsp = require 'lspconfig'
 local tsb = require 'telescope.builtin'
+require('cmp.config')
 
 -- setting up and configuring cmp
 if cmp then
   cmp.setup({
+    view = {
+      docs = { auto_open = false }
+    },
     snippet = {
       expand = function(args)
         require('snippy').expand_snippet(args.body) -- For `snippy` users.
       end,
     },
     completion = {
-      completeopt = 'menu,menuone,noinsert'
+      completeopt = 'menu,menuone,noinsert',
+      max_item_count = 10
     },
     window = {
       completion = cmp.config.window.bordered(),
