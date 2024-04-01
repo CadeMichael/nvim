@@ -30,13 +30,6 @@ map('n', '<Space><Space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten pan
 map('n', '<Space>rf', '<cmd>Telekasten find_notes<CR>', { desc = 'telekasten find notes' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
--- Trouble / linting
-map('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
-  get_opts("diagnostic open float"))
-vim.keymap.set('n', '<space>E', tsb.diagnostics, get_opts("telescope diagnostics"))
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 -- git
 map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)

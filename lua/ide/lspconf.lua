@@ -77,6 +77,13 @@ local on_attach = function(_, bufnr)
     tsb.lsp_references()
   end, get_opts("telescope get references"))
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+  -- Trouble / linting
+  vim.keymap.set('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
+  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
+    get_opts("diagnostic open float"))
+  vim.keymap.set('n', '<space>E', tsb.diagnostics, get_opts("telescope diagnostics"))
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
 --> lua
