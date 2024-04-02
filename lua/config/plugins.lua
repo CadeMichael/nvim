@@ -19,9 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   -- file management
   {
-    'stevearc/oil.nvim',
+    'nvim-tree/nvim-tree.lua',
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     config = function()
-      require('oil').setup()
+      require("nvim-tree").setup()
     end
   },
   --lsp config
@@ -167,8 +171,8 @@ local plugins = {
       "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim",
     },
-    config = function ()
-      require('neogit').setup{}
+    config = function()
+      require('neogit').setup {}
     end
   },
   {

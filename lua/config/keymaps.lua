@@ -8,14 +8,9 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- imports
-local oil = require 'oil'
 local tsb = require 'telescope.builtin'
 
 local opts = { noremap = true, silent = true }
-
-local function get_opts(desc)
-  return { desc = desc, noremap = true, silent = true }
-end
 
 -- telescope
 map('n', '<Space>bs', tsb.buffers, { desc = "ts buf" })
@@ -43,8 +38,7 @@ map('n', '<space>R', '<Plug>SnipReset', { desc = "snipreset" })
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
 -- remaps
-map('n', '<Space>n', oil.open_float, { desc = "open oil" })
-map('n', '<Space>N', oil.open, { desc = "open oil" })
+map('n', '<Space>n', '<cmd>NvimTreeToggle<CR>', { desc = "open oil" })
 map('n', '<Space>bk', ':bdelete!<CR>', opts)
 map('n', 'Y', 'y$', opts)
 map('n', 'n', 'nzzzv', opts)

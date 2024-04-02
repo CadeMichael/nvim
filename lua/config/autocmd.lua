@@ -9,12 +9,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
 })
 
--- oil
+-- No colorcolumn ft
 vim.api.nvim_create_autocmd(
   "FileType",
   {
     pattern = {
-      "oil",
       "Trouble",
     },
     callback = function()
