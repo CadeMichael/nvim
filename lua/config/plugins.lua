@@ -109,7 +109,7 @@ local plugins = {
     config = function()
       require('lualine').setup({
         options = {
-          theme = used.Dracula and 'dracula' or 'gruvbox',
+          theme = used.Cat and 'catppuccin' or 'gruvbox',
           component_separators = { left = '|', right = '|' },
           section_separators = { left = ' ', right = ' ' },
         },
@@ -199,9 +199,9 @@ local plugins = {
   },
 }
 
-if used.Dracula then
+if used.Cat then
   table.insert(plugins, {
-    'Mofiqul/dracula.nvim'
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
   })
 end
 

@@ -2,15 +2,18 @@ local used = require('included')
 
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
-if used.Dracula then
-  vim.cmd.colorscheme 'dracula'
+
+if used.Cat then
+  vim.cmd.colorscheme 'catppuccin'
 else
   vim.cmd.colorscheme 'gruvbox'
 end
 
 -- transparent BG
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+if not vim.g.neovide then
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
 
 -- lsp
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -36,12 +39,21 @@ vim.diagnostic.config({
 
 -- start screen
 vim.g.startify_custom_header = {
-  [[                                                    ]],
-  [[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
-  [[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
-  [[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
-  [[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
-  [[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
-  [[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
-  [[                                                    ]],
+  [[                                                      ]],
+  [[   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
+  [[   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
+  [[   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
+  [[   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
+  [[   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
+  [[   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
+  [[                                                      ]],
 }
+
+-- Neovide
+if vim.g.neovide then
+  vim.o.guifont = "BlexMono Nerd Font:h16"
+  vim.opt.background = 'light'
+  require('catppuccin').setup {
+    flavour = "latte"
+  }
+end
