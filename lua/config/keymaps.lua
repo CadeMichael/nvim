@@ -31,9 +31,6 @@ map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal
 map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = "open term" })
 map('t', '<C-Space>', OpenTerm, { desc = "open term" })
--- sniprun
-map('v', '<space>R', '<Plug>SnipRun', { desc = "sniprun" })
-map('n', '<space>R', '<Plug>SnipReset', { desc = "snipreset" })
 -- prevent nvim from being suspended
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 

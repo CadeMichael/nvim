@@ -164,6 +164,12 @@ local plugins = {
       require('nvim-surround').setup()
     end,
   },
+  {
+    "Vigemous/iron.nvim",
+    config = function()
+      require("ide.repl")
+    end,
+  },
   -- tables
   'dhruvasagar/vim-table-mode',
   -- git,
@@ -205,26 +211,6 @@ local plugins = {
 if used.Cat then
   table.insert(plugins, {
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
-  })
-end
-
-if used.Sn then
-  table.insert(plugins, {
-    "michaelb/sniprun",
-    branch = "master",
-    build = "sh install.sh",
-    config = function()
-      require("sniprun").setup({
-        display = { "Classic" },
-        interpreter_options = {
-          GFM_original = {
-            use_on_filetypes = { "telekasten" }
-          }
-        },
-        selected_interpreters = { "Python3_fifo" },
-        repl_enable = { "Python3_fifo" },
-      })
-    end,
   })
 end
 
