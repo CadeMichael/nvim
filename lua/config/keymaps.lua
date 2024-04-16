@@ -13,24 +13,24 @@ local diffview = require 'diffview'
 local opts = { noremap = true, silent = true }
 
 -- telescope
-map('n', '<Space>bs', tsb.buffers, { desc = "ts buf" })
-map('n', '<Space>.', tsb.find_files, { desc = "ts find files" })
-map('n', '<Space>pf', tsb.git_files, { desc = "ts git files" })
-map('n', '<Space>h', tsb.help_tags, { desc = "ts help" })
-map('n', '<Space>m', tsb.keymaps, { desc = "ts maps" })
-map('n', '<Space>ps', tsb.live_grep, { desc = "grep project" })
+map('n', '<Space>bs', tsb.buffers, { desc = 'ts buf' })
+map('n', '<Space>.', tsb.find_files, { desc = 'ts find files' })
+map('n', '<Space>pf', tsb.git_files, { desc = 'ts git files' })
+map('n', '<Space>h', tsb.help_tags, { desc = 'ts help' })
+map('n', '<Space>m', tsb.keymaps, { desc = 'ts maps' })
+map('n', '<Space>ps', tsb.live_grep, { desc = 'grep project' })
 map('n', '<Space>gs', tsb.git_status, { desc = 'git diff' })
 -- notes
 map('n', '<Space><Space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
 map('n', '<Space>rf', '<cmd>Telekasten find_notes<CR>', { desc = 'telekasten find notes' })
 -- git
-map('n', '<leader>ho', diffview.open, { desc = "open diffview" })
-map('n', '<leader>hc', diffview.close, { desc = "close diffview" })
+map('n', '<leader>ho', diffview.open, { desc = 'open diffview' })
+map('n', '<leader>hc', diffview.close, { desc = 'close diffview' })
 -- comments
-map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
+map({ 'v', 'n' }, '<Space>;', '<Plug>NERDCommenterToggle', opts)
 -- terminal
-map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = "open term" })
-map('t', '<C-Space>', OpenTerm, { desc = "open term" })
+map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = 'open term' })
+map('t', '<C-Space>', OpenTerm, { desc = 'open term' })
 -- prevent nvim from being suspended
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
