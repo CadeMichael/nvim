@@ -136,7 +136,6 @@ local plugins = {
       require('telescope').load_extension('fzf')
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
-
   },
   -- telekasten
   {
@@ -172,25 +171,14 @@ local plugins = {
   },
   -- tables
   'dhruvasagar/vim-table-mode',
-  -- git,
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require('neogit').setup {}
-    end
-  },
   {
     'lewis6991/gitsigns.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
     },
     config = function()
-      require('gitsigns').setup()
+      require('ide.git')
     end,
   },
   -- vim start screen,

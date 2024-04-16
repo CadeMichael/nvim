@@ -9,7 +9,7 @@ end
 
 -- imports
 local tsb = require 'telescope.builtin'
-
+local diffview = require 'diffview'
 local opts = { noremap = true, silent = true }
 
 -- telescope
@@ -23,11 +23,11 @@ map('n', '<Space>gs', tsb.git_status, { desc = 'git diff' })
 -- notes
 map('n', '<Space><Space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
 map('n', '<Space>rf', '<cmd>Telekasten find_notes<CR>', { desc = 'telekasten find notes' })
+-- git
+map('n', '<leader>ho', diffview.open, { desc = "open diffview" })
+map('n', '<leader>hc', diffview.close, { desc = "close diffview" })
 -- comments
 map({ 'v', 'n' }, '<Space>;', "<Plug>NERDCommenterToggle", opts)
--- git
-map('n', '<Space>gp', '<cmd>Gitsigns preview_hunk<CR>', opts)
-map('n', '<Space>gn', '<cmd>Gitsigns next_hunk<CR>', opts)
 -- terminal
 map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = "open term" })
 map('t', '<C-Space>', OpenTerm, { desc = "open term" })
