@@ -163,6 +163,7 @@ local plugins = {
       require('nvim-surround').setup()
     end,
   },
+  -- repls
   {
     "Vigemous/iron.nvim",
     config = function()
@@ -171,6 +172,15 @@ local plugins = {
   },
   -- tables
   'dhruvasagar/vim-table-mode',
+  -- git
+  {
+    'voldikss/vim-floaterm',
+    config = function()
+      vim.g.floaterm_width = 0.95
+      vim.g.floaterm_height = 0.95
+      vim.keymap.set('n', '<leader>g', ':FloatermNew lazygit<CR>', { desc = "Lazygit" })
+    end
+  },
   {
     'lewis6991/gitsigns.nvim',
     dependencies = {

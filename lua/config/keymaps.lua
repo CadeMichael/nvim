@@ -29,8 +29,8 @@ map('n', '<leader>hc', diffview.close, { desc = 'close diffview' })
 -- comments
 map({ 'v', 'n' }, '<Space>;', '<Plug>NERDCommenterToggle', opts)
 -- terminal
-map({ 'n', 'i' }, '<C-Space>', OpenTerm, { desc = 'open term' })
-map('t', '<C-Space>', OpenTerm, { desc = 'open term' })
+map({ 'n', 'i' }, '<C-Space>', '<cmd>FloatermToggle<CR>', { desc = 'toggle term' })
+map('t', '<C-Space>', '<cmd>FloatermToggle<CR>', { desc = 'toggle term' })
 -- prevent nvim from being suspended
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
