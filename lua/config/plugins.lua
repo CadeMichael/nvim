@@ -28,6 +28,23 @@ local plugins = {
       require("nvim-tree").setup()
     end
   },
+  -- tmux
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<M-h>", "<cmd>TmuxNavigateLeft<cr>" },
+      { "<M-j>", "<cmd>TmuxNavigateDown<cr>" },
+      { "<M-k>", "<cmd>TmuxNavigateUp<cr>" },
+      { "<M-l>", "<cmd>TmuxNavigateRight<cr>" },
+    },
+  },
   --lsp config
   'neovim/nvim-lspconfig',
   'hrsh7th/cmp-nvim-lsp',
@@ -42,22 +59,23 @@ local plugins = {
   },
   -- lsp extension
   {
-    'dcampos/nvim-snippy',
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      'saadparwaiz1/cmp_luasnip'
+    },
     config = function()
-      require('snippy').setup({
-        mappings = {
-          is = {
-            ['<Tab>'] = 'expand_or_advance',
-            ['<S-Tab>'] = 'previous',
-          },
-          nx = {
-            ['<leader>x'] = 'cut_text',
-          },
-        },
-      })
-    end,
+      local ls = require('luasnip')
+      vim.keymap.set({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
+      vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
+      vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+
+      vim.keymap.set({ "i", "s" }, "<C-E>", function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        end
+      end, { silent = true })
+    end
   },
-  'dcampos/cmp-snippy',
   'folke/trouble.nvim',
   'folke/neodev.nvim',
   -- linting

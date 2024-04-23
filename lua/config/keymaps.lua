@@ -14,7 +14,9 @@ local opts = { noremap = true, silent = true }
 
 -- telescope
 map('n', '<Space>bs', tsb.buffers, { desc = 'ts buf' })
-map('n', '<Space>.', tsb.find_files, { desc = 'ts find files' })
+map('n', '<Space>.', function()
+  tsb.find_files({ no_ignore = true }) -- show files git ignores
+end, { desc = 'ts find files' })
 map('n', '<Space>pf', tsb.git_files, { desc = 'ts git files' })
 map('n', '<Space>h', tsb.help_tags, { desc = 'ts help' })
 map('n', '<Space>m', tsb.keymaps, { desc = 'ts maps' })

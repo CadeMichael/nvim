@@ -17,7 +17,7 @@ if cmp then
     },
     snippet = {
       expand = function(args)
-        require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        require 'luasnip'.lsp_expand(args.body)
       end,
     },
     completion = {
@@ -36,7 +36,7 @@ if cmp then
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' }, -- lsp
-      { name = 'snippy' },   -- snippets
+      { name = 'luasnip' },  -- snippets
       { name = 'path' },     -- file paths
     }, {
       { name = 'buffer' },
