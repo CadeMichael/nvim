@@ -37,8 +37,9 @@ map('t', '<C-Space>', '<cmd>FloatermToggle<CR>', { desc = 'toggle term' })
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 
 -- remaps
-map('n', '<Space>n', '<cmd>NvimTreeToggle<CR>', { desc = "open oil" })
+map('n', '<Space>n', '<cmd>NvimTreeToggle<CR>', { desc = "open tree" })
 map('n', '<Space>bk', ':bdelete!<CR>', opts)
+map('n', 'U', '<C-r>', opts)
 map('n', 'Y', 'y$', opts)
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)

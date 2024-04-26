@@ -137,18 +137,11 @@ if used.Rust then
 end
 --> Solidity
 -- "npm install -g vscode-solidity-server"
-if used.Solidity then
-  lsp.solidity_ls.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    root_dir = require("lspconfig.util").root_pattern "foundry.toml",
-  })
-end
---> Zig
-if used.Zig then
-  lsp.zls.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-end
+-- if used.Solidity then
+  -- lsp.solidity_ls.setup({
+    -- capabilities = capabilities,
+    -- on_attach = on_attach,
+    -- root_dir = require("lspconfig.util").root_pattern "foundry.toml",
+  -- })
+-- end
 -----------------------------------
