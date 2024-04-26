@@ -8,19 +8,11 @@ if vim.g.vscode then
   vim.keymap.set('n', 'U', '<C-r>', opts)
   vim.keymap.set('n', 'Y', 'y$', opts)
 else
-  -- custom funcs
-  require('funcs')
-  -- get plugins
-  require('config.plugins')
-  -- get keymaps
-  require('config.keymaps')
-  -- theme
-  require('config.theme')
-  -- get the autocommands
-  require('config.autocmd')
+  require('keymaps')
+  require('autocmd')
 
   --------------------
-  -- global configs --
+  -- Global Configs --
   --------------------
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
@@ -36,11 +28,34 @@ else
   vim.opt.shiftwidth = 2
   vim.opt.softtabstop = 2
   vim.opt.cursorline = true
-  -- allowing mouse support
-  vim.opt.mouse = 'nv' --> normal / visual
-  -- comments
-  vim.g.NERDSpaceDelims = 1
-  vim.g.NERDCustomDelimiters = { python = { left = "#", right = "" } }
-  -- emmet vim
-  vim.g.user_emmet_install_global = 0
+  vim.opt.mouse = 'nv'
+
+  -------------
+  -- Plugins --
+  -------------
+  local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+      'git',
+      'clone',
+      '--filter=blob:none',
+      'https://github.com/folke/lazy.nvim.git',
+      '--branch=stable', -- latest stable release
+      lazypath,
+    })
+  end
+  vim.opt.rtp:prepend(lazypath)
+
+  local plugins = {
+    require("plugs.lsp"),
+    require("plugs.theme"),
+    require("plugs.fuzzy"),
+    require("plugs.lsp"),
+    require("plugs.snips"),
+    require("plugs.repl"),
+    require("plugs.git"),
+    require("plugs.editor")
+  }
+
+  require('lazy').setup(plugins)
 end

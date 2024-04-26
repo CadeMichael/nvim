@@ -1,9 +1,8 @@
-local help = require("funcs.helpers")
-
 local keymap = vim.keymap.set
 
 local function blackFormat()
-  help.filecmd("black -q")
+  local file = vim.api.nvim_buf_get_name(0)
+  vim.cmd("!black -q " .. file)
 end
 
 keymap('n', '<Space>tf', FileUnnittest, { desc = "unittest file" })

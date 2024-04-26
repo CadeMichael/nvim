@@ -1,6 +1,6 @@
-------------
--- autocmd's
-------------
+---------------
+-- autocmd's --
+---------------
 
 -- linting
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
