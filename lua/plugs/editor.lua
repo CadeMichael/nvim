@@ -37,14 +37,14 @@ return {
     end,
   },
   {
-    'nvim-tree/nvim-tree.lua',
-    lazy = false,
+    'stevearc/oil.nvim',
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup()
-      vim.keymap.set('n', '<Space>n', '<cmd>NvimTreeToggle<CR>', { desc = "open tree" })
+      local oil = require("oil")
+      require("oil").setup()
+      vim.keymap.set('n', '<Space>n', oil.toggle_float, { desc = "open tree" })
     end
   },
   {

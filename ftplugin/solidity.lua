@@ -16,34 +16,29 @@ local function nat_spec_comments(args)
   local params = vim.split(args[1][1], ",")
   local visibility = args[2][1]
   local nodes = {}
-  for idx, param in ipairs(params) do
+  for _, param in ipairs(params) do
     param = vim.trim(param)
     if param ~= "" then
       local parts = vim.split(vim.trim(param), "%s+")
       local var_name = parts[#parts]
-      table.insert(nodes, t("/// @param " .. var_name))
-      if idx <= (#params - 1) then
-        table.insert(nodes, t({ "", "" }))
-      end
+      table.insert(nodes, t({ "/// @param " .. var_name, "" }))
     end
   end
   if string.find(visibility, "returns") then
-    table.insert(nodes, t({ "", "" }))
-    table.insert(nodes, t("/// @returns"))
+    table.insert(nodes, t({ "/// @returns", "" }))
   end
   return snippet_node(nil, nodes)
 end
 
 ls.add_snippets("solidity", {
   s("function", fmt([[
-{docs}
-function {}({}) {} {{
+{docs}function {}({}) {} {{
     {}
 }}
 ]], {
     docs = d(1, nat_spec_comments, { 3, 4 }),
     i(2, "functionName"),
-    i(3, "params"),
+    i(3),
     i(4, "visibility"),
     i(0, "body")
   })),
