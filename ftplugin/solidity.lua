@@ -25,7 +25,7 @@ local function nat_spec_comments(args)
     end
   end
   if string.find(visibility, "returns") then
-    table.insert(nodes, t({ "/// @returns", "" }))
+    table.insert(nodes, t({ "/// @return", "" }))
   end
   return snippet_node(nil, nodes)
 end

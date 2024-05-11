@@ -47,6 +47,7 @@ return {
       -- locals
       local cmp = require 'cmp'
       local lsp = require 'lspconfig'
+      local configs = require 'lspconfig.configs'
       local tsb = require 'telescope.builtin'
       require('cmp.config')
 
@@ -161,6 +162,25 @@ return {
       })
       --> Rust
       lsp.rust_analyzer.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      --> Svelte
+      lsp.svelte.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      --> Solidity
+      configs.solidity = {
+        default_config = {
+          cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
+          filetypes = { 'solidity' },
+          root_dir = require("lspconfig.util").root_pattern "foundry.toml",
+          single_file_support = true,
+        },
+      }
+
+      lsp.solidity.setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })
