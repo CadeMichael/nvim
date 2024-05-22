@@ -40,15 +40,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-  require("plugs.lsp"),
-  require("plugs.theme"),
-  require("plugs.fuzzy"),
-  require("plugs.lsp"),
-  require("plugs.snips"),
-  require("plugs.repl"),
-  require("plugs.git"),
-  require("plugs.editor")
-}
-
-require('lazy').setup(plugins)
+require('lazy').setup({import = "plugs"})

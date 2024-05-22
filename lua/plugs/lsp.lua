@@ -140,6 +140,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
+      --> Go
+      lsp.gopls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
       --> JavaScript (node)
       lsp.tsserver.setup({
         capabilities = capabilities,
