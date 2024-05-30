@@ -14,7 +14,6 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.number = true
-vim.opt.list = true
 vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
 vim.opt.swapfile = false

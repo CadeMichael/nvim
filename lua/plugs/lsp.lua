@@ -1,13 +1,5 @@
 return {
   {
-    'mfussenegger/nvim-lint',
-    config = function()
-      require('lint').linters_by_ft = {
-        go = { 'golangcilint' },
-      }
-    end
-  },
-  {
     'folke/trouble.nvim',
     config = function()
       require("trouble").setup {
