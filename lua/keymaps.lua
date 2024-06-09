@@ -32,3 +32,11 @@ map('n', '<Space>W', function()
   end,
   { desc = "toggle line wrapping" }
 )
+-- Conceal Level
+local cl = 1
+vim.keymap.set('n', '<Space>C', function()
+    cl = cl == 0 and 1 or 0
+    vim.cmd("set conceallevel=" .. cl)
+  end,
+  { desc = "toggle conceallevel" }
+)
