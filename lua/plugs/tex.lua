@@ -5,7 +5,6 @@ return {
   init = function()
     -- VimTeX configuration goes here, e.g.
     vim.g.vimtex_view_method = "skim"
-    vim.cmd [[set cole=1]]
     vim.g.tex_conceal = 'abdmg'
   end
 }
