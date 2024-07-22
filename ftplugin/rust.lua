@@ -1,8 +1,29 @@
+-- Imports
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
+local opts = { noremap = true, silent = true }
+
+-- Commands
+local term_handler = vim.api.nvim_replace_termcodes(
+  '<C-\\><C-n>G',
+  true,
+  true,
+  true
+)
+
+local function build_func()
+  vim.g.floaterm_autoclose = 0
+  vim.cmd "FloatermNew cargo build"
+  vim.api.nvim_feedkeys(term_handler, 'n', true)
+  vim.g.floaterm_autoclose = 1
+end
+
+vim.keymap.set('n', '<Space>cc', build_func, opts)
+
+-- Snippets
 ls.add_snippets("rust", {
   -- let
   s("let", fmt([[
