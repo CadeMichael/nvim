@@ -15,7 +15,7 @@ return {
     'preservim/nerdcommenter',
     config = function()
       vim.g.NERDSpaceDelims = 1
-      vim.g.NERDCustomDelimiters = { python = { left = "#", right = "" } }
+      vim.g.NERDCustomDelimiters = { python = { left = '#', right = '' } }
       vim.keymap.set({ 'v', 'n' }, '<Space>;', '<Plug>NERDCommenterToggle', { noremap = true, silent = true })
     end
   },
@@ -30,7 +30,7 @@ return {
     'folke/which-key.nvim',
     config = function()
       require('which-key').setup({
-        window = {
+        win = {
           border = 'double'
         }
       })
@@ -39,28 +39,56 @@ return {
   {
     'stevearc/oil.nvim',
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      local oil = require("oil")
-      require("oil").setup()
-      vim.keymap.set('n', '<Space>n', oil.toggle_float, { desc = "open tree" })
+      local oil = require('oil')
+      require('oil').setup()
+      vim.keymap.set('n', '<Space>n', oil.toggle_float, { desc = 'open tree' })
     end
   },
   {
-    "christoomey/vim-tmux-navigator",
+    'christoomey/vim-tmux-navigator',
     cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
     },
     keys = {
-      { "<M-h>", "<cmd>TmuxNavigateLeft<cr>" },
-      { "<M-j>", "<cmd>TmuxNavigateDown<cr>" },
-      { "<M-k>", "<cmd>TmuxNavigateUp<cr>" },
-      { "<M-l>", "<cmd>TmuxNavigateRight<cr>" },
+      { '<M-h>', '<cmd>TmuxNavigateLeft<cr>' },
+      { '<M-j>', '<cmd>TmuxNavigateDown<cr>' },
+      { '<M-k>', '<cmd>TmuxNavigateUp<cr>' },
+      { '<M-l>', '<cmd>TmuxNavigateRight<cr>' },
     },
   },
+  -- Testing
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'rouge8/neotest-rust'
+    },
+    config = function()
+      local opts = { buffer = bufnr, noremap = true, silent = true }
+      local neotest = require('neotest')
+      neotest.setup {
+        adapters = {
+          require("neotest-rust") {
+            args = { "--no-capture" },
+          }
+        }
+      }
+      vim.keymap.set('n', '<space>T', function ()
+        neotest.run.run(vim.fn.expand('%'))
+      end, opts)
+      vim.keymap.set('n', '<space>tt', neotest.run.run, opts)
+      vim.keymap.set('n', '<space>ts', neotest.summary.open, opts)
+      vim.keymap.set('n', '<space>to', neotest.output.open, opts)
+    end
+  }
 }

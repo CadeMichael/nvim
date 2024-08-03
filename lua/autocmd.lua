@@ -15,7 +15,18 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- term line num
+-- Markdown no line number of color colorcolumn
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = {
+      "Markdown", "Telekasten"
+    },
+    command = "setlocal nonumber norelativenumber colorcolumn=0",
+  }
+)
+
+-- Term line numbers
 vim.api.nvim_create_autocmd(
   "TermOpen",
   {

@@ -16,7 +16,7 @@ local term_handler = vim.api.nvim_replace_termcodes(
 
 local function build_func()
   vim.g.floaterm_autoclose = 0
-  vim.cmd "FloatermNew cargo build"
+  vim.cmd "FloatermNew cargo -q build"
   vim.api.nvim_feedkeys(term_handler, 'n', true)
   vim.g.floaterm_autoclose = 1
 end

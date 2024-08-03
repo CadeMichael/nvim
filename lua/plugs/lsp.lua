@@ -112,8 +112,8 @@ return {
         end, get_opts("telescope get references"))
         vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
         -- Trouble / linting
-        vim.keymap.set('n', '<Space>tt', "<cmd> TroubleToggle<CR>", opts)
-        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
+        vim.keymap.set('n', '<Space>et', "<cmd> TroubleToggle<CR>", opts)
+        vim.keymap.set('n', '<space>ee', vim.diagnostic.open_float,
           get_opts("diagnostic open float"))
         vim.keymap.set('n', '<space>E', tsb.diagnostics, get_opts("telescope diagnostics"))
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -185,6 +185,12 @@ return {
       }
 
       lsp.solidity.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+
+      --> Zig
+      lsp.zls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })

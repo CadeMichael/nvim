@@ -12,6 +12,7 @@ local opts = { noremap = true, silent = true }
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
 -- remaps
 map('n', '<Space>bk', ':bdelete!<CR>', opts)
+map('n', '<Space>x', ':x<CR>', opts)
 map('n', 'U', '<C-r>', opts)
 map('n', 'Y', 'y$', opts)
 map('n', 'n', 'nzzzv', opts)

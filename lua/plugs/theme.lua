@@ -118,4 +118,24 @@ return {
       })
     end
   },
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    main = "render-markdown",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('render-markdown').setup({
+        heading = {
+          -- enabled = false,
+          sign = false,
+          icons = {},
+        },
+        code = {
+          sign = false,
+        }
+      })
+    end
+  }
 }
