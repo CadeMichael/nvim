@@ -2,16 +2,11 @@ return {
   {
     'folke/trouble.nvim',
     config = function()
-      require("trouble").setup {
-        position = "right",
-        icons = false,
-        fold_closed = ">",
-        fold_open = "v",
-        indent_lines = false,
-      }
+      require('trouble').setup({})
+      vim.keymap.set('n', '<Space>td', "<cmd>Trouble diagnostics toggle<CR>", { desc = "trouble diagnostic toggle" })
     end
   },
-  'folke/neodev.nvim',
+  'folke/neodev.nvim',       -- lua
   {
     'neovim/nvim-lspconfig',
     config = function()
@@ -111,8 +106,7 @@ return {
           tsb.lsp_references()
         end, get_opts("telescope get references"))
         vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-        -- Trouble / linting
-        vim.keymap.set('n', '<Space>et', "<cmd> TroubleToggle<CR>", opts)
+        -- linting
         vim.keymap.set('n', '<space>ee', vim.diagnostic.open_float,
           get_opts("diagnostic open float"))
         vim.keymap.set('n', '<space>E', tsb.diagnostics, get_opts("telescope diagnostics"))
