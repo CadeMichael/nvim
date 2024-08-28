@@ -1,12 +1,22 @@
 return {
   {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "rust_analyzer" },
+      })
+    end
+  },
+  {
     'folke/trouble.nvim',
     config = function()
       require('trouble').setup({})
       vim.keymap.set('n', '<Space>td', "<cmd>Trouble diagnostics toggle<CR>", { desc = "trouble diagnostic toggle" })
     end
   },
-  'folke/neodev.nvim',       -- lua
+  'folke/neodev.nvim', -- lua
   {
     'neovim/nvim-lspconfig',
     config = function()
