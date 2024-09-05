@@ -95,9 +95,13 @@ return {
 
       vim.cmd.colorscheme 'catppuccin'
 
-      -- transparent BG
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      if vim.g.neovide then
+        vim.g.neovide_scale_factor = 0.75
+      else
+        -- transparent BG
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      end
     end
   },
   {

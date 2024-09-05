@@ -136,6 +136,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
+      --> Coq
+      lsp.coq_lsp.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
       --> Go
       lsp.gopls.setup({
         capabilities = capabilities,
@@ -187,12 +192,10 @@ return {
           single_file_support = true,
         },
       }
-
       lsp.solidity.setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })
-
       --> Zig
       lsp.zls.setup({
         capabilities = capabilities,
