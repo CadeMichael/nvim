@@ -5,7 +5,14 @@ local function blackFormat()
   vim.cmd("!black -q " .. file)
 end
 
-keymap('n', '<Space>bf', blackFormat, { desc = "black format" })
+local function runPyBuffer()
+  local file = vim.api.nvim_buf_get_name(0)
+  vim.cmd("!python " .. file)
+end
+
+local bufnr = vim.api.nvim_get_current_buf()
+keymap('n', '<Space>bf', blackFormat, { buffer = bufnr, desc = "black format" })
+keymap('n', '<Space>rb', runPyBuffer, { buffer = bufnr, desc = "run python buffer" })
 
 
 local ls = require("luasnip")

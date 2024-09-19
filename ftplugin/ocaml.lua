@@ -47,4 +47,7 @@ local function ocaml_debug()
 end
 
 local keymap = vim.keymap.set
-keymap('n', '<Space>d', ocaml_debug)
+local bufnr = vim.api.nvim_get_current_buf()
+local opts = { noremap = true, silent = true, buffer = bufnr, }
+
+keymap('n', '<Space>d', ocaml_debug, opts)

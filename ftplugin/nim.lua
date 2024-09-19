@@ -5,6 +5,8 @@ local finders = require "telescope.finders"
 local conf = require("telescope.config").values
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
+local bufnr_opt = vim.api.nvim_get_current_buf()
+local opts = { noremap = true, silent = true, buffer = bufnr_opt }
 ----------
 
 ---@type string
@@ -142,4 +144,4 @@ local function nimFuncTester()
 end
 
 -- set keymapping
-vim.keymap.set('n', '<Space>tf', nimFuncTester, {})
+vim.keymap.set('n', '<Space>tf', nimFuncTester, opts)

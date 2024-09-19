@@ -4,7 +4,8 @@ local s = ls.snippet
 local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
-local opts = { noremap = true, silent = true }
+local bufnr = vim.api.nvim_get_current_buf()
+local opts = { noremap = true, silent = true, buffer = bufnr, }
 
 -- Commands
 local term_handler = vim.api.nvim_replace_termcodes(
