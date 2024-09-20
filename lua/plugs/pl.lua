@@ -27,7 +27,7 @@ return {
     },
     opts = {
       lsp = {},
-      mappings = true,
+      mappings = false,
     }
   }
 }

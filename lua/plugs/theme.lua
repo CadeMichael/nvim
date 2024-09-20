@@ -7,7 +7,7 @@ return {
         -- Modules and its options go here
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = { "lean" },
         },
         incremental_selection = { enable = true },
         textobjects = { enable = true },
@@ -31,17 +31,30 @@ return {
             show_help = '?',
           },
         },
-        additional_vim_regex_highlighting = true
       })
 
       -- telekasten
       vim.treesitter.language.register("markdown", "telekasten")
 
       -- folding
-      vim.o.foldmethod = "expr"
-      vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+      vim.wo.foldmethod = 'expr'
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
       vim.o.foldlevel = 32
       vim.cmd [[set nofoldenable]]
+
+      -- Adding Parsers
+      local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+
+      -- Lean4
+      if vim.fn.has("macunix") == 0 then
+        parser_config.lean = {
+          install_info = {
+            url = "~/Downloads/tree-sitter-lean",
+            files = { "src/parser.c", "src/scanner.c" },
+          },
+          filetype = "lean",
+        }
+      end
     end
   },
   {
