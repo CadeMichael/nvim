@@ -1,15 +1,5 @@
 return {
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "rust_analyzer" },
-      })
-    end
-  },
-  {
     'folke/trouble.nvim',
     config = function()
       require('trouble').setup({})
@@ -147,7 +137,7 @@ return {
         on_attach = on_attach,
       })
       --> JavaScript (node)
-      lsp.tsserver.setup({
+      lsp.ts_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })
