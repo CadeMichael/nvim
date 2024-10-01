@@ -156,6 +156,18 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       }
+      --> Nix
+      lsp.nixd.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          nixd = {
+            formatting = {
+              command = { "nixfmt" },
+            },
+          },
+        },
+      }
       --> Ocaml
       lsp.ocamllsp.setup {
         capabilities = capabilities,
