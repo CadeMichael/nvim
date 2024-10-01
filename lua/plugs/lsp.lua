@@ -174,16 +174,9 @@ return {
         on_attach = on_attach,
       }
       --> Python
-      lsp.pylsp.setup({
+      lsp.ruff.setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        settings = {
-          pylsp = {
-            plugins = {
-              ruff = { enabled = true },
-            }
-          }
-        }
       })
       --> Rust
       lsp.rust_analyzer.setup({

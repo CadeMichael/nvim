@@ -1,18 +1,23 @@
 local keymap = vim.keymap.set
 
-local function blackFormat()
-  local file = vim.api.nvim_buf_get_name(0)
-  vim.cmd("!black -q " .. file)
-end
+-- Termcodes for Floaterm
+local term_handler = vim.api.nvim_replace_termcodes(
+  '<C-\\><C-n>GA',
+  true,
+  true,
+  true
+)
 
 local function runPyBuffer()
   local file = vim.api.nvim_buf_get_name(0)
-  vim.cmd("!python " .. file)
+  vim.g.floaterm_autoclose = 0
+  vim.cmd("FloatermNew python " .. file)
+  vim.api.nvim_feedkeys(term_handler, 'n', true)
+  vim.g.floaterm_autoclose = 1
 end
 
 local bufnr = vim.api.nvim_get_current_buf()
-keymap('n', '<Space>bf', blackFormat, { buffer = bufnr, desc = "black format" })
-keymap('n', '<Space>rb', runPyBuffer, { buffer = bufnr, desc = "run python buffer" })
+keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = "run python buffer" })
 
 
 local ls = require("luasnip")
