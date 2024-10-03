@@ -1,6 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     dependencies = { 'nvim-treesitter/playground' },
     config = function()
       require 'nvim-treesitter.configs'.setup({
@@ -33,8 +34,9 @@ return {
         },
       })
 
-      -- telekasten
+      -- multi use treesitters
       vim.treesitter.language.register("markdown", "telekasten")
+      vim.treesitter.language.register("prolog", "datalog")
 
       -- folding
       vim.wo.foldmethod = 'expr'

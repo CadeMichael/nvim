@@ -4,14 +4,7 @@ return {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
     config = function()
-      local default_theme = require('telescope.themes').get_ivy({})
-
-      require('telescope').setup({
-        defaults = {
-          layout_strategy = default_theme.layout_strategy,
-          layout_config = default_theme.layout_config,
-        },
-      })
+      require('telescope').setup({})
       require('telescope').load_extension('fzf')
       local tsb = require 'telescope.builtin'
       vim.keymap.set('n', '<Space>bs', tsb.buffers, { desc = 'ts buf' })

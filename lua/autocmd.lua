@@ -34,3 +34,11 @@ vim.api.nvim_create_autocmd(
     command = "setlocal nonumber norelativenumber nocursorline",
   }
 )
+
+-- Register Datalog as a filetype
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.dl",
+    callback = function()
+        vim.bo.filetype = "datalog"
+    end
+})
