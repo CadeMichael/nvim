@@ -29,5 +29,6 @@ return {
       lsp = {},
       mappings = false,
     }
-  }
+  },
+  'souffle-lang/souffle.vim' -- Souffle Datalog
 }
