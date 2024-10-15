@@ -10,6 +10,9 @@ local opts = { noremap = true, silent = true }
 
 -- prevent nvim suspending
 map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
+-- buffer navigation
+vim.keymap.set('n', '[b', '<cmd>bprevious<CR>', opts)
+vim.keymap.set('n', ']b', '<cmd>bnext<CR>', opts)
 -- remaps
 map('n', '<Space>bk', ':bdelete!<CR>', opts)
 map('n', '<Space>x', ':x<CR>', opts)
@@ -41,3 +44,21 @@ vim.keymap.set('n', '<Space>C', function()
   end,
   { desc = "toggle conceallevel" }
 )
+-- Floaterm Fzf
+-- Termcodes for Floaterm
+local term_handler = vim.api.nvim_replace_termcodes(
+  '<C-\\><C-n>GA',
+  true,
+  true,
+  true
+)
+-- open a term with command from history
+local function floatFzf()
+  vim.g.floaterm_autoclose = 0
+  local cmd = "source ~/.zshrc ; eval $(cat ~/.zsh_history | cut -d';' -f2- | tac | awk '!seen[$0]++' | fzf)"
+  vim.cmd("FloatermNew " .. cmd)
+  vim.api.nvim_feedkeys(term_handler, 'n', true)
+  vim.g.floaterm_autoclose = 1
+end
+
+map('n', '<Space>F', floatFzf, opts)

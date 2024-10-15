@@ -11,7 +11,7 @@ local opts = { noremap = true, silent = true, buffer = bufnr_opt }
 
 ---@type string
 local test_cmd = "nim c -r "
----@type Query
+---@type vim.treesitter.Query
 local q = vim.treesitter.query.parse("nim", [[
     (call
       (identifier) @name (#eq? @name "test")
@@ -23,7 +23,7 @@ local q = vim.treesitter.query.parse("nim", [[
 ---@param bufnr integer
 ---@return TSNode
 local get_root = function(bufnr)
-  ---@type LanguageTree
+  ---@type vim.treesitter.LanguageTree
   local parser = vim.treesitter.get_parser(bufnr, "nim", {})
   ---@type TSTree
   local tree = parser:parse()[1]

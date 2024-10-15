@@ -3,7 +3,7 @@ if exists("b:current_syntax")
 endif
 
 " Define Flix keywords (keywords should be highlighted distinctly)
-syn keyword flixKeyword assert case def else enum if in index lat let match namespace print rel val with
+syn keyword flixKeyword assert pub class instance case def else enum if in index lat let match namespace rel val with
 
 " Highlight operators
 syn match flixOp "=>\|+\|-\|\*\|/\|,\|%"
