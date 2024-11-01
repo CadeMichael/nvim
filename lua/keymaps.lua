@@ -28,6 +28,8 @@ map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
+-- Terminal Mode window commands
+map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
 -- Line Wrapping
 local wrap = true
 map('n', '<Space>W', function()

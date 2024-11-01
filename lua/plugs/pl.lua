@@ -25,10 +25,6 @@ return {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
     },
-    opts = {
-      lsp = {},
-      mappings = false,
-    }
   },
   'souffle-lang/souffle.vim' -- Souffle Datalog
 }
