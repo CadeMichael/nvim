@@ -16,7 +16,8 @@ end
 
 -- Keybindings
 keymap('n', '<Space>cn', '<cmd>CoqNext<CR>', opts)
-keymap({ 'n', 'i' }, '<C-Cr>', '<cmd>CoqNext<CR>', opts)
+keymap({ 'n', 'i' }, '<C-c><Cr>', '<cmd>CoqNext<CR>', opts)
+keymap({ 'n', 'i' }, '<C-c><BS>', '<cmd>CoqUndo<CR>', opts)
 keymap('n', '<Space>cq', '<cmd>CoqStop<CR>', opts)
 keymap('n', '<Space>ci', '<cmd>CoqInterrupt<CR>', opts)
 keymap('n', '<Space>cs', '<cmd>CoqStart<CR>', opts)
