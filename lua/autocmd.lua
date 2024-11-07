@@ -15,12 +15,16 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- Markdown no line number of color colorcolumn
+-- Filetypes without line numbers or a color colorcolumn
 vim.api.nvim_create_autocmd(
   "FileType",
   {
     pattern = {
-      "Markdown", "Telekasten"
+      "Markdown",
+      "Telekasten",
+      "Oil",
+      "Coq-goals",
+      "Coq-infos",
     },
     command = "setlocal nonumber norelativenumber colorcolumn=0",
   }
