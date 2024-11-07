@@ -1,5 +1,5 @@
 return {
-  {
+  { -- LaTex
     "lervag/vimtex",
     lazy = false,
     init = function()
