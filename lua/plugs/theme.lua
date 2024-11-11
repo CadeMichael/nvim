@@ -7,7 +7,7 @@ return {
         -- Modules and its options go here
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = { false },
+          additional_vim_regex_highlighting = { "lean" },
         },
         incremental_selection = { enable = true },
         textobjects = { enable = true },
