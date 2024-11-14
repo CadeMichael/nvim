@@ -20,11 +20,11 @@ vim.api.nvim_create_autocmd(
   "FileType",
   {
     pattern = {
-      "Markdown",
-      "Telekasten",
-      "Oil",
-      "Coq-goals",
-      "Coq-infos",
+      "markdown",
+      "telekasten",
+      "oil",
+      "coq-goals",
+      "coq-infos",
     },
     command = "setlocal nonumber norelativenumber colorcolumn=0",
   }

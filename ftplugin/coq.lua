@@ -23,7 +23,7 @@ keymap('n', '<Space>ci', '<cmd>CoqInterrupt<CR>', opts)
 keymap('n', '<Space>cs', '<cmd>CoqStart<CR>', opts)
 keymap('n', '<Space>cu', '<cmd>CoqUndo<CR>', opts)
 keymap('n', '<Space>c.', '<cmd>CoqToLine<CR>', opts)
-keymap({ 'n', 'i' }, '<C-.>', '<cmd>CoqToLine<CR>', opts)
+keymap({ 'n', 'i' }, '<C-c>.', '<cmd>CoqToLine<CR>', opts)
 keymap('n', '<Space>cp', coqPrint, opts)
 keymap('n', '<Space>cc', coqCheck, opts)
 
