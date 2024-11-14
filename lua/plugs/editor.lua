@@ -47,22 +47,6 @@ return {
       vim.keymap.set('n', '<Space>n', oil.toggle_float, { desc = 'open tree' })
     end
   },
-  {
-    'christoomey/vim-tmux-navigator',
-    cmd = {
-      'TmuxNavigateLeft',
-      'TmuxNavigateDown',
-      'TmuxNavigateUp',
-      'TmuxNavigateRight',
-      'TmuxNavigatePrevious',
-    },
-    keys = {
-      { '<M-h>', '<cmd>TmuxNavigateLeft<cr>' },
-      { '<M-j>', '<cmd>TmuxNavigateDown<cr>' },
-      { '<M-k>', '<cmd>TmuxNavigateUp<cr>' },
-      { '<M-l>', '<cmd>TmuxNavigateRight<cr>' },
-    },
-  },
   -- Testing
   {
     'nvim-neotest/neotest',
@@ -83,12 +67,29 @@ return {
           }
         }
       }
-      vim.keymap.set('n', '<space>T', function ()
+      vim.keymap.set('n', '<space>T', function()
         neotest.run.run(vim.fn.expand('%'))
       end, opts)
       vim.keymap.set('n', '<space>tt', neotest.run.run, opts)
       vim.keymap.set('n', '<space>ts', neotest.summary.open, opts)
       vim.keymap.set('n', '<space>to', neotest.output.open, opts)
+    end
+  },
+  {
+    "jubnzv/mdeval.nvim",
+    config = function()
+      require 'mdeval'.setup({
+        -- require_confirmation = false,
+        -- Change code blocks evaluation options.
+        eval_options = {
+          lean = {
+            command = { "lean" },
+            language_code = "lean",
+            exec_type = "interpreted",
+            extension = "lean",   -- tmp files saved to '/tmp/mdeval/'
+          },
+        },
+      })
     end
   }
 }
