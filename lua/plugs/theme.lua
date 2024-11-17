@@ -59,7 +59,9 @@ return {
       require("ibl").setup {
         exclude = {
           filetypes = {
+            "coq",
             "css",
+            "lean",
             "lua",
             "nim",
             "racket",

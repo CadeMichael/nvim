@@ -12,6 +12,10 @@ return {
     end
   },
   {
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+  },
+  {
     'preservim/nerdcommenter',
     config = function()
       vim.g.NERDSpaceDelims = 1
@@ -86,7 +90,7 @@ return {
             command = { "lean" },
             language_code = "lean",
             exec_type = "interpreted",
-            extension = "lean",   -- tmp files saved to '/tmp/mdeval/'
+            extension = "lean", -- tmp files saved to '/tmp/mdeval/'
           },
         },
       })
