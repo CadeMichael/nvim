@@ -64,6 +64,7 @@ return {
             "lean",
             "lua",
             "nim",
+            "markdown",
             "racket",
             "startify"
           }

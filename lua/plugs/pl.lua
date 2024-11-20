@@ -12,6 +12,7 @@ return {
     end
   },
   'whonore/Coqtail', -- Coq
+  'mlr-msft/vim-loves-dafny', -- Dafny
   {                  -- Haskell
     'mrcjkb/haskell-tools.nvim',
     version = '^4',  -- Recommended

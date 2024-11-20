@@ -138,6 +138,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
+      --> Dafny
+      lsp.dafny.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
       --> Go
       lsp.gopls.setup({
         capabilities = capabilities,
