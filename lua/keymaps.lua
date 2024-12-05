@@ -46,3 +46,5 @@ vim.keymap.set('n', '<Space>C', function()
   end,
   { desc = "toggle conceallevel" }
 )
+-- Calendar
+vim.keymap.set('n', '<space>K', ':!cal<CR>', opts)
