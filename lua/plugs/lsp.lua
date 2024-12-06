@@ -8,13 +8,6 @@ return {
   },
   'folke/neodev.nvim', -- lua
   {
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    ft = { "scala", "sbt", "java" },
-  },
-  {
     'neovim/nvim-lspconfig',
     config = function()
       -- lsp
@@ -117,8 +110,8 @@ return {
         vim.keymap.set('n', '<space>ee', vim.diagnostic.open_float,
           get_opts("diagnostic open float"))
         vim.keymap.set('n', '<space>E', tsb.diagnostics, get_opts("telescope diagnostics"))
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, get_opts("previous diagnostic"))
+        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, get_opts("next diagnostic"))
       end
 
       --> lua
@@ -199,18 +192,6 @@ return {
       lsp.rust_analyzer.setup({
         capabilities = capabilities,
         on_attach = on_attach,
-      })
-      --> Scala
-      -- use the 'metals_config' here to use general 'on_attach'
-      local metals_config = require("metals").bare_config()
-      metals_config.on_attach = on_attach
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "scala", "sbt", "java" },
-        callback = function()
-          require("metals").initialize_or_attach(metals_config)
-        end,
-        group = nvim_metals_group,
       })
       --> Svelte
       lsp.svelte.setup({

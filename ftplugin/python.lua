@@ -1,32 +1,21 @@
 local keymap = vim.keymap.set
 
--- Termcodes for Floaterm
-local term_handler = vim.api.nvim_replace_termcodes(
-  '<C-\\><C-n>GA',
-  true,
-  true,
-  true
-)
-
 local function runPyBuffer()
   local file = vim.api.nvim_buf_get_name(0)
-  vim.g.floaterm_autoclose = 0
-  vim.cmd("FloatermNew python " .. file)
-  vim.api.nvim_feedkeys(term_handler, 'n', true)
-  vim.g.floaterm_autoclose = 1
+  Snacks.terminal.open('python3 ' .. file, { interactive = false })
 end
 
 local bufnr = vim.api.nvim_get_current_buf()
-keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = "run python buffer" })
+keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = 'run python buffer' })
 
 
-local ls = require("luasnip")
+local ls = require('luasnip')
 local s = ls.snippet
 local i = ls.insert_node
 local isn = ls.indent_snippet_node
 local f = ls.function_node
 local k = require('luasnip.nodes.key_indexer').new_key
-local fmt = require("luasnip.extras.fmt").fmt
+local fmt = require('luasnip.extras.fmt').fmt
 
 local function parse_params(str)
   local params = {}

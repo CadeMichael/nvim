@@ -8,18 +8,8 @@ local bufnr = vim.api.nvim_get_current_buf()
 local opts = { noremap = true, silent = true, buffer = bufnr, }
 
 -- Commands
-local term_handler = vim.api.nvim_replace_termcodes(
-  '<C-\\><C-n>G',
-  true,
-  true,
-  true
-)
-
 local function build_func()
-  vim.g.floaterm_autoclose = 0
-  vim.cmd "FloatermNew cargo -q build"
-  vim.api.nvim_feedkeys(term_handler, 'n', true)
-  vim.g.floaterm_autoclose = 1
+  Snacks.terminal.open('cargo -q build', { interactive = false })
 end
 
 vim.keymap.set('n', '<Space>cc', build_func, opts)

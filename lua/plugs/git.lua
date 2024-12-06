@@ -1,15 +1,5 @@
 return {
   {
-    'voldikss/vim-floaterm',
-    config = function()
-      vim.g.floaterm_width = 0.95
-      vim.g.floaterm_height = 0.95
-      vim.keymap.set('n', '<leader>g', ':FloatermNew lazygit<CR>', { desc = "Lazygit" })
-      vim.keymap.set({ 'n', 'i' }, '<C-Space>', '<cmd>FloatermToggle<CR>', { desc = 'toggle term' })
-      vim.keymap.set('t', '<C-Space>', '<cmd>FloatermToggle<CR>', { desc = 'toggle term' })
-    end
-  },
-  {
     'lewis6991/gitsigns.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -40,7 +30,7 @@ return {
             else
               gitsigns.nav_hunk('next')
             end
-          end)
+          end, { desc = "next hunk" })
 
           map('n', '[c', function()
             if vim.wo.diff then
@@ -48,7 +38,7 @@ return {
             else
               gitsigns.nav_hunk('prev')
             end
-          end)
+          end, { desc = "previous hunk" })
 
           -- Actions
           map('n', '<leader>hs', gitsigns.stage_hunk, { desc = "stage hunk" })

@@ -33,21 +33,4 @@ map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
 -- Windows
 vim.keymap.set({'n', 'i'}, '<A-h>', ':wincmd < <CR>', opts)
 vim.keymap.set({'n', 'i'}, '<A-l>', ':wincmd > <CR>', opts)
--- Line Wrapping
-local wrap = true
-map('n', '<Space>W', function()
-    wrap = not wrap
-    vim.o.wrap = wrap
-  end,
-  { desc = "toggle line wrapping" }
-)
--- Conceal Level
-local cl = 0
-vim.keymap.set('n', '<Space>C', function()
-    cl = cl == 0 and 1 or 0
-    vim.cmd("set conceallevel=" .. cl)
-  end,
-  { desc = "toggle conceallevel" }
-)
--- Calendar
 vim.keymap.set('n', '<space>K', ':!cal<CR>', opts)
