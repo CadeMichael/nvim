@@ -12,10 +12,6 @@ return {
     end
   },
   {
-    "aserowy/tmux.nvim",
-    config = function() return require("tmux").setup() end
-  },
-  {
     'preservim/nerdcommenter',
     config = function()
       vim.g.NERDSpaceDelims = 1

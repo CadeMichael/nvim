@@ -30,6 +30,9 @@ map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 -- Terminal Mode window commands
 map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
+-- Windows
+vim.keymap.set({'n', 'i'}, '<A-h>', ':wincmd < <CR>', opts)
+vim.keymap.set({'n', 'i'}, '<A-l>', ':wincmd > <CR>', opts)
 -- Line Wrapping
 local wrap = true
 map('n', '<Space>W', function()
