@@ -44,7 +44,12 @@ return {
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
       -- terminal
-      { "<C-/>",      function() Snacks.terminal() end,              desc = "Toggle Terminal" },
+      {
+        mode = { "n", "t" },
+        "<C-Space>",
+        function() Snacks.terminal() end,
+        desc = "Toggle Terminal"
+      },
     },
     init = function()
       vim.api.nvim_create_autocmd("User", {
