@@ -31,6 +31,6 @@ map('n', '<C-u>', '<C-u>zz')
 -- Terminal Mode window commands
 map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
 -- Windows
-vim.keymap.set({'n', 'i'}, '<A-h>', ':wincmd < <CR>', opts)
-vim.keymap.set({'n', 'i'}, '<A-l>', ':wincmd > <CR>', opts)
+vim.keymap.set({'n', 'i'}, '<S-A-h>', ':wincmd < <CR>', opts)
+vim.keymap.set({'n', 'i'}, '<S-A-l>', ':wincmd > <CR>', opts)
 vim.keymap.set('n', '<space>K', ':!cal<CR>', opts)
