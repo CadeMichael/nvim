@@ -88,12 +88,6 @@ return {
     end,
   },
   {
-    'mattn/emmet-vim',
-    config = function()
-      vim.g.user_emmet_install_global = 0
-    end
-  },
-  {
     'preservim/nerdcommenter',
     config = function()
       vim.g.NERDSpaceDelims = 1
