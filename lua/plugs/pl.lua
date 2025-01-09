@@ -12,12 +12,6 @@ return {
     end
   },
   'whonore/Coqtail', -- Coq
-  'mlr-msft/vim-loves-dafny', -- Dafny
-  {                  -- Haskell
-    'mrcjkb/haskell-tools.nvim',
-    version = '^4',  -- Recommended
-    lazy = false,    -- This plugin is already lazy
-  },
   {
     'Julian/lean.nvim', -- Lean4
     event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
@@ -27,5 +21,4 @@ return {
       'nvim-lua/plenary.nvim',
     },
   },
-  'souffle-lang/souffle.vim' -- Souffle Datalog
 }
