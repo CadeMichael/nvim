@@ -97,14 +97,16 @@ return {
     -- end
   -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    -- "catppuccin/nvim",
+    -- name = "catppuccin",
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
       vim.opt.background = 'dark'
       vim.opt.termguicolors = true
 
-      vim.cmd.colorscheme 'catppuccin'
+      -- vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'gruvbox'
 
       if vim.g.neovide then
         vim.g.neovide_scale_factor = 0.75
@@ -123,7 +125,8 @@ return {
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'catppuccin',
+          -- theme = 'catppuccin',
+          theme = 'gruvbox',
           component_separators = { left = '|', right = '|' },
           section_separators = { left = ' ', right = ' ' },
         },
