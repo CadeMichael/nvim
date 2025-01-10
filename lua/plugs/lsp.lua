@@ -113,23 +113,28 @@ return {
       --> C
       lsp.clangd.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> Coq
       lsp.coq_lsp.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> Go
       lsp.gopls.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> JavaScript (node)
       lsp.ts_ls.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> Lean4
       require('lean').setup {
         lsp = {
           capabilities = capabilities,
+          on_attach = on_attach,
           handlers = {
             ['textDocument/publishDiagnostics'] = vim.lsp.with(
               vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -143,10 +148,12 @@ return {
       --> Nim
       lsp.nim_langserver.setup {
         capabilities = capabilities,
+        on_attach = on_attach
       }
       --> Nix
       lsp.nixd.setup {
         capabilities = capabilities,
+        on_attach = on_attach,
         settings = {
           nixd = {
             formatting = {
@@ -158,22 +165,27 @@ return {
       --> Ocaml
       lsp.ocamllsp.setup {
         capabilities = capabilities,
+        on_attach = on_attach
       }
       --> Python
       lsp.pyright.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> Rust
       lsp.rust_analyzer.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> Svelte
       lsp.svelte.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
       --> Zig
       lsp.zls.setup({
         capabilities = capabilities,
+        on_attach = on_attach
       })
     end,
   },
