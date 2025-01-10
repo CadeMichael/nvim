@@ -118,10 +118,6 @@ return {
       lsp.coq_lsp.setup({
         capabilities = capabilities,
       })
-      --> Dafny
-      lsp.dafny.setup({
-        capabilities = capabilities,
-      })
       --> Go
       lsp.gopls.setup({
         capabilities = capabilities,
