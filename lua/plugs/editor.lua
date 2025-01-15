@@ -4,6 +4,7 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+      animate = {},
       dashboard = {
         enabled = true,
         sections = {
@@ -32,6 +33,17 @@ return {
         refresh = 50, -- refresh at most every 50ms
       },
       words = { enabled = true },
+      picker = {
+        layout = "ivy",
+        win = {
+          input = {
+            keys = {
+              ["<C-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+              ["<C-.>"] = { "toggle_hidden", mode = { "i", "n" } },
+            }
+          },
+        },
+      },
     },
     keys = {
       -- lazygit
@@ -44,10 +56,13 @@ return {
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
       -- pickers
-      { "<space>.",   function() Snacks.picker.files() end,          desc = "find files" },
+      { "<space>f",   function() Snacks.picker.files() end,          desc = "find files" },
       { "<space>/",   function() Snacks.picker.grep() end,           desc = "Grep" },
       { "<space>,",   function() Snacks.picker.buffers() end,        desc = "Buffers" },
       { "<space>b/",  function() Snacks.picker.grep_buffers() end,   desc = "Grep Open Buffers" },
+      { "<space>h",   function() Snacks.picker.help() end,           desc = "find help" },
+      { "<space>gs",  function() Snacks.picker.git_status() end,     desc = "git status" },
+      { "<space>m",   function() Snacks.picker.keymaps() end,        desc = "find keymaps" },
       {
         "gr",
         function() Snacks.picker.lsp_references() end,

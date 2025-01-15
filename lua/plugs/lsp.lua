@@ -51,7 +51,7 @@ return {
         -- formatting
         vim.keymap.set(
           'n',
-          '<space>f',
+          '<space>=',
           function()
             vim.lsp.buf.format()
           end,

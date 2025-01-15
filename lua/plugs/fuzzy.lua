@@ -6,11 +6,6 @@ return {
     config = function()
       require('telescope').setup({})
       require('telescope').load_extension('fzf')
-      local tsb = require 'telescope.builtin'
-      vim.keymap.set('n', '<Space>pf', tsb.git_files, { desc = 'ts git files' })
-      vim.keymap.set('n', '<Space>h', tsb.help_tags, { desc = 'ts help' })
-      vim.keymap.set('n', '<Space>m', tsb.keymaps, { desc = 'ts maps' })
-      vim.keymap.set('n', '<Space>gs', tsb.git_status, { desc = 'git diff' })
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
