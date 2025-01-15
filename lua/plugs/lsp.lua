@@ -43,7 +43,6 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
     config = function()
-      local tsb = require('telescope.builtin')
       local on_attach = function(_, bufnr)
         -- Mappings.
         local function get_opts(desc)
@@ -75,20 +74,6 @@ return {
             vim.lsp.buf.definition()
           end,
           get_opts('goto definition')
-        )
-        vim.keymap.set('n',
-          'gr',
-          function()
-            tsb.lsp_references()
-          end,
-          get_opts('telescope get references')
-        )
-        -- diagnostics
-        vim.keymap.set(
-          'n',
-          '<space>E',
-          tsb.diagnostics,
-          get_opts('telescope diagnostics')
         )
         vim.keymap.set(
           'n',

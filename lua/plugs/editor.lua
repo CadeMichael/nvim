@@ -43,6 +43,18 @@ return {
       -- notifications
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
+      -- pickers
+      { "<space>.",   function() Snacks.picker.files() end,          desc = "find files" },
+      { "<space>/",   function() Snacks.picker.grep() end,           desc = "Grep" },
+      { "<space>,",   function() Snacks.picker.buffers() end,        desc = "Buffers" },
+      { "<space>b/",  function() Snacks.picker.grep_buffers() end,   desc = "Grep Open Buffers" },
+      {
+        "gr",
+        function() Snacks.picker.lsp_references() end,
+        nowait = true,
+        desc = "References"
+      },
+      { "<space>E", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
       -- terminal
       {
         mode = { "n", "t" },
