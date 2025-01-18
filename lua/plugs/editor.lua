@@ -40,6 +40,7 @@ return {
             keys = {
               ["<C-m>"] = { "toggle_maximize", mode = { "i", "n" } },
               ["<C-.>"] = { "toggle_hidden", mode = { "i", "n" } },
+              ["<CR>"] = { "confirm", mode = { "n", "i" } },
             }
           },
         },
