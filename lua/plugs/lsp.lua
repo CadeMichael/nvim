@@ -153,7 +153,7 @@ return {
         on_attach = on_attach
       }
       --> Python
-      lsp.pyright.setup({
+      lsp.ruff.setup({
         capabilities = capabilities,
         on_attach = on_attach
       })

@@ -5,8 +5,14 @@ local function runPyBuffer()
   Snacks.terminal.open('python3 ' .. file, { interactive = false })
 end
 
+local function runPytest()
+  local file = vim.api.nvim_buf_get_name(0)
+  Snacks.terminal.open('pytest', { interactive = false })
+end
+
 local bufnr = vim.api.nvim_get_current_buf()
 keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = 'run python buffer' })
+keymap('n', '<Space>ct', runPytest, { buffer = bufnr, desc = 'run python buffer' })
 
 
 local ls = require('luasnip')
