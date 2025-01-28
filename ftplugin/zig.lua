@@ -50,4 +50,4 @@ local genOpts = function(s)
 end
 
 keymap('n', '<Space>zb', zig_build, genOpts("zig build"))
-keymap('n', '<Space>ze', zig_exe, genOpts("zig build"))
+keymap('n', '<Space>ze', zig_exe, genOpts("zig execute"))
