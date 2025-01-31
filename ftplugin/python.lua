@@ -12,7 +12,7 @@ end
 
 local bufnr = vim.api.nvim_get_current_buf()
 keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = 'run python buffer' })
-keymap('n', '<Space>ct', runPytest, { buffer = bufnr, desc = 'run python buffer' })
+keymap('n', '<Space>ct', runPytest, { buffer = bufnr, desc = 'run pytest' })
 
 
 local ls = require('luasnip')
