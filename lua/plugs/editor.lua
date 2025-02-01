@@ -64,6 +64,7 @@ return {
       { "<space>h",   function() Snacks.picker.help() end,           desc = "find help" },
       { "<space>gs",  function() Snacks.picker.git_status() end,     desc = "git status" },
       { "<space>m",   function() Snacks.picker.keymaps() end,        desc = "find keymaps" },
+      { "<space>ex",  function() Snacks.picker.explorer() end,       desc = "snacks explorer" },
       {
         "gr",
         function() Snacks.picker.lsp_references() end,

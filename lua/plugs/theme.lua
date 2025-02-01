@@ -102,7 +102,7 @@ return {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
-      vim.opt.background = 'light'
+      vim.opt.background = 'dark'
       vim.opt.termguicolors = true
 
       -- vim.cmd.colorscheme 'catppuccin'
