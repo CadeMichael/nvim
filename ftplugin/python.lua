@@ -69,7 +69,36 @@ local function doc_string(args)
 end
 
 ls.add_snippets("python", {
-  s("dd", fmt([[
+  s("iff", fmt([[
+{} = {} if {} else {}
+  ]], {
+    i(1, "var"),
+    i(2, "tval"),
+    i(3, "cond"),
+    i(4, "fval"),
+  })),
+  s("for", fmt([[
+for {} in {}:
+    {}
+  ]], {
+    i(1),
+    i(2),
+    i(0),
+  })),
+  s("pf", fmt([[
+print(f"{}")
+  ]], {
+    i(0),
+  })),
+  s("def", fmt([[
+def {}({}):
+    {}
+  ]], {
+    i(1),
+    i(2),
+    i(0),
+  })),
+  s("deff", fmt([[
 def {}({}):
     """{}
 
