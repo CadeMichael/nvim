@@ -1,18 +1,23 @@
-local keymap = vim.keymap.set
-
 local function runPyBuffer()
   local file = vim.api.nvim_buf_get_name(0)
   Snacks.terminal.open('python3 ' .. file, { interactive = false })
 end
 
 local function runPytest()
-  local file = vim.api.nvim_buf_get_name(0)
   Snacks.terminal.open('pytest', { interactive = false })
 end
 
+local function runPDB()
+  local file = vim.api.nvim_buf_get_name(0)
+  local command = "GdbStartPDB python3 -m pdb " .. file
+  vim.cmd(command)
+end
+
 local bufnr = vim.api.nvim_get_current_buf()
+local keymap = vim.keymap.set
 keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = 'run python buffer' })
 keymap('n', '<Space>ct', runPytest, { buffer = bufnr, desc = 'run pytest' })
+keymap('n', '<Space>D', runPDB, { buffer = bufnr, desc = 'run pdb on current buffer' })
 
 
 local ls = require('luasnip')

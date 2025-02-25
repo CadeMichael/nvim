@@ -198,6 +198,9 @@ return {
       })
     end
   },
+  { -- Debugging
+    'sakhnik/nvim-gdb',
+  },
   {
     "nvzone/typr",
     dependencies = "nvzone/volt",
