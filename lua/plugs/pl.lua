@@ -11,6 +11,7 @@ return {
       vim.g.tex_conceal = 'abdmg'
     end
   },
+  'lark-parser/vim-lark-syntax', -- Lark
   'whonore/Coqtail', -- Coq
   {
     'Julian/lean.nvim', -- Lean4
