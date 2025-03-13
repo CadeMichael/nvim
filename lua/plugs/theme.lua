@@ -52,33 +52,6 @@ return {
       vim.cmd [[set nofoldenable]]
     end
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    config = function()
-      require("ibl").setup {
-        exclude = {
-          filetypes = {
-            "coq",
-            "css",
-            "lean",
-            "lua",
-            "nim",
-            "markdown",
-            "racket",
-            "startify"
-          }
-        },
-        scope = {
-          enabled = false,
-          show_start = false,
-          show_end = false
-        },
-      }
-      vim.keymap.set('n', '<Space>I', '<cmd>IBLToggle<CR>', { desc = "toggle indent highlighting" })
-      vim.keymap.set('n', '<Space>S', '<cmd>IBLToggleScope<CR>', { desc = "toggle indent scope highlighting" })
-    end
-  },
   -- colorchemes
   -- {
     -- 'mhinz/vim-startify',
