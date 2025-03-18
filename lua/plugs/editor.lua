@@ -200,6 +200,13 @@ return {
   },
   { -- Debugging
     'sakhnik/nvim-gdb',
+    -- lua vim.api.nvim_command('vertical topleft split tags')
+    -- config = function ()
+    -- termwin_command = 'belowright new',   -- Assign a window for the debugging terminal
+    -- end
+  },
+  { -- Unicode
+    'chrisbra/unicode.vim',
   },
   {
     "nvzone/typr",
