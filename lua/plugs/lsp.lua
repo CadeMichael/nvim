@@ -150,6 +150,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach
       })
+      --> Racket
+      lsp.racket_langserver.setup({
+        capabilities = capabilities,
+        on_attach = on_attach(),
+      })
       --> Rust
       lsp.rust_analyzer.setup({
         capabilities = capabilities,

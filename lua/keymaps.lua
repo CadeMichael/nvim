@@ -1,36 +1,43 @@
 --------------
 -- keymappings
 --------------
-local function map(mode, lhs, rhs, opts)
+function Map(mode, lhs, rhs, opts, desc)
   opts = opts or {}
+  if desc then
+    opts["desc"] = desc
+  end
   opts.silent = opts.silent ~= false
   vim.keymap.set(mode, lhs, rhs, opts)
 end
-local opts = { noremap = true, silent = true }
+Opts = { noremap = true, silent = true }
+
+function AddDesc(opts, desc)
+  return vim.tbl_extend('force', opts, {desc = desc})
+end
 
 -- prevent nvim suspending
-map({ 'n', 'i' }, '<C-z>', '<Esc>', opts)
+Map({ 'n', 'i' }, '<C-z>', '<Esc>', Opts)
 -- buffer navigation
-vim.keymap.set('n', '[b', '<cmd>bprevious<CR>', opts)
-vim.keymap.set('n', ']b', '<cmd>bnext<CR>', opts)
+vim.keymap.set('n', '[b', '<cmd>bprevious<CR>', Opts)
+vim.keymap.set('n', ']b', '<cmd>bnext<CR>', Opts)
 -- remaps
-map('n', '<Space>bk', ':bdelete!<CR>', opts)
-map('n', '<Space>x', ':x<CR>', opts)
-map('n', 'U', '<C-r>', opts)
-map('n', 'Y', 'y$', opts)
-map('n', 'n', 'nzzzv', opts)
-map('n', 'N', 'Nzzzv', opts)
-map('i', '.', '.<C-g>u', opts)
-map('i', ',', ',<C-g>u', opts)
-map('i', '[', '[<C-g>u', opts)
-map('i', '(', '(<C-g>u', opts)
-map('v', 'J', ":m '>+1<CR>gv=gv", opts)
-map('v', 'K', ":m '<-2<CR>gv=gv", opts)
-map('n', '<C-d>', '<C-d>zz')
-map('n', '<C-u>', '<C-u>zz')
+Map('n', '<Space>bk', ':bdelete!<CR>', Opts)
+Map('n', '<Space>x', ':x<CR>', Opts)
+Map('n', 'U', '<C-r>', Opts)
+Map('n', 'Y', 'y$', Opts)
+Map('n', 'n', 'nzzzv', Opts)
+Map('n', 'N', 'Nzzzv', Opts)
+Map('i', '.', '.<C-g>u', Opts)
+Map('i', ',', ',<C-g>u', Opts)
+Map('i', '[', '[<C-g>u', Opts)
+Map('i', '(', '(<C-g>u', Opts)
+Map('v', 'J', ":m '>+1<CR>gv=gv", Opts)
+Map('v', 'K', ":m '<-2<CR>gv=gv", Opts)
+Map('n', '<C-d>', '<C-d>zz')
+Map('n', '<C-u>', '<C-u>zz')
 -- Terminal Mode window commands
-map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
+Map('t', '<C-w>', '<C-\\><C-n><C-w>', Opts)
 -- Windows
-vim.keymap.set({'n', 'i'}, '<S-A-h>', ':wincmd < <CR>', opts)
-vim.keymap.set({'n', 'i'}, '<S-A-l>', ':wincmd > <CR>', opts)
-vim.keymap.set('n', '<space>K', ':!cal<CR>', opts)
+vim.keymap.set({'n', 'i'}, '<S-A-h>', ':wincmd < <CR>', Opts)
+vim.keymap.set({'n', 'i'}, '<S-A-l>', ':wincmd > <CR>', Opts)
+vim.keymap.set('n', '<space>K', ':!cal<CR>', Opts)

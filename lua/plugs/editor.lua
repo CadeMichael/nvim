@@ -198,6 +198,51 @@ return {
       })
     end
   },
+  {
+    "jpalardy/vim-slime",
+    init = function()
+      vim.g.slime_no_mappings = 1
+    end,
+    config = function()
+      vim.g.slime_target = "zellij"
+      -- function for finding file
+      -- global slimes
+      Map({ 'n', 'i' }, '<C-c>c', "<Plug>SlimeConfig", Opts, "slime config")
+      Map({ 'n', 'i' }, '<C-c><C-c>', "<cmd>SlimeSend0 '<c-c>' <CR>", Opts, "slime ^C")
+      Map({ 'n', 'i' }, '<C-c><C-d>', "<cmd>SlimeSend0 '<c-d>' <CR>", Opts, "slime ^D")
+      Map({ 'n', 'i' }, '<C-c><C-l>', "<cmd>SlimeSend0 '<c-l>' <CR>", Opts, "slime ^L")
+      Map({ 'n', 'i' }, '<C-c><C-e>', "<Plug>SlimeParagraphSend", Opts, "slime paragraph")
+      Map({ 'n', 'i' }, '<C-c>l', "<Plug>SlimeLineSend", Opts, "slime line")
+      Map('v', '<C-c><C-e>', "<Plug>SlimeRegionSend", Opts, "slime region")
+      Map('n', '<C-c><C-s>', "%v%<Plug>SlimeRegionSend", Opts, "slime s-exp")
+
+      -- racket specific config
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "racket",
+        callback = function()
+          local bufnr = vim.api.nvim_get_current_buf()
+          local opts = { buffer = bufnr }
+          local keymap = vim.keymap.set
+
+          -- racket bindings
+          keymap('n', '<C-c><C-r>', '<cmd>SlimeSend1 "racket" <CR>', AddDesc(opts, "start racket repl"))
+          keymap('n', '<C-c>el', '<cmd>SlimeSend1 (enter! #f)<CR>', AddDesc(opts, 'leave file in repl'))
+          keymap('n', '<C-c>ef', function()
+              Snacks.picker.files({
+                confirm = function(picker, item)
+                  picker:close()
+                  if item then
+                    local cmd = 'SlimeSend1 (enter! "' .. item.file .. '")'
+                    vim.api.nvim_command(cmd)
+                  end
+                end
+              })
+            end,
+            AddDesc(opts, 'enter file in repl'))
+        end,
+      })
+    end
+  },
   { -- Debugging
     'sakhnik/nvim-gdb',
     -- lua vim.api.nvim_command('vertical topleft split tags')
