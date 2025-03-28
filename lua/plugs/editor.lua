@@ -205,7 +205,6 @@ return {
     end,
     config = function()
       vim.g.slime_target = "zellij"
-      -- function for finding file
       -- global slimes
       Map({ 'n', 'i' }, '<C-c>c', "<Plug>SlimeConfig", Opts, "slime config")
       Map({ 'n', 'i' }, '<C-c><C-c>', "<cmd>SlimeSend0 '<c-c>' <CR>", Opts, "slime ^C")
