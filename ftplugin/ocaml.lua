@@ -119,3 +119,30 @@ local opts = { noremap = true, silent = true, buffer = bufnr, }
 keymap('n', '<Space>D', ocamlDebug, opts)
 keymap('n', '<Space>dr', duneExec, opts)
 keymap('n', '<Space>db', duneBuild, opts)
+
+-- snippets
+local ls = require("luasnip")
+local s = ls.snippet
+local i = ls.insert_node
+local fmt = require("luasnip.extras.fmt").fmt
+
+ls.add_snippets("ocaml", {
+  s("*", fmt([[
+(* {} *)
+]], {
+    i(0),
+  })),
+  s("let", fmt([[
+let {} = {}
+]], {
+    i(1),
+    i(0),
+  })),
+  s("match", fmt([[
+match {} with
+  | {}
+]], {
+    i(1),
+    i(0),
+  }))
+})
