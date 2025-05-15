@@ -108,6 +108,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach
       })
+      --> koka
+      lsp.koka.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
       --> Lean4
       require('lean').setup {
         lsp = {

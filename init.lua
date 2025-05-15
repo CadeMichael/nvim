@@ -4,6 +4,7 @@
 
 require('keymaps')
 require('autocmd')
+require('lang_ft')
 
 --------------------
 -- Global Configs --
