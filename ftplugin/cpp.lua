@@ -5,7 +5,7 @@ local function cpp_build()
   print(name)
   name = string.gsub(name, ".cpp", "")
   name = string.gsub(name, ".cc", "")
-  vim.cmd("!g++ -Wall " .. fname .. " -o " .. name)
+  vim.cmd("!g++ -std=c++11 -Wall " .. fname .. " -o " .. name)
 end
 
 local function cpp_run()
@@ -24,7 +24,7 @@ local genOpts = function (s)
 end
 
 keymap('n', '<Space>bb', cpp_build, genOpts("build file"))
-keymap('n', '<Space>rb', cpp_run, genOpts("run file" ))
+keymap('n', '<Space>br', cpp_run, genOpts("run file" ))
 
 -- prevent '#if defined' lack of highlighting
 vim.api.nvim_set_hl(0, '@lsp.type.comment.cpp', {})
