@@ -61,20 +61,25 @@ return {
     end
   },
   {
-    "Mofiqul/dracula.nvim",
-    priority = 1000,
+    "rebelot/kanagawa.nvim",
+    -- priority = 1000,
     config = function()
       vim.opt.termguicolors = true
-
-      vim.cmd.colorscheme 'dracula'
-
-      if vim.g.neovide then
-        vim.g.neovide_scale_factor = 0.75
-      else
-        -- transparent BG
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      end
+      require("kanagawa").setup({
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none"
+              }
+            }
+          }
+        }
+      })
+      vim.cmd.colorscheme 'kanagawa'
+      -- transparent BG
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end
   },
   {
@@ -85,7 +90,6 @@ return {
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'dracula',
           component_separators = { left = '|', right = '|' },
           section_separators = { left = ' ', right = ' ' },
         },

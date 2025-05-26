@@ -10,18 +10,19 @@ require('lang_ft')
 -- Global Configs --
 --------------------
 vim.g.loaded_netrw = 1
+vim.opt.number = true
+vim.opt.signcolumn = 'auto'
 vim.g.loaded_netrwPlugin = 1
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.number = true
 vim.opt.colorcolumn = '80'
 vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
-vim.opt.cursorline = true
 vim.opt.mouse = 'nv'
+-- vim.opt.cursorline = true
 
 -------------
 -- Plugins --
