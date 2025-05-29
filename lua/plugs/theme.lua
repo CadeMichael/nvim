@@ -61,22 +61,11 @@ return {
     end
   },
   {
-    "rebelot/kanagawa.nvim",
-    -- priority = 1000,
+    "scottmckendry/cyberdream.nvim",
+    priority = 1000,
     config = function()
       vim.opt.termguicolors = true
-      require("kanagawa").setup({
-        colors = {
-          theme = {
-            all = {
-              ui = {
-                bg_gutter = "none"
-              }
-            }
-          }
-        }
-      })
-      vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'cyberdream'
       -- transparent BG
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -90,6 +79,7 @@ return {
     config = function()
       require('lualine').setup({
         options = {
+          theme = 'auto',
           component_separators = { left = '|', right = '|' },
           section_separators = { left = ' ', right = ' ' },
         },

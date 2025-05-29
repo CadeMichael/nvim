@@ -83,7 +83,7 @@ return {
 
       --> lua
       -- neovim lsp
-      require("neodev").setup({})
+      require("neodev").setup()
       lsp.lua_ls.setup {
         capabilities = capabilities,
         on_attach = on_attach

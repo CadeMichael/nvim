@@ -49,5 +49,5 @@ local genOpts = function(s)
   return opts
 end
 
-keymap('n', '<Space>cc', zig_build, genOpts("zig build"))
-keymap('n', '<Space>ce', zig_exe, genOpts("zig execute"))
+keymap('n', '<Space>bb', zig_build, genOpts("zig build"))
+keymap('n', '<Space>br', zig_exe, genOpts("zig run"))

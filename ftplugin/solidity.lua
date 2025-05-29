@@ -1,9 +1,6 @@
 vim.opt_local.shiftwidth = 4
 vim.opt_local.softtabstop = 4
 
---[[
--- Snippets
---]]
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
