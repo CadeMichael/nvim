@@ -26,12 +26,27 @@ return {
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
+        }
       },
     },
     opts_extend = { 'sources.default' },
   },
-  'folke/neodev.nvim', -- lua
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    enabled = true,
+    config = function ()
+      require("lazydev").setup()
+    end
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
@@ -74,8 +89,8 @@ return {
           vim.diagnostic.open_float,
           get_opts('diagnostic open float')
         )
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, get_opts('prev diagnostic'))
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, get_opts('next diagnostic'))
+        vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, get_opts('prev diagnostic'))
+        vim.keymap.set('n', ']e', vim.diagnostic.goto_next, get_opts('next diagnostic'))
       end
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -83,7 +98,6 @@ return {
 
       --> lua
       -- neovim lsp
-      require("neodev").setup()
       lsp.lua_ls.setup {
         capabilities = capabilities,
         on_attach = on_attach

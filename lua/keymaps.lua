@@ -36,6 +36,8 @@ Map('v', 'J', ":m '>+1<CR>gv=gv", Opts)
 Map('v', 'K', ":m '<-2<CR>gv=gv", Opts)
 Map('n', '<C-d>', '<C-d>zz')
 Map('n', '<C-u>', '<C-u>zz')
+Map('n', '<space>u', '<C-u>zz')
+Map('n', '<space>d', '<C-d>zz')
 -- Terminal Mode window commands
 Map('t', '<C-w>', '<C-\\><C-n><C-w>', Opts)
 -- Windows

@@ -117,8 +117,8 @@ local bufnr = vim.api.nvim_get_current_buf()
 local opts = { noremap = true, silent = true, buffer = bufnr, }
 
 keymap('n', '<Space>D', ocamlDebug, opts)
-keymap('n', '<Space>dr', duneExec, opts)
-keymap('n', '<Space>db', duneBuild, opts)
+keymap('n', '<Space>br', duneExec, opts)
+keymap('n', '<Space>bb', duneBuild, opts)
 
 -- snippets
 local ls = require("luasnip")

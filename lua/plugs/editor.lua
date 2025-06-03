@@ -41,6 +41,9 @@ return {
       bigfile = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
+      indent = {
+        chunk = { enabled = true, only_current = true },
+      },
       statuscolumn = {
         enabled = true,
         left = { "mark", "sign" }, -- priority of signs on the left (high to low)
