@@ -58,3 +58,9 @@ require("lazy").setup({
     { import = "plugs" },
   },
 })
+
+-- experimental
+-- local maker = require('ccmake')
+-- vim.api.nvim_create_user_command("BrowseFiles", function()
+  -- maker.browse(vim.fn.getcwd())
+-- end, {})

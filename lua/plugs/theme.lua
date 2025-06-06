@@ -90,6 +90,17 @@ return {
     end
   },
   {
+    "sotte/presenting.nvim",
+    cmd = { "Presenting" },
+    config = function ()
+      require("presenting").setup({
+        options = {
+          width = 84,
+        }
+      })
+    end,
+  },
+  {
     'MeanderingProgrammer/markdown.nvim',
     main = "render-markdown",
     dependencies = {

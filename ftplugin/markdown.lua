@@ -4,6 +4,7 @@ local opts = { noremap = true, silent = true, buffer = bufnr, }
 
 -- Keybindings
 keymap({ 'n', 'i' }, '<C-c><C-c>', '<cmd>MdEval<CR>', opts)
+keymap({ 'n' }, '<C-c>p', '<cmd>Presenting<CR>', opts)
 
 -- Snippets
 local ls = require("luasnip")
