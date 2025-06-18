@@ -43,7 +43,7 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
     enabled = true,
-    config = function ()
+    config = function()
       require("lazydev").setup()
     end
   },
@@ -51,6 +51,20 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
     config = function()
+      -- show lsp diagnostics by highlighting line numbers
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+          },
+          numhl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+          },
+        },
+        severity_sort = true,
+      })
       local on_attach = function(_, bufnr)
         -- Mappings.
         local function get_opts(desc)
@@ -93,8 +107,10 @@ return {
         vim.keymap.set('n', ']e', vim.diagnostic.goto_next, get_opts('next diagnostic'))
       end
 
+      -- import lsp modules
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lsp = require('lspconfig')
+      local lsp_configs = require('lspconfig.configs')
 
       --> lua
       -- neovim lsp
@@ -112,6 +128,40 @@ return {
         capabilities = capabilities,
         on_attach = on_attach
       })
+      --> Flix
+      -- create flix config
+      lsp_configs.flix = {
+        default_config = {
+          cmd = { "java", "-jar", "flix.jar", "lsp" },
+          filetypes = { "flix" },
+          root_dir = function(fname)
+            local root_dir = vim.fs.dirname(vim.fs.find({ "flix.toml", "flix.jar" }, { path = fname, upward = true })[1])
+                or vim.fs.dirname(fname)
+            local flix_jar_path = vim.fs.joinpath(root_dir, "flix.jar")
+            if vim.loop.fs_stat(flix_jar_path) == nil then
+              print("Failed to start the LSP server: flix.jar not found in project root (" .. root_dir .. ")!\n")
+              return nil
+            end
+            return root_dir
+          end,
+          settings = {},
+        },
+      }
+      -- setup server
+      lsp.flix.setup {
+        capabilities = capabilities,
+        on_attach = function(_, bufnr)
+          -- flix specific pre attatch actions
+          print("Flix LSP attached to buffer " .. bufnr)
+          vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+            pattern = "<buffer>",
+            callback = function()
+              vim.lsp.codelens.refresh({ bufnr = bufnr })
+            end,
+          })
+          on_attach(_, bufnr)
+        end,
+      }
       --> Go
       lsp.gopls.setup({
         capabilities = capabilities,
@@ -197,3 +247,4 @@ return {
     end,
   },
 }
+-- test

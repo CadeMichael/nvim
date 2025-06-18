@@ -44,21 +44,7 @@ return {
       indent = {
         chunk = { enabled = true, only_current = true },
       },
-      statuscolumn = {
-        enabled = true,
-        left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-        right = { "fold", "git" }, -- priority of signs on the right (high to low)
-        folds = {
-          open = true,             -- show open fold icons
-          git_hl = true,           -- use Git Signs hl for fold icons
-        },
-        git = {
-          -- patterns to match Git signs
-          patterns = { "GitSign" },
-        },
-        refresh = 50, -- refresh at most every 50ms
-      },
-      words = { enabled = true },
+      -- words = { enabled = true },
       picker = {
         layout = "ivy",
         win = {
@@ -80,7 +66,7 @@ return {
       -- git
       { "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
       -- notifications
-      { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+      { "<space>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
       -- pickers
       { "<space>f",   function() Snacks.picker.files() end,          desc = "find files" },
@@ -175,7 +161,7 @@ return {
     config = function()
       local oil = require('oil')
       require('oil').setup()
-      vim.keymap.set('n', '<Space>n', oil.toggle_float, { desc = 'open tree' })
+      vim.keymap.set('n', '<Space>.', oil.toggle_float, { desc = 'open tree' })
     end
   },
   {

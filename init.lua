@@ -11,7 +11,7 @@ require('lang_ft')
 --------------------
 vim.g.loaded_netrw = 1
 vim.opt.number = true
-vim.opt.signcolumn = 'auto:1'
+vim.opt.signcolumn = 'number'
 vim.g.loaded_netrwPlugin = 1
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -22,7 +22,6 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.mouse = 'nv'
--- vim.opt.cursorline = true
 
 -------------
 -- Plugins --

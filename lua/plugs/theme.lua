@@ -92,7 +92,7 @@ return {
   {
     "sotte/presenting.nvim",
     cmd = { "Presenting" },
-    config = function ()
+    config = function()
       require("presenting").setup({
         options = {
           width = 84,

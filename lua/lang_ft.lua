@@ -1,6 +1,7 @@
 vim.filetype.add({
   extension = {
-    kk = "koka",
+    flix = "flix",
     j2 = "jinja",
+    kk = "koka",
   }
 })
