@@ -111,6 +111,7 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lsp = require('lspconfig')
       local lsp_configs = require('lspconfig.configs')
+      local lsp_util = require('lspconfig.util')
 
       --> lua
       -- neovim lsp
@@ -128,6 +129,18 @@ return {
         capabilities = capabilities,
         on_attach = on_attach
       })
+      --> Effekt
+      lsp_configs.effekt = {
+        default_config = {
+          cmd = { 'effekt', '--server' },
+          filetypes = { 'effekt' },
+          root_dir = lsp_util.root_pattern('*.effekt'),
+        },
+      }
+      lsp.effekt.setup {
+        capabilities = capabilities,
+        on_attach = on_attach
+      }
       --> Flix
       -- create flix config
       lsp_configs.flix = {

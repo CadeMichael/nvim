@@ -1,3 +1,7 @@
+vim.opt_local.tabstop = 4
+vim.opt_local.shiftwidth = 4
+vim.opt_local.softtabstop = 4
+
 -- tell nvim how to format comments
 vim.bo.commentstring = "// %s"
 local notif = require('snacks.notify')

@@ -1,4 +1,7 @@
 return {
+  {
+    "effekt-lang/effekt-neovim"
+  },
   { -- LaTex
     "lervag/vimtex",
     lazy = false,
