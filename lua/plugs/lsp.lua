@@ -49,7 +49,16 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    dependencies = { 'saghen/blink.cmp' },
+    dependencies = {
+      'saghen/blink.cmp',
+      {
+        "scalameta/nvim-metals",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+        },
+        ft = { "scala", "sbt", "java" }
+      },
+    },
     config = function()
       -- show lsp diagnostics by highlighting line numbers
       vim.diagnostic.config({
@@ -243,9 +252,16 @@ return {
         on_attach = on_attach
       })
       --> Scala
-      lsp.metals.setup({
-        capabilities = capabilities,
-        on_attach = on_attach
+      local metals_config = require("metals").bare_config()
+      metals_config.on_attach = on_attach
+      metals_config.capabilities = capabilities
+      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = require("metals").ft,
+        callback = function()
+          require("metals").initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
       })
       --> Svelte
       lsp.svelte.setup({
