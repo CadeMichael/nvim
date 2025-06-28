@@ -61,14 +61,16 @@ return {
     end
   },
   {
-    "scottmckendry/cyberdream.nvim",
+    -- "scottmckendry/cyberdream.nvim",
+    "savq/melange-nvim",
     priority = 1000,
     config = function()
       vim.opt.termguicolors = true
-      vim.cmd.colorscheme 'cyberdream'
+      -- vim.cmd.colorscheme 'cyberdream'
+      vim.cmd.colorscheme 'melange'
       -- transparent BG
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end
   },
   {

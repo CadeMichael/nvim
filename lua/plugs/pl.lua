@@ -1,7 +1,4 @@
 return {
-  {
-    "effekt-lang/effekt-neovim"
-  },
   { -- LaTex
     "lervag/vimtex",
     lazy = false,
@@ -16,13 +13,5 @@ return {
   },
   'lark-parser/vim-lark-syntax', -- Lark
   'whonore/Coqtail', -- Coq
-  {
-    'Julian/lean.nvim', -- Lean4
-    event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
-
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'nvim-lua/plenary.nvim',
-    },
-  },
+  {dir = '~/Documents/pl/flixSummer/flix.nvim'},
 }

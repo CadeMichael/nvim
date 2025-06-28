@@ -78,7 +78,7 @@ return {
       { "<space>m",   function() Snacks.picker.keymaps() end,        desc = "find keymaps" },
       { "<space>ex",  function() Snacks.picker.explorer() end,       desc = "snacks explorer" },
       {
-        "gr",
+        "grr",
         function() Snacks.picker.lsp_references() end,
         nowait = true,
         desc = "References"
@@ -97,13 +97,13 @@ return {
         pattern = "VeryLazy",
         callback = function()
           -- Setup some globals for debugging (lazy-loaded)
-          _G.dd = function(...)
-            Snacks.debug.inspect(...)
-          end
-          _G.bt = function()
-            Snacks.debug.backtrace()
-          end
-          vim.print = _G.dd -- Override print to use snacks for `:=` command
+          -- _G.dd = function(...)
+            -- Snacks.debug.inspect(...)
+          -- end
+          -- _G.bt = function()
+            -- Snacks.debug.backtrace()
+          -- end
+          -- vim.print = _G.dd -- Override print to use snacks for `:=` command
 
           -- Create some toggle mappings
           Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
