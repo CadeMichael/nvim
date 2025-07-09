@@ -66,7 +66,7 @@ return {
       -- git
       { "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
       -- notifications
-      { "<space>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+      { "<space>n",   function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
       -- pickers
       { "<space>f",   function() Snacks.picker.files() end,          desc = "find files" },
@@ -98,10 +98,10 @@ return {
         callback = function()
           -- Setup some globals for debugging (lazy-loaded)
           -- _G.dd = function(...)
-            -- Snacks.debug.inspect(...)
+          -- Snacks.debug.inspect(...)
           -- end
           -- _G.bt = function()
-            -- Snacks.debug.backtrace()
+          -- Snacks.debug.backtrace()
           -- end
           -- vim.print = _G.dd -- Override print to use snacks for `:=` command
 
@@ -154,15 +154,23 @@ return {
     end,
   },
   {
-    'stevearc/oil.nvim',
+    'refractalize/oil-git-status.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
+      {
+        'stevearc/oil.nvim',
+        config = function()
+          local oil = require('oil')
+          require('oil').setup({
+            win_options = {
+              signcolumn = "yes:2",
+            }
+          })
+          vim.keymap.set('n', '<Space>.', oil.toggle_float, { desc = 'open tree' })
+        end
+      },
     },
-    config = function()
-      local oil = require('oil')
-      require('oil').setup()
-      vim.keymap.set('n', '<Space>.', oil.toggle_float, { desc = 'open tree' })
-    end
+    config = true,
   },
   {
     "jubnzv/mdeval.nvim",

@@ -11,7 +11,7 @@ require('lang_ft')
 --------------------
 vim.g.loaded_netrw = 1
 vim.opt.number = true
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'auto'
 vim.g.loaded_netrwPlugin = 1
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

@@ -13,5 +13,5 @@ return {
   },
   'lark-parser/vim-lark-syntax', -- Lark
   'whonore/Coqtail', -- Coq
-  {dir = '~/Documents/pl/flixSummer/flix.nvim'},
+  {dir = '~/Documents/pl/flixSummer/flix-nvim'},
 }
