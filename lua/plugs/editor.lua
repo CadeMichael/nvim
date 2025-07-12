@@ -44,7 +44,7 @@ return {
       indent = {
         chunk = { enabled = true, only_current = true },
       },
-      -- words = { enabled = true },
+      words = { enabled = true },
       picker = {
         layout = "ivy",
         win = {
@@ -96,16 +96,6 @@ return {
       vim.api.nvim_create_autocmd("User", {
         pattern = "VeryLazy",
         callback = function()
-          -- Setup some globals for debugging (lazy-loaded)
-          -- _G.dd = function(...)
-          -- Snacks.debug.inspect(...)
-          -- end
-          -- _G.bt = function()
-          -- Snacks.debug.backtrace()
-          -- end
-          -- vim.print = _G.dd -- Override print to use snacks for `:=` command
-
-          -- Create some toggle mappings
           Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
           Snacks.toggle.option("wrap", { name = "Wrap" }):map("<space>w")
           Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
@@ -171,29 +161,6 @@ return {
       },
     },
     config = true,
-  },
-  {
-    "jubnzv/mdeval.nvim",
-    config = function()
-      require 'mdeval'.setup({
-        -- require_confirmation = false,
-        -- Change code blocks evaluation options.
-        eval_options = {
-          python = {
-            command = { "python3" },
-            language_code = "python",
-            exec_type = "interpreted",
-            extension = "py", -- tmp files saved to '/tmp/mdeval/'
-          },
-          haskell = {
-            command = { "runghc" },
-            language_code = "haskell",
-            exec_type = "interpreted",
-            extension = "hs",
-          },
-        },
-      })
-    end
   },
   {
     "jpalardy/vim-slime",
@@ -270,13 +237,7 @@ return {
     -- termwin_command = 'belowright new',   -- Assign a window for the debugging terminal
     -- end
   },
-  { -- Unicode
+  {
     'chrisbra/unicode.vim',
   },
-  {
-    "nvzone/typr",
-    dependencies = "nvzone/volt",
-    opts = {},
-    cmd = { "Typr", "TyprStats" },
-  }
 }

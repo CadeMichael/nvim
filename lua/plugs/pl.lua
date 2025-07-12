@@ -1,5 +1,5 @@
 return {
-  { -- LaTex
+  {
     "lervag/vimtex",
     lazy = false,
     init = function()
@@ -11,7 +11,7 @@ return {
       vim.g.tex_conceal = 'abdmg'
     end
   },
-  'lark-parser/vim-lark-syntax', -- Lark
-  'whonore/Coqtail', -- Coq
-  {dir = '~/Documents/pl/flixSummer/flix-nvim'},
+  'lark-parser/vim-lark-syntax',
+  'whonore/Coqtail',
+  { dir = '~/Documents/pl/flixSummer/flix-nvim' },
 }

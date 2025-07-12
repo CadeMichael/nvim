@@ -8,12 +8,12 @@ return {
   },
   {
     "airblade/vim-gitgutter",
-    config = function ()
+    config = function()
       vim.g.gitgutter_map_keys = 0
-      Map("n", "<space>gg", "<cmd>GitGutterBufferToggle<CR>", Opts,"toggle git gutter")
-      Map("n", "<space>gp", "<Plug>(GitGutterPreviewHunk)", Opts,"preview hunk")
-      Map("n", "[h", "<Plug>(GitGutterPrevHunk)", Opts,"preview hunk")
-      Map("n", "]h", "<Plug>(GitGutterNextHunk)", Opts,"preview hunk")
+      Map("n", "<space>gg", "<cmd>GitGutterBufferToggle<CR>", Opts, "toggle git gutter")
+      Map("n", "<space>gp", "<Plug>(GitGutterPreviewHunk)", Opts, "preview hunk")
+      Map("n", "[h", "<Plug>(GitGutterPrevHunk)", Opts, "preview hunk")
+      Map("n", "]h", "<Plug>(GitGutterNextHunk)", Opts, "preview hunk")
     end,
   },
 }

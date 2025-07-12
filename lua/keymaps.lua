@@ -2,6 +2,7 @@
 -- keymappings
 --------------
 
+-- globals
 function Map(mode, lhs, rhs, opts, desc)
   opts = opts or {}
   if desc then
@@ -10,6 +11,7 @@ function Map(mode, lhs, rhs, opts, desc)
   opts.silent = opts.silent ~= false
   vim.keymap.set(mode, lhs, rhs, opts)
 end
+
 Opts = { noremap = true, silent = true }
 
 function AddDesc(opts, desc)

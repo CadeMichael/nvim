@@ -86,7 +86,6 @@ return {
         end
       })
 
-      -- add flix lsp config
       require("flix").setup()
 
       local lsp_langs = {

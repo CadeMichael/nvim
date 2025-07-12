@@ -9,7 +9,6 @@ return {
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
-  -- telekasten
   {
     'renerocksai/telekasten.nvim',
     dependencies = { 'renerocksai/calendar-vim' },
