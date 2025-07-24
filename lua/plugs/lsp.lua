@@ -13,7 +13,6 @@ return {
     -- `main` does not work at the moment
     dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
     version = '*',
-    ---@module 'blink.cmp'
     opts = {
       snippets = {
         preset = 'luasnip',
