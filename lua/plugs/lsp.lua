@@ -96,6 +96,7 @@ return {
         "lua_ls",
         "metals",
         "nixd",
+        "phpactor",
         "pyright",
         "ocamllsp",
         "racket_langserver",

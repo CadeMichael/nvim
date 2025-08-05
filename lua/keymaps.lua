@@ -38,9 +38,11 @@ Map('v', 'J', ":m '>+1<CR>gv=gv", Opts)
 Map('v', 'K', ":m '<-2<CR>gv=gv", Opts)
 Map('n', '<C-d>', '<C-d>zz')
 Map('n', '<C-u>', '<C-u>zz')
--- Terminal Mode window commands
+-- terminal mode window commands
 Map('t', '<C-w>', '<C-\\><C-n><C-w>', Opts)
--- Windows
-vim.keymap.set({'n', 'i'}, '<S-A-h>', ':wincmd < <CR>', Opts)
-vim.keymap.set({'n', 'i'}, '<S-A-l>', ':wincmd > <CR>', Opts)
+-- windows
+vim.keymap.set({'n', 'i'}, '<A-=>', ':wincmd = <CR>', Opts)
+vim.keymap.set({'n', 'i'}, '<A-,>', ':wincmd < <CR>', Opts)
+vim.keymap.set({'n', 'i'}, '<A-.>', ':wincmd > <CR>', Opts)
+-- random
 vim.keymap.set('n', '<space>K', ':!cal<CR>', Opts)

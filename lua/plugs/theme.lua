@@ -43,6 +43,7 @@ return {
     priority = 1000,
     config = function()
       vim.opt.termguicolors = true
+      -- vim.o.background = "light"
       vim.cmd.colorscheme 'rose-pine'
     end
   },
@@ -83,9 +84,11 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('render-markdown').setup({
+      local renderM = require('render-markdown')
+      renderM.setup({
+        enabled = false,
+        render_modes = true,
         heading = {
-          -- enabled = false,
           sign = false,
           icons = {},
         },
@@ -93,6 +96,7 @@ return {
           sign = false,
         }
       })
+      Map('n', '<space>M', renderM.toggle, Opts, "toggle render markdown")
     end
   }
 }

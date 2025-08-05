@@ -11,8 +11,10 @@ return {
       vim.g.tex_conceal = 'abdmg'
     end
   },
-  'lark-parser/vim-lark-syntax',
-  'whonore/Coqtail',
+  {
+    'whonore/Coqtail',
+    event = { 'BufReadPre *.coq', 'BufNewFile *.coq' },
+  },
   {
     'Julian/lean.nvim',
     event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },

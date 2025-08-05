@@ -163,12 +163,12 @@ return {
       vim.g.slime_no_mappings = 1
     end,
     config = function()
-      vim.g.slime_target = "zellij"
+      vim.g.slime_target = "tmux"
       -- global slimes
       Map({ 'n', 'i' }, '<C-c>c', "<Plug>SlimeConfig", Opts, "slime config")
       Map({ 'n', 'i' }, '<C-c><C-c>', "<cmd>SlimeSend0 '<c-c>' <CR>", Opts, "slime ^C")
       Map({ 'n', 'i' }, '<C-c><C-d>', "<cmd>SlimeSend0 '<c-d>' <CR>", Opts, "slime ^D")
-      Map({ 'n', 'i' }, '<C-c><C-l>', "<cmd>SlimeSend0 '<c-l>' <CR>", Opts, "slime ^L")
+      Map({ 'n', 'i' }, '<C-c>L', "<cmd>SlimeSend0 '<c-l>' <CR>", Opts, "slime ^L")
       Map({ 'n', 'i' }, '<C-c><C-e>', "<Plug>SlimeParagraphSend", Opts, "slime paragraph")
       Map({ 'n', 'i' }, '<C-c>l', "<Plug>SlimeLineSend", Opts, "slime line")
       Map('v', '<C-c><C-e>', "<Plug>SlimeRegionSend", Opts, "slime region")
@@ -233,6 +233,23 @@ return {
     -- end
   },
   {
-    'chrisbra/unicode.vim',
-  },
+    {
+      "christoomey/vim-tmux-navigator",
+      cmd = {
+        "TmuxNavigateLeft",
+        "TmuxNavigateDown",
+        "TmuxNavigateUp",
+        "TmuxNavigateRight",
+        "TmuxNavigatePrevious",
+        "TmuxNavigatorProcessList",
+      },
+      keys = {
+        { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+        { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+        { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+        { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+        { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+      },
+    }
+  }
 }
