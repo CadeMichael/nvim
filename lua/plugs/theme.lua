@@ -48,24 +48,6 @@ return {
     end
   },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
-    config = function()
-      require('lualine').setup({
-        options = {
-          theme = 'auto',
-          component_separators = { left = '|', right = '|' },
-          section_separators = { left = ' ', right = ' ' },
-        },
-        sections = {
-          lualine_x = { 'encoding', 'filetype' },
-        },
-      })
-    end
-  },
-  {
     "sotte/presenting.nvim",
     cmd = { "Presenting" },
     config = function()

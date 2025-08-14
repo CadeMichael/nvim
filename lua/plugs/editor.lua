@@ -66,22 +66,6 @@ return {
       -- notifications
       { "<space>n",   function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
-      -- pickers
-      { "<space>f",   function() Snacks.picker.files() end,          desc = "find files" },
-      { "<space>/",   function() Snacks.picker.grep() end,           desc = "Grep" },
-      { "<space>,",   function() Snacks.picker.buffers() end,        desc = "Buffers" },
-      { "<space>b/",  function() Snacks.picker.grep_buffers() end,   desc = "Grep Open Buffers" },
-      { "<space>h",   function() Snacks.picker.help() end,           desc = "find help" },
-      { "<space>gs",  function() Snacks.picker.git_status() end,     desc = "git status" },
-      { "<space>m",   function() Snacks.picker.keymaps() end,        desc = "find keymaps" },
-      { "<space>ex",  function() Snacks.picker.explorer() end,       desc = "snacks explorer" },
-      {
-        "grr",
-        function() Snacks.picker.lsp_references() end,
-        nowait = true,
-        desc = "References"
-      },
-      { "<space>E", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
       -- terminal
       {
         mode = { "n", "t" },
@@ -232,6 +216,7 @@ return {
     -- termwin_command = 'belowright new',   -- Assign a window for the debugging terminal
     -- end
   },
+  'mattn/emmet-vim',
   {
     {
       "christoomey/vim-tmux-navigator",

@@ -30,7 +30,7 @@ local function duneExec()
     return nil
   end
 
-  vim.system({ "dune", "exec", project_name }, { text = true }, function(obj)
+  vim.system({ "dune", "exec", "./" .. project_name  .. ".exe" }, { text = true }, function(obj)
     vim.schedule(function()
       if #obj.stderr > 0 then
         vim.api.nvim_echo({ project_echo, { "dune exec failed...\n", "ErrorMsg", }, { obj.stderr, "WarningMsg" } }, true,

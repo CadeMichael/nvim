@@ -9,6 +9,7 @@ require('lang_ft')
 --------------------
 -- Global Configs --
 --------------------
+
 vim.g.loaded_netrw = 1
 vim.opt.number = true
 vim.opt.signcolumn = 'auto'
@@ -57,9 +58,3 @@ require("lazy").setup({
     { import = "plugs" },
   },
 })
-
--- experimental
--- local maker = require('ccmake')
--- vim.api.nvim_create_user_command("BrowseFiles", function()
-  -- maker.browse(vim.fn.getcwd())
--- end, {})
