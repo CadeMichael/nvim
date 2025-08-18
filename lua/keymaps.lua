@@ -15,7 +15,7 @@ end
 Opts = { noremap = true, silent = true }
 
 function AddDesc(opts, desc)
-  return vim.tbl_extend('force', opts, {desc = desc})
+  return vim.tbl_extend('force', opts, { desc = desc })
 end
 
 -- prevent nvim suspending
@@ -39,10 +39,14 @@ Map('v', 'K', ":m '<-2<CR>gv=gv", Opts)
 Map('n', '<C-d>', '<C-d>zz')
 Map('n', '<C-u>', '<C-u>zz')
 -- terminal mode window commands
+Map('n', '<space><space>', function()
+  local dir = vim.fn.expand('%:p:h')
+  vim.system({ "tmux", "split-window", "-c", dir })
+end, Opts)
 Map('t', '<C-w>', '<C-\\><C-n><C-w>', Opts)
 -- windows
-vim.keymap.set({'n', 'i'}, '<A-=>', ':wincmd = <CR>', Opts)
-vim.keymap.set({'n', 'i'}, '<A-,>', ':wincmd < <CR>', Opts)
-vim.keymap.set({'n', 'i'}, '<A-.>', ':wincmd > <CR>', Opts)
+vim.keymap.set({ 'n', 'i' }, '<A-=>', ':wincmd = <CR>', Opts)
+vim.keymap.set({ 'n', 'i' }, '<A-,>', ':wincmd < <CR>', Opts)
+vim.keymap.set({ 'n', 'i' }, '<A-.>', ':wincmd > <CR>', Opts)
 -- random
 vim.keymap.set('n', '<space>K', ':!cal<CR>', Opts)

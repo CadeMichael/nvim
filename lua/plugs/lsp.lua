@@ -114,6 +114,7 @@ return {
         "ocamllsp",
         "racket_langserver",
         "rust_analyzer",
+        "ts_ls",
         "zls",
       }
 

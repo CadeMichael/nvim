@@ -46,7 +46,7 @@ return {
       require('telekasten').setup({
         home = vim.fn.expand("~/zkast"),
       })
-      vim.keymap.set('n', '<Space><Space>', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
+      vim.keymap.set('n', '<Space>rr', '<cmd>Telekasten panel<CR>', { desc = 'telekasten panel' })
       vim.keymap.set('n', '<Space>rf', '<cmd>Telekasten find_notes<CR>', { desc = 'telekasten find notes' })
     end
   },
