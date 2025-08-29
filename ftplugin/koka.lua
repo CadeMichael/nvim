@@ -1,7 +1,3 @@
-vim.opt_local.tabstop = 4
-vim.opt_local.shiftwidth = 4
-vim.opt_local.softtabstop = 4
-
 -- tell nvim how to format comments
 vim.bo.commentstring = "// %s"
 local notif = require('snacks.notify')
@@ -28,21 +24,18 @@ local function kokaCompile()
 end
 
 local function kokaRun()
-  local binary = vim.fn.expand("%:r")
+  -- local file = vim.api.nvim_buf_get_name(0)
+  local dir = vim.fn.expand('%:p:h')
+  local binary = vim.fn.expand("%:p:r")
   local exists = vim.fn.executable("./" .. binary)
   if not exists then
     return nil
   end
-  vim.system({ "./" .. binary }, { text = true }, function(obj)
-    vim.schedule(function()
-      if #obj.stdout > 0 then
-        notif.info(obj.stdout)
-      end
-      if #obj.stderr > 0 then
-        notif.error(obj.stderr)
-      end
-    end)
-  end)
+  print("cwd " .. dir .. " | binary " .. binary)
+  vim.system({
+    "tmux", "split-window", "-c", dir,
+    "sh", "-c", string.format("%s; echo '\n[press enter to close]'; read", binary)
+  })
 end
 
 local keymap = vim.keymap.set

@@ -1,10 +1,8 @@
-local function runPyBuffer()
+local function loadPyBuff()
   local file = vim.api.nvim_buf_get_name(0)
-  Snacks.terminal.open('python3 ' .. file, { interactive = false })
-end
-
-local function runPytest()
-  Snacks.terminal.open('pytest', { interactive = false })
+  local interpreter = "python3"
+  local dir = vim.fn.expand('%:p:h')
+  vim.system({ "tmux", "split-window", "-c", dir, interpreter, "-i", file })
 end
 
 local function runPDB()
@@ -15,9 +13,8 @@ end
 
 local bufnr = vim.api.nvim_get_current_buf()
 local keymap = vim.keymap.set
-keymap('n', '<Space>cc', runPyBuffer, { buffer = bufnr, desc = 'run python buffer' })
-keymap('n', '<Space>ct', runPytest, { buffer = bufnr, desc = 'run pytest' })
 keymap('n', '<Space>D', runPDB, { buffer = bufnr, desc = 'run pdb on current buffer' })
+keymap('n', '<Space>bi', loadPyBuff, { buffer = bufnr, desc = 'open current buf in repl' })
 
 
 local ls = require('luasnip')

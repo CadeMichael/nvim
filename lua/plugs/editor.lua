@@ -41,7 +41,7 @@ return {
       bigfile = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
-      indent = { enabled = true },
+      indent = { enabled = false },
       words = { enabled = true },
       picker = {
         layout = "ivy",
