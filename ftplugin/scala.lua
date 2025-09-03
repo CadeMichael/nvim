@@ -9,6 +9,11 @@ local function sbtCompile()
   vim.cmd("cd " .. cwd)
 end
 
+local function sbt()
+  local sbt_root = vim.lsp.buf.list_workspace_folders()[1]
+  vim.system({ "tmux", "split-window", "-c", sbt_root, "sbt" })
+end
+
 local function sbtRun()
   local cwd = vim.fn.getcwd()
   local sbt_root = vim.lsp.buf.list_workspace_folders()[1]
@@ -19,9 +24,9 @@ local function sbtRun()
     end)
   end)
 
-  -- vim.cmd("!sbt run")
   vim.cmd("cd " .. cwd)
 end
 
-vim.keymap.set('n', '<Space>cr', sbtRun, opts)
-vim.keymap.set('n', '<Space>cc', sbtCompile, opts)
+vim.keymap.set('n', '<Space>br', sbtRun, opts)
+vim.keymap.set('n', '<Space>bc', sbtCompile, opts)
+vim.keymap.set('n', '<Space>bb', sbt, opts)

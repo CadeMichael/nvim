@@ -29,9 +29,9 @@ local function kokaRun()
   local binary = vim.fn.expand("%:p:r")
   local exists = vim.fn.executable("./" .. binary)
   if not exists then
+    print("binary [" .. binary .. "]" .. " not found")
     return nil
   end
-  print("cwd " .. dir .. " | binary " .. binary)
   vim.system({
     "tmux", "split-window", "-c", dir,
     "sh", "-c", string.format("%s; echo '\n[press enter to close]'; read", binary)
