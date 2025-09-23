@@ -24,6 +24,9 @@ return {
     },
     opts = {
       mappings = true,
+      infoview = {
+        goal_markers = { unsolved = '', accomplished = '✓' },
+      },
     }
   },
   { dir = '~/Documents/pl/flixSummer/flix-nvim' },
