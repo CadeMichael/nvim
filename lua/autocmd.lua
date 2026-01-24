@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd(
     pattern = {
       "markdown",
       "telekasten",
+      "tex",
       "oil",
       "coq-goals",
       "coq-infos",

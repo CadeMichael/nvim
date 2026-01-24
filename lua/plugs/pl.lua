@@ -12,6 +12,20 @@ return {
     end
   },
   {
+    "effekt-lang/effekt-neovim",
+    init = function()
+      if not vim.lsp.config["effekt"] then
+        vim.lsp.config('effekt', {
+          cmd = { "effekt", "--server" },
+          filetypes = { "effekt" },
+          root_markers = { "out/", "main.effekt" },
+          cmd_cwd = vim.fs.root(0, { "out/", 'main.effekt' }),
+          root_dir = vim.fs.root(0, { "out/", 'main.effekt' }),
+        })
+      end
+    end
+  },
+  {
     'whonore/Coqtail',
     event = { 'BufReadPre *.coq', 'BufNewFile *.coq' },
   },

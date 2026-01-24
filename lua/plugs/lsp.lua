@@ -103,6 +103,7 @@ return {
       local lsp_langs = {
         "clangd",
         "coq_lsp",
+        "effekt",
         "flix",
         "gopls",
         "koka",

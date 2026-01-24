@@ -162,7 +162,7 @@ return {
           -- bindings
           keymap('n', '<C-c><C-r>', '<cmd>SlimeSend1 "python" <CR>', AddDesc(opts, "start python repl"))
           keymap('n', '<C-c>ef', function()
-              Snacks.picker.files({
+              require('snacks').picker.files({
                 confirm = function(picker, item)
                   picker:close()
                   if item then
@@ -187,7 +187,7 @@ return {
           keymap('n', '<C-c><C-r>', '<cmd>SlimeSend1 "racket" <CR>', AddDesc(opts, "start racket repl"))
           keymap('n', '<C-c>el', '<cmd>SlimeSend1 (enter! #f)<CR>', AddDesc(opts, 'leave file in repl'))
           keymap('n', '<C-c>ef', function()
-              Snacks.picker.files({
+              require('snacks').picker.files({
                 confirm = function(picker, item)
                   picker:close()
                   if item then
