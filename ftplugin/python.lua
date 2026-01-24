@@ -7,5 +7,4 @@ end
 
 local bufnr = vim.api.nvim_get_current_buf()
 local keymap = vim.keymap.set
-keymap('n', '<Space>D', runPDB, { buffer = bufnr, desc = 'run pdb on current buffer' })
 keymap('n', '<Space>bi', loadPyBuff, { buffer = bufnr, desc = 'open current buf in repl' })
