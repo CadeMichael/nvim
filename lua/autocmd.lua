@@ -21,21 +21,8 @@ vim.api.nvim_create_autocmd(
   {
     pattern = {
       "markdown",
-      "telekasten",
-      "tex",
       "oil",
-      "coq-goals",
-      "coq-infos",
     },
     command = "setlocal nonumber norelativenumber colorcolumn=0",
-  }
-)
-
--- Term line numbers
-vim.api.nvim_create_autocmd(
-  "TermOpen",
-  {
-    pattern = "*",
-    command = "setlocal nonumber norelativenumber nocursorline",
   }
 )

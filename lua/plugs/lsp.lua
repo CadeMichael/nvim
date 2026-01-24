@@ -7,63 +7,7 @@ return {
     end
   },
   {
-    'saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
-    -- !Important! Make sure you're using the latest release of LuaSnip
-    -- `main` does not work at the moment
-    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
-    version = '*',
-    opts = {
-      snippets = {
-        preset = 'luasnip',
-      },
-      keymap = {
-        preset = "default",
-        ["<C-y>"] = false,
-        ['<Tab>'] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            else
-              return cmp.select_and_accept()
-            end
-          end,
-          'snippet_forward',
-          'fallback'
-        },
-        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-      },
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono'
-      },
-      sources = {
-        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
-        providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            -- make lazydev completions top priority (see `:h blink.cmp`)
-            score_offset = 100,
-          },
-        }
-      },
-    },
-    opts_extend = { 'sources.default' },
-  },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    enabled = true,
-    config = function()
-      require("lazydev").setup()
-    end
-  },
-  {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      'saghen/blink.cmp',
-    },
     config = function()
       -- show lsp diagnostics by highlighting line numbers
       vim.diagnostic.config({
@@ -98,25 +42,12 @@ return {
         end
       })
 
-      require("flix").setup()
-
       local lsp_langs = {
         "clangd",
-        "coq_lsp",
-        "effekt",
-        "flix",
         "gopls",
         "koka",
-        "lua_ls",
-        "metals",
-        "nixd",
-        "phpactor",
         "pyright",
-        "ocamllsp",
-        "racket_langserver",
-        "rust_analyzer",
         "ts_ls",
-        "zls",
       }
 
       vim.lsp.enable(lsp_langs)

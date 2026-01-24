@@ -1,15 +1,8 @@
----------------
--- Sourcing --
----------------
-
+-- source local files
 require('keymaps')
 require('autocmd')
-require('lang_ft')
 
---------------------
--- Global Configs --
---------------------
-
+-- globals
 vim.g.loaded_netrw = 1
 vim.opt.number = true
 vim.opt.signcolumn = 'auto'
@@ -24,9 +17,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.mouse = 'nv'
 
--------------
--- Plugins --
--------------
+-- lazy installer
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -52,9 +43,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- load plugs
 require("lazy").setup({
   spec = {
-    -- import your plugins
     { import = "plugs" },
   },
 })
