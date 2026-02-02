@@ -3,8 +3,48 @@ return {
     'folke/trouble.nvim',
     config = function()
       require('trouble').setup()
-      vim.keymap.set('n', '<Space>td', '<cmd>Trouble diagnostics toggle<CR>', { desc = 'trouble diagnostic toggle' })
+      vim.keymap.set(
+        'n',
+        '<Space>td',
+        '<cmd>Trouble diagnostics toggle<CR>',
+        { desc = 'trouble diagnostic toggle' }
+      )
     end
+  },
+  {
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {
+      -- (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      keymap = { preset = 'default' },
+
+      appearance = {
+        nerd_font_variant = 'mono'
+      },
+      completion = { documentation = { auto_show = false } },
+      sources = {
+        providers = {
+          snippets = {
+            opts = {
+              friendly_snippets = false,
+            }
+          }
+        },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    opts_extend = { "sources.default" }
   },
   {
     'neovim/nvim-lspconfig',
@@ -45,7 +85,6 @@ return {
       local lsp_langs = {
         "clangd",
         "gopls",
-        "koka",
         "pyright",
         "ts_ls",
       }
