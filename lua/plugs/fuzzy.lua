@@ -1,21 +1,5 @@
 return {
   {
-    "dmtrKovalenko/fff.nvim",
-    build = "cargo build --release",
-    opts = {
-      prompt = '> ',
-    },
-    keys = {
-      {
-        "<space>f",
-        function()
-          require("fff").find_files()
-        end,
-        desc = "Open file picker",
-      },
-    },
-  },
-  {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -30,6 +14,7 @@ return {
     },
     config = function()
       local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<space>f', builtin.find_files, { desc = 'Telescope find files' })
       vim.keymap.set('n', '<space>/', builtin.live_grep, { desc = 'Telescope live grep' })
       vim.keymap.set('n', '<space>g/', builtin.git_status, { desc = 'Telescope git status' })
       vim.keymap.set('n', '<space>gb', builtin.git_branches, { desc = 'Telescope git branches' })

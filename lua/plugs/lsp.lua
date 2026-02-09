@@ -98,13 +98,10 @@ return {
         end
       })
 
-      require("flix").setup()
-
       local lsp_langs = {
         "clangd",
         "coq_lsp",
         "effekt",
-        "flix",
         "gopls",
         "koka",
         "lua_ls",

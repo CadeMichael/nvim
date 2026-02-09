@@ -43,5 +43,4 @@ return {
       },
     }
   },
-  { dir = '~/Documents/pl/flixSummer/flix-nvim' },
 }
