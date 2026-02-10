@@ -66,7 +66,11 @@ return {
       local function lg()
         vim.cmd(default .. "lazygit")
       end
+      local function sqlit()
+        vim.cmd(default .. "sqlit")
+      end
       Map('n', '<Space>lg', lg, Opts)
+      Map('n', '<Space>sq', sqlit, Opts)
     end
   }
 }
