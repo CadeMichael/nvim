@@ -59,4 +59,14 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  {
+    "voldikss/vim-floaterm",
+    config = function()
+      local default = "FloatermNew --autoclose=1 --height=0.8 --width=0.8 "
+      local function lg()
+        vim.cmd(default .. "lazygit")
+      end
+      Map('n', '<Space>lg', lg, Opts)
+    end
+  }
 }
