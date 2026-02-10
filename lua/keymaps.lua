@@ -48,5 +48,15 @@ Map('t', '<C-w>', '<C-\\><C-n><C-w>', Opts)
 vim.keymap.set({ 'n', 'i' }, '<A-=>', ':wincmd = <CR>', Opts)
 vim.keymap.set({ 'n', 'i' }, '<A-,>', ':wincmd < <CR>', Opts)
 vim.keymap.set({ 'n', 'i' }, '<A-.>', ':wincmd > <CR>', Opts)
+-- text wrapping
+local wrap = true
+vim.keymap.set(
+  'n',
+  '<space>w',
+  function()
+    wrap = not wrap
+    vim.o.wrap = wrap
+  end,
+  Opts)
 -- random
 vim.keymap.set('n', '<space>K', ':!cal<CR>', Opts)
