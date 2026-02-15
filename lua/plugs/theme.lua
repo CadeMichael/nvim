@@ -32,4 +32,61 @@ return {
       vim.cmd.colorscheme "gruvbox"
     end
   },
+  {
+    'goolord/alpha-nvim',
+    config = function ()
+            local alpha = require'alpha'
+            -- local startify = require'alpha.themes.startify'
+            local dashboard = require'alpha.themes.dashboard'
+            dashboard.section.header.val = {
+            -- startify.section.header.val = {
+[[                      .,,uod8B8bou,,.                                 ]],
+[[              ..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:.                       ]],
+[[         ,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||                      ]],
+[[         !...:!TVBBBRPFT||||||||||!!^^""'   ||||                      ]],
+[[         !.......:!?|||||!!^^""'            ||||                      ]],
+[[         !.........||||                     ||||                      ]],
+[[         !.........||||  ##                 ||||                      ]],
+[[         !.........||||                     ||||                      ]],
+[[         !.........||||                     ||||                      ]],
+[[         !.........||||                     ||||                      ]],
+[[         !.........||||                     ||||                      ]],
+[[         `.........||||                    ,||||                      ]],
+[[          .;.......||||               _.-!!|||||                      ]],
+[[   .,uodWBBBBb.....||||       _.-!!|||||||||!:'                       ]],
+[[!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb....                  ]],
+[[!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   `.                ]],
+[[!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     `.              ]],
+[[!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^"`;:::       `.            ]],
+[[!........YBBBBBBBBBBRPFT?!::::::::::^''...::::::;         iBBbo.      ]],
+[[`..........YBRPFT?!::::::::::::::::::::::::;iof68bo.      WBBBBbo.    ]],
+[[  `..........:::::::::::::::::::::::;iof688888888888b.     `YBBBP^'   ]],
+[[    `........::::::::::::::::;iof688888888888888888888b.     `        ]],
+[[      `......:::::::::;iof688888888888888888888888888888b.            ]],
+[[        `....:::;iof688888888888888888888888888888888899fT!           ]],
+[[          `..::!8888888888888888888888888888888899fT|!^"'             ]],
+[[            `' !!988888888888888888888888899fT|!^"'                   ]],
+[[                `!!8888888888888888899fT|!^"'                         ]],
+[[                  `!988888888899fT|!^"'                               ]],
+[[                    `!9899fT|!^"'                                     ]],
+[[                      `!^"'                                           ]],
+            }
+            -- alpha.setup(startify.config)
+         dashboard.section.buttons.val = {
+             dashboard.button( "f", "find files" , ":FzfLua files<CR>"),
+             dashboard.button( "r", "recent files" , ":FzfLua history<CR>"),
+             dashboard.button( "q", "quit" , ":qa<CR>"),
+         }
+         local handle = io.popen('fortune')
+         local fortune = handle:read("*a")
+         handle:close()
+         dashboard.section.footer.val = fortune
+
+         dashboard.config.opts.noautocmd = true
+
+         vim.cmd[[autocmd User AlphaReady echo 'ready']]
+
+         alpha.setup(dashboard.config)
+    end
+  },
 }
