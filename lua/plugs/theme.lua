@@ -73,7 +73,7 @@ return {
             }
             -- alpha.setup(startify.config)
          dashboard.section.buttons.val = {
-             dashboard.button( "f", "find files" , ":FzfLua files<CR>"),
+             dashboard.button( "d", "explore directory" , ":Oil<CR>"),
              dashboard.button( "r", "recent files" , ":FzfLua history<CR>"),
              dashboard.button( "q", "quit" , ":qa<CR>"),
          }
