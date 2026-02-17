@@ -25,11 +25,9 @@ return {
     end
   },
   {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
+    "savq/melange-nvim",
     config = function()
-      vim.opt.termguicolors = true
-      vim.cmd.colorscheme "gruvbox"
+      vim.cmd.colorscheme "melange"
     end
   },
   {
