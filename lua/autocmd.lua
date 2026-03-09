@@ -1,7 +1,3 @@
----------------
--- autocmd's --
----------------
-
 -- No colorcolumn ft
 vim.api.nvim_create_autocmd(
   "FileType",

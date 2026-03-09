@@ -1,7 +1,3 @@
---------------
--- keymappings
---------------
-
 -- globals
 function Map(mode, lhs, rhs, opts, desc)
   opts = opts or {}
