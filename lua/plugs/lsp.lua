@@ -87,6 +87,7 @@ return {
         "gopls",
         "pyright",
         "ts_ls",
+        "ols",
       }
 
       vim.lsp.enable(lsp_langs)
