@@ -97,9 +97,22 @@ return {
         "pyright",
         "ts_ls",
         "ols",
+        "zls",
       }
 
       vim.lsp.enable(lsp_langs)
     end,
   },
+  {
+    'Julian/lean.nvim',
+    event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+    dependencies = {
+      'Saghen/blink.cmp'
+    },
+    ---@type lean.Config
+    opts = { -- see below for full configuration options
+      mappings = true,
+    },
+  }
 }
