@@ -91,12 +91,13 @@ return {
         end
       })
 
+
       local lsp_langs = {
         "clangd",
         "gopls",
+        "ols",
         "pyright",
         "ts_ls",
-        "ols",
         "zls",
       }
 

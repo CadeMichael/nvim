@@ -1,27 +1,26 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = 'master',
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = { 'neovim-treesitter/treesitter-parser-registry' },
     lazy = false,
-    build = ":TSUpdate",
+    build = ':TSUpdate',
     config = function()
-      require 'nvim-treesitter.configs'.setup {
-        ensure_installed = {},
-        modules = {},
-        sync_install = false,
-        auto_install = false,
-        ignore_install = {},
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        }
-      }
-
-      -- folding
-      vim.wo.foldmethod = 'expr'
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.o.foldlevel = 32
-      vim.cmd [[set nofoldenable]]
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = {
+          'markdown',
+          'markdown_inline',
+          'odin',
+          'python',
+          'rust',
+          'typescript',
+        },
+        callback = function()
+          vim.treesitter.start()
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo.foldmethod = 'expr'
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end
   },
   {
