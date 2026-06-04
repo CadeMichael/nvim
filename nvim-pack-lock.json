@@ -8,6 +8,10 @@
       "rev": "b127d48bf8e9ac9cf41f6e0fbead317503f76558",
       "src": "https://github.com/saghen/blink.lib"
     },
+    "checkmate.nvim": {
+      "rev": "e57c8b502ab3e77e478e16460fcc2d2a16082f73",
+      "src": "https://github.com/bngarren/checkmate.nvim"
+    },
     "fff.nvim": {
       "rev": "fa1143b11b6c05629129af30f078e20b05206395",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
