@@ -1,0 +1,58 @@
+#!/usr/bin/python3
+
+import subprocess
+import sys
+import re
+
+# list remote branches
+res = subprocess.run(["git", "ls-remote"], capture_output = True, text=True)
+raw = res.stdout
+
+# clean branch names
+branches = []
+for line in raw.splitlines():
+    branch = re.search(r'refs/heads/(.+)$', line)
+    if branch:
+        branches.append(branch.group(1))
+
+if len(branches) == 0:
+    print("> Not in git repository")
+    sys.exit()
+
+# allow branch selection
+branch = subprocess.run(
+    ["fzf"],
+    input='\n'.join(branches),
+    capture_output = True,
+    text=True
+).stdout.strip()
+
+if len(branch) == 0: sys.exit()
+
+# list branch logs
+logs = subprocess.run(
+    ["git", "log", "--oneline", f"remotes/origin/{branch}"],
+    capture_output = True,
+    text = True,
+).stdout.strip()
+
+# allow log selection
+search = subprocess.run(
+    ["fzf"],
+    input = logs,
+    capture_output = True,
+    text = True
+).stdout.strip()
+
+if len(search) == 0: sys.exit()
+
+[commit, _] = search.split(" ", 1)
+
+# print selected commit information
+status = subprocess.run(
+    ["git", "show", "--color=always", "--name-status", commit],
+    capture_output=True,
+    text=True,
+).stdout.strip()
+
+print(status)
