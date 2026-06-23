@@ -76,6 +76,7 @@ local ts_langs = {
 	'markdown_inline',
 	'odin',
 	'python',
+	'terraform',
 	'typescript',
 	'zsh'
 }
@@ -217,10 +218,22 @@ require('checkmate').setup({
   },
 })
 
+-- filetypes
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+    tfvars = "terraform",
+    tfstate = "json",
+  },
+  pattern = {
+    [".*%.tf$"] = "terraform",
+  },
+})
+
 -- autocommands
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "netrw",
-    callback = function()
-        vim.keymap.set('n', '<C-c>', '<cmd>bd<CR>', { buffer = true, silent = true })
+	pattern = "netrw",
+	callback = function()
+		vim.keymap.set('n', '<C-c>', '<cmd>bd<CR>', { buffer = true, silent = true })
 	end
 })
