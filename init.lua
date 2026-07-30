@@ -15,7 +15,7 @@ local scripts = vim.fn.stdpath('config') .. "/scripts/"
 -- plugins
 vim.pack.add({	
 	-- theme
-	'https://github.com/navarasu/onedark.nvim',
+	'https://github.com/neanias/everforest-nvim',
 	-- treesitter
 	{
 		src = 'https://github.com/nvim-treesitter/nvim-treesitter',
@@ -34,7 +34,9 @@ vim.pack.add({
 	'https://github.com/saghen/blink.lib',
 	'https://github.com/saghen/blink.cmp',
 	-- notes
-	'https://github.com/bngarren/checkmate.nvim'
+	'https://github.com/bngarren/checkmate.nvim',
+	-- PLV
+	'https://github.com/Treeniks/isabelle-lsp.nvim'
 })
 
 -- floaterm maps
@@ -83,18 +85,21 @@ local ts_langs = {
 
 require('nvim-treesitter').install(ts_langs)
 
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = ts_langs,
-	callback = function()
-		vim.treesitter.start()
-		vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-		vim.wo[0][0].foldmethod = 'expr'
-	end,
-})
+-- vim.api.nvim_create_autocmd('FileType', {
+-- 	pattern = ts_langs,
+-- 	callback = function()
+-- 		vim.treesitter.start()
+-- 		vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- 		vim.wo[0][0].foldmethod = 'expr'
+-- 	end,
+-- })
 
 -- theme configuration
-require('onedark').setup { style = 'darker', transparent = true }
-require('onedark').load()
+require('everforest').setup({
+	background = 'med'
+})
+vim.o.background='light'
+require("everforest").load()
 
 -- keymaps
 vim.keymap.set('n', '<space>;', 'gcc', {remap = true})
@@ -237,3 +242,31 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set('n', '<C-c>', '<cmd>bd<CR>', { buffer = true, silent = true })
 	end
 })
+
+-- isabelle
+vim.filetype.add({
+	extension = {
+		thy = 'isabelle',
+	},
+})
+
+vim.lsp.enable('isabelle')
+
+require('isabelle-lsp').setup({
+	vsplit = true,
+})
+
+-- local plugin development
+vim.cmd.packadd("flix-dev")
+require("flix").setup()
+vim.lsp.enable("flix")
+
+local flix_cmd = require("flix.commands").flix_cmd
+-- setting `buffer` keeps the mappings scoped to Flix buffers
+local bufnr = vim.api.nvim_get_current_buf()
+
+vim.keymap.set("n", "<Space>br", function() flix_cmd("run") end,
+  { noremap = true, silent = true, buffer = bufnr, desc = "run flix project" })
+vim.keymap.set("n", "<Space>bt", function() flix_cmd("test") end,
+  { noremap = true, silent = true, buffer = bufnr, desc = "test flix project" })
+

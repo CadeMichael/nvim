@@ -12,9 +12,17 @@
       "rev": "e57c8b502ab3e77e478e16460fcc2d2a16082f73",
       "src": "https://github.com/bngarren/checkmate.nvim"
     },
+    "everforest-nvim": {
+      "rev": "a0e9edc57379e8feafc6ba207c26dbb12fc1b6d8",
+      "src": "https://github.com/neanias/everforest-nvim"
+    },
     "fff.nvim": {
       "rev": "fa1143b11b6c05629129af30f078e20b05206395",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
+    },
+    "isabelle-lsp.nvim": {
+      "rev": "3601b59d77cc4998de29f966ded7d4d959318be2",
+      "src": "https://github.com/Treeniks/isabelle-lsp.nvim"
     },
     "nvim-surround": {
       "rev": "2e93e154de9ff326def6480a4358bfc149d5da2c",
