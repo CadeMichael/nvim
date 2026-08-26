@@ -95,10 +95,7 @@ require('nvim-treesitter').install(ts_langs)
 -- })
 
 -- theme configuration
-require('everforest').setup({
-	background = 'med'
-})
-vim.o.background='light'
+require('everforest').setup({})
 require("everforest").load()
 
 -- keymaps
